@@ -1,0 +1,277 @@
+/* PLEASE NOTE: THESE TAILWIND IMPORTS SHOULD NEVER BE DELETED */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+/* DO NOT DELETE THESE TAILWIND IMPORTS, OTHERWISE THE STYLING WILL NOT RENDER AT ALL */
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Rockwell:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* Standardized Section Styles */
+@layer components {
+  .section-light {
+    @apply bg-[#EBD4B7] text-[#5A372B];
+  }
+
+  .section-red {
+    @apply bg-[#83513F] text-[#F7F3EE];
+  }
+
+  .section-dark {
+    @apply bg-[#322C2B] text-[#F7F3EE];
+  }
+
+  /* Main content spacing below fixed header */
+  .main-content {
+    padding-top: 5rem; /* 80px - accounts for fixed header height */
+  }
+
+  @media (min-width: 768px) {
+    .main-content {
+      padding-top: 6rem; /* 96px - more spacing on larger screens */
+    }
+  }
+}
+
+:root {
+  --animation-duration-fast: 0.35s;
+  --animation-duration-medium: 0.45s;
+  --animation-duration-micro: 0.15s;
+  --color-primary: #322C2B;
+  --color-secondary: #5C3A2D;
+  --color-accent: #803D3B;
+  --color-light: #FFFFFF;
+  --color-subtext: #A86A53;
+}
+body {
+  margin: 0;
+  font-family: 'Montserrat', 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scroll offset for fixed header navigation */
+/* This ensures that when clicking anchor links, content appears below the fixed header */
+/* Excludes menu page sections which have their own scroll margins */
+section:not([class*="scroll-mt"]),
+[id]:not([class*="scroll-mt"]) {
+  scroll-margin-top: 6rem; /* 96px - matches header height + padding */
+}
+
+/* Additional offset for mobile */
+@media (max-width: 768px) {
+  section:not([class*="scroll-mt"]),
+  [id]:not([class*="scroll-mt"]) {
+    scroll-margin-top: 5rem; /* 80px for smaller screens */
+  }
+}
+
+/* Skip to content link for accessibility */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-accent);
+  color: var(--color-light);
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s;
+}
+.skip-to-content:focus {
+  top: 0;
+}
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes vinylSpin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+@keyframes waveformPulse {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+.animate-fade-in {
+  animation: fadeIn var(--animation-duration-fast) ease-in-out;
+}
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--animation-duration-medium) ease-out, 
+              transform var(--animation-duration-medium) ease-out;
+}
+.scroll-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Vinyl disc styling */
+.vinyl-disc {
+  background: radial-gradient(
+    circle at center,
+    #000 0%,
+    #000 20%,
+    rgba(50, 44, 43, 0.9) 21%,
+    rgba(50, 44, 43, 0.9) 40%,
+    #000 41%,
+    #000 60%,
+    rgba(50, 44, 43, 0.8) 61%
+  );
+  animation: vinylSpin 8s linear infinite;
+}
+.vinyl-animation:hover .vinyl-disc {
+  animation-play-state: running;
+}
+.hover\:shadow-glow:hover {
+  box-shadow: 0 0 15px rgba(228, 197, 158, 0.6);
+}
+/* Card micro-interactions */
+.card-hover-effect {
+  transition: transform var(--animation-duration-micro), box-shadow var(--animation-duration-micro);
+}
+.card-hover-effect:hover, 
+.card-hover-effect:focus-within {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+.card-hover-effect:focus-within {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+/* Menu navigation scroll snap */
+.scroll-snap-x {
+  scroll-snap-type: x mandatory;
+}
+.scroll-snap-align-center {
+  scroll-snap-align: center;
+}
+.menu-scroll-container {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  padding: 0.5rem 2rem;
+}
+.menu-scroll-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+/* Menu Carousel with Perspective */
+.menu-carousel-perspective {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+.menu-carousel-container {
+  transform-style: preserve-3d;
+  scroll-behavior: smooth;
+}
+.menu-plate {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transform: translateZ(0);
+}
+.menu-plate:hover {
+  box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.4);
+}
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Vinyl Record Player Styling */
+.vinyl-record {
+  background-color: #111;
+  transition: transform 0.5s ease;
+}
+.vinyl-grooves {
+  background: repeating-radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(128, 128, 128, 0.1) 3px,
+    rgba(128, 128, 128, 0.1) 4px
+  );
+}
+.vinyl-record-container {
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+.vinyl-player-wrapper {
+  transform-style: preserve-3d;
+}
+.audio-waveform {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.waveform-bar {
+  border-radius: 2px;
+  transform-origin: bottom;
+  animation: waveformPulse 1.2s ease-in-out infinite;
+  opacity: 0.7;
+}
+/* Mobile Menu Overlay Animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, 
+  *::before, 
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-fade-in,
+  .scroll-animate,
+  .vinyl-disc {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  html {
+    scroll-behavior: auto !important;
+  }
+  /* Disable hover effects for reduced motion */
+  .card-hover-effect:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  /* Keep focus styles for accessibility */
+  .card-hover-effect:focus-within {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    transform: none !important;
+  }
+  .waveform-bar {
+    animation: none !important;
+  }
+  .vinyl-record-container {
+    transform: none !important;
+  }
+  .menu-plate {
+    transform: none !important;
+  }
+}
+/* Add scroll animation observer functionality */
+.scroll-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
