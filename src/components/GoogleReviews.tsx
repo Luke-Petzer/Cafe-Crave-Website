@@ -22,14 +22,15 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
 
     useEffect(() => {
         const fetchReviews = async () => {
-            // Use the backend server URL
+            // Use the backend server URL from environment variable
             const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+            const endpoint = `${apiUrl}/api/reviews`;
 
-            console.log('🔄 Frontend: Fetching reviews from:', apiUrl);
+            console.log('🔄 Frontend: Fetching reviews from:', endpoint);
             console.log('⏰ Frontend: Timestamp:', new Date().toISOString());
 
             try {
-                const response = await fetch(apiUrl);
+                const response = await fetch(endpoint); // Fixed: use endpoint instead of apiUrl
                 console.log('📡 Frontend: Response status:', response.status);
                 console.log('📡 Frontend: Response ok:', response.ok);
 
