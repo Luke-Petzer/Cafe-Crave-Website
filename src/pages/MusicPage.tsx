@@ -47,7 +47,7 @@ export const MusicPage = () => {
       <Header />
       <main>
         {/* Hero Section - DARK */}
-        <section className="section-dark relative min-h-[600px] md:min-h-[650px] flex items-center justify-center pt-20">
+        <section id="main-content" className="section-dark relative min-h-[600px] md:min-h-[650px] flex items-center justify-center pt-20">
           <div className="absolute inset-0 z-0">
             <img
               src="https://images.unsplash.com/photo-1594623930572-300a3011d9ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"

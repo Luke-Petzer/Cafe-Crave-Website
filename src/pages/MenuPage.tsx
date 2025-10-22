@@ -136,7 +136,7 @@ export const MenuPage = () => {
             />
             <Header />
             {/* Hero Section - DARK */}
-            <section className="section-dark main-content relative min-h-[600px] md:min-h-[650px] flex items-center justify-center pt-20">
+            <section id="main-content" className="section-dark main-content relative min-h-[600px] md:min-h-[650px] flex items-center justify-center pt-20">
                 <div className="absolute inset-0 z-0">
                     <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Coffee and pastries on a wooden table" className="w-full h-full object-cover brightness-50" loading="lazy" />
                 </div>

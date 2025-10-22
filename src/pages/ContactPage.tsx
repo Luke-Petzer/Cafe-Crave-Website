@@ -1,10 +1,23 @@
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { MapPinIcon, PhoneIcon, ClockIcon } from 'lucide-react';
-import { Instagram, Facebook } from 'lucide-react';
 import { SEO } from '../components/SEO';
 
-// X (Twitter) icon component
+// Custom icon components
+const InstagramIcon = ({ size }: { size: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+  </svg>
+);
+
+const FacebookIcon = ({ size }: { size: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+  </svg>
+);
+
 const XIcon = ({ size }: { size: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
@@ -111,13 +124,13 @@ export const ContactPage = () => {
                   <div className="pt-2 md:pt-4">
                     <h3 className="font-medium text-lightText mb-3">Follow Us</h3>
                     <div className="flex space-x-4">
-                      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="bg-darkBg text-darkText p-3 rounded-full hover:bg-accent hover:text-light transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50">
-                        <Instagram size={20} />
+                      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="bg-darkBg text-darkText p-3 rounded-full hover:bg-accent hover:text-light transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50" aria-label="Follow us on Instagram">
+                        <InstagramIcon size={20} />
                       </a>
-                      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="bg-darkBg text-darkText p-3 rounded-full hover:bg-accent hover:text-light transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50">
-                        <Facebook size={20} />
+                      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="bg-darkBg text-darkText p-3 rounded-full hover:bg-accent hover:text-light transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50" aria-label="Follow us on Facebook">
+                        <FacebookIcon size={20} />
                       </a>
-                      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="bg-darkBg text-darkText p-3 rounded-full hover:bg-accent hover:text-light transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50">
+                      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="bg-darkBg text-darkText p-3 rounded-full hover:bg-accent hover:text-light transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50" aria-label="Follow us on X (Twitter)">
                         <XIcon size={20} />
                       </a>
                     </div>

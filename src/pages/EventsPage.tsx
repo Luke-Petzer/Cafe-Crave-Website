@@ -18,7 +18,7 @@ export const EventsPage = () => {
       <Header />
       <main>
         {/* Hero Section - Image Hero */}
-        <section className="relative min-h-[600px] md:min-h-[650px] flex items-center justify-center overflow-hidden pt-20">
+        <section id="main-content" className="relative min-h-[600px] md:min-h-[650px] flex items-center justify-center overflow-hidden pt-20">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: 'url(/assets/woman-with-cappuccino-cup-wooden-table.jpg)' }}
