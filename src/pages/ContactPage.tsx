@@ -21,21 +21,32 @@ export const ContactPage = () => {
       />
       <Header />
 
+      {/* Hero Section - DARK */}
+      <section className="section-dark relative min-h-[600px] md:min-h-[650px] flex items-center justify-center pt-20">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+            alt="Cafe interior"
+            className="w-full h-full object-cover brightness-50"
+          />
+        </div>
+        <div className="relative z-10 text-center px-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-['Rockwell',serif] font-bold mb-4">
+            Find Us
+          </h1>
+          <div className="w-24 h-1 bg-accent mx-auto mb-6"></div>
+          <p className="text-xl md:text-2xl opacity-90 max-w-2xl mx-auto">
+            Stop by for great coffee, music, and community
+          </p>
+        </div>
+      </section>
+
       {/* Contact Section - DARK */}
-      <section className="section-dark main-content py-12 md:py-16 min-h-[calc(100vh-120px)]">
+      <section className="section-dark py-16 md:py-20">
         <div className="container mx-auto px-6 md:px-10 lg:px-16">
 
           {/* Find Us Section */}
           <div id="contact">
-            <div className="text-center mb-12 md:mb-16">
-              <h1 className="text-4xl md:text-5xl font-['Rockwell',serif] font-bold mb-4">
-                Find Us
-              </h1>
-              <div className="w-24 h-1 bg-accent mx-auto mb-6"></div>
-              <p className="opacity-80 max-w-2xl mx-auto text-lg">
-                Stop by for great coffee, music, and community
-              </p>
-            </div>
 
             <div className="grid md:grid-cols-2 gap-8 md:gap-10 max-w-6xl mx-auto">
               <div className="bg-lightBg p-6 md:p-8 rounded-lg shadow-lg">

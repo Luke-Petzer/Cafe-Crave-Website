@@ -46,6 +46,26 @@ export const MusicPage = () => {
       <ScrollAnimationObserver />
       <Header />
       <main>
+        {/* Hero Section - DARK */}
+        <section className="section-dark relative min-h-[600px] md:min-h-[650px] flex items-center justify-center pt-20">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="https://images.unsplash.com/photo-1594623930572-300a3011d9ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+              alt="Vinyl records"
+              className="w-full h-full object-cover brightness-50"
+            />
+          </div>
+          <div className="relative z-10 text-center px-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-['Rockwell',serif] font-bold mb-4">
+              Our Vinyl Collection
+            </h1>
+            <div className="w-24 h-1 bg-accent mx-auto mb-6"></div>
+            <p className="text-xl md:text-2xl opacity-90 max-w-2xl mx-auto">
+              Explore our curated selection of classic albums and timeless records
+            </p>
+          </div>
+        </section>
+
         <section className="section-dark py-20 md:py-28">
           <div className="container mx-auto px-6 md:px-10 lg:px-16">
             <div className="text-center mb-16">

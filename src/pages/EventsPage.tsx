@@ -18,7 +18,7 @@ export const EventsPage = () => {
       <Header />
       <main>
         {/* Hero Section - Image Hero */}
-        <section className="relative h-[70vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
+        <section className="relative min-h-[600px] md:min-h-[650px] flex items-center justify-center overflow-hidden pt-20">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: 'url(/assets/woman-with-cappuccino-cup-wooden-table.jpg)' }}
@@ -28,11 +28,11 @@ export const EventsPage = () => {
 
           <div className="relative z-10 container mx-auto px-6 md:px-10 lg:px-16">
             <div className="max-w-4xl mx-auto text-center text-darkText">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-['Rockwell',serif] font-bold mb-6 scroll-animate">
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-['Rockwell',serif] font-bold mb-6 scroll-animate">
                 Events at Crave
               </h1>
               <div className="w-24 h-1 bg-accent mx-auto mb-8"></div>
-              <p className="text-xl md:text-2xl mb-12 opacity-90 scroll-animate">
+              <p className="text-lg md:text-xl lg:text-2xl mb-12 opacity-90 scroll-animate">
                 Where community meets culture. Join us for live music, vinyl nights, board game tournaments, and unforgettable experiences.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center scroll-animate">
