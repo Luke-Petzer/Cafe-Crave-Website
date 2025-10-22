@@ -3,14 +3,6 @@
   <component name="CopilotDiffPersistence">
     <option name="pendingDiffs">
       <map>
-        <entry key="$PROJECT_DIR$/.env">
-          <value>
-            <PendingDiffInfo>
-              <option name="filePath" value="$PROJECT_DIR$/.env" />
-              <option name="updatedContent" value="# Frontend Environment Variables&#10;# For local development&#10;VITE_API_URL=http://localhost:3001&#10;&#10;# For production (update with your Railway URL after deployment)&#10;# VITE_API_URL=https://your-railway-app.up.railway.app&#10;" />
-            </PendingDiffInfo>
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/backend/.eslintrc.json">
           <value>
             <PendingDiffInfo>
