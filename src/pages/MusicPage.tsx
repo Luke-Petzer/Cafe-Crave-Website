@@ -52,7 +52,7 @@ export const MusicPage = () => {
             <img
               src="https://images.unsplash.com/photo-1594623930572-300a3011d9ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
               alt="Vinyl records"
-              className="w-full h-full object-cover brightness-50 transition-transform duration-700 hover:scale-110"
+              className="w-full h-full object-cover brightness-50"
             />
           </div>
           <div className="relative z-10 text-center px-6">

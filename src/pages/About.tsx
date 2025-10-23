@@ -17,7 +17,7 @@ export const About = () => {
       {/* Section 1: Hero - "Our Story" - DARK */}
       <section id="main-content" className="section-animate section-dark main-content relative min-h-[600px] md:min-h-[650px] flex items-center justify-center pt-20">
         <div className="absolute inset-0 z-0 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Cafe Crave interior" className="w-full h-full object-cover brightness-50 transition-transform duration-700 hover:scale-110" />
+          <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Cafe Crave interior" className="w-full h-full object-cover brightness-50" />
         </div>
         <div className="relative z-10 text-center px-6">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-['Rockwell',serif] font-bold mb-6 leading-tight">
