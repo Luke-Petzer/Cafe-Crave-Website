@@ -1311,7 +1311,7 @@ export const MenuPage = () => {
                         <p className="text-light text-lg mb-8">
                             Stop by for breakfast, lunch, or coffee with friends.
                         </p>
-                        <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="bg-light hover:bg-opacity-90 text-accent px-8 py-3 rounded-md inline-flex items-center font-medium transition-colors">
+                        <a href="https://maps.app.goo.gl/hxuVJFrmpetoZbCaA" target="_blank" rel="noopener noreferrer" className="bg-light hover:bg-opacity-90 text-accent px-8 py-3 rounded-md inline-flex items-center font-medium transition-colors">
                             <MapPinIcon size={20} className="mr-2" />
                             Get Directions
                         </a>
