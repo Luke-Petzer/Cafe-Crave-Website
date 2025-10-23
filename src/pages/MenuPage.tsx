@@ -157,7 +157,7 @@ export const MenuPage = () => {
                 </div>
             </section>
             {/* Menu Navigation (Sticky Sub-Nav) */}
-            <div id="menu-categories" ref={navRef} className={`section-dark py-4 transition-all duration-300 ${isNavSticky ? 'sticky top-[60px] z-40 shadow-md' : ''}`} onMouseEnter={() => setShowNavArrows(true)} onMouseLeave={() => setShowNavArrows(false)} onFocus={() => setShowNavArrows(true)} onBlur={() => setShowNavArrows(false)}>
+            <div id="menu-categories" ref={navRef} className={`hidden md:block section-dark py-4 transition-all duration-300 ${isNavSticky ? 'sticky top-[60px] z-40 shadow-md' : ''}`} onMouseEnter={() => setShowNavArrows(true)} onMouseLeave={() => setShowNavArrows(false)} onFocus={() => setShowNavArrows(true)} onBlur={() => setShowNavArrows(false)}>
                 <div className="container mx-auto px-4 relative">
                     {/* Left navigation arrow */}
                     <button onClick={() => scrollNav('left')} className={`absolute left-0 top-1/2 -translate-y-1/2 bg-primary text-light p-1 rounded-full z-10 transition-opacity ${showNavArrows ? 'opacity-80' : 'opacity-0'} hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-accent`} aria-label="Scroll menu categories left">
