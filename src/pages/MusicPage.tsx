@@ -56,7 +56,7 @@ export const MusicPage = () => {
             />
           </div>
           <div className="relative z-10 text-center px-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-['Rockwell',serif] font-bold mb-4">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-['Rockwell',serif] font-bold mb-6 leading-tight">
               Our Vinyl Collection
             </h1>
             <div className="w-24 h-1 bg-accent mx-auto mb-6"></div>

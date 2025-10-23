@@ -20,7 +20,7 @@ export const About = () => {
           <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Cafe Crave interior" className="w-full h-full object-cover brightness-50" />
         </div>
         <div className="relative z-10 text-center px-6">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-4">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-['Rockwell',serif] font-bold mb-6 leading-tight">
             Our Story
           </h1>
           <p className="text-xl md:text-2xl mb-8">

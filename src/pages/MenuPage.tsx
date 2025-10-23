@@ -143,7 +143,7 @@ export const MenuPage = () => {
                     <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Coffee and pastries on a wooden table" className="w-full h-full object-cover brightness-50" loading="lazy" />
                 </div>
                 <div className="relative z-10 text-center px-6">
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-['Rockwell',serif] font-bold mb-4">
+                    <h1 className="text-5xl md:text-6xl lg:text-7xl font-['Rockwell',serif] font-bold mb-6 leading-tight">
                         Our Menu
                     </h1>
                     <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
