@@ -50,6 +50,7 @@ body {
 }
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 6rem; /* Account for fixed header */
 }
 
 /* Scroll offset for fixed header navigation */
@@ -100,6 +101,16 @@ section:not([class*="scroll-mt"]),
 @keyframes vinylSpin {
   from { transform: translate(-50%, -50%) rotate(0deg); }
   to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+@keyframes subtlePulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px -5px rgba(37, 211, 102, 0.5);
+  }
 }
 
 /* Page-level fade-in for initial load */
