@@ -18,7 +18,7 @@ export const EventsPage = () => {
       <Header />
       <main>
         {/* Hero Section - Image Hero */}
-        <section id="main-content" className="relative min-h-[600px] md:min-h-[650px] flex items-center justify-center overflow-hidden pt-20">
+        <section id="main-content" className="section-animate relative min-h-[600px] md:min-h-[650px] flex items-center justify-center overflow-hidden pt-20">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: 'url(/assets/woman-with-cappuccino-cup-wooden-table.jpg)' }}
@@ -28,14 +28,14 @@ export const EventsPage = () => {
 
           <div className="relative z-10 container mx-auto px-6 md:px-10 lg:px-16">
             <div className="max-w-4xl mx-auto text-center text-darkText">
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-['Rockwell',serif] font-bold mb-6 scroll-animate">
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-['Rockwell',serif] font-bold mb-6">
                 Events at Crave
               </h1>
               <div className="w-24 h-1 bg-accent mx-auto mb-8"></div>
-              <p className="text-lg md:text-xl lg:text-2xl mb-12 opacity-90 scroll-animate">
+              <p className="text-lg md:text-xl lg:text-2xl mb-12 opacity-90">
                 Where community meets culture. Join us for live music, vinyl nights, board game tournaments, and unforgettable experiences.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center scroll-animate">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a
                   href="#upcoming"
                   className="bg-accent hover:bg-opacity-90 text-light px-8 py-4 rounded-md inline-flex items-center font-medium text-lg transition-all duration-300 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
@@ -56,9 +56,9 @@ export const EventsPage = () => {
         </section>
 
         {/* Features Section - lightBg */}
-        <section className="section-light text-lightText py-20 md:py-28">
+        <section className="section-animate section-light text-lightText py-20 md:py-28">
           <div className="container mx-auto px-6 md:px-10 lg:px-16">
-            <div className="text-center mb-16 scroll-animate">
+            <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-['Rockwell',serif] font-bold mb-4">
                 What We Offer
               </h2>
@@ -69,7 +69,7 @@ export const EventsPage = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-              <div className="text-center scroll-animate">
+              <div className="text-center">
                 <div className="bg-redText bg-opacity-10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
                   <MusicIcon size={36} className="text-accent" />
                 </div>
@@ -79,7 +79,7 @@ export const EventsPage = () => {
                 </p>
               </div>
 
-              <div className="text-center scroll-animate">
+              <div className="text-center">
                 <div className="bg-redText bg-opacity-10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
                   <UsersIcon size={36} className="text-accent" />
                 </div>
@@ -89,7 +89,7 @@ export const EventsPage = () => {
                 </p>
               </div>
 
-              <div className="text-center scroll-animate">
+              <div className="text-center">
                 <div className="bg-redText bg-opacity-10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
                   <CoffeeIcon size={36} className="text-accent" />
                 </div>
@@ -99,7 +99,7 @@ export const EventsPage = () => {
                 </p>
               </div>
 
-              <div className="text-center scroll-animate">
+              <div className="text-center">
                 <div className="bg-redText bg-opacity-10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
                   <CalendarIcon size={36} className="text-accent" />
                 </div>
@@ -113,11 +113,11 @@ export const EventsPage = () => {
         </section>
 
         {/* Host Your Event Section - redBg */}
-        <section id="host" className="bg-redBg text-redText py-20 md:py-28">
+        <section id="host" className="section-animate bg-redBg text-redText py-20 md:py-28">
           <div className="container mx-auto px-6 md:px-10 lg:px-16">
             <div className="max-w-6xl mx-auto">
               <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="scroll-animate">
+                <div>
                   <h2 className="text-4xl md:text-5xl font-['Rockwell',serif] font-bold mb-6">
                     Host Your Event at Crave
                   </h2>
@@ -167,7 +167,7 @@ export const EventsPage = () => {
                   </a>
                 </div>
 
-                <div className="scroll-animate">
+                <div>
                   <div className="bg-darkText bg-opacity-10 rounded-lg p-8">
                     <h3 className="text-2xl font-serif font-bold mb-6">Perfect For:</h3>
                     <ul className="space-y-3">
@@ -210,9 +210,9 @@ export const EventsPage = () => {
         </section>
 
         {/* Upcoming Events Section - darkBg */}
-        <section id="upcoming" className="bg-darkBg text-darkText py-20 md:py-28">
+        <section id="upcoming" className="section-animate bg-darkBg text-darkText py-20 md:py-28">
           <div className="container mx-auto px-6 md:px-10 lg:px-16">
-            <div className="text-center mb-16 scroll-animate">
+            <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-['Rockwell',serif] font-bold mb-4">
                 Upcoming Events
               </h2>
@@ -226,16 +226,16 @@ export const EventsPage = () => {
         </section>
 
         {/* Reviews Section - lightBg */}
-        <section className="section-light text-lightText py-20 md:py-28">
+        <section className="section-animate section-light text-lightText py-20 md:py-28">
           <div className="container mx-auto px-6 md:px-10 lg:px-16">
             <GoogleReviews standalone={false} />
           </div>
         </section>
 
         {/* CTA Section - redBg */}
-        <section className="bg-redBg text-redText py-20 md:py-28">
+        <section className="section-animate bg-redBg text-redText py-20 md:py-28">
           <div className="container mx-auto px-6 md:px-10 lg:px-16">
-            <div className="max-w-4xl mx-auto text-center scroll-animate">
+            <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-4xl md:text-5xl font-['Rockwell',serif] font-bold mb-6">
                 Never Miss an Event
               </h2>

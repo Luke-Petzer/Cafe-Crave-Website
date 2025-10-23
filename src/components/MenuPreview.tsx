@@ -27,9 +27,9 @@ const featuredItems = [
 
 export const MenuPreview: React.FC = () => {
 	return (
-		<section className="section-red py-20 md:py-28">
+		<section className="section-animate section-red py-20 md:py-28">
 			<div className="container mx-auto px-6 md:px-10 lg:px-16">
-				<div className="text-center mb-12 scroll-animate">
+				<div className="text-center mb-12">
 					<h2 className="text-3xl md:text-4xl font-['Rockwell',serif] font-bold mb-4">
 						Featured Menu Items
 					</h2>
@@ -43,7 +43,7 @@ export const MenuPreview: React.FC = () => {
 					{featuredItems.map((item) => (
 						<div
 							key={item.id}
-							className="bg-lightBg rounded-lg overflow-hidden shadow-md border border-redText border-opacity-20 transform transition-all duration-150 hover:-translate-y-2 hover:shadow-lg scroll-animate"
+							className="bg-lightBg rounded-lg overflow-hidden shadow-md border border-redText border-opacity-20 transform transition-all duration-150 hover:-translate-y-2 hover:shadow-lg"
 						>
 							<div className="h-48 overflow-hidden">
 								<img

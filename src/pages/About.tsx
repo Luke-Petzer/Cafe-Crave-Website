@@ -2,6 +2,7 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { BookIcon, MusicIcon, CoffeeIcon, UsersIcon } from 'lucide-react';
 import { SEO } from '../components/SEO';
+import { ScrollAnimationObserver } from '../components/ScrollAnimationObserver';
 
 export const About = () => {
   return (
@@ -11,9 +12,10 @@ export const About = () => {
         description="Discover the story behind Crave Café. A retro-inspired community space in Cape Town where coffee culture meets vinyl records and board games. Learn about our values and mission."
         keywords="about café, café story, Cape Town coffee culture, community café, retro café, café values, local café"
       />
+      <ScrollAnimationObserver />
       <Header />
       {/* Section 1: Hero - "Our Story" - DARK */}
-      <section id="main-content" className="section-dark main-content relative min-h-[600px] md:min-h-[650px] flex items-center justify-center pt-20">
+      <section id="main-content" className="section-animate section-dark main-content relative min-h-[600px] md:min-h-[650px] flex items-center justify-center pt-20">
         <div className="absolute inset-0 z-0">
           <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Cafe Crave interior" className="w-full h-full object-cover brightness-50" />
         </div>
@@ -24,14 +26,14 @@ export const About = () => {
           <p className="text-xl md:text-2xl mb-8">
             Coffee, Community, and a Retro Beat.
           </p>
-          <a href="#booking" className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50">
+          <a href="/contact" className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50">
             <BookIcon size={20} className="mr-2" />
-            Contact US
+            Contact Us
           </a>
         </div>
       </section>
       {/* Section 2: Community & Atmosphere - "Stay Awhile" */}
-      <section className="section-light py-16 md:py-24">
+      <section className="section-animate section-light py-16 md:py-24">
         <div className="container mx-auto px-6 md:px-10 lg:px-16">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             <div>
@@ -64,7 +66,7 @@ export const About = () => {
         </div>
       </section>
       {/* Section 3: Coffee & Food Philosophy - "The Good Stuff" */}
-      <section className="section-red py-16 md:py-24">
+      <section className="section-animate section-red py-16 md:py-24">
         <div className="container mx-auto px-6 md:px-10 lg:px-16">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-center mb-12">
             The Good Stuff
@@ -97,7 +99,7 @@ export const About = () => {
         </div>
       </section>
       {/* Section 4: Music Identity - "On the Turntable" */}
-      <section className="section-dark py-16 md:py-24">
+      <section className="section-animate section-dark py-16 md:py-24">
         <div className="container mx-auto px-6 md:px-10 lg:px-16">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             <div>

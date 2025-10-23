@@ -74,7 +74,7 @@ export const InstagramFeed: React.FC<InstagramFeedProps> = ({
 
   const content = (
     <>
-      <div className="text-center mb-12 scroll-animate">
+      <div className="text-center mb-12">
         <div className="flex items-center justify-center gap-2 mb-4">
           <Instagram size={32} className="text-accent" />
           <h2 className="text-3xl md:text-4xl font-['Rockwell',serif] font-bold">
@@ -90,7 +90,7 @@ export const InstagramFeed: React.FC<InstagramFeedProps> = ({
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start mb-10">
         {/* Featured Post - Takes up 2 columns on desktop */}
         {first && (
-          <div className="md:col-span-2 scroll-animate">
+          <div className="md:col-span-2">
             <a
               href={first.url}
               target="_blank"
@@ -123,7 +123,7 @@ export const InstagramFeed: React.FC<InstagramFeedProps> = ({
         )}
 
         {/* Grid of smaller posts - Takes up 1 column on desktop */}
-        <div className="grid grid-cols-2 gap-4 scroll-animate">
+        <div className="grid grid-cols-2 gap-4">
           {rest.slice(0, 4).map((post) => (
             <a
               key={post.id}
@@ -153,7 +153,7 @@ export const InstagramFeed: React.FC<InstagramFeedProps> = ({
       </div>
 
       {/* Call to Action */}
-      <div className="text-center scroll-animate">
+      <div className="text-center">
         <a
           href="https://www.instagram.com/cafecrave_halal/"
           target="_blank"
@@ -173,7 +173,7 @@ export const InstagramFeed: React.FC<InstagramFeedProps> = ({
 
   if (standalone) {
     return (
-      <section className="bg-redBg text-redText py-20 md:py-28 scroll-animate visible">
+      <section className="section-animate bg-redBg text-redText py-20 md:py-28">
         <div className="container mx-auto px-6 md:px-10 lg:px-16">
           {content}
         </div>
