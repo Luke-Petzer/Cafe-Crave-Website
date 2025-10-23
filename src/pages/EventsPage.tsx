@@ -251,11 +251,11 @@ export const EventsPage = () => {
                 </a>
 
                 <a
-                  href="#host"
+                  href="/contact"
                   className="bg-darkText bg-opacity-10 hover:bg-opacity-20 text-darkText px-8 py-4 rounded-md inline-flex items-center font-medium text-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-darkText focus:ring-opacity-30"
                 >
                   <CalendarIcon size={22} className="mr-2" />
-                  Host Your Event
+                  Contact Us
                 </a>
               </div>
             </div>

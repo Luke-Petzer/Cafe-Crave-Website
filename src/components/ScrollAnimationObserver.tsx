@@ -32,8 +32,20 @@ export const ScrollAnimationObserver: React.FC = () => {
 
     // Observe all sections with the section-animate class
     const sections = document.querySelectorAll('.section-animate');
+
     sections.forEach(section => {
-      observer.observe(section);
+      // FIX: Check if section is already in viewport (handles browser back navigation)
+      // This ensures sections are immediately visible when navigating back
+      const rect = section.getBoundingClientRect();
+      const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+
+      if (isInViewport) {
+        // Section is already visible, add class immediately
+        section.classList.add('section-visible');
+      } else {
+        // Section not yet visible, observe it
+        observer.observe(section);
+      }
     });
 
     // Clean up
