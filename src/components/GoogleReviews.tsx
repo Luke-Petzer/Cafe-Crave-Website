@@ -280,7 +280,7 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
             {/* Call to Action */}
             <div className="text-center">
                 <a
-                    href="https://g.page/r/YOUR_GOOGLE_PLACE_ID/review"
+                    href="https://share.google/NN6OWVg1gJzfe6ZwL"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center font-medium transition-colors hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
