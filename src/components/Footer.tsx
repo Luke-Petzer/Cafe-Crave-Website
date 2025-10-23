@@ -118,18 +118,31 @@ export const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-light border-opacity-20 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-light opacity-70 text-sm">
-              &copy; {new Date().getFullYear()} Cafe Crave. All rights reserved.
-            </p>
-            <div className="flex gap-6 text-sm opacity-70">
-              <a href="#" className="hover:text-accent hover:opacity-100 transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="hover:text-accent hover:opacity-100 transition-colors">
-                Terms of Service
-              </a>
-            </div>
+          {/*<div className="flex flex-col md:flex-row justify-between items-center gap-4">*/}
+          {/*  <p className="text-light opacity-70 text-sm">*/}
+          {/*    &copy; {new Date().getFullYear()} Cafe Crave. All rights reserved.*/}
+          {/*  </p>*/}
+          {/*  <div className="flex gap-6 text-sm opacity-70">*/}
+          {/*    <a href="#" className="hover:text-accent hover:opacity-100 transition-colors">*/}
+          {/*      Privacy Policy*/}
+          {/*    </a>*/}
+          {/*    <a href="#" className="hover:text-accent hover:opacity-100 transition-colors">*/}
+          {/*      Terms of Service*/}
+          {/*    </a>*/}
+          {/*  </div>*/}
+          {/*</div>*/}
+
+          {/* Developer Credit */}
+          <div className="text-center text-sm text-light opacity-50 mt-6">
+            Developed by{' '}
+            <a
+              href="https://lpwebstudio.co.za"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:opacity-70 transition-opacity"
+            >
+              LP Web Studio
+            </a>
           </div>
         </div>
       </div>

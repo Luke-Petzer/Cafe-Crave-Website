@@ -16,8 +16,8 @@ export const About = () => {
       <Header />
       {/* Section 1: Hero - "Our Story" - DARK */}
       <section id="main-content" className="section-animate section-dark main-content relative min-h-[600px] md:min-h-[650px] flex items-center justify-center pt-20">
-        <div className="absolute inset-0 z-0">
-          <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Cafe Crave interior" className="w-full h-full object-cover brightness-50" />
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Cafe Crave interior" className="w-full h-full object-cover brightness-50 transition-transform duration-700 hover:scale-110" />
         </div>
         <div className="relative z-10 text-center px-6">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-['Rockwell',serif] font-bold mb-6 leading-tight">
@@ -26,7 +26,7 @@ export const About = () => {
           <p className="text-xl md:text-2xl mb-8">
             Coffee, Community, and a Retro Beat.
           </p>
-          <a href="/contact" className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50">
+          <a href="/contact" className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center font-medium transition-all duration-200 ease-out hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50">
             <BookIcon size={20} className="mr-2" />
             Contact Us
           </a>
@@ -121,7 +121,7 @@ export const About = () => {
                 provide—much like the authentic experience we strive to create
                 in every other aspect of our cafe.
               </p>
-              <a href="/music" className="inline-flex items-center bg-accent text-light px-6 py-2 rounded-md hover:bg-opacity-90 transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50">
+              <a href="/music" className="inline-flex items-center bg-accent text-light px-6 py-2 rounded-md hover:bg-opacity-90 transition-all duration-200 ease-out hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50">
                 <MusicIcon size={20} className="mr-2" />
                 See What's Playing
               </a>
@@ -140,7 +140,7 @@ export const About = () => {
               Reserve your table now and join us for coffee, conversation, and
               community.
             </p>
-            <a href="/contact" className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center font-medium transition-colors hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50">
+            <a href="/contact" className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center font-medium transition-all duration-200 ease-out hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50">
               <BookIcon size={20} className="mr-2" />
               Contact Us
             </a>
