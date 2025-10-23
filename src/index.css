@@ -82,15 +82,15 @@ section:not([class*="scroll-mt"]),
 .skip-to-content:focus {
   top: 0;
 }
-/* Animations */
+/* Animations - Simplified and lightweight */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-@keyframes slideUp {
-  from { 
+@keyframes sectionFadeUp {
+  from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to { 
     opacity: 1;
@@ -101,22 +101,52 @@ section:not([class*="scroll-mt"]),
   from { transform: translate(-50%, -50%) rotate(0deg); }
   to { transform: translate(-50%, -50%) rotate(360deg); }
 }
-@keyframes waveformPulse {
-  0%, 100% { transform: scaleY(0.3); }
-  50% { transform: scaleY(1); }
-}
+
+/* Page-level fade-in for initial load */
 .animate-fade-in {
-  animation: fadeIn var(--animation-duration-fast) ease-in-out;
+  animation: fadeIn 0.3s ease-in-out;
 }
-.scroll-animate {
+
+/* Section-based animation - one animation per section */
+.section-animate {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity var(--animation-duration-medium) ease-out, 
-              transform var(--animation-duration-medium) ease-out;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-.scroll-animate.visible {
+
+/* Ensure sections become visible when the class is added */
+.section-animate.section-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Fallback: make sections visible after a short delay if JS hasn't loaded */
+@keyframes makeVisible {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-animate {
+  animation: makeVisible 0.6s ease-out 0.1s forwards;
+}
+
+/* Override with instant visibility when the observer adds the class */
+.section-animate.section-visible {
+  animation: none;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .section-animate {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    animation: none;
+  }
 }
 /* Vinyl disc styling */
 .vinyl-disc {

@@ -34,7 +34,7 @@ export const EventPreview: React.FC<EventPreviewProps> = ({
 		<section className={showHeader ? "py-20 md:py-28" : ""}>
 			<div className={showHeader ? "container mx-auto px-6 md:px-10 lg:px-16" : ""}>
 				{showHeader && (
-					<div className="text-center mb-12 scroll-animate">
+					<div className="text-center mb-12">
 						<h2 className="text-3xl md:text-4xl font-['Rockwell', serif] font-bold mb-4">
 							Upcoming Events
 						</h2>
@@ -49,7 +49,7 @@ export const EventPreview: React.FC<EventPreviewProps> = ({
 					{upcomingEvents.map((event) => (
 						<div
 							key={event.id}
-							className="bg-white rounded-lg overflow-hidden shadow-md border border-redText border-opacity-20 transform transition-all duration-150 hover:-translate-y-2 hover:shadow-lg scroll-animate"
+							className="bg-white rounded-lg overflow-hidden shadow-md border border-redText border-opacity-20 transform transition-all duration-150 hover:-translate-y-2 hover:shadow-lg"
 						>
 							<div className="h-48 overflow-hidden relative">
 								<img

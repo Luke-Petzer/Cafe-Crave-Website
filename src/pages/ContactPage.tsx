@@ -2,6 +2,7 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { MapPinIcon, PhoneIcon, ClockIcon } from 'lucide-react';
 import { SEO } from '../components/SEO';
+import { ScrollAnimationObserver } from '../components/ScrollAnimationObserver';
 
 // Custom icon components
 const InstagramIcon = ({ size }: { size: number }) => (
@@ -32,10 +33,11 @@ export const ContactPage = () => {
         description="Get in touch with Crave Café. Visit us in Cape Town. Open daily with Wi-Fi, board games, and exceptional coffee. Call 073 565 1888."
         keywords="café contact, Cape Town café, coffee shop location, café hours, contact café, visit café"
       />
+      <ScrollAnimationObserver />
       <Header />
 
       {/* Hero Section - DARK */}
-      <section className="section-dark relative min-h-[600px] md:min-h-[650px] flex items-center justify-center pt-20">
+      <section className="section-animate section-dark relative min-h-[600px] md:min-h-[650px] flex items-center justify-center pt-20">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
@@ -55,7 +57,7 @@ export const ContactPage = () => {
       </section>
 
       {/* Contact Section - DARK */}
-      <section className="section-dark py-16 md:py-20">
+      <section className="section-animate section-dark py-16 md:py-20">
         <div className="container mx-auto px-6 md:px-10 lg:px-16">
 
           {/* Find Us Section */}

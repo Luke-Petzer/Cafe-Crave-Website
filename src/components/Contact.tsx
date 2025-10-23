@@ -13,20 +13,20 @@ export const Contact = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-darkBg text-darkText py-20 md:py-32">
+      <section className="section-animate bg-darkBg text-darkText py-20 md:py-32">
         <div className="container mx-auto px-6 md:px-10 lg:px-16">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-['Rockwell',serif] font-bold mb-6 scroll-animate">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-['Rockwell',serif] font-bold mb-6">
               Visit Us
             </h1>
             <div className="w-24 h-1 bg-accent mx-auto mb-8"></div>
-            <p className="text-xl md:text-2xl mb-12 opacity-90 scroll-animate">
+            <p className="text-xl md:text-2xl mb-12 opacity-90">
               Stop by for exceptional coffee, vinyl records, and community
             </p>
 
             {/* Contact Info Grid */}
             <div className="grid md:grid-cols-3 gap-8 mt-16">
-              <div className="scroll-animate">
+              <div>
                 <MapPinIcon size={32} className="text-accent mx-auto mb-4" />
                 <h3 className="text-lg font-semibold mb-2">Location</h3>
                 <p className="opacity-80">
@@ -36,7 +36,7 @@ export const Contact = () => {
                 </p>
               </div>
 
-              <div className="scroll-animate">
+              <div>
                 <PhoneIcon size={32} className="text-accent mx-auto mb-4" />
                 <h3 className="text-lg font-semibold mb-2">Phone</h3>
                 <a href="tel:0735651888" className="opacity-80 hover:text-accent transition-colors">
@@ -44,7 +44,7 @@ export const Contact = () => {
                 </a>
               </div>
 
-              <div className="scroll-animate">
+              <div>
                 <ClockIcon size={32} className="text-accent mx-auto mb-4" />
                 <h3 className="text-lg font-semibold mb-2">Hours</h3>
                 <p className="opacity-80">
@@ -56,7 +56,7 @@ export const Contact = () => {
             </div>
 
             {/* Detailed Hours */}
-            <div className="mt-16 max-w-2xl mx-auto scroll-animate">
+            <div className="mt-16 max-w-2xl mx-auto">
               <h3 className="text-2xl font-serif font-bold mb-6">Opening Hours</h3>
               <div className="bg-darkText bg-opacity-10 rounded-lg p-6 md:p-8">
                 <ul className="space-y-3 text-left">
@@ -93,7 +93,7 @@ export const Contact = () => {
             </div>
 
             {/* Social Media */}
-            <div className="mt-12 scroll-animate">
+            <div className="mt-12">
               <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
               <div className="flex justify-center space-x-4">
                 <a
@@ -130,8 +130,8 @@ export const Contact = () => {
       </section>
 
       {/* Map Section */}
-      <section className="bg-darkBg text-darkText py-0">
-        <div className="w-full h-[500px] md:h-[600px] scroll-animate">
+      <section className="section-animate bg-darkBg text-darkText py-0">
+        <div className="w-full h-[500px] md:h-[600px]">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3596.965631229076!2d18.481858899999995!3d-33.9836241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc43940b24aab7%3A0x910b69a2e9e61db3!2sCaf%C3%A9%20Crave!5e1!3m2!1sen!2sza!4v1759685841467!5m2!1sen!2sza"
             width="100%"
@@ -146,9 +146,9 @@ export const Contact = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-darkBg text-darkText py-20 md:py-28">
+      <section className="section-animate bg-darkBg text-darkText py-20 md:py-28">
         <div className="container mx-auto px-6 md:px-10 lg:px-16">
-          <div className="max-w-4xl mx-auto text-center scroll-animate">
+          <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-['Rockwell',serif] font-bold mb-6">
               Ready to Experience Crave?
             </h2>
