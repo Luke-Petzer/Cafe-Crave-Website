@@ -393,10 +393,7 @@ export const MenuPage = () => {
                                 </button>
                             </div>
                             <div className="w-full h-[1px] bg-[#F5F0E5] mb-8"></div>
-                            <p className="text-primary italic mb-6 text-sm">
-                                All burgers are flame grilled & served on our homemade Brioche
-                                roll with 150g chips or salad
-                            </p>
+
                             <div className={`grid md:grid-cols-2 gap-10 ${expandedSections.burgers ? 'block' : 'hidden md:grid'}`}>
                                 <div className="space-y-8">
                                     <div className="pb-4">
@@ -515,7 +512,7 @@ export const MenuPage = () => {
                                 </div>
                                 <div className="md:col-span-2 text-center text-sm text-primary italic mt-2">
                                     All burgers are flame grilled & served on our homemade Brioche
-                                    roll
+                                    roll with 150g chips or salad.
                                 </div>
                             </div>
                         </div>
@@ -530,10 +527,6 @@ export const MenuPage = () => {
                                 </button>
                             </div>
                             <div className="w-full h-[1px] bg-[#F5F0E5] mb-8"></div>
-                            <p className="text-primary italic mb-6 text-sm">
-                                All sandwiches are served on our homemade ciabatta bread with
-                                150g chips or salad
-                            </p>
                             <div className={`grid md:grid-cols-2 gap-10 ${expandedSections.sandwiches ? 'block' : 'hidden md:grid'}`}>
                                 <div className="space-y-8">
                                     <div className="pb-4">
@@ -655,7 +648,8 @@ export const MenuPage = () => {
                                     </div>
                                 </div>
                                 <div className="md:col-span-2 text-center text-sm text-primary italic mt-2">
-                                    All sandwiches are served on our homemade ciabatta bread
+                                    All sandwiches are served on our homemade ciabatta bread with
+                                    150g chips or salad
                                 </div>
                             </div>
                         </div>
@@ -670,17 +664,13 @@ export const MenuPage = () => {
                                 </button>
                             </div>
                             <div className="w-full h-[1px] bg-[#F5F0E5] mb-8"></div>
-                            <p className="text-primary italic mb-6 text-sm">
-                                Served with 150g chips or salad. Pitas are freshly baked
-                                in-house and served with tahini
-                            </p>
                             <div className={`grid md:grid-cols-2 gap-10 ${expandedSections.wraps ? 'block' : 'hidden md:grid'}`}>
                                 <div className="space-y-8">
                                     <h3 className="text-2xl font-medium text-primary uppercase tracking-wider mb-6 text-center relative">
-                    <span className="relative inline-block">
-                      Wraps
-                      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-[#F5F0E5]"></div>
-                    </span>
+                                         <span className="relative inline-block">
+                                             Wraps
+                                            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-[#F5F0E5]"></div>
+                                    </span>
                                     </h3>
                                     <div className="pb-4">
                                         <div className="flex justify-between mb-1">
@@ -742,10 +732,10 @@ export const MenuPage = () => {
                                 </div>
                                 <div className="space-y-8">
                                     <h3 className="text-2xl font-medium text-primary uppercase tracking-wider mb-6 text-center relative">
-                    <span className="relative inline-block">
-                      Pitas
-                      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-[#F5F0E5]"></div>
-                    </span>
+                                     <span className="relative inline-block">
+                                    Pitas
+                                    <div className="absolute bottom-0 left-0 w-full h-[1px] bg-[#F5F0E5]"></div>
+                                    </span>
                                     </h3>
                                     <div className="pb-4">
                                         <div className="flex justify-between mb-1">
@@ -794,7 +784,8 @@ export const MenuPage = () => {
                                     </div>
                                 </div>
                                 <div className="md:col-span-2 text-center text-sm text-primary italic mt-2">
-                                    Pitas are freshly baked in-house and served with tahini
+                                    Served with 150g chips or salad. Pitas are freshly baked
+                                    in-house and served with tahini
                                 </div>
                             </div>
                         </div>
@@ -953,9 +944,6 @@ export const MenuPage = () => {
                                 </button>
                             </div>
                             <div className="w-full h-[1px] bg-[#F5F0E5] mb-8"></div>
-                            <p className="text-primary italic mb-6 text-sm">
-                                All tea is served with 2 tea bags
-                            </p>
                             <div className={`grid md:grid-cols-3 gap-10 ${expandedSections.tea ? 'block' : 'hidden md:grid'}`}>
                                 <div className="space-y-4">
                                     <h3 className="text-xl font-medium text-primary uppercase tracking-wider mb-6">
