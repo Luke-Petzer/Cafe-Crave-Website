@@ -35,7 +35,6 @@ export const Contact = () => {
                   Cityville, State 12345
                 </p>
               </div>
-
               <div>
                 <PhoneIcon size={32} className="text-accent mx-auto mb-4" />
                 <h3 className="text-lg font-semibold mb-2">Phone</h3>
@@ -43,7 +42,6 @@ export const Contact = () => {
                   073 565 1888
                 </a>
               </div>
-
               <div>
                 <ClockIcon size={32} className="text-accent mx-auto mb-4" />
                 <h3 className="text-lg font-semibold mb-2">Hours</h3>

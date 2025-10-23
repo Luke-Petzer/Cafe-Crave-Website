@@ -192,8 +192,8 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
                                             key={`review-${index}`}
                                             className="w-full flex-shrink-0 px-4"
                                         >
-                                            <div className="bg-light text-lightText p-8 md:p-10 rounded-lg shadow-xl border-2 border-accent border-opacity-30 transform transition-all duration-300 hover:shadow-2xl">
-                                                <div className="flex items-center justify-between mb-6">
+                                            <div className="bg-light text-lightText p-8 md:p-10 rounded-lg shadow-xl border-2 border-accent border-opacity-30 transform transition-all duration-300 hover:shadow-2xl h-[350px] md:h-[400px] overflow-hidden flex flex-col">
+                                                <div className="flex items-center justify-between mb-6 flex-shrink-0">
                                                     <div className="flex gap-1">
                                                         {[...Array(5)].map((_, i) => (
                                                             <StarIcon
@@ -208,10 +208,10 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
                                                     </div>
                                                     <span className="text-sm opacity-70 text-lightText">{review.date}</span>
                                                 </div>
-                                                <p className="text-lg md:text-xl mb-6 italic leading-relaxed text-lightText min-h-[120px]">
+                                                <p className="text-lg md:text-xl mb-6 italic leading-relaxed text-lightText flex-grow overflow-hidden line-clamp-6">
                                                     "{review.text}"
                                                 </p>
-                                                <p className="text-lg font-semibold text-lightText">— {review.name}</p>
+                                                <p className="text-lg font-semibold text-lightText flex-shrink-0">— {review.name}</p>
                                             </div>
                                         </div>
                                     ))}
