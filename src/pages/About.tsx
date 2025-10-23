@@ -121,7 +121,7 @@ export const About = () => {
                 provide—much like the authentic experience we strive to create
                 in every other aspect of our cafe.
               </p>
-              <a href="#" className="inline-flex items-center bg-accent text-light px-6 py-2 rounded-md hover:bg-opacity-90 transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50">
+              <a href="/music" className="inline-flex items-center bg-accent text-light px-6 py-2 rounded-md hover:bg-opacity-90 transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50">
                 <MusicIcon size={20} className="mr-2" />
                 See What's Playing
               </a>
@@ -140,7 +140,7 @@ export const About = () => {
               Reserve your table now and join us for coffee, conversation, and
               community.
             </p>
-            <a href="#" className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center font-medium transition-colors hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50">
+            <a href="/contact" className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center font-medium transition-colors hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50">
               <BookIcon size={20} className="mr-2" />
               Contact Us
             </a>
