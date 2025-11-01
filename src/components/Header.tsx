@@ -5,6 +5,16 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
+  // Ensure body overflow is cleared on initial mount (fixes refresh issues)
+  useEffect(() => {
+    document.body.style.overflow = '';
+  }, []);
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
+
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isMenuOpen) {
@@ -32,7 +42,7 @@ export const Header = () => {
           </div>
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-light focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-opacity-50 rounded-md p-1 z-50 relative" aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} aria-expanded={isMenuOpen} aria-controls="mobile-menu">
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-light focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-opacity-50 rounded-md p-1 z-[60] relative" aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} aria-expanded={isMenuOpen} aria-controls="mobile-menu">
               {isMenuOpen ? <XIcon size={24} /> : <MenuIcon size={24} />}
             </button>
           </div>
@@ -68,7 +78,7 @@ export const Header = () => {
           </nav>
         </div>
         {/* Mobile Navigation Overlay */}
-        {isMenuOpen && <div id="mobile-menu" className="fixed inset-0 bg-primary z-40 md:hidden flex flex-col items-center justify-center animate-fade-in">
+        {isMenuOpen && <div id="mobile-menu" className="fixed inset-0 bg-primary z-[45] md:hidden flex flex-col items-center justify-center animate-fade-in">
             <div className="text-center mb-8">
               <span className="text-3xl font-['Rockwell',serif] font-bold text-light">
                 Cafe<span className="text-secondary">Crave</span>
