@@ -5,6 +5,19 @@ import { MapPinIcon, ArrowDownIcon, DownloadIcon, ChevronDownIcon, ChevronUpIcon
 import { SEO } from '../components/SEO';
 import { ScrollAnimationObserver } from '../components/ScrollAnimationObserver';
 
+// Import menu images
+import breakfastImg from '../assets/breakfast.webp';
+import burgersImg from '../assets/burgers.webp';
+import toastImg from '../assets/Toast.webp';
+import wrapImg from '../assets/Wrap.webp';
+import coffeeImg from '../assets/coffee.webp';
+import illyLogo from '../assets/illy.webp';
+import teaImg from '../assets/tea.webp';
+import dilmahLogo from '../assets/dilmah.webp';
+import beverageImg from '../assets/beverage.webp';
+import shakesImg from '../assets/shakes.webp';
+
+
 // Define the section types
 type SectionKey = 'breakfast' | 'burgers' | 'sandwiches' | 'wraps' | 'coffee' | 'tea' | 'beverages' | 'signature';
 
@@ -150,7 +163,7 @@ export const MenuPage = () => {
                         From all-day breakfasts to handcrafted drinks — something for
                         everyone.
                     </p>
-                    <a href="#menu-categories" className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center font-medium transition-all duration-200 ease-out hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50">
+                    <a href="#menu-categories" className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center font-medium transition-all duration-200 ease-out hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-0">
                         <ArrowDownIcon size={20} className="mr-2" />
                         Browse Menu
                     </a>
@@ -208,21 +221,19 @@ export const MenuPage = () => {
                 <div className="container mx-auto px-6 md:px-10 lg:px-16">
                     {/* Menu Content Container */}
                     <div className="relative overflow-hidden">
-                        {/* Decorative Circular Stamp Watermarks */}
-                        <div className="absolute inset-0 z-0 pointer-events-none">
-                            <div className="absolute -left-20 top-20 w-[400px] h-[400px] rounded-full border-[30px] border-[#F5F0E5] opacity-20"></div>
-                            <div className="absolute right-0 top-[600px] w-[300px] h-[300px] rounded-full border-[25px] border-[#F5F0E5] opacity-20"></div>
-                            <div className="absolute -left-40 top-[1200px] w-[500px] h-[500px] rounded-full border-[35px] border-[#F5F0E5] opacity-20"></div>
-                            <div className="absolute right-0 top-[1800px] w-[400px] h-[400px] rounded-full border-[30px] border-[#F5F0E5] opacity-20"></div>
-                            <div className="absolute -right-20 top-[2400px] w-[350px] h-[350px] rounded-full border-[25px] border-[#F5F0E5] opacity-20"></div>
-                        </div>
                         {/* Breakfast Section */}
                         <div ref={sectionRefs.breakfast} className="mb-16 !scroll-mt-[140px] relative z-10">
+                            {/* Breakfast Watermark */}
+                            <div className={`absolute top-1/2 right-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
+                                expandedSections.breakfast ? 'block' : 'hidden md:block'
+                            }`}>
+                                <img src={breakfastImg} alt="" className="w-full h-full object-contain mix-blend-multiply" />
+                            </div>
                             <div className="flex justify-between items-center mb-4">
                                 <h2 className="text-3xl font-['Rockwell',serif] font-bold text-primary uppercase tracking-wider">
                                     Breakfast
                                 </h2>
-                                <button onClick={() => toggleSection('breakfast')} className="bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.breakfast ? 'Collapse Breakfast section' : 'Expand Breakfast section'} aria-expanded={expandedSections.breakfast}>
+                                <button onClick={() => toggleSection('breakfast')} className="md:hidden bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.breakfast ? 'Collapse Breakfast section' : 'Expand Breakfast section'} aria-expanded={expandedSections.breakfast}>
                                     {expandedSections.breakfast ? <ChevronUpIcon size={24} /> : <ChevronDownIcon size={24} />}
                                 </button>
                             </div>
@@ -384,11 +395,17 @@ export const MenuPage = () => {
                         </div>
                         {/* Burgers Section */}
                         <div ref={sectionRefs.burgers} className="mb-16 !scroll-mt-[140px] relative z-10">
+                            {/* Burgers Watermark */}
+                            <div className={`absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
+                                expandedSections.burgers ? 'block' : 'hidden md:block'
+                            }`}>
+                                <img src={burgersImg} alt="" className="w-full h-full object-contain mix-blend-multiply" />
+                            </div>
                             <div className="flex justify-between items-center mb-4">
                                 <h2 className="text-3xl font-['Rockwell',serif] font-bold text-primary uppercase tracking-wider">
                                     Burgers
                                 </h2>
-                                <button onClick={() => toggleSection('burgers')} className="bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.burgers ? 'Collapse Burgers section' : 'Expand Burgers section'} aria-expanded={expandedSections.burgers}>
+                                <button onClick={() => toggleSection('burgers')} className="md:hidden bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.burgers ? 'Collapse Burgers section' : 'Expand Burgers section'} aria-expanded={expandedSections.burgers}>
                                     {expandedSections.burgers ? <ChevronUpIcon size={24} /> : <ChevronDownIcon size={24} />}
                                 </button>
                             </div>
@@ -518,11 +535,17 @@ export const MenuPage = () => {
                         </div>
                         {/* Sandwiches Section */}
                         <div ref={sectionRefs.sandwiches} className="mb-16 !scroll-mt-[140px] relative z-10">
+                            {/* Sandwiches Watermark */}
+                            <div className={`absolute top-1/2 right-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
+                                expandedSections.sandwiches ? 'block' : 'hidden md:block'
+                            }`}>
+                                <img src={toastImg} alt="" className="w-full h-full object-contain mix-blend-multiply" />
+                            </div>
                             <div className="flex justify-between items-center mb-4">
                                 <h2 className="text-3xl font-['Rockwell',serif] font-bold text-primary uppercase tracking-wider">
                                     Sandwiches
                                 </h2>
-                                <button onClick={() => toggleSection('sandwiches')} className="bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.sandwiches ? 'Collapse Sandwiches section' : 'Expand Sandwiches section'} aria-expanded={expandedSections.sandwiches}>
+                                <button onClick={() => toggleSection('sandwiches')} className="md:hidden bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.sandwiches ? 'Collapse Sandwiches section' : 'Expand Sandwiches section'} aria-expanded={expandedSections.sandwiches}>
                                     {expandedSections.sandwiches ? <ChevronUpIcon size={24} /> : <ChevronDownIcon size={24} />}
                                 </button>
                             </div>
@@ -655,11 +678,17 @@ export const MenuPage = () => {
                         </div>
                         {/* Wraps & Pitas Section */}
                         <div ref={sectionRefs.wraps} className="mb-16 !scroll-mt-[140px] relative z-10">
+                            {/* Wraps Watermark */}
+                            <div className={`absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
+                                expandedSections.wraps ? 'block' : 'hidden md:block'
+                            }`}>
+                                <img src={wrapImg} alt="" className="w-full h-full object-contain mix-blend-multiply" />
+                            </div>
                             <div className="flex justify-between items-center mb-4">
                                 <h2 className="text-3xl font-['Rockwell',serif] font-bold text-primary uppercase tracking-wider">
                                     Wraps & Pitas
                                 </h2>
-                                <button onClick={() => toggleSection('wraps')} className="bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.wraps ? 'Collapse Wraps section' : 'Expand Wraps section'} aria-expanded={expandedSections.wraps}>
+                                <button onClick={() => toggleSection('wraps')} className="md:hidden bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.wraps ? 'Collapse Wraps section' : 'Expand Wraps section'} aria-expanded={expandedSections.wraps}>
                                     {expandedSections.wraps ? <ChevronUpIcon size={24} /> : <ChevronDownIcon size={24} />}
                                 </button>
                             </div>
@@ -791,18 +820,24 @@ export const MenuPage = () => {
                         </div>
                         {/* Coffee Section */}
                         <div ref={sectionRefs.coffee} className="mb-16 !scroll-mt-[140px] relative z-10">
+                            {/* Coffee Watermark */}
+                            <div className={`absolute top-1/2 right-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
+                                expandedSections.coffee ? 'block' : 'hidden md:block'
+                            }`}>
+                                <img src={coffeeImg} alt="" className="w-full h-full object-contain mix-blend-multiply" />
+                            </div>
                             <div className="flex justify-between items-center mb-4">
                                 <h2 className="text-3xl font-['Rockwell',serif] font-bold text-primary uppercase tracking-wider">
                                     Coffee
                                 </h2>
-                                <button onClick={() => toggleSection('coffee')} className="bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.coffee ? 'Collapse Coffee section' : 'Expand Coffee section'} aria-expanded={expandedSections.coffee}>
+                                <button onClick={() => toggleSection('coffee')} className="md:hidden bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.coffee ? 'Collapse Coffee section' : 'Expand Coffee section'} aria-expanded={expandedSections.coffee}>
                                     {expandedSections.coffee ? <ChevronUpIcon size={24} /> : <ChevronDownIcon size={24} />}
                                 </button>
                             </div>
                             <div className="w-full h-[1px] bg-[#F5F0E5] mb-8"></div>
-                            {/* Coffee Cup Illustration */}
-                            <div className="absolute right-0 top-0 opacity-10 pointer-events-none">
-                                <img src="https://cdn-icons-png.flaticon.com/512/2935/2935307.png" alt="" className="w-40 h-40 object-contain" loading="lazy" aria-hidden="true" />
+                            {/* Illy Coffee Logo */}
+                            <div className={`mb-8 flex justify-center ${expandedSections.coffee ? 'block' : 'hidden md:flex'}`}>
+                                <img src={illyLogo} alt="Illy Coffee" className="h-16 w-auto object-contain" loading="lazy" />
                             </div>
                             <div className={`grid md:grid-cols-2 gap-10 ${expandedSections.coffee ? 'block' : 'hidden md:grid'}`}>
                                 <div className="space-y-8">
@@ -935,11 +970,17 @@ export const MenuPage = () => {
                         </div>
                         {/* Tea Section */}
                         <div ref={sectionRefs.tea} className="mb-16 !scroll-mt-[140px] relative z-10">
+                            {/* Tea Watermark */}
+                            <div className={`absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
+                                expandedSections.tea ? 'block' : 'hidden md:block'
+                            }`}>
+                                <img src={teaImg} alt="" className="w-full h-full object-contain mix-blend-multiply" />
+                            </div>
                             <div className="flex justify-between items-center mb-4">
                                 <h2 className="text-3xl font-['Rockwell',serif] font-bold text-primary uppercase tracking-wider">
                                     Tea
                                 </h2>
-                                <button onClick={() => toggleSection('tea')} className="bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.tea ? 'Collapse Tea section' : 'Expand Tea section'} aria-expanded={expandedSections.tea}>
+                                <button onClick={() => toggleSection('tea')} className="md:hidden bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.tea ? 'Collapse Tea section' : 'Expand Tea section'} aria-expanded={expandedSections.tea}>
                                     {expandedSections.tea ? <ChevronUpIcon size={24} /> : <ChevronDownIcon size={24} />}
                                 </button>
                             </div>
@@ -1024,7 +1065,7 @@ export const MenuPage = () => {
                                     </div>
                                     {/* Dilmah Logo */}
                                     <div className="mt-12 flex justify-center">
-                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Dilmah_logo.svg/1200px-Dilmah_logo.svg.png" alt="Dilmah Tea" className="w-24 h-auto" loading="lazy" />
+                                        <img src={dilmahLogo} alt="Dilmah Tea" className="w-32 h-auto object-contain" loading="lazy" />
                                     </div>
                                 </div>
                                 <div className="md:col-span-3 text-center text-sm text-primary italic mt-4">
@@ -1034,19 +1075,21 @@ export const MenuPage = () => {
                         </div>
                         {/* Beverages Section */}
                         <div ref={sectionRefs.beverages} className="mb-16 !scroll-mt-[140px] relative z-10">
+                            {/* Beverages Watermark */}
+                            <div className={`absolute top-1/2 right-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
+                                expandedSections.beverages ? 'block' : 'hidden md:block'
+                            }`}>
+                                <img src={beverageImg} alt="" className="w-full h-full object-contain mix-blend-multiply" />
+                            </div>
                             <div className="flex justify-between items-center mb-4">
                                 <h2 className="text-3xl font-['Rockwell',serif] font-bold text-primary uppercase tracking-wider">
                                     Beverages
                                 </h2>
-                                <button onClick={() => toggleSection('beverages')} className="bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.beverages ? 'Collapse Beverages section' : 'Expand Beverages section'} aria-expanded={expandedSections.beverages}>
+                                <button onClick={() => toggleSection('beverages')} className="md:hidden bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.beverages ? 'Collapse Beverages section' : 'Expand Beverages section'} aria-expanded={expandedSections.beverages}>
                                     {expandedSections.beverages ? <ChevronUpIcon size={24} /> : <ChevronDownIcon size={24} />}
                                 </button>
                             </div>
                             <div className="w-full h-[1px] bg-[#F5F0E5] mb-8"></div>
-                            {/* Milkshake Illustration */}
-                            <div className="absolute right-0 top-0 opacity-10 pointer-events-none">
-                                <img src="https://cdn-icons-png.flaticon.com/512/3361/3361447.png" alt="" className="w-40 h-40 object-contain" loading="lazy" aria-hidden="true" />
-                            </div>
                             <div className={`grid md:grid-cols-3 gap-10 ${expandedSections.beverages ? 'block' : 'hidden md:grid'}`}>
                                 <div className="space-y-8">
                                     <h3 className="text-xl font-medium text-primary uppercase tracking-wider mb-6">
@@ -1198,11 +1241,17 @@ export const MenuPage = () => {
                         </div>
                         {/* Signature Drinks Section */}
                         <div ref={sectionRefs.signature} className="mb-16 !scroll-mt-[140px] relative z-10">
+                            {/* Signature Drinks Watermark */}
+                            <div className={`absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
+                                expandedSections.signature ? 'block' : 'hidden md:block'
+                            }`}>
+                                <img src={shakesImg} alt="" className="w-full h-full object-contain mix-blend-multiply" />
+                            </div>
                             <div className="flex justify-between items-center mb-4">
                                 <h2 className="text-3xl font-['Rockwell',serif] font-bold text-primary uppercase tracking-wider">
                                     Signature Drinks
                                 </h2>
-                                <button onClick={() => toggleSection('signature')} className="bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.signature ? 'Collapse Signature Drinks section' : 'Expand Signature Drinks section'} aria-expanded={expandedSections.signature}>
+                                <button onClick={() => toggleSection('signature')} className="md:hidden bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.signature ? 'Collapse Signature Drinks section' : 'Expand Signature Drinks section'} aria-expanded={expandedSections.signature}>
                                     {expandedSections.signature ? <ChevronUpIcon size={24} /> : <ChevronDownIcon size={24} />}
                                 </button>
                             </div>

@@ -70,12 +70,10 @@ export const AlbumDetailDrawer: React.FC<AlbumDetailDrawerProps> = ({
           </div>
           {/* Album Info */}
           <div className="flex flex-col items-center mb-8">
-            <div className="relative vinyl-animation mb-6 group">
+            <div className="relative mb-6 group">
               <div className="w-64 h-64 rounded-full overflow-hidden shadow-xl">
-                <img src={album.image} alt={`${album.title} album cover`} className="w-full h-full object-cover" />
+                <img src={album.image} alt={`${album.title} album cover`} className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" />
               </div>
-              {/* Vinyl Record Animation */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 vinyl-disc" aria-hidden="true"></div>
               {/* Year Badge */}
               <div className="absolute -bottom-2 -right-2 bg-accent text-light px-3 py-1 rounded-md shadow-md">
                 {album.year}

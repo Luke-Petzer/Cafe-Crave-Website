@@ -16,7 +16,7 @@ export const OurVibe = () => {
           {/* Perfectly Brewed */}
           <div className="bg-lightBg bg-opacity-95 rounded-lg shadow-md overflow-hidden transform transition-all duration-150 hover:-translate-y-2 hover:shadow-lg focus-within:ring-2 focus-within:ring-accent focus-within:ring-opacity-50 border border-lightText border-opacity-10" tabIndex={0}>
             <div className="h-48 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt="Close-up of espresso machine with coffee being brewed into a ceramic cup on wooden countertop" className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
+              <img src="src/assets/cuppacino.webp" alt="Close-up of espresso machine with coffee being brewed into a ceramic cup on wooden countertop" className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
             </div>
             <div className="p-6">
               <div className="flex items-center mb-4">
@@ -40,7 +40,7 @@ export const OurVibe = () => {
           {/* Always Spinning */}
           <div className="bg-lightBg bg-opacity-95 rounded-lg shadow-md overflow-hidden transform transition-all duration-150 hover:-translate-y-2 hover:shadow-lg focus-within:ring-2 focus-within:ring-accent focus-within:ring-opacity-50 border border-lightText border-opacity-10" tabIndex={0}>
             <div className="h-48 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1551969014-7d2c4cddf0b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt="Close-up of vinyl records on wooden surface with album sleeve visible" className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
+              <img src="src/assets/always-spinning.webp" alt="Close-up of vinyl records on wooden surface with album sleeve visible" className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
             </div>
             <div className="p-6">
               <div className="flex items-center mb-4">
@@ -64,7 +64,7 @@ export const OurVibe = () => {
           {/* Stay Awhile */}
           <div className="bg-lightBg bg-opacity-95 rounded-lg shadow-md overflow-hidden transform transition-all duration-150 hover:-translate-y-2 hover:shadow-lg focus-within:ring-2 focus-within:ring-accent focus-within:ring-opacity-50 border border-lightText border-opacity-10" tabIndex={0}>
             <div className="h-48 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1520013225692-fff4010c0ae6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt="Cozy café interior with wooden tables, board games, and warm ambient lighting" className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
+              <img src="src/assets/Stay-a-while.webp" alt="Cozy café interior with wooden tables, board games, and warm ambient lighting" className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
             </div>
             <div className="p-6">
               <div className="flex items-center mb-4">

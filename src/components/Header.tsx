@@ -65,6 +65,11 @@ export const Header = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/music" className={`text-lg text-light hover:text-secondary transition-colors ${location.pathname === '/music' ? 'text-secondary font-medium' : ''}`} aria-current={location.pathname === '/music' ? 'page' : undefined}>
+                  Music
+                </Link>
+              </li>
+              <li>
                 <Link to="/events" className={`text-lg text-light hover:text-secondary transition-colors ${location.pathname === '/events' ? 'text-secondary font-medium' : ''}`} aria-current={location.pathname === '/events' ? 'page' : undefined}>
                   Events
                 </Link>
@@ -98,6 +103,11 @@ export const Header = () => {
               <li>
                 <Link to="/menu" className={`text-4xl text-light hover:text-secondary transition-colors ${location.pathname === '/menu' ? 'text-secondary font-medium' : ''}`} onClick={() => setIsMenuOpen(false)} aria-current={location.pathname === '/menu' ? 'page' : undefined}>
                   Menu
+                </Link>
+              </li>
+              <li>
+                <Link to="/music" className={`text-4xl text-light hover:text-secondary transition-colors ${location.pathname === '/music' ? 'text-secondary font-medium' : ''}`} onClick={() => setIsMenuOpen(false)} aria-current={location.pathname === '/music' ? 'page' : undefined}>
+                  Music
                 </Link>
               </li>
               <li>

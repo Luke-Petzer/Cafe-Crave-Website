@@ -68,15 +68,6 @@ export const MusicPage = () => {
 
         <section className="section-animate section-dark py-20 md:py-28">
           <div className="container mx-auto px-6 md:px-10 lg:px-16">
-            <div className="text-center mb-16">
-              <h1 className="text-4xl md:text-5xl font-['Rockwell',serif] font-bold mb-4">
-                Our Vinyl Collection
-              </h1>
-              <div className="w-24 h-1 bg-accent mx-auto mb-6"></div>
-              <p className="opacity-80 max-w-2xl mx-auto text-lg">
-                Browse through our carefully curated selection of vinyl records
-              </p>
-            </div>
             <div className="mb-8">
               <GenreFilter
                 genres={allGenres}
