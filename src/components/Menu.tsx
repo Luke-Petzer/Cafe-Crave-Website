@@ -8,7 +8,7 @@ export const Menu = () => {
     name: 'Artisan Latte',
     price: 'R50',
     description: 'Single shot espresso, steamed milk, small foam layer',
-    image: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1037&q=80'
+    image: 'src/assets/breakfast.webp'
   }, {
     id: 2,
     name: 'The Crave Breakfast',

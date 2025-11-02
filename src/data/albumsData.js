@@ -1,365 +1,429 @@
-export const albumsData = [{
-  id: 1,
-  title: "Kind of Blue",
-  artist: "Miles Davis",
-  year: "1959",
-  image: "https://images.unsplash.com/photo-1619983081563-430f63602796?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80",
-  description: "A timeless jazz masterpiece that perfectly complements your morning coffee. This 1959 album features legendary tracks that create the perfect atmosphere for relaxation and conversation.",
-  genres: ["Jazz", "Modal Jazz", "Cool Jazz"],
-  featuredPlaylist: true,
-  previewLink: "https://open.spotify.com/album/1weenld61qoidwYuZ1GESA",
-  tracks: [{
-    number: "01",
-    title: "So What",
-    duration: "9:22"
-  }, {
-    number: "02",
-    title: "Freddie Freeloader",
-    duration: "9:46"
-  }, {
-    number: "03",
-    title: "Blue in Green",
-    duration: "5:37"
-  }, {
-    number: "04",
-    title: "All Blues",
-    duration: "11:33"
-  }, {
-    number: "05",
-    title: "Flamenco Sketches",
-    duration: "9:26"
-  }]
-}, {
-  id: 2,
-  title: "A Love Supreme",
-  artist: "John Coltrane",
-  year: "1965",
-  image: "https://images.unsplash.com/photo-1629276301820-e9b4b98aa800?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-  description: "A spiritual jazz album that elevates any cafe experience. Coltrane's masterpiece is perfect for those thoughtful afternoon conversations or peaceful solo moments with a cappuccino.",
-  genres: ["Jazz", "Avant-garde Jazz", "Free Jazz"],
-  previewLink: "https://open.spotify.com/album/7Eoz7hJvaX1eFkbpQxC5PA",
-  tracks: [{
-    number: "01",
-    title: "Part I: Acknowledgement",
-    duration: "7:42"
-  }, {
-    number: "02",
-    title: "Part II: Resolution",
-    duration: "7:22"
-  }, {
-    number: "03",
-    title: "Part III: Pursuance",
-    duration: "10:41"
-  }, {
-    number: "04",
-    title: "Part IV: Psalm",
-    duration: "7:05"
-  }]
-}, {
-  id: 3,
-  title: "I Put A Spell On You",
-  artist: "Nina Simone",
-  year: "1965",
-  image: "https://images.unsplash.com/photo-1611602132416-da2045990f76?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-  description: "The incomparable Nina Simone delivers soulful interpretations that pair perfectly with our signature drinks. Her rich voice fills the café with warmth and character.",
-  genres: ["Jazz", "Soul", "R&B"],
-  previewLink: "https://open.spotify.com/album/3BNw70sMqLdKHcUjrVRJ0D",
-  tracks: [{
-    number: "01",
-    title: "I Put A Spell On You",
-    duration: "2:35"
-  }, {
-    number: "02",
-    title: "Feeling Good",
-    duration: "2:57"
-  }, {
-    number: "03",
-    title: "Ne Me Quitte Pas",
-    duration: "3:35"
-  }, {
-    number: "04",
-    title: "Marriage Is for Old Folks",
-    duration: "2:32"
-  }, {
-    number: "05",
-    title: "July Tree",
-    duration: "3:02"
-  }, {
-    number: "06",
-    title: "Gimme Some",
-    duration: "2:44"
-  }]
-}, {
-  id: 4,
-  title: "Blue Train",
-  artist: "John Coltrane",
-  year: "1958",
-  image: "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-  description: "A hard bop classic that showcases Coltrane's virtuosity. The perfect soundtrack for a rainy afternoon with a hot cup of coffee.",
-  genres: ["Jazz", "Hard Bop"],
-  previewLink: "https://open.spotify.com/album/6DWKxgPkm5jmDQaYpCRdBu",
-  tracks: [{
-    number: "01",
-    title: "Blue Train",
-    duration: "10:43"
-  }, {
-    number: "02",
-    title: "Moment's Notice",
-    duration: "9:10"
-  }, {
-    number: "03",
-    title: "Locomotion",
-    duration: "7:14"
-  }, {
-    number: "04",
-    title: "I'm Old Fashioned",
-    duration: "7:58"
-  }, {
-    number: "05",
-    title: "Lazy Bird",
-    duration: "7:00"
-  }]
-}, {
-  id: 5,
-  title: "Rumours",
-  artist: "Fleetwood Mac",
-  year: "1977",
-  image: "https://images.unsplash.com/photo-1629276301399-5e98a53a2b3f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-  description: "A classic rock album with timeless appeal. The perfect background for lively conversations and weekend brunches.",
-  genres: ["Rock", "Pop Rock", "Soft Rock"],
-  previewLink: "https://open.spotify.com/album/1bt6q2SruMsBtcerNVtpZB",
-  tracks: [{
-    number: "01",
-    title: "Second Hand News",
-    duration: "2:43"
-  }, {
-    number: "02",
-    title: "Dreams",
-    duration: "4:14"
-  }, {
-    number: "03",
-    title: "Never Going Back Again",
-    duration: "2:14"
-  }, {
-    number: "04",
-    title: "Don't Stop",
-    duration: "3:13"
-  }, {
-    number: "05",
-    title: "Go Your Own Way",
-    duration: "3:38"
-  }, {
-    number: "06",
-    title: "Songbird",
-    duration: "3:20"
-  }]
-}, {
-  id: 6,
-  title: "Back to Black",
-  artist: "Amy Winehouse",
-  year: "2006",
-  image: "https://images.unsplash.com/photo-1629276312449-95944787a6b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-  description: "A modern soul classic that bridges vintage sounds with contemporary sensibilities. Amy's powerful voice creates an intimate atmosphere.",
-  genres: ["Soul", "R&B", "Jazz"],
-  previewLink: "https://open.spotify.com/album/6SbGE5rvZiIYMHmFx3ZyTf",
-  tracks: [{
-    number: "01",
-    title: "Rehab",
-    duration: "3:34"
-  }, {
-    number: "02",
-    title: "You Know I'm No Good",
-    duration: "4:17"
-  }, {
-    number: "03",
-    title: "Me & Mr Jones",
-    duration: "2:33"
-  }, {
-    number: "04",
-    title: "Just Friends",
-    duration: "3:13"
-  }, {
-    number: "05",
-    title: "Back to Black",
-    duration: "4:01"
-  }]
-}, {
-  id: 7,
-  title: "Thriller",
-  artist: "Michael Jackson",
-  year: "1982",
-  image: "https://images.unsplash.com/photo-1629276313587-4ef4d912c40e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-  description: "The best-selling album of all time. Michael Jackson's masterpiece brings energy and nostalgia to any cafe environment.",
-  genres: ["Pop", "R&B", "Funk", "Disco"],
-  previewLink: "https://open.spotify.com/album/2ANVost0y2y52ema1E9xAZ",
-  tracks: [{
-    number: "01",
-    title: "Wanna Be Startin' Somethin'",
-    duration: "6:03"
-  }, {
-    number: "02",
-    title: "Baby Be Mine",
-    duration: "4:20"
-  }, {
-    number: "03",
-    title: "The Girl Is Mine",
-    duration: "3:42"
-  }, {
-    number: "04",
-    title: "Thriller",
-    duration: "5:57"
-  }, {
-    number: "05",
-    title: "Beat It",
-    duration: "4:18"
-  }]
-}, {
-  id: 8,
-  title: "The Miseducation of Lauryn Hill",
-  artist: "Lauryn Hill",
-  year: "1998",
-  image: "https://images.unsplash.com/photo-1629276337083-2a41c582a590?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-  description: "A groundbreaking album that blends hip-hop, R&B, and soul. Lauryn Hill's powerful lyrics and soulful voice create a thought-provoking atmosphere.",
-  genres: ["R&B", "Neo Soul", "Hip Hop"],
-  previewLink: "https://open.spotify.com/album/1BZoqf8Zje5nGdwZhOjAtD",
-  tracks: [{
-    number: "01",
-    title: "Intro",
-    duration: "0:47"
-  }, {
-    number: "02",
-    title: "Lost Ones",
-    duration: "5:33"
-  }, {
-    number: "03",
-    title: "Ex-Factor",
-    duration: "5:26"
-  }, {
-    number: "04",
-    title: "To Zion",
-    duration: "6:09"
-  }, {
-    number: "05",
-    title: "Doo Wop (That Thing)",
-    duration: "5:20"
-  }]
-}, {
-  id: 9,
-  title: "Abbey Road",
-  artist: "The Beatles",
-  year: "1969",
-  image: "https://images.unsplash.com/photo-1629276342782-7f693a7c7e9b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-  description: "The Beatles' final recorded album is a masterpiece of songwriting and production. Its timeless appeal makes it perfect for any cafe setting.",
-  genres: ["Rock", "Pop Rock", "Psychedelic Rock"],
-  previewLink: "https://open.spotify.com/album/0ETFjACtuP2ADo6LFhL6HN",
-  tracks: [{
-    number: "01",
-    title: "Come Together",
-    duration: "4:19"
-  }, {
-    number: "02",
-    title: "Something",
-    duration: "3:02"
-  }, {
-    number: "03",
-    title: "Maxwell's Silver Hammer",
-    duration: "3:27"
-  }, {
-    number: "04",
-    title: "Oh! Darling",
-    duration: "3:27"
-  }, {
-    number: "05",
-    title: "Octopus's Garden",
-    duration: "2:51"
-  }]
-}, {
-  id: 10,
-  title: "Acoustic Chill",
-  artist: "Various Artists",
-  year: "2021",
-  image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-  description: "A collection of acoustic covers and originals that create a relaxed, intimate atmosphere. Perfect for quiet mornings and thoughtful conversations.",
-  genres: ["Acoustic", "Folk", "Indie"],
-  tracks: [{
-    number: "01",
-    title: "Morning Light",
-    duration: "3:45"
-  }, {
-    number: "02",
-    title: "Quiet Moments",
-    duration: "4:12"
-  }, {
-    number: "03",
-    title: "Rainy Day",
-    duration: "3:56"
-  }, {
-    number: "04",
-    title: "Coffee Dreams",
-    duration: "3:22"
-  }, {
-    number: "05",
-    title: "Afternoon Thoughts",
-    duration: "4:35"
-  }]
-}, {
-  id: 11,
-  title: "Random Access Memories",
-  artist: "Daft Punk",
-  year: "2013",
-  image: "https://images.unsplash.com/photo-1629276383172-8a535c47a7e6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-  description: "A modern electronic masterpiece that blends disco, funk, and electronic music. The perfect soundtrack for an energetic cafe atmosphere.",
-  genres: ["Electronic", "Disco", "Funk"],
-  previewLink: "https://open.spotify.com/album/4m2880jivSbbyEGAKfITCa",
-  tracks: [{
-    number: "01",
-    title: "Give Life Back to Music",
-    duration: "4:34"
-  }, {
-    number: "02",
-    title: "The Game of Love",
-    duration: "5:21"
-  }, {
-    number: "03",
-    title: "Giorgio by Moroder",
-    duration: "9:04"
-  }, {
-    number: "04",
-    title: "Within",
-    duration: "3:48"
-  }, {
-    number: "05",
-    title: "Instant Crush",
-    duration: "5:37"
-  }]
-}, {
-  id: 12,
-  title: "Buena Vista Social Club",
-  artist: "Buena Vista Social Club",
-  year: "1997",
-  image: "https://images.unsplash.com/photo-1629276314686-48789d40d3f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-  description: "A celebration of traditional Cuban music that brings warmth and rhythm to any setting. The perfect accompaniment to a relaxed afternoon coffee.",
-  genres: ["Cuban", "Son", "Bolero"],
-  previewLink: "https://open.spotify.com/album/6DuRBGrC9aggicJQHCj7wb",
-  tracks: [{
-    number: "01",
-    title: "Chan Chan",
-    duration: "4:16"
-  }, {
-    number: "02",
-    title: "De Camino a La Vereda",
-    duration: "5:03"
-  }, {
-    number: "03",
-    title: "El Cuarto de Tula",
-    duration: "7:27"
-  }, {
-    number: "04",
-    title: "Pueblo Nuevo",
-    duration: "6:05"
-  }, {
-    number: "05",
-    title: "Dos Gardenias",
-    duration: "3:02"
-  }]
-}];
+// --- 1. Import your new images ---
+import direStraitsBrothers from '../assets/dire-straits-brothers.webp';
+import ericClaptonTimepieces from '../assets/eric-clapton-timepieces.webp';
+import johnnyNashClearlyNow from '../assets/johnny-nash-clearly-now.webp';
+import jimiHendrixMoods from '../assets/jimi-hendrix-electric-lady.webp';
+import elvisPresleyGoldenHits from '../assets/elvis-presley-golden-hits.webp';
+import gipsyKingsAllegria from '../assets/gipsy-kings-allegria.webp';
+import gipsyKingsMosaique from '../assets/gipsy-kings-mosaique.webp';
+import chicago17 from '../assets/chicago-17.webp';
+import deanMartinOneMoreTime from '../assets/dean-martin-one-more-time.webp';
+import oscarPetersonPlaysSinatra from '../assets/oscar-peterson-plays-sinatra.webp';
+import georgeBensonGiveMeTheNight from '../assets/george-benson-give-me-the-night.webp';
+import totoFahrenheit from '../assets/toto-fahrenheit.webp';
+import michaelJacksonOffTheWall from '../assets/michael-jackson-off-the-wall.webp';
+import paulaAbdulSpellbound from '../assets/paula-abdul-spellbound.webp';
+import bobMarleyBirthOfALegend from '../assets/bob-marley-greatest-hits.webp';
+import carlySimonNoSecrets from '../assets/carly-simon-no-secrets.webp';
+import fleetwoodMacRumours from '../assets/fleetwood-mac-rumours.webp';
+import theBeatlesAbbeyRoad from '../assets/the-beatles-abbey-road.webp';
+import queenNightAtTheOpera from '../assets/queen-night-at-the-opera.webp';
+import stevieWonderSongsInKey from '../assets/stevie-wonder-songs-in-key.webp';
+import eaglesHotelCalifornia from '../assets/eagles-hotel-california.webp';
+
+// --- NEW / UPDATED IMAGES ---
+import bryanAdamsReckless from '../assets/bryan-adams-reckless.webp';
+import bruceSpringsteenBornInTheUsa from '../assets/bruce-springsteen-born-in-the-usa.webp';
+import pinkFloydDarkSide from '../assets/pink-floyd-back-of-moon.webp';
+import tearsForFearsBigChair from '../assets/tears-for-joy-head-over-heals.webp';
+import thePoliceSynchronicity from '../assets/the-police-every-breath-you-take.webp';
+
+// --- 2. Export the album data array ---
+export const albumsData = [
+    // From your photos
+    {
+        id: 1,
+        title: "Brothers in Arms",
+        artist: "Dire Straits",
+        year: "1985",
+        image: direStraitsBrothers,
+        description: "A landmark 80s rock album, known for its pioneering digital recording. Perfect for a smooth, relaxed cafe vibe with hits like 'Money for Nothing'.",
+        genres: ["Rock", "Roots Rock", "Blues Rock"],
+        previewLink: "http://googleusercontent.com/spotify.com/1",
+        tracks: [
+            { number: "01", title: "So Far Away", duration: "5:12" },
+            { number: "02", title: "Money for Nothing", duration: "8:26" },
+            { number: "04", title: "Your Latest Trick", duration: "6:33" },
+            { number: "06", title: "Walk of Life", duration: "4:12" }
+        ]
+    },
+    {
+        id: 2,
+        title: "Timepieces: The Best of Eric Clapton",
+        artist: "Eric Clapton",
+        year: "1982",
+        image: ericClaptonTimepieces,
+        description: "A brilliant collection of Clapton's 70s hits. 'Wonderful Tonight' and 'Layla' provide the ultimate soulful, classic rock backdrop.",
+        genres: ["Rock", "Blues", "Classic Rock"],
+        previewLink: "https://open.spotify.com/album/1weenld61qoidwYuZ1GESA",
+        tracks: [
+            { number: "01", title: "I Shot the Sheriff", duration: "4:23" },
+            { number: "05", title: "Wonderful Tonight", duration: "3:42" },
+            { number: "06", title: "Cocaine", duration: "3:38" },
+            { number: "09", title: "Layla", duration: "7:10" }
+        ]
+    },
+    {
+        id: 3,
+        title: "I Can See Clearly Now",
+        artist: "Johnny Nash",
+        year: "1972",
+        image: johnnyNashClearlyNow,
+        description: "The optimistic title track is a cafe classic, but the whole album is a beautiful blend of reggae and soul, also featuring Bob Marley's 'Stir It Up'.",
+        genres: ["Reggae", "Soul", "Pop"],
+        previewLink: "https://open.spotify.com/album/4m2880jivSbbyEGAKfITCa",
+        tracks: [
+            { number: "01", title: "Stir It Up", duration: "3:02" },
+            { number: "02", title: "That's the Way We Get By", duration: "2:55" },
+            { number: "04", title: "I Can See Clearly Now", duration: "2:46" }
+        ]
+    },
+    {
+        id: 4,
+        title: "Off the Wall",
+        artist: "Michael Jackson",
+        year: "1979",
+        image: michaelJacksonOffTheWall,
+        description: "MJ's groundbreaking blend of disco, pop, and R&B. 'Rock with You' is the perfect track for a lively, stylish afternoon.",
+        genres: ["Disco", "Pop", "Funk", "R&B"],
+        previewLink: "http://googleusercontent.com/spotify.com/4",
+        tracks: [
+            { number: "01", title: "Don't Stop 'Til You Get Enough", duration: "6:05" },
+            { number: "02", title: "Rock with You", duration: "3:40" },
+            { number: "03", title: "Workin' Day and Night", duration: "5:14" }
+        ]
+    },
+    {
+        id: 5,
+        title: "Fahrenheit",
+        artist: "Toto",
+        year: "1986",
+        image: totoFahrenheit,
+        description: "A polished 80s rock classic. The perfect album to have on rotation, featuring the timeless hit singles 'I'll Be Over You' and 'Without Your Love'.",
+        genres: ["Rock", "Pop Rock"],
+        previewLink: "http://googleusercontent.com/spotify.com/5",
+        tracks: [
+            { number: "01", title: "Till the End", duration: "5:17" },
+            { number: "02", title: "I'll Be Over You", duration: "3:50" },
+            { number: "07", title: "Without Your Love", duration: "4:33" }
+        ]
+    },
+    {
+        id: 6,
+        title: "The Birth of a Legend",
+        artist: "Bob Marley & The Wailers",
+        year: "1973",
+        image: bobMarleyBirthOfALegend,
+        description: "Early recordings from the reggae legends, featuring Peter Tosh. Raw, soulful, and perfect for setting a relaxed, positive vibe.",
+        genres: ["Reggae", "Ska"],
+        previewLink: "http://googleusercontent.com/spotify.com/6",
+        tracks: [
+            { number: "01", title: "Simmer Down", duration: "2:49" },
+            { number: "02", title: "It Hurts to Be Alone", duration: "2:42" },
+            { number: "04", title: "Rude Boy", duration: "2:20" }
+        ]
+    },
+    {
+        id: 7,
+        title: "Chicago 17",
+        artist: "Chicago",
+        year: "1984",
+        image: chicago17,
+        description: "The band's best-selling album, packed with iconic 80s power ballads. 'You're the Inspiration' is a quintessential cafe soundtrack song.",
+        genres: ["Soft Rock", "Pop Rock"],
+        previewLink: "https://open.spotify.com/album/7Eoz7hJvaX1eFkbpQxC5PA",
+        tracks: [
+            { number: "01", title: "Stay the Night", duration: "3:48" },
+            { number: "03", title: "You're the Inspiration", duration: "3:49" },
+            { number: "04", title: "Hard Habit to Break", duration: "4:43" }
+        ]
+    },
+    {
+        id: 8,
+        title: "No Secrets",
+        artist: "Carly Simon",
+        year: "1972",
+        image: carlySimonNoSecrets,
+        description: "A classic of the singer-songwriter era. Features the legendary, enigmatic hit 'You're So Vain'—a perfect conversation starter.",
+        genres: ["Soft Rock", "Pop"],
+        previewLink: "https://open.spotify.com/album/3BNw70sMqLdKHcUjrVRJ0D",
+        tracks: [
+            { number: "01", title: "The Right Thing to Do", duration: "2:57" },
+            { number: "05", title: "You're So Vain", duration: "4:17" },
+            { number: "10", title: "We Have No Secrets", duration: "3:57" }
+        ]
+    },
+    {
+        id: 9,
+        title: "Give Me the Night",
+        artist: "George Benson",
+        year: "1980",
+        image: georgeBensonGiveMeTheNight,
+        description: "Produced by Quincy Jones, this album is the definition of smooth. The title track is an upbeat, sophisticated R&B classic.",
+        genres: ["R&B", "Soul", "Jazz Funk"],
+        previewLink: "https://open.spotify.com/album/6DWKxgPkm5jmDQaYpCRdBu",
+        tracks: [
+            { number: "01", title: "Love X Love", duration: "4:45" },
+            { number: "03", title: "Give Me the Night", duration: "5:01" },
+            { number: "06", title: "What's on Your Mind", duration: "4:02" }
+        ]
+    },
+    {
+        id: 10,
+        title: "Mosaïque",
+        artist: "Gipsy Kings",
+        year: "1989",
+        image: gipsyKingsMosaique,
+        description: "An energetic and passionate blend of flamenco, rumba, and pop. 'Volaré' brings an instant, joyful energy to the room.",
+        genres: ["Flamenco", "Rumba", "World"],
+        previewLink: "https://open.spotify.com/album/1bt6q2SruMsBtcerNVtpZB",
+        tracks: [
+            { number: "01", title: "Caminando Por la Calle", duration: "4:17" },
+            { number: "03", title: "Volaré", duration: "3:38" },
+            { number: "05", title: "Mosaïque", duration: "3:40" }
+        ]
+    },
+    {
+        id: 11,
+        title: "Allegria",
+        artist: "Gipsy Kings",
+        year: "1982",
+        image: gipsyKingsAllegria,
+        description: "The debut album from the group, showcasing their raw, acoustic talent. 'Allegria' is pure, infectious musical passion.",
+        genres: ["Flamenco", "Rumba"],
+        previewLink: "https://open.spotify.com/album/6SbGE5rvZiIYMHmFx3ZyTf",
+        tracks: [
+            { number: "01", title: "Pena Penita", duration: "2:45" },
+            { number: "03", title: "Allegria", duration: "2:30" },
+            { number: "08", title: "Djobi Djoba", duration: "3:50" }
+        ]
+    },
+    {
+        id: 12,
+        title: "One More Time",
+        artist: "Dean Martin",
+        year: "1962",
+        image: deanMartinOneMoreTime,
+        description: "Classic crooning from the 'King of Cool'. The title track and 'Sway' set a timeless, relaxed, and slightly nostalgic mood.",
+        genres: ["Vocal Jazz", "Traditional Pop"],
+        previewLink: "https://open.spotify.com/album/2ANVost0y2y52ema1E9xAZ",
+        tracks: [
+            { number: "01", title: "One More Time", duration: "2:50" },
+            { number: "02", title: "Sway (Quien Sera)", duration: "2:42" },
+            { number: "05", title: "That's Amore", duration: "3:07" }
+        ]
+    },
+    // Fan Favorites
+    {
+        id: 13,
+        title: "Rumours",
+        artist: "Fleetwood Mac",
+        year: "1977",
+        image: fleetwoodMacRumours,
+        description: "One of the best-selling albums of all time. 'Dreams' and 'Go Your Own Way' are essential tracks for any vinyl collection.",
+        genres: ["Soft Rock", "Pop Rock"],
+        previewLink: "https://open.spotify.com/album/1BZoqf8Zje5nGdwZhOjAtD",
+        tracks: [
+            { number: "02", title: "Dreams", duration: "4:14" },
+            { number: "05", title: "Go Your Own Way", duration: "3:38" },
+            { number: "07", title: "The Chain", duration: "4:30" }
+        ]
+    },
+    {
+        id: 14,
+        title: "Abbey Road",
+        artist: "The Beatles",
+        year: "1969",
+        image: theBeatlesAbbeyRoad,
+        description: "The final masterpiece from The Beatles. 'Come Together' and 'Here Comes The Sun' are instantly recognizable and universally loved.",
+        genres: ["Rock", "Pop", "Classic Rock"],
+        previewLink: "https://open.spotify.com/album/0ETFjACtuP2ADo6LFhL6HN",
+        tracks: [
+            { number: "01", title: "Come Together", duration: "4:20" },
+            { number: "02", title: "Something", duration: "3:03" },
+            { number: "07", title: "Here Comes The Sun", duration: "3:05" }
+        ]
+    },
+    {
+        id: 15,
+        title: "Songs in the Key of Life",
+        artist: "Stevie Wonder",
+        year: "1976",
+        image: stevieWonderSongsInKey,
+        description: "A monumental and joyful double album. 'Sir Duke' and 'Isn't She Lovely' are guaranteed to make anyone in the cafe smile.",
+        genres: ["Soul", "R&B", "Funk", "Pop"],
+        previewLink: "https://open.spotify.com/album/6DuRBGrC9aggicJQHCj7wb",
+        tracks: [
+            { number: "01", title: "Sir Duke", duration: "3:54" },
+            { number: "02", title: "I Wish", duration: "4:12" },
+            { number: "03", title: "Isn't She Lovely", duration: "6:34" }
+        ]
+    },
+    {
+        id: 16,
+        title: "Hotel California",
+        artist: "Eagles",
+        year: "1976",
+        image: eaglesHotelCalifornia,
+        description: "A true classic rock staple. The iconic title track is the perfect soundtrack for a late afternoon coffee, full of story and atmosphere.",
+        genres: ["Rock", "Soft Rock", "Classic Rock"],
+        previewLink: "https://open.spotify.com/album/3xOa2F8PSCAO2G5I1rqbsp",
+        tracks: [
+            { number: "01", title: "Hotel California", duration: "6:30" },
+            { number: "02", title: "New Kid in Town", duration: "5:04" },
+            { number: "04", title: "Life in the Fast Lane", duration: "4:46" }
+        ]
+    },
+    {
+        id: 17,
+        title: "A Night at the Opera",
+        artist: "Queen",
+        year: "1975",
+        image: queenNightAtTheOpera,
+        description: "An epic, genre-bending masterpiece. While 'Bohemian Rhapsody' is legendary, 'You're My Best Friend' is the ultimate feel-good cafe track.",
+        genres: ["Rock", "Progressive Rock", "Pop"],
+        previewLink: "https://open.spotify.com/album/6sE3WAfBVrB4GZl3hf3oB4",
+        tracks: [
+            { number: "04", title: "You're My Best Friend", duration: "2:52" },
+            { number: "09", title: "Love of My Life", duration: "3:39" },
+            { number: "11", title: "Bohemian Rhapsody", duration: "5:55" }
+        ]
+    },
+    // Other albums from your photos (with some assumptions)
+    {
+        id: 18,
+        title: "Moods",
+        artist: "Jimi Hendrix",
+        year: "1971",
+        image: jimiHendrixMoods,
+        description: "A compelling compilation of Hendrix's work, capturing his incredible range from bluesy ballads to psychedelic rock explorations.",
+        genres: ["Rock", "Psychedelic Rock", "Blues"],
+        previewLink: "http://googleusercontent.com/spotify.com/18",
+        tracks: [
+            { number: "01", title: "All Along the Watchtower", duration: "4:00" },
+            { number: "02", title: "The Wind Cries Mary", duration: "3:20" },
+            { number: "04", title: "Little Wing", duration: "2:25" }
+        ]
+    },
+    {
+        id: 19,
+        title: "Elvis' Golden Hits",
+        artist: "Elvis Presley",
+        year: "1958",
+        image: elvisPresleyGoldenHits,
+        description: "The original King of Rock 'n' Roll. This collection defined a generation with hits like 'Hound Dog' and 'Jailhouse Rock'.",
+        genres: ["Rock and Roll", "Rockabilly"],
+        previewLink: "http://googleusercontent.com/spotify.com/19",
+        tracks: [
+            { number: "01", title: "Hound Dog", duration: "2:16" },
+            { number: "04", title: "Jailhouse Rock", duration: "2:37" },
+            { number: "06", title: "Love Me Tender", duration: "2:41" }
+        ]
+    },
+    {
+        id: 20,
+        title: "A Jazz Portrait of Frank Sinatra",
+        artist: "The Oscar Peterson Trio",
+        year: "1959",
+        image: oscarPetersonPlaysSinatra,
+        description: "A sophisticated, instrumental take on Sinatra's classics by one of the greatest jazz pianists of all time. Pure class.",
+        genres: ["Jazz", "Piano Jazz", "Swing"],
+        previewLink: "https://open.spotify.com/album/1weenld61qoidwYuZ1GESA0",
+        tracks: [
+            { number: "01", title: "You Make Me Feel So Young", duration: "2:39" },
+            { number: "03", title: "Come Dance with Me", duration: "1:55" },
+            { number: "06", title: "I Get a Kick Out of You", duration: "3:00" }
+        ]
+    },
+    {
+        id: 21,
+        title: "Spellbound",
+        artist: "Paula Abdul",
+        year: "1991",
+        image: paulaAbdulSpellbound,
+        description: "A global #1 album that defined the sound of early 90s pop. 'Rush Rush' is a perfect, smooth ballad for a nostalgic afternoon.",
+        genres: ["Pop", "R&B", "New Jack Swing"],
+        previewLink: "https://open.spotify.com/album/1weenld61qoidwYuZ1GESA1",
+        tracks: [
+            { number: "01", title: "Rush Rush", duration: "4:52" },
+            { number: "02", title: "The Promise of a New Day", duration: "4:32" },
+            { number: "05", title: "Blowing Kisses in the Wind", duration: "4:41" }
+        ]
+    },
+    {
+        id: 22,
+        title: "Reckless",
+        artist: "Bryan Adams",
+        year: "1984",
+        image: bryanAdamsReckless,
+        description: "The quintessential 80s rock album. Packed with stadium-sized hits like 'Summer of '69' and 'Heaven', it's pure, feel-good energy.",
+        genres: ["Rock", "Arena Rock", "Pop Rock"],
+        previewLink: "https://open.spotify.com/album/1weenld61qoidwYuZ1GESA0",
+        tracks: [
+            { number: "01", title: "Run to You", duration: "3:54" },
+            { number: "02", title: "Heaven", duration: "4:03" },
+            { number: "04", title: "Summer of '69", duration: "3:35" }
+        ]
+    },
+    {
+        id: 23,
+        title: "Born in the U.S.A.",
+        artist: "Bruce Springsteen",
+        year: "1984",
+        image: bruceSpringsteenBornInTheUsa,
+        description: "An American rock icon at the peak of his powers. From the title track to 'Dancing in the Dark', this album is a force of nature.",
+        genres: ["Rock", "Heartland Rock"],
+        previewLink: "https://open.spotify.com/album/1weenld61qoidwYuZ1GESA1",
+        tracks: [
+            { number: "01", title: "Born in the U.S.A.", duration: "4:39" },
+            { number: "04", title: "Dancing in the Dark", duration: "4:01" },
+            { number: "07", title: "Glory Days", duration: "4:15" }
+        ]
+    },
+    {
+        id: 24,
+        title: "The Dark Side of the Moon",
+        artist: "Pink Floyd",
+        year: "1973",
+        image: pinkFloydDarkSide,
+        description: "One of the most ambitious and iconic albums ever made. Perfect for a deep, immersive listening session with tracks like 'Money' and 'Time'.",
+        genres: ["Progressive Rock", "Art Rock"],
+        previewLink: "https://open.spotify.com/album/1weenld61qoidwYuZ1GESA2",
+        tracks: [
+            { number: "05", title: "The Great Gig in the Sky", duration: "4:43" },
+            { number: "06", title: "Money", duration: "6:22" },
+            { number: "07", title: "Us and Them", duration: "7:49" }
+        ]
+    },
+    {
+        id: 25,
+        title: "Songs from the Big Chair",
+        artist: "Tears for Fears",
+        year: "1985",
+        image: tearsForFearsBigChair,
+        description: "A defining album of the 80s New Wave sound. 'Everybody Wants to Rule the World' and 'Shout' are timeless, sophisticated pop hits.",
+        genres: ["New Wave", "Synth-pop", "Pop Rock"],
+        previewLink: "https://open.spotify.com/album/1weenld61qoidwYuZ1GESA3",
+        tracks: [
+            { number: "01", title: "Shout", duration: "6:33" },
+            { number: "02", title: "Everybody Wants to Rule the World", duration: "4:11" },
+            { number: "03", title: "Head Over Heels", duration: "5:02" }
+        ]
+    },
+    {
+        id: 26,
+        title: "Synchronicity",
+        artist: "The Police",
+        year: "1983",
+        image: thePoliceSynchronicity,
+        description: "The Police's final studio album and their commercial peak. 'Every Breath You Take' is one of the most famous songs of all time.",
+        genres: ["New Wave", "Rock", "Reggae Fusion"],
+        previewLink: "https://open.spotify.com/album/1weenld61qoidwYuZ1GESA4",
+        tracks: [
+            { number: "01", title: "Synchronicity I", duration: "3:23" },
+            { number: "04", title: "King of Pain", duration: "4:59" },
+            { number: "07", title: "Every Breath You Take", duration: "4:13" }
+        ]
+    }
+
+];

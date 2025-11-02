@@ -1,4 +1,3 @@
-import { PlayIcon } from 'lucide-react';
 import { Album } from '../../types/album';
 
 interface RecordRackProps {
@@ -12,17 +11,10 @@ export const RecordRack: React.FC<RecordRackProps> = ({
 }) => {
   return <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6" role="grid" aria-label="Record collection grid">
       {albums.map((album: Album) => <div key={album.id} className="flex flex-col items-center group" role="gridcell">
-          <button onClick={() => onAlbumClick(album)} className="relative vinyl-animation focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-full" aria-label={`View details for ${album.title} by ${album.artist}`}>
+          <button onClick={() => onAlbumClick(album)} className="relative focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-full" aria-label={`View details for ${album.title} by ${album.artist}`}>
             <div className="w-full aspect-square rounded-full overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-xl">
-              <img src={album.image} alt={`${album.title} by ${album.artist}`} className="w-full h-full object-cover" loading="lazy" />
-              <div className="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-40 flex items-center justify-center transition-all duration-300 rounded-full">
-                <div className="bg-accent p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-90 group-hover:scale-100">
-                  <PlayIcon size={24} className="text-light" />
-                </div>
-              </div>
+              <img src={album.image} alt={`${album.title} by ${album.artist}`} className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" loading="lazy" />
             </div>
-            {/* Vinyl Record Animation */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 vinyl-disc" aria-hidden="true"></div>
             {/* Year Label */}
             {album.year && (
               <div className="absolute -bottom-2 -right-2 bg-primary text-light px-2 py-1 rounded-md shadow-md text-xs font-medium">

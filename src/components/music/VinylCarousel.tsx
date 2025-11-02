@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
-import { ChevronLeftIcon, ChevronRightIcon, PlayIcon } from 'lucide-react';
+import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 import { Album } from '../../types/album';
 
 interface VinylCarouselProps {
@@ -80,14 +80,9 @@ export const VinylCarousel: React.FC<VinylCarouselProps> = ({
       </div>
       {/* Album Carousel */}
       <div className="grid md:grid-cols-2 gap-12 items-center" aria-live="polite">
-        <div className="relative group vinyl-animation">
-          <div className="relative rounded-full overflow-hidden shadow-xl transform transition-transform duration-300 group-hover:scale-105 aspect-square">
-            <img src={currentAlbum.image} alt={`Album artwork - ${currentAlbum.title} by ${currentAlbum.artist}`} className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-40 flex items-center justify-center transition-all duration-300 rounded-full">
-              <button className="bg-accent p-4 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" onClick={() => onAlbumClick(currentAlbum)} aria-label={`View details for ${currentAlbum.title}`}>
-                <PlayIcon size={30} className="text-light" />
-              </button>
-            </div>
+        <div className="relative group">
+          <div className="relative rounded-full overflow-hidden shadow-xl transform transition-all duration-300 group-hover:scale-105 aspect-square cursor-pointer" onClick={() => onAlbumClick(currentAlbum)}>
+            <img src={currentAlbum.image} alt={`Album artwork - ${currentAlbum.title} by ${currentAlbum.artist}`} className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" />
           </div>
           {currentAlbum.year && (
             <div className="absolute -bottom-4 -left-4 bg-primary text-light p-3 rounded-lg shadow-md transform -rotate-6">
@@ -96,8 +91,6 @@ export const VinylCarousel: React.FC<VinylCarouselProps> = ({
               </span>
             </div>
           )}
-          {/* Vinyl Record Animation */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 vinyl-disc" aria-hidden="true"></div>
         </div>
         <div>
           <h2 className="text-3xl font-serif font-bold text-primary mb-2">
