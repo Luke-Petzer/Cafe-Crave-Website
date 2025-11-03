@@ -35,7 +35,7 @@ export const Header = () => {
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 flex justify-between items-center">
           <div className="flex items-center">
             <Link to="/" className="flex items-center" aria-label="Cafe Crave - Home">
-              <img src={cafeLogo} alt="Cafe Crave Logo" className="h-8 md:h-12" />
+              <img src={cafeLogo} alt="Cafe Crave Logo" className="h-16 md:h-20" />
             </Link>
           </div>
           {/* Mobile menu button */}
@@ -48,27 +48,32 @@ export const Header = () => {
           <nav className="hidden md:block" aria-label="Main Navigation">
             <ul className="flex space-x-8">
               <li>
-                <Link to="/" className={`text-lg text-light hover:text-secondary transition-colors ${location.pathname === '/' ? 'text-secondary font-medium' : ''}`} aria-current={location.pathname === '/' ? 'page' : undefined}>
+                <Link to="/" className={`text-base text-light hover:text-secondary transition-colors font-normal ${location.pathname === '/' ? 'text-secondary font-semibold' : ''}`} aria-current={location.pathname === '/' ? 'page' : undefined}>
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/about" className={`text-lg text-light hover:text-secondary transition-colors ${location.pathname === '/about' ? 'text-secondary font-medium' : ''}`} aria-current={location.pathname === '/about' ? 'page' : undefined}>
+                <Link to="/about" className={`text-base text-light hover:text-secondary transition-colors font-normal ${location.pathname === '/about' ? 'text-secondary font-semibold' : ''}`} aria-current={location.pathname === '/about' ? 'page' : undefined}>
                   Our Vibe
                 </Link>
               </li>
               <li>
-                <Link to="/menu" className={`text-lg text-light hover:text-secondary transition-colors ${location.pathname === '/menu' ? 'text-secondary font-medium' : ''}`} aria-current={location.pathname === '/menu' ? 'page' : undefined}>
+                <Link to="/menu" className={`text-base text-light hover:text-secondary transition-colors font-normal ${location.pathname === '/menu' ? 'text-secondary font-semibold' : ''}`} aria-current={location.pathname === '/menu' ? 'page' : undefined}>
                   Menu
                 </Link>
               </li>
               <li>
-                <Link to="/music" className={`text-lg text-light hover:text-secondary transition-colors ${location.pathname === '/music' ? 'text-secondary font-medium' : ''}`} aria-current={location.pathname === '/music' ? 'page' : undefined}>
+                <Link to="/music" className={`text-base text-light hover:text-secondary transition-colors font-normal ${location.pathname === '/music' ? 'text-secondary font-semibold' : ''}`} aria-current={location.pathname === '/music' ? 'page' : undefined}>
                   Music
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className={`text-lg text-light hover:text-secondary transition-colors ${location.pathname === '/contact' ? 'text-secondary font-medium' : ''}`} aria-current={location.pathname === '/contact' ? 'page' : undefined}>
+                <Link to="/events" className={`text-base text-light hover:text-secondary transition-colors font-normal ${location.pathname === '/events' ? 'text-secondary font-semibold' : ''}`} aria-current={location.pathname === '/events' ? 'page' : undefined}>
+                  Events
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className={`text-base text-light hover:text-secondary transition-colors font-normal ${location.pathname === '/contact' ? 'text-secondary font-semibold' : ''}`} aria-current={location.pathname === '/contact' ? 'page' : undefined}>
                   Contact
                 </Link>
               </li>
@@ -78,38 +83,36 @@ export const Header = () => {
         {/* Mobile Navigation Overlay */}
         {isMenuOpen && <div id="mobile-menu" className="fixed inset-0 bg-primary z-[45] md:hidden flex flex-col items-center justify-center">
             <div className="text-center mb-8">
-              <span className="text-3xl font-['Rockwell',serif] font-bold text-light">
-                Cafe<span className="text-secondary">Crave</span>
-              </span>
+              <img src={cafeLogo} alt="Cafe Crave Logo" className="h-16" />
             </div>
             <ul className="flex flex-col items-center space-y-6">
               <li>
-                <Link to="/" className={`text-4xl text-light hover:text-secondary transition-all duration-200 ${location.pathname === '/' ? 'text-secondary font-bold text-5xl underline decoration-4 underline-offset-8 scale-110 inline-block' : ''}`} onClick={() => setIsMenuOpen(false)} aria-current={location.pathname === '/' ? 'page' : undefined}>
+                <Link to="/" className={`text-4xl text-light hover:text-secondary transition-colors duration-200 font-light ${location.pathname === '/' ? 'text-secondary font-bold' : ''}`} onClick={() => setIsMenuOpen(false)} aria-current={location.pathname === '/' ? 'page' : undefined}>
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/about" className={`text-4xl text-light hover:text-secondary transition-all duration-200 ${location.pathname === '/about' ? 'text-secondary font-bold text-5xl underline decoration-4 underline-offset-8 scale-110 inline-block' : ''}`} onClick={() => setIsMenuOpen(false)} aria-current={location.pathname === '/about' ? 'page' : undefined}>
+                <Link to="/about" className={`text-4xl text-light hover:text-secondary transition-colors duration-200 font-light ${location.pathname === '/about' ? 'text-secondary font-bold' : ''}`} onClick={() => setIsMenuOpen(false)} aria-current={location.pathname === '/about' ? 'page' : undefined}>
                   Our Vibe
                 </Link>
               </li>
               <li>
-                <Link to="/menu" className={`text-4xl text-light hover:text-secondary transition-all duration-200 ${location.pathname === '/menu' ? 'text-secondary font-bold text-5xl underline decoration-4 underline-offset-8 scale-110 inline-block' : ''}`} onClick={() => setIsMenuOpen(false)} aria-current={location.pathname === '/menu' ? 'page' : undefined}>
+                <Link to="/menu" className={`text-4xl text-light hover:text-secondary transition-colors duration-200 font-light ${location.pathname === '/menu' ? 'text-secondary font-bold' : ''}`} onClick={() => setIsMenuOpen(false)} aria-current={location.pathname === '/menu' ? 'page' : undefined}>
                   Menu
                 </Link>
               </li>
               <li>
-                <Link to="/music" className={`text-4xl text-light hover:text-secondary transition-all duration-200 ${location.pathname === '/music' ? 'text-secondary font-bold text-5xl underline decoration-4 underline-offset-8 scale-110 inline-block' : ''}`} onClick={() => setIsMenuOpen(false)} aria-current={location.pathname === '/music' ? 'page' : undefined}>
+                <Link to="/music" className={`text-4xl text-light hover:text-secondary transition-colors duration-200 font-light ${location.pathname === '/music' ? 'text-secondary font-bold' : ''}`} onClick={() => setIsMenuOpen(false)} aria-current={location.pathname === '/music' ? 'page' : undefined}>
                   Music
                 </Link>
               </li>
               <li>
-                <Link to="/events" className={`text-4xl text-light hover:text-secondary transition-all duration-200 ${location.pathname === '/events' ? 'text-secondary font-bold text-5xl underline decoration-4 underline-offset-8 scale-110 inline-block' : ''}`} onClick={() => setIsMenuOpen(false)} aria-current={location.pathname === '/events' ? 'page' : undefined}>
+                <Link to="/events" className={`text-4xl text-light hover:text-secondary transition-colors duration-200 font-light ${location.pathname === '/events' ? 'text-secondary font-bold' : ''}`} onClick={() => setIsMenuOpen(false)} aria-current={location.pathname === '/events' ? 'page' : undefined}>
                   Events
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className={`text-4xl text-light hover:text-secondary transition-all duration-200 ${location.pathname === '/contact' ? 'text-secondary font-bold text-5xl underline decoration-4 underline-offset-8 scale-110 inline-block' : ''}`} onClick={() => setIsMenuOpen(false)} aria-current={location.pathname === '/contact' ? 'page' : undefined}>
+                <Link to="/contact" className={`text-4xl text-light hover:text-secondary transition-colors duration-200 font-light ${location.pathname === '/contact' ? 'text-secondary font-bold' : ''}`} onClick={() => setIsMenuOpen(false)} aria-current={location.pathname === '/contact' ? 'page' : undefined}>
                   Contact
                 </Link>
               </li>
@@ -118,3 +121,4 @@ export const Header = () => {
       </header>
     </>;
 };
+
