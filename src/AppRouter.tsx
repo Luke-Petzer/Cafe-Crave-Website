@@ -10,7 +10,7 @@ import { ScrollToTop } from './components/ScrollToTop';
 export function AppRouter() {
   return (
     <BrowserRouter>
-      <ScrollToTop behavior="smooth" />
+      <ScrollToTop behavior="auto" />
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/about" element={<About />} />
