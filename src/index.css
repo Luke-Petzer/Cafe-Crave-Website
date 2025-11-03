@@ -119,46 +119,17 @@ section:not([class*="scroll-mt"]),
 }
 
 /* Section-based animation - one animation per section */
-.section-animate {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
+
 
 /* Ensure sections become visible when the class is added */
-.section-animate.section-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 /* Fallback: make sections visible after a short delay if JS hasn't loaded */
-@keyframes makeVisible {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.section-animate {
-  animation: makeVisible 0.6s ease-out 0.1s forwards;
-}
 
 /* Override with instant visibility when the observer adds the class */
-.section-animate.section-visible {
-  animation: none;
-  opacity: 1;
-  transform: translateY(0);
-}
+
 
 /* Respect user's motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  .section-animate {
-    opacity: 1;
-    transform: none;
-    transition: none;
-    animation: none;
-  }
-}
+
 /* Vinyl disc styling */
 .vinyl-disc {
   background: radial-gradient(
