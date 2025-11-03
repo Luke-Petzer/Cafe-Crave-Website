@@ -15,7 +15,7 @@ export const About = () => {
       <ScrollAnimationObserver />
       <Header />
       {/* Section 1: Hero - "Our Story" - DARK */}
-      <section id="main-content" className="section-animate section-dark main-content relative min-h-[600px] md:min-h-[650px] flex items-center justify-center pt-20">
+      <section id="main-content" className="section-dark main-content relative min-h-[600px] md:min-h-[650px] flex items-center justify-center pt-20">
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Cafe Crave interior" className="w-full h-full object-cover brightness-50" />
         </div>
@@ -33,7 +33,7 @@ export const About = () => {
         </div>
       </section>
       {/* Section 2: Community & Atmosphere - "Stay Awhile" */}
-      <section className="section-animate section-light py-16 md:py-24">
+      <section className="section-light py-16 md:py-24">
         <div className="container mx-auto px-6 md:px-10 lg:px-16">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             <div>
@@ -66,7 +66,7 @@ export const About = () => {
         </div>
       </section>
       {/* Section 3: Coffee & Food Philosophy - "The Good Stuff" */}
-      <section className="section-animate section-red py-16 md:py-24">
+      <section className="section-red py-16 md:py-24">
         <div className="container mx-auto px-6 md:px-10 lg:px-16">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-center mb-12">
             The Good Stuff
@@ -99,7 +99,7 @@ export const About = () => {
         </div>
       </section>
       {/* Section 4: Music Identity - "On the Turntable" */}
-      <section className="section-animate section-dark py-16 md:py-24">
+      <section className="section-dark py-16 md:py-24">
         <div className="container mx-auto px-6 md:px-10 lg:px-16">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             <div>

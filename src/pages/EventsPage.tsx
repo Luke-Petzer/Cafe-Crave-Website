@@ -8,7 +8,7 @@ import { CalendarIcon, MusicIcon, UsersIcon, CoffeeIcon, ArrowRightIcon, CheckCi
 
 export const EventsPage = () => {
   return (
-    <div className="min-h-screen animate-fade-in">
+    <div className="min-h-screen">
       <SEO
         title="Events"
         description="Join us for exciting events at Crave Café. Live music, community gatherings, and special occasions in Cape Town."
@@ -18,7 +18,7 @@ export const EventsPage = () => {
       <Header />
       <main>
         {/* Hero Section - Image Hero */}
-        <section id="main-content" className="section-animate relative min-h-[600px] md:min-h-[650px] flex items-center justify-center overflow-hidden pt-20">
+        <section id="main-content" className="relative min-h-[600px] md:min-h-[650px] flex items-center justify-center overflow-hidden pt-20">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: 'url(/assets/woman-with-cappuccino-cup-wooden-table.jpg)' }}

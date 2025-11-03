@@ -1,111 +1,87 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { MusicIcon, PlayIcon, PauseIcon, ChevronLeftIcon, ChevronRightIcon, ArrowRightIcon, VolumeIcon, Volume2Icon } from 'lucide-react';
+import { useState } from 'react';
+import { MusicIcon, ChevronLeftIcon, ChevronRightIcon, ArrowRightIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
+
+// Import album artwork
+import queenNightAtTheOpera from '../assets/queen-night-at-the-opera.webp';
+import elvisPresleyGoldenHits from '../assets/elvis-presley-golden-hits.webp';
+import bruceSpringsteenBornInTheUsa from '../assets/bruce-springsteen-born-in-the-usa.webp';
+
 export const MusicFeature = () => {
   const [currentAlbum, setCurrentAlbum] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [volume, setVolume] = useState(70);
-  const [rotationAngle, setRotationAngle] = useState(0);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  // Sample album data - in production this would come from a database
+
+  // Featured album data
   const albums = [{
     id: 1,
-    title: 'Miles Davis - Kind of Blue',
-    image: 'https://images.unsplash.com/photo-1619983081563-430f63602796?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80',
-    description: 'A timeless jazz masterpiece that perfectly complements your morning coffee. This 1959 album features legendary tracks like "So What" and "Blue in Green" that create the perfect atmosphere for relaxation and conversation.',
+    title: "A Night at the Opera",
+    artist: "Queen",
+    year: "1975",
+    image: queenNightAtTheOpera,
+    description: "An epic, genre-bending masterpiece from Queen. While 'Bohemian Rhapsody' is legendary, 'You're My Best Friend' is the ultimate feel-good cafe track that brings smiles to everyone in the room.",
     tracks: [{
       number: '01',
-      title: 'So What',
-      duration: '9:22'
+      title: "You're My Best Friend",
+      duration: '2:52'
     }, {
       number: '02',
-      title: 'Freddie Freeloader',
-      duration: '9:46'
+      title: 'Love of My Life',
+      duration: '3:39'
     }, {
       number: '03',
-      title: 'Blue in Green',
-      duration: '5:37'
+      title: 'Bohemian Rhapsody',
+      duration: '5:55'
     }]
   }, {
     id: 2,
-    title: 'John Coltrane - A Love Supreme',
-    image: 'https://images.unsplash.com/photo-1629276301820-e9b4b98aa800?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-    description: "A spiritual jazz album that elevates any cafe experience. Coltrane's masterpiece is perfect for those thoughtful afternoon conversations or peaceful solo moments with a cappuccino.",
+    title: "Elvis' Golden Hits",
+    artist: "Elvis Presley",
+    year: "1958",
+    image: elvisPresleyGoldenHits,
+    description: "The original King of Rock 'n' Roll at his finest. This collection defined a generation with timeless hits like 'Hound Dog' and 'Jailhouse Rock' that still get toes tapping today.",
     tracks: [{
       number: '01',
-      title: 'Part I: Acknowledgement',
-      duration: '7:42'
+      title: 'Hound Dog',
+      duration: '2:16'
     }, {
       number: '02',
-      title: 'Part II: Resolution',
-      duration: '7:22'
+      title: 'Jailhouse Rock',
+      duration: '2:37'
     }, {
       number: '03',
-      title: 'Part III: Pursuance',
-      duration: '10:41'
+      title: 'Love Me Tender',
+      duration: '2:41'
     }]
   }, {
     id: 3,
-    title: 'Nina Simone - I Put A Spell On You',
-    image: 'https://images.unsplash.com/photo-1629276301820-e9b4b98aa800?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-    description: 'The incomparable Nina Simone delivers soulful interpretations that pair perfectly with our signature drinks. Her rich voice fills the café with warmth and character.',
+    title: 'Born in the U.S.A.',
+    artist: 'Bruce Springsteen',
+    year: "1984",
+    image: bruceSpringsteenBornInTheUsa,
+    description: "An American rock icon at the peak of his powers. From the anthemic title track to 'Dancing in the Dark', this album is pure energy and storytelling brilliance.",
     tracks: [{
       number: '01',
-      title: 'I Put A Spell On You',
-      duration: '2:35'
+      title: 'Born in the U.S.A.',
+      duration: '4:39'
     }, {
       number: '02',
-      title: 'Feeling Good',
-      duration: '2:57'
+      title: 'Dancing in the Dark',
+      duration: '4:01'
     }, {
       number: '03',
-      title: 'Ne Me Quitte Pas',
-      duration: '3:35'
+      title: 'Glory Days',
+      duration: '4:15'
     }]
   }];
+
   const nextAlbum = () => {
     setCurrentAlbum(prev => prev === albums.length - 1 ? 0 : prev + 1);
   };
+
   const prevAlbum = () => {
     setCurrentAlbum(prev => prev === 0 ? albums.length - 1 : prev - 1);
   };
-  // Toggle play/pause
-  const togglePlayback = () => {
-    setIsPlaying(!isPlaying);
-  };
-  // Handle volume change
-  const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setVolume(parseInt(e.target.value));
-  };
-  // Animate vinyl rotation when playing
-  useEffect(() => {
-    if (isPlaying) {
-      // Start continuous rotation
-      intervalRef.current = setInterval(() => {
-        setRotationAngle(prev => prev + 0.5);
-      }, 30);
-    } else {
-      // Stop rotation
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    }
-    // Cleanup interval on unmount or when play state changes
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [isPlaying, currentAlbum]);
-  // Cleanup interval on unmount
-  useEffect(() => {
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, []);
-  return <section className="section-animate section-dark py-20 md:py-28">
+
+  return <section className="section-dark py-20 md:py-28">
       <div className="container mx-auto px-6 md:px-10 lg:px-16">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-['Rockwell',serif] font-bold mb-4">
@@ -113,8 +89,7 @@ export const MusicFeature = () => {
           </h2>
           <div className="w-24 h-1 bg-accent mx-auto mb-6"></div>
           <p className="opacity-90 max-w-2xl mx-auto text-lg">
-            This week's featured vinyl and the soundtrack to your Crave
-            experience
+            This week's featured vinyl from our collection
           </p>
         </div>
         <div className="vinyl-player-container relative max-w-6xl mx-auto mb-12">
@@ -122,15 +97,12 @@ export const MusicFeature = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Vinyl Record Display */}
             <div className="vinyl-player-wrapper relative">
-              <div className="vinyl-record-container aspect-square rounded-full relative shadow-2xl" style={{
-              transform: isPlaying ? `rotate(${rotationAngle}deg)` : 'rotate(0deg)',
-              transition: isPlaying ? 'none' : 'transform 0.5s ease-out'
-            }}>
+              <div className="vinyl-record-container aspect-square rounded-full relative shadow-2xl">
                 {/* Vinyl record */}
                 <div className="absolute inset-0 vinyl-record rounded-full bg-primary">
                   <div className="absolute inset-0 vinyl-grooves rounded-full"></div>
                   <div className="absolute inset-[30%] rounded-full bg-primary flex items-center justify-center overflow-hidden">
-                    <img src={albums[currentAlbum].image} alt={`Album artwork - ${albums[currentAlbum].title}`} className="w-full h-full object-cover" />
+                    <img src={albums[currentAlbum].image} alt={`Album artwork - ${albums[currentAlbum].title} by ${albums[currentAlbum].artist}`} className="w-full h-full object-cover" />
                   </div>
                   <div className="absolute inset-[48%] rounded-full bg-primary border-2 border-secondary"></div>
                 </div>
@@ -139,30 +111,24 @@ export const MusicFeature = () => {
               <div className="absolute -bottom-4 -left-4 bg-primary text-light p-3 rounded-lg shadow-md transform -rotate-6">
                 <MusicIcon size={20} />
               </div>
-              {/* Player Controls */}
-              <div className="mt-8 flex flex-col items-center">
-                {/* Play/Pause Button */}
-                <button onClick={togglePlayback} className="bg-accent hover:bg-opacity-90 text-light p-4 rounded-full shadow-md transition-colors mb-6" aria-label={isPlaying ? 'Pause' : 'Play'}>
-                  {isPlaying ? <PauseIcon size={30} /> : <PlayIcon size={30} />}
-                </button>
-                {/* Volume Control */}
-                <div className="flex items-center space-x-3 w-full max-w-xs">
-                  <VolumeIcon size={20} className="text-light" />
-                  <input type="range" min="0" max="100" value={volume} onChange={handleVolumeChange} className="w-full h-2 bg-light bg-opacity-30 rounded-lg appearance-none cursor-pointer" aria-label="Volume control" />
-                  <Volume2Icon size={20} className="text-light" />
-                </div>
-              </div>
             </div>
             {/* Album Info */}
             <div>
-              <h3 className="text-3xl font-serif font-bold text-light mb-4">
+              <h3 className="text-3xl font-serif font-bold text-light mb-2">
                 {albums[currentAlbum].title}
               </h3>
+              <p className="text-xl text-secondary mb-1">
+                {albums[currentAlbum].artist}
+              </p>
+              <p className="text-sm text-light opacity-70 mb-6">
+                {albums[currentAlbum].year}
+              </p>
               <p className="text-light opacity-90 mb-6">
                 {albums[currentAlbum].description}
               </p>
               {/* Track List */}
-              <div className="space-y-3">
+              <div className="space-y-3 mb-8">
+                <h4 className="text-sm font-semibold text-light opacity-80 uppercase tracking-wide">Featured Tracks:</h4>
                 {albums[currentAlbum].tracks.map(track => <div key={track.number} className="flex items-center">
                     <span className="text-lightBg font-bold mr-2">
                       {track.number}
@@ -197,3 +163,4 @@ export const MusicFeature = () => {
       </div>
     </section>;
 };
+

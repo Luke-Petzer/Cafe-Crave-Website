@@ -173,7 +173,7 @@ export const InstagramFeed: React.FC<InstagramFeedProps> = ({
 
   if (standalone) {
     return (
-      <section className="section-animate bg-redBg text-redText py-20 md:py-28">
+      <section className="bg-redBg text-redText py-20 md:py-28">
         <div className="container mx-auto px-6 md:px-10 lg:px-16">
           {content}
         </div>

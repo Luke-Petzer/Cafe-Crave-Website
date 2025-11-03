@@ -37,7 +37,7 @@ export const MusicPage = () => {
       );
 
   return (
-    <div className="min-h-screen animate-fade-in">
+    <div className="min-h-screen">
       <SEO
         title="Music Collection"
         description="Explore our curated vinyl collection at Crave Café. Discover classic albums and enjoy the warm sound of vinyl records."
@@ -47,7 +47,7 @@ export const MusicPage = () => {
       <Header />
       <main>
         {/* Hero Section - DARK */}
-        <section id="main-content" className="section-animate section-dark relative min-h-[600px] md:min-h-[650px] flex items-center justify-center pt-20">
+        <section id="main-content" className="section-dark relative min-h-[600px] md:min-h-[650px] flex items-center justify-center pt-20">
           <div className="absolute inset-0 z-0 overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1594623930572-300a3011d9ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
@@ -66,7 +66,7 @@ export const MusicPage = () => {
           </div>
         </section>
 
-        <section className="section-animate section-dark py-20 md:py-28">
+        <section className="section-dark py-20 md:py-28">
           <div className="container mx-auto px-6 md:px-10 lg:px-16">
             <div className="mb-8">
               <GenreFilter
