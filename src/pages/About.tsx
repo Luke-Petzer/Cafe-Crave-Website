@@ -60,7 +60,7 @@ export const About = () => {
               </div>
             </div>
             <div className="order-first md:order-last">
-              <img src="https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1072&q=80" alt="People enjoying board games" className="rounded-lg shadow-xl w-full h-[300px] md:h-[400px] object-cover" />
+              <img src="src/assets/board-games.webp" alt="People enjoying board games" className="rounded-lg shadow-xl w-full h-[300px] md:h-[400px] object-cover" />
             </div>
           </div>
         </div>
@@ -92,8 +92,8 @@ export const About = () => {
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1037&q=80" alt="Latte art" className="rounded-lg h-[180px] object-cover" />
-              <img src="https://images.unsplash.com/photo-1557925923-cd4648e211a0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80" alt="Freshly baked pastries" className="rounded-lg h-[180px] object-cover" />
+              <img src="src/assets/cuppacino.webp" alt="Latte art" className="rounded-lg w-full h-full object-cover shadow-md" />
+              <img src="src/assets/red-velvet.webp" alt="Freshly baked pastries" className="rounded-lg w-full h-full object-cover shadow-md" />
             </div>
           </div>
         </div>
@@ -103,7 +103,7 @@ export const About = () => {
         <div className="container mx-auto px-6 md:px-10 lg:px-16">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             <div>
-              <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Vinyl records" className="rounded-lg shadow-xl w-full h-[300px] object-cover" />
+              <img src="src/assets/vinyl-records.webp" alt="Vinyl records" className="rounded-lg shadow-xl w-full h-[300px] object-cover" />
             </div>
             <div>
               <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">

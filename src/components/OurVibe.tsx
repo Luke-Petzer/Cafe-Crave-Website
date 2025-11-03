@@ -33,14 +33,11 @@ export const OurVibe = () => {
                 of quality and craftsmanship.
               </p>
             </div>
-            <div className="px-6 pb-6 text-xs text-lightText opacity-70">
-              Photo: James Fitzgerald via Unsplash
-            </div>
           </div>
           {/* Always Spinning */}
           <div className="bg-lightBg bg-opacity-95 rounded-lg shadow-md overflow-hidden transform transition-all duration-150 hover:-translate-y-2 hover:shadow-lg focus-within:ring-2 focus-within:ring-accent focus-within:ring-opacity-50 border border-lightText border-opacity-10" tabIndex={0}>
             <div className="h-48 overflow-hidden">
-              <img src="src/assets/always-spinning.webp" alt="Close-up of vinyl records on wooden surface with album sleeve visible" className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
+              <img src="src/assets/vinyl-wall.webp" alt="Close-up of vinyl records on wooden surface with album sleeve visible" className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
             </div>
             <div className="p-6">
               <div className="flex items-center mb-4">
@@ -57,14 +54,11 @@ export const OurVibe = () => {
                 favorites or discover something new.
               </p>
             </div>
-            <div className="px-6 pb-6 text-xs text-lightText opacity-80">
-              Photo: Mick Haupt via Unsplash
-            </div>
           </div>
           {/* Stay Awhile */}
           <div className="bg-lightBg bg-opacity-95 rounded-lg shadow-md overflow-hidden transform transition-all duration-150 hover:-translate-y-2 hover:shadow-lg focus-within:ring-2 focus-within:ring-accent focus-within:ring-opacity-50 border border-lightText border-opacity-10" tabIndex={0}>
             <div className="h-48 overflow-hidden">
-              <img src="src/assets/Stay-a-while.webp" alt="Cozy café interior with wooden tables, board games, and warm ambient lighting" className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
+              <img src="src/assets/board-games.webp" alt="Cozy café interior with wooden tables, board games, and warm ambient lighting" className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
             </div>
             <div className="p-6">
               <div className="flex items-center mb-4">
