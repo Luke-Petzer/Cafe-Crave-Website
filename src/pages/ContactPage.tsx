@@ -94,7 +94,7 @@ export const ContactPage = () => {
       </section>
 
       {/* Contact Section - DARK */}
-      <section className="section-animate section-dark py-16 md:py-20">
+      <section className="section-dark py-16 md:py-20">
         <div className="container mx-auto px-6 md:px-10 lg:px-16">
           <div id="contact">
             <div className="grid md:grid-cols-2 gap-8 md:gap-10 max-w-6xl mx-auto">
