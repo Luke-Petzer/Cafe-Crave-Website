@@ -8,6 +8,7 @@ import { GenreFilter } from '../components/music/GenreFilter';
 import { ScrollAnimationObserver } from '../components/ScrollAnimationObserver';
 import { albumsData } from '../data/albumsData';
 import { Album } from '../types/album';
+import musicImg from '../assets/music.webp';
 
 export const MusicPage = () => {
   const [selectedAlbum, setSelectedAlbum] = useState<Album | null>(null);
@@ -50,7 +51,7 @@ export const MusicPage = () => {
         <section className="section-dark relative min-h-[600px] md:min-h-[650px] flex items-center justify-center">
           <div className="absolute inset-0 z-0 overflow-hidden animate-hero-zoom">
             <img
-              src="https://images.unsplash.com/photo-1594623930572-300a3011d9ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+              src={musicImg}
               alt="A record rack filled with classic vinyl albums at Crave Café"
               className="w-full h-full object-cover brightness-50"
             />
@@ -66,7 +67,7 @@ export const MusicPage = () => {
           </div>
         </section>
 
-        <section className="section-animate section-dark py-20 md:py-28">
+        <section className="section-dark py-20 md:py-28">
           <div className="container mx-auto px-6 md:px-10 lg:px-16">
             <div className="mb-8">
               <GenreFilter

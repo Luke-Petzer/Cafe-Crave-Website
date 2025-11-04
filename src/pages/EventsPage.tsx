@@ -4,6 +4,7 @@ import { SEO } from '../components/SEO';
 import { EventPreview } from '../components/EventPreview';
 import { GoogleReviews } from '../components/GoogleReviews';
 import { ScrollAnimationObserver } from '../components/ScrollAnimationObserver';
+import  eventsImg  from '../assets/events.webp';
 import { CalendarIcon, MusicIcon, UsersIcon, CoffeeIcon, ArrowRightIcon, CheckCircleIcon } from 'lucide-react';
 
 export const EventsPage = () => {
@@ -21,7 +22,7 @@ export const EventsPage = () => {
         <section className="relative min-h-[600px] md:min-h-[650px] flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 overflow-hidden animate-hero-zoom">
             <img
-              src="/assets/woman-with-cappuccino-cup-wooden-table.jpg"
+              src={eventsImg}
               alt="Interior of Crave Café set up for a private event"
               className="w-full h-full object-cover"
             />

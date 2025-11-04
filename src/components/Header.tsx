@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { MenuIcon, XIcon } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import cafeLogoIcon from '../assets/cci.png';
+
 // import cafeLogo from '../assets/cafe-logo.svg'; // I've commented this out and used a placeholder below
 
 export const Header = () => {
@@ -46,15 +48,24 @@ export const Header = () => {
             >
                 <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 flex justify-between items-center">
                     <div className="flex items-center">
-                        <Link to="/" className="flex items-center" aria-label="Cafe Crave - Home">
-                            {/* Logo size is now one consistent size */}
-                            <img
-                                // src={cafeLogo}
-                                src="https://placehold.co/128x128/E9D8C4/704214?text=Logo"
-                                alt="Cafe Crave Logo"
-                                className="h-8 md:h-12" // One consistent, clean size
-                            />
+                        <Link to="/" className="flex items-center gap-4" aria-label="Cafe Crave - Home">
+                            {/* Logo with circular background, hover and focus states */}
+                            <div
+                                className="rounded-full bg-[#EBD4B7] p-2 transition-all duration-200 ease-in-out hover:opacity-80 focus-within:opacity-80 focus-within:ring-2 focus-within:ring-secondary focus-within:ring-offset-2 focus-within:ring-offset-primary"
+                            >
+                                <img
+                                    src={cafeLogoIcon}
+                                    alt=""
+                                    className="h-8 md:h-12"
+                                />
+                            </div>
+
+                            {/* Cafe Crave text - hidden on mobile, visible on desktop */}
+                            <span className="hidden md:block text-2xl font-bold text-light">
+                                Cafe Crave
+                            </span>
                         </Link>
+
                     </div>
                     {/* Mobile menu button */}
                     <div className="md:hidden">
@@ -102,13 +113,14 @@ export const Header = () => {
                 {isMenuOpen && (
                     <div id="mobile-menu" className="fixed inset-0 bg-primary z-[45] md:hidden flex flex-col items-center justify-center">
                         <div className="text-center mb-8">
-                            {/* This logo is in the mobile menu overlay, so I left its size as-is */}
-                            <img
-                                // src={cafeLogo}
-                                src="https.placehold.co/128x128/E9D8C4/704214?text=Logo"
-                                alt="Cafe Crave Logo"
-                                className="h-12"
-                            />
+                            {/* Mobile menu logo with circular background */}
+                            <div className="rounded-full bg-[#EBD4B7] p-2 inline-block">
+                                <img
+                                    src={cafeLogoIcon}
+                                    alt="Cafe Crave Logo"
+                                    className="h-12"
+                                />
+                            </div>
                         </div>
                         <ul className="flex flex-col items-center space-y-6">
                             <li>
