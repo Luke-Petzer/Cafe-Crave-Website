@@ -7,22 +7,27 @@ import { InstagramFeed } from './components/InstagramFeed';
 import { GoogleReviews } from './components/GoogleReviews';
 import { Footer } from './components/Footer';
 import { SEO } from './components/SEO';
+import { ScrollAnimationObserver } from './components/ScrollAnimationObserver';
+
 export function App() {
-  return <div className="min-h-screen">
-      <SEO
-        title="Home"
-        description="Crave Café - Where coffee meets culture. Experience exceptional coffee, vinyl records, and community in Cape Town's retro-inspired café with board games and live events."
-        keywords="café, coffee shop, vinyl café, board games, Cape Town, retro café, live music, events, artisan coffee"
-      />
-      <Header />
-      <main>
-        <Hero />
-        <OurVibe />
-        <MenuPreview />
-        <MusicFeature />
-          <GoogleReviews />
-        <InstagramFeed />
-      </main>
-      <Footer />
-    </div>;
+    return (
+        <div className="min-h-screen">
+            <SEO
+                title="Crave Café | Halal-Friendly Café & Vinyl Music Hub in Claremont"
+                description="Visit Crave Café in Claremont, Cape Town. A unique, retro-inspired halal café with artisan coffee, vinyl records, and delicious all-day meals. Your new local hangout."
+                keywords="halal café claremont, coffee shop claremont, vinyl café cape town, halal breakfast claremont, retro cafe"
+            />
+            <ScrollAnimationObserver />
+            <Header />
+            <main id="main-content" className="pt-16 md:pt-20">
+                <Hero />
+                <OurVibe />
+                <MenuPreview />
+                <MusicFeature />
+                <GoogleReviews />
+                <InstagramFeed />
+            </main>
+            <Footer />
+        </div>
+    );
 }

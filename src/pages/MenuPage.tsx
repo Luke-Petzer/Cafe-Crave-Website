@@ -144,26 +144,27 @@ export const MenuPage = () => {
         return (
           <div className="min-h-screen">
             <SEO
-              title="Our Menu"
-              description="Explore Crave Café's menu featuring artisan coffee, specialty drinks, breakfast, burgers, sandwiches, and more. Fresh ingredients, local suppliers, exceptional taste."
-              keywords="café menu, coffee menu, breakfast Cape Town, burgers, sandwiches, specialty coffee, artisan food"
+              title="Our Halal-Friendly Menu | Crave Café Claremont (Breakfast, Burgers & Coffee)"
+              description="Explore the 100% halal-friendly menu at Crave Café. We serve artisan coffee, all-day breakfast, gourmet burgers, grills, and desserts in Claremont."
+              keywords="halal menu claremont, halal breakfast cape town, halal burgers claremont, artisan coffee, crave cafe menu"
             />
             <ScrollAnimationObserver />
             <Header />
+            <main id="main-content" className="pt-16 md:pt-20">
             {/* Hero Section - DARK */}
-            <section id="main-content" className="section-dark main-content relative min-h-[600px] md:min-h-[650px] flex items-center justify-center pt-20">
-                <div className="absolute inset-0 z-0 overflow-hidden">
+            <section className="section-dark relative min-h-[600px] md:min-h-[650px] flex items-center justify-center">
+                <div className="absolute inset-0 z-0 overflow-hidden animate-hero-zoom">
                     <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Coffee and pastries on a wooden table" className="w-full h-full object-cover brightness-50 transition-transform duration-700 hover:scale-110" loading="lazy" />
                 </div>
                 <div className="relative z-10 text-center px-6">
-                    <h1 className="text-5xl md:text-6xl lg:text-7xl font-['Rockwell',serif] font-bold mb-6 leading-tight">
-                        Our Menu
+                    <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight">
+                        Our Halal-Friendly Menu
                     </h1>
                     <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
                         From all-day breakfasts to handcrafted drinks — something for
                         everyone.
                     </p>
-                    <a href="#menu-categories" className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center font-medium transition-all duration-200 ease-out hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-0">
+                    <a href="#menu-categories" className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center justify-center font-medium transition-all duration-200 ease-out hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-0 will-change-transform">
                         <ArrowDownIcon size={20} className="mr-2" />
                         Browse Menu
                     </a>
@@ -230,7 +231,7 @@ export const MenuPage = () => {
                                 <img src={breakfastImg} alt="" className="w-full h-full object-contain mix-blend-multiply" />
                             </div>
                             <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-3xl font-['Rockwell',serif] font-bold text-primary uppercase tracking-wider">
+                                <h2 className="text-3xl font-serif font-bold text-primary uppercase tracking-wider">
                                     Breakfast
                                 </h2>
                                 <button onClick={() => toggleSection('breakfast')} className="md:hidden bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.breakfast ? 'Collapse Breakfast section' : 'Expand Breakfast section'} aria-expanded={expandedSections.breakfast}>
@@ -402,7 +403,7 @@ export const MenuPage = () => {
                                 <img src={burgersImg} alt="" className="w-full h-full object-contain mix-blend-multiply" />
                             </div>
                             <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-3xl font-['Rockwell',serif] font-bold text-primary uppercase tracking-wider">
+                                <h2 className="text-3xl font-serif font-bold text-primary uppercase tracking-wider">
                                     Burgers
                                 </h2>
                                 <button onClick={() => toggleSection('burgers')} className="md:hidden bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.burgers ? 'Collapse Burgers section' : 'Expand Burgers section'} aria-expanded={expandedSections.burgers}>
@@ -542,7 +543,7 @@ export const MenuPage = () => {
                                 <img src={toastImg} alt="" className="w-full h-full object-contain mix-blend-multiply" />
                             </div>
                             <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-3xl font-['Rockwell',serif] font-bold text-primary uppercase tracking-wider">
+                                <h2 className="text-3xl font-serif font-bold text-primary uppercase tracking-wider">
                                     Sandwiches
                                 </h2>
                                 <button onClick={() => toggleSection('sandwiches')} className="md:hidden bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.sandwiches ? 'Collapse Sandwiches section' : 'Expand Sandwiches section'} aria-expanded={expandedSections.sandwiches}>
@@ -685,7 +686,7 @@ export const MenuPage = () => {
                                 <img src={wrapImg} alt="" className="w-full h-full object-contain mix-blend-multiply" />
                             </div>
                             <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-3xl font-['Rockwell',serif] font-bold text-primary uppercase tracking-wider">
+                                <h2 className="text-3xl font-serif font-bold text-primary uppercase tracking-wider">
                                     Wraps & Pitas
                                 </h2>
                                 <button onClick={() => toggleSection('wraps')} className="md:hidden bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.wraps ? 'Collapse Wraps section' : 'Expand Wraps section'} aria-expanded={expandedSections.wraps}>
@@ -827,7 +828,7 @@ export const MenuPage = () => {
                                 <img src={coffeeImg} alt="" className="w-full h-full object-contain mix-blend-multiply" />
                             </div>
                             <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-3xl font-['Rockwell',serif] font-bold text-primary uppercase tracking-wider">
+                                <h2 className="text-3xl font-serif font-bold text-primary uppercase tracking-wider">
                                     Coffee
                                 </h2>
                                 <button onClick={() => toggleSection('coffee')} className="md:hidden bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.coffee ? 'Collapse Coffee section' : 'Expand Coffee section'} aria-expanded={expandedSections.coffee}>
@@ -977,7 +978,7 @@ export const MenuPage = () => {
                                 <img src={teaImg} alt="" className="w-full h-full object-contain mix-blend-multiply" />
                             </div>
                             <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-3xl font-['Rockwell',serif] font-bold text-primary uppercase tracking-wider">
+                                <h2 className="text-3xl font-serif font-bold text-primary uppercase tracking-wider">
                                     Tea
                                 </h2>
                                 <button onClick={() => toggleSection('tea')} className="md:hidden bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.tea ? 'Collapse Tea section' : 'Expand Tea section'} aria-expanded={expandedSections.tea}>
@@ -1082,7 +1083,7 @@ export const MenuPage = () => {
                                 <img src={beverageImg} alt="" className="w-full h-full object-contain mix-blend-multiply" />
                             </div>
                             <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-3xl font-['Rockwell',serif] font-bold text-primary uppercase tracking-wider">
+                                <h2 className="text-3xl font-serif font-bold text-primary uppercase tracking-wider">
                                     Beverages
                                 </h2>
                                 <button onClick={() => toggleSection('beverages')} className="md:hidden bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.beverages ? 'Collapse Beverages section' : 'Expand Beverages section'} aria-expanded={expandedSections.beverages}>
@@ -1248,7 +1249,7 @@ export const MenuPage = () => {
                                 <img src={shakesImg} alt="" className="w-full h-full object-contain mix-blend-multiply" />
                             </div>
                             <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-3xl font-['Rockwell',serif] font-bold text-primary uppercase tracking-wider">
+                                <h2 className="text-3xl font-serif font-bold text-primary uppercase tracking-wider">
                                     Signature Drinks
                                 </h2>
                                 <button onClick={() => toggleSection('signature')} className="md:hidden bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.signature ? 'Collapse Signature Drinks section' : 'Expand Signature Drinks section'} aria-expanded={expandedSections.signature}>
@@ -1351,10 +1352,10 @@ export const MenuPage = () => {
                 </div>
             </div>
             {/* Call-to-Action */}
-            <section className="bg-primary py-12 md:py-16">
+            <section className="section-animate bg-primary py-12 md:py-16">
                 <div className="container mx-auto px-6 md:px-10 lg:px-16">
                     <div className="max-w-4xl mx-auto text-center">
-                        <h2 className="text-3xl font-['Rockwell',serif] font-bold text-light mb-4">
+                        <h2 className="text-3xl font-serif font-bold text-light mb-4">
                             Order, Visit, Enjoy
                         </h2>
                         <p className="text-light text-lg mb-8">
@@ -1371,6 +1372,7 @@ export const MenuPage = () => {
             <button onClick={scrollToTop} className={`fixed right-6 bottom-6 bg-accent hover:bg-opacity-90 text-light p-3 rounded-full shadow-lg transition-all duration-300 z-40 ${showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`} aria-label="Back to top">
                 <ArrowUpIcon size={24} />
             </button>
+            </main>
             <Footer />
         </div>
     );

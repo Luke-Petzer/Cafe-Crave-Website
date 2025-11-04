@@ -34,10 +34,10 @@ const featuredItems = [
 ];
 export const MenuPreview: React.FC = () => {
     return (
-        <section className="section-red py-20 md:py-28">
+        <section className="section-animate section-red py-20 md:py-28">
             <div className="container mx-auto px-6 md:px-10 lg:px-16">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-['Rockwell',serif] font-bold mb-4">
+                    <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
                         Featured Menu Items
                     </h2>
                     <div className="w-24 h-1 bg-accent mx-auto mb-6"></div>
@@ -51,7 +51,7 @@ export const MenuPreview: React.FC = () => {
 					{featuredItems.map((item) => (
 						<div
 							key={item.id}
-							className="bg-lightBg rounded-lg overflow-hidden shadow-md border border-redText border-opacity-20 transform transition-all duration-150 hover:-translate-y-2 hover:shadow-lg"
+							className="bg-lightBg rounded-lg overflow-hidden shadow-md border border-redText border-opacity-20 transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg"
 						>
 							{/*
 								Image Container Adjustment Guide (Aspect Ratio Method):
@@ -101,7 +101,7 @@ export const MenuPreview: React.FC = () => {
 				<div className="text-center">
 					<Link
 						to="/menu"
-						className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center font-medium transition-all duration-200 ease-out hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
+						className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center justify-center font-medium transition-all duration-200 ease-out hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 will-change-transform"
 					>
 						View Full Menu
 						<ArrowRightIcon size={18} className="ml-2" />

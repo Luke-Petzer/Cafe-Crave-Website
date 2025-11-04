@@ -1,9 +1,15 @@
 import { CoffeeIcon, MusicIcon, UsersIcon } from 'lucide-react';
+
+// Import OurVibe images
+import coffeeImg from '../assets/cuppacino.webp';
+import vinylImg from '../assets/vinyl-wall.webp';
+import boardGamesImg from '../assets/board-games.webp';
+
 export const OurVibe = () => {
-  return <section id="our-vibe" className="section-light py-20 md:py-28">
+  return <section id="our-vibe" className="section-animate section-light py-20 md:py-28">
       <div className="container mx-auto px-6 md:px-10 lg:px-16">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-['Rockwell',serif] font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">
             Our Vibe
           </h2>
           <div className="w-24 h-1 bg-accent mx-auto mb-6"></div>
@@ -14,9 +20,9 @@ export const OurVibe = () => {
         </div>
         <div className="grid md:grid-cols-3 gap-8 md:gap-10 max-w-6xl mx-auto">
           {/* Perfectly Brewed */}
-          <div className="bg-lightBg bg-opacity-95 rounded-lg shadow-md overflow-hidden transform transition-all duration-150 hover:-translate-y-2 hover:shadow-lg focus-within:ring-2 focus-within:ring-accent focus-within:ring-opacity-50 border border-lightText border-opacity-10" tabIndex={0}>
+          <div className="bg-lightBg bg-opacity-95 rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg focus-within:ring-2 focus-within:ring-accent focus-within:ring-opacity-50 border border-lightText border-opacity-10" tabIndex={0}>
             <div className="h-48 overflow-hidden">
-              <img src="src/assets/cuppacino.webp" alt="Close-up of espresso machine with coffee being brewed into a ceramic cup on wooden countertop" className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
+              <img src={coffeeImg} alt="Artisan latte art at Crave Café" className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
             </div>
             <div className="p-6">
               <div className="flex items-center mb-4">
@@ -35,9 +41,9 @@ export const OurVibe = () => {
             </div>
           </div>
           {/* Always Spinning */}
-          <div className="bg-lightBg bg-opacity-95 rounded-lg shadow-md overflow-hidden transform transition-all duration-150 hover:-translate-y-2 hover:shadow-lg focus-within:ring-2 focus-within:ring-accent focus-within:ring-opacity-50 border border-lightText border-opacity-10" tabIndex={0}>
+          <div className="bg-lightBg bg-opacity-95 rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg focus-within:ring-2 focus-within:ring-accent focus-within:ring-opacity-50 border border-lightText border-opacity-10" tabIndex={0}>
             <div className="h-48 overflow-hidden">
-              <img src="src/assets/vinyl-wall.webp" alt="Close-up of vinyl records on wooden surface with album sleeve visible" className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
+              <img src={vinylImg} alt="Vinyl records spinning on a turntable at Crave Cafe" className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
             </div>
             <div className="p-6">
               <div className="flex items-center mb-4">
@@ -56,9 +62,9 @@ export const OurVibe = () => {
             </div>
           </div>
           {/* Stay Awhile */}
-          <div className="bg-lightBg bg-opacity-95 rounded-lg shadow-md overflow-hidden transform transition-all duration-150 hover:-translate-y-2 hover:shadow-lg focus-within:ring-2 focus-within:ring-accent focus-within:ring-opacity-50 border border-lightText border-opacity-10" tabIndex={0}>
+          <div className="bg-lightBg bg-opacity-95 rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg focus-within:ring-2 focus-within:ring-accent focus-within:ring-opacity-50 border border-lightText border-opacity-10" tabIndex={0}>
             <div className="h-48 overflow-hidden">
-              <img src="src/assets/board-games.webp" alt="Cozy café interior with wooden tables, board games, and warm ambient lighting" className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
+              <img src={boardGamesImg} alt="Friends playing board games at Crave Café in Claremont" className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
             </div>
             <div className="p-6">
               <div className="flex items-center mb-4">
@@ -83,3 +89,4 @@ export const OurVibe = () => {
       </div>
     </section>;
 };
+

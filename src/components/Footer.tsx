@@ -8,7 +8,7 @@ export const Footer = () => {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           {/* Brand Column */}
           <div className="md:col-span-1">
-            <h2 className="text-2xl font-['Rockwell',serif] font-bold mb-4">
+            <h2 className="text-2xl font-serif font-bold mb-4">
               Cafe<span className="text-accent">Crave</span>
             </h2>
             <p className="opacity-80 text-sm leading-relaxed mb-6">

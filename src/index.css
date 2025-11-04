@@ -4,7 +4,7 @@
 @import 'tailwindcss/utilities';
 /* DO NOT DELETE THESE TAILWIND IMPORTS, OTHERWISE THE STYLING WILL NOT RENDER AT ALL */
 /* Google Fonts Import */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Rockwell:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 /* Standardized Section Styles */
 @layer components {
@@ -235,6 +235,58 @@ section:not([class*="scroll-mt"]),
   animation: waveformPulse 1.2s ease-in-out infinite;
   opacity: 0.7;
 }
+
+/* === HERO ZOOM ANIMATION === */
+@keyframes subtleZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-hero-zoom {
+  animation: subtleZoom 40s infinite alternate ease-in-out;
+}
+
+/* === STAGGERED CHILD ANIMATIONS (ON-SCROLL) === */
+/*
+  By default, all direct children of .section-animate are hidden.
+  The .section-animate class is already being applied in my components.
+t
+  FIXED: Removed translateY transform to prevent layout shift and "creeping" bugs.
+  Using only opacity for a clean, stable fade-in effect.
+*/
+.section-animate > * {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+/*
+  When ScrollAnimationObserver adds 'section-visible', this
+  CSS will animate each child in with a different delay.
+*/
+.section-animate.section-visible > * {
+  opacity: 1;
+}
+
+.section-animate.section-visible > *:nth-child(1) {
+  transition-delay: 100ms;
+}
+.section-animate.section-visible > *:nth-child(2) {
+  transition-delay: 200ms;
+}
+.section-animate.section-visible > *:nth-child(3) {
+  transition-delay: 300ms;
+}
+.section-animate.section-visible > *:nth-child(4) {
+  transition-delay: 400ms;
+}
+.section-animate.section-visible > *:nth-child(5) {
+  transition-delay: 500ms;
+}
+
 /* Mobile Menu Overlay Animation */
 @keyframes fadeIn {
   from { opacity: 0; }

@@ -35,7 +35,7 @@ export const EventPreview: React.FC<EventPreviewProps> = ({
 			<div className={showHeader ? "container mx-auto px-6 md:px-10 lg:px-16" : ""}>
 				{showHeader && (
 					<div className="text-center mb-12">
-						<h2 className="text-3xl md:text-4xl font-['Rockwell', serif] font-bold mb-4">
+						<h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
 							Upcoming Events
 						</h2>
 						<div className="w-24 h-1 bg-accent mx-auto mb-6"></div>

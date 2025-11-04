@@ -61,7 +61,7 @@ export const AlbumDetailDrawer: React.FC<AlbumDetailDrawerProps> = ({
         <div className="p-6">
           {/* Header */}
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-['Rockwell',serif] font-bold text-primary">
+            <h2 className="text-2xl font-serif font-bold text-primary">
               Album Details
             </h2>
             <button onClick={onClose} className="p-2 rounded-full bg-primary bg-opacity-10 hover:bg-opacity-20 transition-colors" aria-label="Close drawer">

@@ -6,13 +6,15 @@ interface SEOProps {
   description: string;
   keywords?: string;
   ogImage?: string;
+  schema?: Record<string, any>;
 }
 
 export const SEO: React.FC<SEOProps> = ({
   title,
   description,
   keywords = 'café, coffee, vinyl, board games, Cape Town, retro café, music venue, events',
-  ogImage = '/og-image.jpg'
+  ogImage = '/og-image.jpg',
+  schema
 }) => {
   const fullTitle = `${title} | Crave Café`;
 
@@ -33,7 +35,13 @@ export const SEO: React.FC<SEOProps> = ({
       <meta property="twitter:title" content={fullTitle} />
       <meta property="twitter:description" content={description} />
       <meta property="twitter:image" content={ogImage} />
+
+      {/* JSON-LD Schema */}
+      {schema && (
+        <script type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      )}
     </Helmet>
   );
 };
-

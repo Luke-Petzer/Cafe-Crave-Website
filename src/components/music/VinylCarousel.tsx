@@ -81,7 +81,7 @@ export const VinylCarousel: React.FC<VinylCarouselProps> = ({
       {/* Album Carousel */}
       <div className="grid md:grid-cols-2 gap-12 items-center" aria-live="polite">
         <div className="relative group">
-          <div className="relative rounded-full overflow-hidden shadow-xl transform transition-all duration-300 group-hover:scale-105 aspect-square cursor-pointer" onClick={() => onAlbumClick(currentAlbum)}>
+          <div className="relative rounded-full overflow-hidden shadow-xl transform transition-all duration-300 group-hover:scale-[1.02] aspect-square cursor-pointer will-change-transform" onClick={() => onAlbumClick(currentAlbum)}>
             <img src={currentAlbum.image} alt={`Album artwork - ${currentAlbum.title} by ${currentAlbum.artist}`} className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" />
           </div>
           {currentAlbum.year && (

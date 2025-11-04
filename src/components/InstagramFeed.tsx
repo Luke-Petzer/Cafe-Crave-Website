@@ -77,7 +77,7 @@ export const InstagramFeed: React.FC<InstagramFeedProps> = ({
       <div className="text-center mb-12">
         <div className="flex items-center justify-center gap-2 mb-4">
           <Instagram size={32} className="text-accent" />
-          <h2 className="text-3xl md:text-4xl font-['Rockwell',serif] font-bold">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold">
             Follow Our Journey
           </h2>
         </div>

@@ -3,7 +3,11 @@ import { Footer } from '../components/Footer';
 import { BookIcon, MusicIcon, CoffeeIcon, UsersIcon } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { ScrollAnimationObserver } from '../components/ScrollAnimationObserver';
-
+// Import About page images
+import boardGamesImg from '../assets/board-games.webp';
+import coffeeImg from '../assets/cuppacino.webp';
+import redVelvetImg from '../assets/red-velvet.webp';
+import vinylRecordsImg from '../assets/vinyl-records.webp';
 export const About = () => {
   return (
     <div className="min-h-screen">
@@ -14,26 +18,27 @@ export const About = () => {
       />
       <ScrollAnimationObserver />
       <Header />
+      <main id="main-content" className="pt-16 md:pt-20">
       {/* Section 1: Hero - "Our Story" - DARK */}
-      <section id="main-content" className="section-dark main-content relative min-h-[600px] md:min-h-[650px] flex items-center justify-center pt-20">
-        <div className="absolute inset-0 z-0 overflow-hidden">
+      <section className="section-dark relative min-h-[600px] md:min-h-[650px] flex items-center justify-center">
+        <div className="absolute inset-0 z-0 overflow-hidden animate-hero-zoom">
           <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Cafe Crave interior" className="w-full h-full object-cover brightness-50" />
         </div>
         <div className="relative z-10 text-center px-6">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-['Rockwell',serif] font-bold mb-6 leading-tight">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight">
             Our Story
           </h1>
           <p className="text-xl md:text-2xl mb-8">
             Coffee, Community, and a Retro Beat.
           </p>
-          <a href="/contact" className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center font-medium transition-all duration-200 ease-out hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50">
+          <a href="/contact" className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center justify-center font-medium transition-all duration-200 ease-out hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 will-change-transform">
             <BookIcon size={20} className="mr-2" />
             Contact Us
           </a>
         </div>
       </section>
       {/* Section 2: Community & Atmosphere - "Stay Awhile" */}
-      <section className="section-light py-16 md:py-24">
+      <section className="section-animate section-light py-16 md:py-24">
         <div className="container mx-auto px-6 md:px-10 lg:px-16">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             <div>
@@ -60,13 +65,13 @@ export const About = () => {
               </div>
             </div>
             <div className="order-first md:order-last">
-              <img src="src/assets/board-games.webp" alt="People enjoying board games" className="rounded-lg shadow-xl w-full h-[300px] md:h-[400px] object-cover" />
+              <img src={boardGamesImg} alt="People enjoying board games" className="rounded-lg shadow-xl w-full h-[300px] md:h-[400px] object-cover" />
             </div>
           </div>
         </div>
       </section>
       {/* Section 3: Coffee & Food Philosophy - "The Good Stuff" */}
-      <section className="section-red py-16 md:py-24">
+      <section className="section-animate section-red py-16 md:py-24">
         <div className="container mx-auto px-6 md:px-10 lg:px-16">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-center mb-12">
             The Good Stuff
@@ -92,18 +97,18 @@ export const About = () => {
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <img src="src/assets/cuppacino.webp" alt="Latte art" className="rounded-lg w-full h-full object-cover shadow-md" />
-              <img src="src/assets/red-velvet.webp" alt="Freshly baked pastries" className="rounded-lg w-full h-full object-cover shadow-md" />
+              <img src={coffeeImg} alt="Latte art" className="rounded-lg w-full h-full object-cover shadow-md" />
+              <img src={redVelvetImg} alt="Freshly baked pastries" className="rounded-lg w-full h-full object-cover shadow-md" />
             </div>
           </div>
         </div>
       </section>
       {/* Section 4: Music Identity - "On the Turntable" */}
-      <section className="section-dark py-16 md:py-24">
+      <section className="section-animate section-dark py-16 md:py-24">
         <div className="container mx-auto px-6 md:px-10 lg:px-16">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             <div>
-              <img src="src/assets/vinyl-records.webp" alt="Vinyl records" className="rounded-lg shadow-xl w-full h-[300px] object-cover" />
+              <img src={vinylRecordsImg} alt="Vinyl records" className="rounded-lg shadow-xl w-full h-[300px] object-cover" />
             </div>
             <div>
               <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
@@ -121,7 +126,7 @@ export const About = () => {
                 provide—much like the authentic experience we strive to create
                 in every other aspect of our cafe.
               </p>
-              <a href="/music" className="inline-flex items-center bg-accent text-light px-6 py-2 rounded-md hover:bg-opacity-90 transition-all duration-200 ease-out hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50">
+              <a href="/music" className="inline-flex items-center justify-center bg-accent text-light px-6 py-2 rounded-md hover:bg-opacity-90 transition-all duration-200 ease-out hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 will-change-transform">
                 <MusicIcon size={20} className="mr-2" />
                 See What's Playing
               </a>
@@ -140,13 +145,14 @@ export const About = () => {
               Reserve your table now and join us for coffee, conversation, and
               community.
             </p>
-            <a href="/contact" className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center font-medium transition-all duration-200 ease-out hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50">
+            <a href="/contact" className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center justify-center font-medium transition-all duration-200 ease-out hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 will-change-transform">
               <BookIcon size={20} className="mr-2" />
               Contact Us
             </a>
           </div>
         </div>
       </section>
+      </main>
       <Footer />
     </div>
   );
