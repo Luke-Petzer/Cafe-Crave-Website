@@ -49,7 +49,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   scroll-padding-top: 6rem; /* Account for fixed header */
 }
 

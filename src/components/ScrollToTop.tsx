@@ -1,53 +1,47 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react'; // <-- Import useLayoutEffect, not useEffect
 import { useLocation } from 'react-router-dom';
 
-type ScrollToTopProps = {
-    behavior?: ScrollBehavior; // 'auto' | 'smooth'
-};
-
-export const ScrollToTop = ({ behavior = 'auto' }: ScrollToTopProps) => {
+export const ScrollToTop = () => {
     const { pathname, hash } = useLocation();
 
-    // Ensure browser doesn't restore scroll automatically (run once)
-    useEffect(() => {
+    // Use useLayoutEffect to run *before* the browser paints
+    useLayoutEffect(() => {
         if ('scrollRestoration' in window.history) {
             try {
                 window.history.scrollRestoration = 'manual';
-            } catch {
-                // ignore (some browsers/environments may throw)
+            } catch (e) {
+                // This can throw in some environments
             }
         }
-    }, []);
 
-    // Scroll on route change or when hash changes
-    useEffect(() => {
-        // FIX: Temporarily force the browser's scroll behavior to be 'auto' (instant).
-        // This overrides the 'scroll-behavior: smooth' in index.css for page loads.
+        // --- This is the fix ---
+        // 1. Temporarily disable smooth scrolling for this action
         document.documentElement.style.scrollBehavior = 'auto';
 
         if (hash) {
+            // If there's a hash, find the element
             const id = decodeURIComponent(hash.replace('#', ''));
             const el = document.getElementById(id);
             if (el) {
-                // For hash links, use the behavior prop (which will be 'smooth' from your CSS)
+                // If element exists, scroll to it smoothly (for on-page links)
                 el.scrollIntoView({ behavior: 'smooth' });
             } else {
-                // Fallback for bad hash
+                // Fallback for bad hash, scroll to top instantly
                 window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
             }
         } else {
-            // This is a page navigation, force it to be instant
+            // This is a new page load, scroll to top instantly
             window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
         }
 
-        // After a short delay, restore the CSS-defined scroll behavior
-        // so that any *on-page* anchor links will be smooth again.
+        // 2. Restore smooth scrolling after a short delay
+        // This re-enables smooth scrolling for on-page hash links (like your menu)
         const timer = setTimeout(() => {
-            document.documentElement.style.scrollBehavior = ''; // Reverts to CSS-defined
-        }, 100); // 100ms delay
+            document.documentElement.style.scrollBehavior = '';
+        }, 50);
 
         return () => clearTimeout(timer);
-    }, [pathname, hash, behavior]); // Removed 'behavior' as we now control it
+    }, [pathname, hash]); // This effect runs every time the path changes
 
     return null;
 };

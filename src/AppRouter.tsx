@@ -8,17 +8,18 @@ import { EventsPage } from './pages/EventsPage';
 import { ScrollToTop } from './components/ScrollToTop';
 
 export function AppRouter() {
-  return (
-    <BrowserRouter>
-      <ScrollToTop behavior="auto" />
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/menu" element={<MenuPage />} />
-        <Route path="/music" element={<MusicPage />} />
-        <Route path="/events" element={<EventsPage />} />
-      </Routes>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            {/* We removed the 'behavior' prop as the component now handles this logic internally */}
+            <ScrollToTop />
+            <Routes>
+                <Route path="/" element={<App />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/menu" element={<MenuPage />} />
+                <Route path="/music" element={<MusicPage />} />
+                <Route path="/events" element={<EventsPage />} />
+            </Routes>
+        </BrowserRouter>
+    );
 }
