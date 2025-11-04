@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { MenuIcon, XIcon } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import cafeLogoIcon from '../assets/cci.png';
+import cafeLogoIcon from '../assets/new-logo.svg';
 
 // import cafeLogo from '../assets/cafe-logo.svg'; // I've commented this out and used a placeholder below
 
@@ -51,7 +51,7 @@ export const Header = () => {
                         <Link to="/" className="flex items-center gap-4" aria-label="Cafe Crave - Home">
                             {/* Logo with circular background, hover and focus states */}
                             <div
-                                className="rounded-full bg-[#EBD4B7] p-2 transition-all duration-200 ease-in-out hover:opacity-80 focus-within:opacity-80 focus-within:ring-2 focus-within:ring-secondary focus-within:ring-offset-2 focus-within:ring-offset-primary"
+                                className="p-2 transition-all duration-200 ease-in-out hover:opacity-80 focus-within:opacity-80 focus-within:ring-2 focus-within:ring-secondary focus-within:ring-offset-2 focus-within:ring-offset-primary"
                             >
                                 <img
                                     src={cafeLogoIcon}
@@ -61,8 +61,17 @@ export const Header = () => {
                             </div>
 
                             {/* Cafe Crave text - hidden on mobile, visible on desktop */}
-                            <span className="hidden md:block text-2xl font-bold text-light">
-                                Cafe Crave
+                            <span className="hidden md:block text-2xl font-bold text-light font-['Playfair_Display',serif]">
+                                <span style={{
+                                    background: 'linear-gradient(135deg, #f3ecd5 0%, #E9D8C4 50%, #f3ecd5 100%)',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                    backgroundClip: 'text',
+                                    textShadow: '0 0 20px rgba(243, 236, 213, 0.3)',
+                                    filter: 'drop-shadow(0 0 8px rgba(243, 236, 213, 0.4))'
+                                }}>
+                                    Cafe Crave
+                                </span>
                             </span>
                         </Link>
 
@@ -113,14 +122,24 @@ export const Header = () => {
                 {isMenuOpen && (
                     <div id="mobile-menu" className="fixed inset-0 bg-primary z-[45] md:hidden flex flex-col items-center justify-center">
                         <div className="text-center mb-8">
-                            {/* Mobile menu logo with circular background */}
-                            <div className="rounded-full bg-[#EBD4B7] p-2 inline-block">
-                                <img
-                                    src={cafeLogoIcon}
-                                    alt="Cafe Crave Logo"
-                                    className="h-12"
-                                />
-                            </div>
+                            {/* Mobile menu logo */}
+                            <img
+                                src={cafeLogoIcon}
+                                alt="Cafe Crave Logo"
+                                className="h-16 mb-4 mx-auto"
+                            />
+                            {/* Cafe Crave text with gradient styling */}
+                            <h2 className="text-3xl font-bold font-['Playfair_Display',serif]">
+                                <span style={{
+                                    background: 'linear-gradient(135deg, #f3ecd5 0%, #E9D8C4 50%, #f3ecd5 100%)',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                    backgroundClip: 'text',
+                                    filter: 'drop-shadow(0 0 8px rgba(243, 236, 213, 0.4))'
+                                }}>
+                                    Cafe Crave
+                                </span>
+                            </h2>
                         </div>
                         <ul className="flex flex-col items-center space-y-6">
                             <li>

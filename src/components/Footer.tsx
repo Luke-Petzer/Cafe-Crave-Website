@@ -9,7 +9,15 @@ export const Footer = () => {
           {/* Brand Column */}
           <div className="md:col-span-1">
             <h2 className="text-2xl font-serif font-bold mb-4">
-              Cafe<span className="text-accent">Crave</span>
+              <span style={{
+                background: 'linear-gradient(135deg, #f3ecd5 0%, #E9D8C4 50%, #f3ecd5 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                filter: 'drop-shadow(0 0 8px rgba(243, 236, 213, 0.4))'
+              }}>
+                Cafe Crave
+              </span>
             </h2>
             <p className="opacity-80 text-sm leading-relaxed mb-6">
               A place to connect, play, and celebrate together.
