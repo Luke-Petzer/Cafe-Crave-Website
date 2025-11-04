@@ -81,10 +81,10 @@ export const MusicFeature = () => {
     setCurrentAlbum(prev => prev === 0 ? albums.length - 1 : prev - 1);
   };
 
-  return <section className="section-dark py-20 md:py-28">
+  return <section className="section-animate section-dark py-20 md:py-28">
       <div className="container mx-auto px-6 md:px-10 lg:px-16">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-['Rockwell',serif] font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">
             On the Turntable
           </h2>
           <div className="w-24 h-1 bg-accent mx-auto mb-6"></div>

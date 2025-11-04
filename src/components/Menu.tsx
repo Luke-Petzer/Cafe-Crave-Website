@@ -43,7 +43,7 @@ export const Menu = () => {
   return <section id="menu" className="bg-primary py-20 md:py-28">
       <div className="container mx-auto px-6 md:px-10 lg:px-16">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-['Rockwell',serif] font-bold text-light mb-4">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-light mb-4">
             Menu Sneak Peek
           </h2>
           <div className="w-24 h-1 bg-secondary mx-auto mb-6"></div>
@@ -73,7 +73,7 @@ export const Menu = () => {
           </div>
           {/* Thumbnails */}
           <div className="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-4">
-            {menuItems.map((item, index) => <button key={item.id} onClick={() => setActiveItem(index)} className={`relative rounded-lg overflow-hidden aspect-square shadow-md transition-all duration-200 ${activeItem === index ? 'ring-4 ring-accent scale-105' : 'hover:scale-105 hover:shadow-lg'}`} aria-label={`View ${item.name}`} aria-current={activeItem === index}>
+            {menuItems.map((item, index) => <button key={item.id} onClick={() => setActiveItem(index)} className={`relative rounded-lg overflow-hidden aspect-square shadow-md transition-all duration-200 will-change-transform ${activeItem === index ? 'ring-4 ring-accent scale-[1.02]' : 'hover:scale-[1.02] hover:shadow-lg'}`} aria-label={`View ${item.name}`} aria-current={activeItem === index}>
                 <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-primary bg-opacity-40 flex items-end">
                   <div className="w-full p-2 bg-primary bg-opacity-80">

@@ -29,16 +29,53 @@ export const ContactPage = () => {
   return (
     <div className="min-h-screen">
       <SEO
-        title="Contact Us"
-        description="Get in touch with Crave Café. Visit us in Cape Town. Open daily with Wi-Fi, board games, and exceptional coffee. Call 073 565 1888."
-        keywords="café contact, Cape Town café, coffee shop location, café hours, contact café, visit café"
+        title="Contact & Visit Us | Crave Café Claremont, Cape Town"
+        description="Find Crave Café at 219 Imam Haron Rd, Claremont. Call 073 565 1888, get directions, or check our hours. Your new favourite halal café is waiting."
+        keywords="contact crave cafe, crave cafe address, halal cafe claremont location, cafe near me claremont"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Cafe",
+          "name": "Crave Café",
+          "description": "A retro, music-inspired, halal-friendly café in Claremont, Cape Town.",
+          "url": "https://www.cafecravecpt.co.za",
+          "telephone": "+27735651888",
+          "priceRange": "R",
+          "servesCuisine": ["Café", "Halal"],
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "219 Imam Haron Rd",
+            "addressLocality": "Claremont",
+            "addressRegion": "Cape Town",
+            "postalCode": "7708",
+            "addressCountry": "ZA"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": -33.983624,
+            "longitude": 18.481859
+          },
+          "openingHoursSpecification": [
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "10:00", "closes": "18:00" },
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "08:30", "closes": "18:00" },
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "08:30", "closes": "18:00" },
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "08:30", "closes": "18:00" },
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "08:30", "closes": "12:00" },
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "14:00", "closes": "21:00" },
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:30", "closes": "21:00" },
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "10:00", "closes": "18:00" }
+          ],
+          "potentialAction": {
+            "@type": "ViewAction",
+            "target": "https://www.cafecravecpt.co.za/menu"
+          }
+        }}
       />
       <ScrollAnimationObserver />
       <Header />
-
+      <main id="main-content" className="pt-16 md:pt-20">
       {/* Hero Section - DARK */}
-      <section className="section-dark relative min-h-[600px] md:min-h-[650px] flex items-center justify-center pt-20">
-        <div className="absolute inset-0 z-0">
+      <section className="section-dark relative min-h-[600px] md:min-h-[650px] flex items-center justify-center">
+        <div className="absolute inset-0 z-0 animate-hero-zoom">
           <img
             src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
             alt="Cafe interior"
@@ -46,8 +83,8 @@ export const ContactPage = () => {
           />
         </div>
         <div className="relative z-10 text-center px-6">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-['Rockwell',serif] font-bold mb-6 leading-tight">
-            Find Us
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight">
+            Contact & Visit Crave Café
           </h1>
           <div className="w-24 h-1 bg-accent mx-auto mb-6"></div>
           <p className="text-xl md:text-2xl opacity-90 max-w-2xl mx-auto">
@@ -57,7 +94,7 @@ export const ContactPage = () => {
       </section>
 
       {/* Contact Section - DARK */}
-      <section className="section-dark py-16 md:py-20">
+      <section className="section-animate section-dark py-16 md:py-20">
         <div className="container mx-auto px-6 md:px-10 lg:px-16">
           <div id="contact">
             <div className="grid md:grid-cols-2 gap-8 md:gap-10 max-w-6xl mx-auto">
@@ -182,7 +219,7 @@ export const ContactPage = () => {
                 href="https://maps.google.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center font-medium transition-all duration-200 ease-out hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
+                className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center justify-center font-medium transition-all duration-200 ease-out hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 will-change-transform"
               >
                 <MapPinIcon size={20} className="mr-2" />
                 Get Directions
@@ -204,6 +241,7 @@ export const ContactPage = () => {
         <WhatsAppIcon size={32} />
       </a>
 
+      </main>
       <Footer />
     </div>
   );

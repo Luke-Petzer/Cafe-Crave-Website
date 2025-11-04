@@ -16,7 +16,7 @@ export const Contact = () => {
       <section className="section-animate bg-darkBg text-darkText py-20 md:py-32">
         <div className="container mx-auto px-6 md:px-10 lg:px-16">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-['Rockwell',serif] font-bold mb-6">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6">
               Visit Us
             </h1>
             <div className="w-24 h-1 bg-accent mx-auto mb-8"></div>
@@ -147,7 +147,7 @@ export const Contact = () => {
       <section className="section-animate bg-darkBg text-darkText py-20 md:py-28">
         <div className="container mx-auto px-6 md:px-10 lg:px-16">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-['Rockwell',serif] font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
               Ready to Experience Crave?
             </h2>
             <div className="w-24 h-1 bg-accent mx-auto mb-8"></div>

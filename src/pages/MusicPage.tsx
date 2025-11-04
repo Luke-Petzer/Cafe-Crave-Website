@@ -39,24 +39,24 @@ export const MusicPage = () => {
   return (
     <div className="min-h-screen">
       <SEO
-        title="Music Collection"
-        description="Explore our curated vinyl collection at Crave Café. Discover classic albums and enjoy the warm sound of vinyl records."
-        keywords="vinyl records, music collection, café music, record collection, vinyl café"
+        title="Our Vinyl Collection | Crave Café Cape Town"
+        description="Explore the vinyl music collection at Crave Café. We spin classic jazz, rock, and soul records all day. Discover our curated selection."
+        keywords="vinyl cafe cape town, music themed cafe, record collection, classic vinyl, crave cafe music"
       />
       <ScrollAnimationObserver />
       <Header />
-      <main>
+      <main id="main-content" className="pt-16 md:pt-20">
         {/* Hero Section - DARK */}
-        <section id="main-content" className="section-dark relative min-h-[600px] md:min-h-[650px] flex items-center justify-center pt-20">
-          <div className="absolute inset-0 z-0 overflow-hidden">
+        <section className="section-dark relative min-h-[600px] md:min-h-[650px] flex items-center justify-center">
+          <div className="absolute inset-0 z-0 overflow-hidden animate-hero-zoom">
             <img
               src="https://images.unsplash.com/photo-1594623930572-300a3011d9ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-              alt="Vinyl records"
+              alt="A record rack filled with classic vinyl albums at Crave Café"
               className="w-full h-full object-cover brightness-50"
             />
           </div>
           <div className="relative z-10 text-center px-6">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-['Rockwell',serif] font-bold mb-6 leading-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight">
               Our Vinyl Collection
             </h1>
             <div className="w-24 h-1 bg-accent mx-auto mb-6"></div>
@@ -66,7 +66,7 @@ export const MusicPage = () => {
           </div>
         </section>
 
-        <section className="section-dark py-20 md:py-28">
+        <section className="section-animate section-dark py-20 md:py-28">
           <div className="container mx-auto px-6 md:px-10 lg:px-16">
             <div className="mb-8">
               <GenreFilter
