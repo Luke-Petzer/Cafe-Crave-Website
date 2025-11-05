@@ -30,17 +30,17 @@ export const ContactPage = () => {
     <div className="min-h-screen">
       <SEO
         title="Contact & Visit Us | Crave Café Claremont, Cape Town"
-        description="Find Crave Café at 219 Imam Haron Rd, Claremont. Call 073 565 1888, get directions, or check our hours. Your new favourite halal café is waiting."
-        keywords="contact crave cafe, crave cafe address, halal cafe claremont location, cafe near me claremont"
+        description="Find Crave Café at 219 Imam Haron Rd, Claremont. Call 066 238 6374, get directions, or check our hours. Your new favourite halaal café is waiting."
+        keywords="contact crave cafe, crave cafe address, halaal cafe claremont location, cafe near me claremont"
         schema={{
           "@context": "https://schema.org",
           "@type": "Cafe",
           "name": "Crave Café",
-          "description": "A retro, music-inspired, halal café in Claremont, Cape Town.",
+          "description": "A retro, music-inspired, halaal café in Claremont, Cape Town.",
           "url": "https://www.cafecravecpt.co.za",
-          "telephone": "+27735651888",
+          "telephone": "+27662386374",
           "priceRange": "R",
-          "servesCuisine": ["Café", "Halal"],
+          "servesCuisine": ["Café", "Halaal"],
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "219 Imam Haron Rd",
@@ -118,7 +118,7 @@ export const ContactPage = () => {
                     <PhoneIcon size={24} className="text-accent mr-4 flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-medium text-lightText mb-1">Phone</h3>
-                      <p className="text-lightText opacity-80">073 565 1888</p>
+                      <p className="text-lightText opacity-80">+27 66 238 6374</p>
                     </div>
                   </div>
                   <div className="flex items-start">
@@ -126,12 +126,12 @@ export const ContactPage = () => {
                     <div>
                       <h3 className="font-medium text-lightText mb-1">WhatsApp</h3>
                       <a
-                        href="https://wa.me/27735651888?text=Hi%20Crave%20Café!%20I'd%20like%20to%20know%20more%20about..."
+                        href="https://wa.me/27662386374?text=Hi%20Crave%20Café!%20I'd%20like%20to%20know%20more%20about..."
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-accent hover:underline transition-colors font-medium"
                       >
-                        073 565 1888
+                        +27 66 238 6374
                       </a>
                       <p className="text-lightText opacity-60 text-sm mt-1">
                         Chat with us directly
@@ -231,7 +231,7 @@ export const ContactPage = () => {
 
       {/* Floating WhatsApp Button */}
       <a
-        href="https://wa.me/27735651888?text=Hi%20Crave%20Café!%20I'd%20like%20to%20know%20more%20about..."
+        href="https://wa.me/27662386374?text=Hi%20Crave%20Café!%20I'd%20like%20to%20know%20more%20about..."
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 bg-[#25D366] hover:bg-[#20BA5A] text-white p-4 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-50 focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-opacity-50"

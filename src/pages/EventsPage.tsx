@@ -13,7 +13,7 @@ export const EventsPage = () => {
       <SEO
         title="Events & Small Venue Hire | Crave Café Claremont"
         description="Host your event at Crave Café in Claremont. We offer a unique, retro venue for birthdays, meetings, and gatherings. See our upcoming public events!"
-        keywords="small event venue claremont, halal event venue cape town, cafe to hire for party claremont, upcoming events claremont"
+        keywords="small event venue claremont, halaal event venue cape town, cafe to hire for party claremont, upcoming events claremont"
       />
       <ScrollAnimationObserver />
       <Header />
@@ -155,7 +155,7 @@ export const EventsPage = () => {
                   </div>
 
                   <a
-                    href="https://wa.me/27735651888?text=Hi%20Crave%20Café!%20I%27d%20like%20to%20book%20your%20space%20for%20an%20event."
+                    href="https://wa.me/27662386374?text=Hi%20Crave%20Café!%20I%27d%20like%20to%20book%20your%20space%20for%20an%20event."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-accent hover:bg-opacity-90 text-light px-8 py-4 rounded-md inline-flex items-center justify-center font-medium text-lg transition-all duration-200 ease-out hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 will-change-transform"

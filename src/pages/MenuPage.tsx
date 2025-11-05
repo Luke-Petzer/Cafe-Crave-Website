@@ -172,9 +172,9 @@ export const MenuPage = () => {
         return (
           <div className="min-h-screen">
             <SEO
-              title="Our Halal Menu | Crave Café Claremont (Breakfast, Burgers & Coffee)"
-              description="Explore the 100% halal menu at Crave Café. We serve artisan coffee, all-day breakfast, gourmet burgers, grills, and desserts in Claremont."
-              keywords="halal menu claremont, halal breakfast cape town, halal burgers claremont, artisan coffee, crave cafe menu"
+              title="Our Halaal Menu | Crave Café Claremont (Breakfast, Burgers & Coffee)"
+              description="Explore the 100% halaal menu at Crave Café. We serve artisan coffee, all-day breakfast, gourmet burgers, grills, and desserts in Claremont."
+              keywords="halaal menu claremont, halaal breakfast cape town, halaal burgers claremont, artisan coffee, crave cafe menu"
             />
             <ScrollAnimationObserver />
             <Header />
@@ -186,7 +186,7 @@ export const MenuPage = () => {
                 </div>
                 <div className="relative z-10 text-center px-6">
                     <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight">
-                        Our Halal Menu
+                        Our Halaal Menu
                     </h1>
                     <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
                         From all-day breakfasts to handcrafted drinks — something for
