@@ -54,6 +54,8 @@ export const MusicPage = () => {
               src={musicImg}
               alt="A record rack filled with classic vinyl albums at Crave Café"
               className="w-full h-full object-cover brightness-50"
+              width="800"
+              height="600"
             />
           </div>
           <div className="relative z-10 text-center px-6">

@@ -102,7 +102,7 @@ export const MusicFeature = () => {
                 <div className="absolute inset-0 vinyl-record rounded-full bg-primary">
                   <div className="absolute inset-0 vinyl-grooves rounded-full"></div>
                   <div className="absolute inset-[30%] rounded-full bg-primary flex items-center justify-center overflow-hidden">
-                    <img src={albums[currentAlbum].image} alt={`Album artwork - ${albums[currentAlbum].title} by ${albums[currentAlbum].artist}`} className="w-full h-full object-cover" />
+                    <img src={albums[currentAlbum].image} alt={`Album artwork - ${albums[currentAlbum].title} by ${albums[currentAlbum].artist}`} className="w-full h-full object-cover" width="800" height="800" loading="lazy" />
                   </div>
                   <div className="absolute inset-[48%] rounded-full bg-primary border-2 border-secondary"></div>
                 </div>

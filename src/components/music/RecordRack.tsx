@@ -13,7 +13,7 @@ export const RecordRack: React.FC<RecordRackProps> = ({
       {albums.map((album: Album) => <div key={album.id} className="flex flex-col items-center group" role="gridcell">
           <button onClick={() => onAlbumClick(album)} className="relative focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-full" aria-label={`View details for ${album.title} by ${album.artist}`}>
             <div className="w-full aspect-square rounded-full overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-xl">
-              <img src={album.image} alt={`${album.title} by ${album.artist}`} className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" loading="lazy" />
+              <img src={album.image} alt={`${album.title} by ${album.artist}`} className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" loading="lazy" width="500" height="500" />
             </div>
             {/* Year Label */}
             {album.year && (

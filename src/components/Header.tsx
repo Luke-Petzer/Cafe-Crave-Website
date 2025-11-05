@@ -60,8 +60,8 @@ export const Header = () => {
                                 />
                             </div>
 
-                            {/* Cafe Crave text - hidden on mobile, visible on desktop */}
-                            <span className="hidden md:block text-2xl font-bold text-light font-['Playfair_Display',serif]">
+                            {/* Cafe Crave text - visible on all screen sizes */}
+                            <span className="text-xl md:text-2xl font-bold text-light font-['Playfair_Display',serif]">
                                 <span style={{
                                     background: 'linear-gradient(135deg, #f3ecd5 0%, #E9D8C4 50%, #f3ecd5 100%)',
                                     WebkitBackgroundClip: 'text',
