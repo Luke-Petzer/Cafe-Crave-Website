@@ -22,7 +22,7 @@ export const About = () => {
       {/* Section 1: Hero - "Our Story" - DARK */}
       <section className="section-dark relative min-h-[600px] md:min-h-[650px] flex items-center justify-center">
         <div className="absolute inset-0 z-0 overflow-hidden animate-hero-zoom">
-          <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Cafe Crave interior" className="w-full h-full object-cover brightness-50" />
+          <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Cafe Crave interior" className="w-full h-full object-cover brightness-50" width="2070" height="1380" />
         </div>
         <div className="relative z-10 text-center px-6">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight">
@@ -65,7 +65,7 @@ export const About = () => {
               </div>
             </div>
             <div className="order-first md:order-last">
-              <img src={boardGamesImg} alt="People enjoying board games" className="rounded-lg shadow-xl w-full h-[300px] md:h-[400px] object-cover" />
+              <img src={boardGamesImg} alt="People enjoying board games" className="rounded-lg shadow-xl w-full h-[300px] md:h-[400px] object-cover" width="800" height="600" loading="lazy" />
             </div>
           </div>
         </div>
@@ -97,8 +97,8 @@ export const About = () => {
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <img src={coffeeImg} alt="Latte art" className="rounded-lg w-full h-full object-cover shadow-md" />
-              <img src={redVelvetImg} alt="Freshly baked pastries" className="rounded-lg w-full h-full object-cover shadow-md" />
+              <img src={coffeeImg} alt="Latte art" className="rounded-lg w-full h-full object-cover shadow-md" width="800" height="600" loading="lazy" />
+              <img src={redVelvetImg} alt="Freshly baked pastries" className="rounded-lg w-full h-full object-cover shadow-md" width="800" height="600" loading="lazy" />
             </div>
           </div>
         </div>
@@ -108,7 +108,7 @@ export const About = () => {
         <div className="container mx-auto px-6 md:px-10 lg:px-16">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             <div>
-              <img src={vinylRecordsImg} alt="Vinyl records" className="rounded-lg shadow-xl w-full h-[300px] object-cover" />
+              <img src={vinylRecordsImg} alt="Vinyl records" className="rounded-lg shadow-xl w-full h-[300px] object-cover" width="800" height="600" loading="lazy" />
             </div>
             <div>
               <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">

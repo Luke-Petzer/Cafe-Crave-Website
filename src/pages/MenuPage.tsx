@@ -154,7 +154,7 @@ export const MenuPage = () => {
             {/* Hero Section - DARK */}
             <section className="section-dark relative min-h-[600px] md:min-h-[650px] flex items-center justify-center">
                 <div className="absolute inset-0 z-0 overflow-hidden animate-hero-zoom">
-                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Coffee and pastries on a wooden table" className="w-full h-full object-cover brightness-50 transition-transform duration-700 hover:scale-110" loading="lazy" />
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Coffee and pastries on a wooden table" className="w-full h-full object-cover brightness-50 transition-transform duration-700 hover:scale-110" loading="lazy" width="2070" height="1380" />
                 </div>
                 <div className="relative z-10 text-center px-6">
                     <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight">
@@ -400,7 +400,7 @@ export const MenuPage = () => {
                             <div className={`absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
                                 expandedSections.burgers ? 'block' : 'hidden md:block'
                             }`}>
-                                <img src={burgersImg} alt="" className="w-full h-full object-contain mix-blend-multiply" />
+                                <img src={burgersImg} alt="" className="w-full h-full object-contain mix-blend-multiply" width="300" height="300" loading="lazy" />
                             </div>
                             <div className="flex justify-between items-center mb-4">
                                 <h2 className="text-3xl font-serif font-bold text-primary uppercase tracking-wider">
@@ -683,7 +683,7 @@ export const MenuPage = () => {
                             <div className={`absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
                                 expandedSections.wraps ? 'block' : 'hidden md:block'
                             }`}>
-                                <img src={wrapImg} alt="" className="w-full h-full object-contain mix-blend-multiply" />
+                                <img src={wrapImg} alt="" className="w-full h-full object-contain mix-blend-multiply" width="300" height="300" loading="lazy" />
                             </div>
                             <div className="flex justify-between items-center mb-4">
                                 <h2 className="text-3xl font-serif font-bold text-primary uppercase tracking-wider">
@@ -825,7 +825,7 @@ export const MenuPage = () => {
                             <div className={`absolute top-1/2 right-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
                                 expandedSections.coffee ? 'block' : 'hidden md:block'
                             }`}>
-                                <img src={coffeeImg} alt="" className="w-full h-full object-contain mix-blend-multiply" />
+                                <img src={coffeeImg} alt="" className="w-full h-full object-contain mix-blend-multiply" width="300" height="300" loading="lazy" />
                             </div>
                             <div className="flex justify-between items-center mb-4">
                                 <h2 className="text-3xl font-serif font-bold text-primary uppercase tracking-wider">
@@ -838,7 +838,7 @@ export const MenuPage = () => {
                             <div className="w-full h-[1px] bg-[#F5F0E5] mb-8"></div>
                             {/* Illy Coffee Logo */}
                             <div className={`mb-8 flex justify-center ${expandedSections.coffee ? 'block' : 'hidden md:flex'}`}>
-                                <img src={illyLogo} alt="Illy Coffee" className="h-16 w-auto object-contain" loading="lazy" />
+                                <img src={illyLogo} alt="Illy Coffee" className="h-16 w-auto object-contain" loading="lazy" width="300" height="300" />
                             </div>
                             <div className={`grid md:grid-cols-2 gap-10 ${expandedSections.coffee ? 'block' : 'hidden md:grid'}`}>
                                 <div className="space-y-8">
@@ -1066,7 +1066,7 @@ export const MenuPage = () => {
                                     </div>
                                     {/* Dilmah Logo */}
                                     <div className="mt-12 flex justify-center">
-                                        <img src={dilmahLogo} alt="Dilmah Tea" className="w-32 h-auto object-contain" loading="lazy" />
+                                        <img src={dilmahLogo} alt="Dilmah Tea" className="w-32 h-auto object-contain" loading="lazy" width="300" height="300" />
                                     </div>
                                 </div>
                                 <div className="md:col-span-3 text-center text-sm text-primary italic mt-4">
@@ -1080,7 +1080,7 @@ export const MenuPage = () => {
                             <div className={`absolute top-1/2 right-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
                                 expandedSections.beverages ? 'block' : 'hidden md:block'
                             }`}>
-                                <img src={beverageImg} alt="" className="w-full h-full object-contain mix-blend-multiply" />
+                                <img src={beverageImg} alt="" className="w-full h-full object-contain mix-blend-multiply" width="300" height="300" loading="lazy" />
                             </div>
                             <div className="flex justify-between items-center mb-4">
                                 <h2 className="text-3xl font-serif font-bold text-primary uppercase tracking-wider">
@@ -1246,7 +1246,7 @@ export const MenuPage = () => {
                             <div className={`absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
                                 expandedSections.signature ? 'block' : 'hidden md:block'
                             }`}>
-                                <img src={shakesImg} alt="" className="w-full h-full object-contain mix-blend-multiply" />
+                                <img src={shakesImg} alt="" className="w-full h-full object-contain mix-blend-multiply" width="300" height="300" loading="lazy" />
                             </div>
                             <div className="flex justify-between items-center mb-4">
                                 <h2 className="text-3xl font-serif font-bold text-primary uppercase tracking-wider">

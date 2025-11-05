@@ -25,6 +25,8 @@ export const EventsPage = () => {
               src={eventsImg}
               alt="Interior of Crave Café set up for a private event"
               className="w-full h-full object-cover"
+              width="800"
+              height="600"
             />
             <div className="absolute inset-0 bg-darkBg bg-opacity-50"></div>
           </div>

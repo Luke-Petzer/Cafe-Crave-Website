@@ -81,6 +81,9 @@ export const MenuPreview: React.FC = () => {
                                     src={item.image}
                                     alt={item.name}
                                     className={`w-full h-full object-cover transition-transform duration-300 hover:scale-105 ${item.imagePosition || 'object-center'}`}
+                                    width="800"
+                                    height="600"
+                                    loading="lazy"
                                 />
                             </div>
 							<div className="p-6">
