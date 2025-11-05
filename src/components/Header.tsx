@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { MenuIcon, XIcon } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import cafeLogoIcon from '../assets/new-logo.svg';
+import cafeLogoIcon from '../assets/old-logo.svg';
 
 // import cafeLogo from '../assets/cafe-logo.svg'; // I've commented this out and used a placeholder below
 
@@ -61,18 +61,18 @@ export const Header = () => {
                             </div>
 
                             {/* Cafe Crave text - visible on all screen sizes */}
-                            <span className="text-xl md:text-2xl font-bold text-light font-['Playfair_Display',serif]">
-                                <span style={{
-                                    background: 'linear-gradient(135deg, #f3ecd5 0%, #E9D8C4 50%, #f3ecd5 100%)',
-                                    WebkitBackgroundClip: 'text',
-                                    WebkitTextFillColor: 'transparent',
-                                    backgroundClip: 'text',
-                                    textShadow: '0 0 20px rgba(243, 236, 213, 0.3)',
-                                    filter: 'drop-shadow(0 0 8px rgba(243, 236, 213, 0.4))'
-                                }}>
-                                    Cafe Crave
-                                </span>
-                            </span>
+                            {/*<span className="text-xl md:text-2xl font-bold text-light font-['Playfair_Display',serif]">*/}
+                            {/*    <span style={{*/}
+                            {/*        background: 'linear-gradient(135deg, #f3ecd5 0%, #E9D8C4 50%, #f3ecd5 100%)',*/}
+                            {/*        WebkitBackgroundClip: 'text',*/}
+                            {/*        WebkitTextFillColor: 'transparent',*/}
+                            {/*        backgroundClip: 'text',*/}
+                            {/*        textShadow: '0 0 20px rgba(243, 236, 213, 0.3)',*/}
+                            {/*        filter: 'drop-shadow(0 0 8px rgba(243, 236, 213, 0.4))'*/}
+                            {/*    }}>*/}
+                            {/*        Cafe Crave*/}
+                            {/*    </span>*/}
+                            {/*</span>*/}
                         </Link>
 
                     </div>
@@ -129,17 +129,17 @@ export const Header = () => {
                                 className="h-16 mb-4 mx-auto"
                             />
                             {/* Cafe Crave text with gradient styling */}
-                            <h2 className="text-3xl font-bold font-['Playfair_Display',serif]">
-                                <span style={{
-                                    background: 'linear-gradient(135deg, #f3ecd5 0%, #E9D8C4 50%, #f3ecd5 100%)',
-                                    WebkitBackgroundClip: 'text',
-                                    WebkitTextFillColor: 'transparent',
-                                    backgroundClip: 'text',
-                                    filter: 'drop-shadow(0 0 8px rgba(243, 236, 213, 0.4))'
-                                }}>
-                                    Cafe Crave
-                                </span>
-                            </h2>
+                            {/*<h2 className="text-3xl font-bold font-['Playfair_Display',serif]">*/}
+                            {/*    <span style={{*/}
+                            {/*        background: 'linear-gradient(135deg, #f3ecd5 0%, #E9D8C4 50%, #f3ecd5 100%)',*/}
+                            {/*        WebkitBackgroundClip: 'text',*/}
+                            {/*        WebkitTextFillColor: 'transparent',*/}
+                            {/*        backgroundClip: 'text',*/}
+                            {/*        filter: 'drop-shadow(0 0 8px rgba(243, 236, 213, 0.4))'*/}
+                            {/*    }}>*/}
+                            {/*        Cafe Crave*/}
+                            {/*    </span>*/}
+                            {/*</h2>*/}
                         </div>
                         <ul className="flex flex-col items-center space-y-6">
                             <li>

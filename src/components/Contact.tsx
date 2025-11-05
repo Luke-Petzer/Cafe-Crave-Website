@@ -58,32 +58,32 @@ export const Contact = () => {
               <h3 className="text-2xl font-serif font-bold mb-6">Opening Hours</h3>
               <div className="bg-darkText bg-opacity-10 rounded-lg p-6 md:p-8">
                 <ul className="space-y-3 text-left">
-                  <li className="flex justify-between border-b border-darkText border-opacity-20 pb-2">
-                    <span>Monday</span>
+                  <li className="flex border-b border-darkText border-opacity-20 pb-2">
+                    <span className="w-28 flex-shrink-0">Monday</span>
                     <span className="font-medium">10 AM – 6 PM</span>
                   </li>
-                  <li className="flex justify-between border-b border-darkText border-opacity-20 pb-2">
-                    <span>Tuesday</span>
+                  <li className="flex border-b border-darkText border-opacity-20 pb-2">
+                    <span className="w-28 flex-shrink-0">Tuesday</span>
                     <span className="font-medium">8:30 AM – 6 PM</span>
                   </li>
-                  <li className="flex justify-between border-b border-darkText border-opacity-20 pb-2">
-                    <span>Wednesday</span>
+                  <li className="flex border-b border-darkText border-opacity-20 pb-2">
+                    <span className="w-28 flex-shrink-0">Wednesday</span>
                     <span className="font-medium">8:30 AM – 6 PM</span>
                   </li>
-                  <li className="flex justify-between border-b border-darkText border-opacity-20 pb-2">
-                    <span>Thursday</span>
+                  <li className="flex border-b border-darkText border-opacity-20 pb-2">
+                    <span className="w-28 flex-shrink-0">Thursday</span>
                     <span className="font-medium">8:30 AM – 6 PM</span>
                   </li>
-                  <li className="flex justify-between border-b border-darkText border-opacity-20 pb-2">
-                    <span>Friday</span>
+                  <li className="flex border-b border-darkText border-opacity-20 pb-2">
+                    <span className="w-28 flex-shrink-0">Friday</span>
                     <span className="font-medium">8:30 AM – 12 PM, 2 PM – 9 PM</span>
                   </li>
-                  <li className="flex justify-between border-b border-darkText border-opacity-20 pb-2">
-                    <span>Saturday</span>
+                  <li className="flex border-b border-darkText border-opacity-20 pb-2">
+                    <span className="w-28 flex-shrink-0">Saturday</span>
                     <span className="font-medium">8:30 AM – 9 PM</span>
                   </li>
-                  <li className="flex justify-between pb-2">
-                    <span>Sunday</span>
+                  <li className="flex pb-2">
+                    <span className="w-28 flex-shrink-0">Sunday</span>
                     <span className="font-medium">10 AM – 6 PM</span>
                   </li>
                 </ul>

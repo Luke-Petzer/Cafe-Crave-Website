@@ -1,6 +1,8 @@
 import { Instagram, Facebook } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+import cafeLogoIcon from '../assets/old-logo.svg';
+
 export const Footer = () => {
   return (
     <footer className="section-dark py-12 md:py-16 border-t border-light border-opacity-20 pt-8">
@@ -8,17 +10,13 @@ export const Footer = () => {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           {/* Brand Column */}
           <div className="md:col-span-1">
-            <h2 className="text-2xl font-serif font-bold mb-4">
-              <span style={{
-                background: 'linear-gradient(135deg, #f3ecd5 0%, #E9D8C4 50%, #f3ecd5 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                filter: 'drop-shadow(0 0 8px rgba(243, 236, 213, 0.4))'
-              }}>
-                Cafe Crave
-              </span>
-            </h2>
+            <div className="mb-4">
+              <img
+                src={cafeLogoIcon}
+                alt="Cafe Crave"
+                className="h-12 md:h-16"
+              />
+            </div>
             <p className="opacity-80 text-sm leading-relaxed mb-6">
               A place to connect, play, and celebrate together.
             </p>
