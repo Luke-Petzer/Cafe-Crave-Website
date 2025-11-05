@@ -23,10 +23,10 @@ export const Footer = () => {
             <div className="space-y-2">
               <p className="opacity-80 text-sm font-medium">Get in Touch</p>
               <a
-                href="tel:+27735651888"
+                href="tel:+27662386374"
                 className="block accent-light hover:text-opacity-80 transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 rounded text-sm"
               >
-                073 565 1888
+                +27 66 238 6374
               </a>
             </div>
           </div>

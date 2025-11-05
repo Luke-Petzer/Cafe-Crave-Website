@@ -38,8 +38,8 @@ export const Contact = () => {
               <div>
                 <PhoneIcon size={32} className="text-accent mx-auto mb-4" />
                 <h3 className="text-lg font-semibold mb-2">Phone</h3>
-                <a href="tel:0735651888" className="opacity-80 hover:text-accent transition-colors">
-                  073 565 1888
+                <a href="tel:+27662386374" className="opacity-80 hover:text-accent transition-colors">
+                  +27 66 238 6374
                 </a>
               </div>
               <div>
@@ -167,7 +167,7 @@ export const Contact = () => {
               </a>
 
               <a
-                href="tel:0735651888"
+                href="tel:+27662386374"
                 className="bg-darkText bg-opacity-10 hover:bg-opacity-20 text-darkText px-8 py-4 rounded-md inline-flex items-center font-medium text-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-darkText focus:ring-opacity-30"
               >
                 <PhoneIcon size={22} className="mr-2" />
