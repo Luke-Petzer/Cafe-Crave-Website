@@ -11,7 +11,7 @@ const featuredItems = [
         id: 1,
         name: 'Biscoff Cheesecake',
         category: 'Dessert',
-        price: 'R35',
+        price: 'R95',
         image: cheesecakeImg,
         imagePosition: '', // Or 'object-center'
     },
@@ -27,7 +27,7 @@ const featuredItems = [
         id: 3,
         name: 'Iced Matcha',
         category: 'Beverages',
-        price: 'R42',
+        price: 'R65',
         image: matchaImg,
         imagePosition: 'object-[50%_25%]'
     },

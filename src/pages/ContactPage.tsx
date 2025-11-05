@@ -36,7 +36,7 @@ export const ContactPage = () => {
           "@context": "https://schema.org",
           "@type": "Cafe",
           "name": "Crave Café",
-          "description": "A retro, music-inspired, halal-friendly café in Claremont, Cape Town.",
+          "description": "A retro, music-inspired, halal café in Claremont, Cape Town.",
           "url": "https://www.cafecravecpt.co.za",
           "telephone": "+27735651888",
           "priceRange": "R",
@@ -143,32 +143,32 @@ export const ContactPage = () => {
                     <div>
                       <h3 className="font-medium text-lightText mb-1">Hours</h3>
                       <ul className="text-lightText opacity-80 space-y-1 text-sm md:text-base">
-                        <li className="flex justify-between">
-                          <span>Monday:</span>
+                        <li className="flex">
+                          <span className="w-28 flex-shrink-0">Monday:</span>
                           <span>10 am–6 pm</span>
                         </li>
-                        <li className="flex justify-between">
-                          <span>Tuesday:</span>
+                        <li className="flex">
+                          <span className="w-28 flex-shrink-0">Tuesday:</span>
                           <span>8:30 am–6 pm</span>
                         </li>
-                        <li className="flex justify-between">
-                          <span>Wednesday:</span>
+                        <li className="flex">
+                          <span className="w-28 flex-shrink-0">Wednesday:</span>
                           <span>8:30 am–6 pm</span>
                         </li>
-                        <li className="flex justify-between">
-                          <span>Thursday:</span>
+                        <li className="flex">
+                          <span className="w-28 flex-shrink-0">Thursday:</span>
                           <span>8:30 am–6 pm</span>
                         </li>
-                        <li className="flex justify-between">
-                          <span>Friday:</span>
+                        <li className="flex">
+                          <span className="w-28 flex-shrink-0">Friday:</span>
                           <span>8:30 am–12 pm, 2–9 pm</span>
                         </li>
-                        <li className="flex justify-between">
-                          <span>Saturday:</span>
+                        <li className="flex">
+                          <span className="w-28 flex-shrink-0">Saturday:</span>
                           <span>8:30 am–9 pm</span>
                         </li>
-                        <li className="flex justify-between">
-                          <span>Sunday:</span>
+                        <li className="flex">
+                          <span className="w-28 flex-shrink-0">Sunday:</span>
                           <span>10 am–6 pm</span>
                         </li>
                       </ul>

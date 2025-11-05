@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   return (
-    <footer className="section-dark py-12 md:py-16">
+    <footer className="section-dark py-12 md:py-16 border-t border-light border-opacity-20 pt-8">
       <div className="container mx-auto px-6 md:px-10 lg:px-16">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           {/* Brand Column */}
