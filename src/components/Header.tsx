@@ -46,7 +46,7 @@ export const Header = () => {
             <header
                 className="fixed top-0 left-0 right-0 z-50 bg-primary shadow-lg py-4"
             >
-                <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 flex justify-between items-center">
+                <div className="container mx-auto px-6 md:px-10 lg:px-16 flex justify-between items-center">
                     <div className="flex items-center">
                         <Link to="/" className="flex items-center gap-4" aria-label="Cafe Crave - Home">
                             {/* Logo with circular background, hover and focus states */}
