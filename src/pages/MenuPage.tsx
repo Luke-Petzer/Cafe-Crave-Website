@@ -38,64 +38,92 @@ export const MenuPage = () => {
   const [showNavArrows, setShowNavArrows] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const navScrollRef = useRef<HTMLDivElement>(null);
-        useRef<HTMLDivElement>(null);
-        const sectionRefs: Record<SectionKey, React.RefObject<HTMLDivElement>> = {
-            breakfast: useRef<HTMLDivElement>(null),
-            burgers: useRef<HTMLDivElement>(null),
-            sandwiches: useRef<HTMLDivElement>(null),
-            wraps: useRef<HTMLDivElement>(null),
-            coffee: useRef<HTMLDivElement>(null),
-            tea: useRef<HTMLDivElement>(null),
-            beverages: useRef<HTMLDivElement>(null),
-            signature: useRef<HTMLDivElement>(null)
-        };
-        // Handle sticky nav and back to top button visibility
-        useEffect(() => {
-            const handleScroll = () => {
-                if (navRef.current) {
-                    const navPosition = navRef.current.getBoundingClientRect().top;
-                    setIsNavSticky(navPosition <= 60); // Account for fixed header
-                }
-                // Show back to top button when scrolled down 500px
-                setShowBackToTop(window.scrollY > 500);
-                // Update active category based on scroll position
-                const headerHeight = 60; // Fixed header height
-                const navHeight = navRef.current?.offsetHeight || 0;
-                const offset = isNavSticky ? navHeight + headerHeight : navHeight + headerHeight + 20;
-                const scrollPosition = window.scrollY + offset;
-                Object.entries(sectionRefs).forEach(([category, ref]) => {
-                    if (ref.current) {
-                        const element = ref.current;
-                        const offsetTop = element.offsetTop;
-                        const offsetHeight = element.offsetHeight;
-                        if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-                            setActiveCategory(category);
-                            // No longer auto-expand sections on scroll
-                        }
-                    }
-                });
-            };
-            window.addEventListener('scroll', handleScroll);
-            return () => window.removeEventListener('scroll', handleScroll);
-        }, [isNavSticky]);
-        // Scroll to the selected category section
-        const scrollToSection = (category: string) => {
-            const ref = sectionRefs[category as SectionKey];
-            if (ref.current) {
-                const headerHeight = 60; // Fixed header height
-                const navHeight = navRef.current?.offsetHeight || 0;
-                const totalOffset = navHeight + headerHeight + 20; // Add extra buffer
+  const sectionRefs = useRef<Record<SectionKey, HTMLDivElement | null>>({
+    breakfast: null,
+    burgers: null,
+    sandwiches: null,
+    wraps: null,
+    coffee: null,
+    tea: null,
+    beverages: null,
+    signature: null
+  });
+  // Handle sticky nav and back to top button visibility
+  useEffect(() => {
+    const handleScroll = () => {
+      if (navRef.current) {
+        const navPosition = navRef.current.getBoundingClientRect().top;
+        setIsNavSticky(navPosition <= 80); // Account for fixed header + extra spacing
+      }
+      // Show back to top button when scrolled down 500px
+      setShowBackToTop(window.scrollY > 500);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-                // Get the element's position relative to the document
-                const elementPosition = ref.current.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - totalOffset;
+  // IntersectionObserver for precise scroll-spy active category detection
+  useEffect(() => {
+    const headerHeight = 80; // Fixed header height + extra spacing
+    const navHeight = navRef.current?.offsetHeight || 60; // Approx nav height
 
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        };
+    // This defines a "trigger line" 150px from the top of the viewport,
+    // which is just below the sticky nav.
+    const topMargin = headerHeight + navHeight + 20; // ~160px
+    const rootMargin = `-${topMargin}px 0px -40% 0px`;
+
+    const observerOptions: IntersectionObserverInit = {
+      root: null, // relative to the viewport
+      rootMargin: rootMargin,
+      threshold: 0 // Trigger as soon as it enters the zone
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Set the active category based on the ID of the intersecting section
+          setActiveCategory(entry.target.id as SectionKey);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    // Observe all the section elements
+    const currentRefs = sectionRefs.current;
+    Object.values(currentRefs).forEach(ref => {
+      if (ref) {
+        observer.observe(ref);
+      }
+    });
+
+    // Cleanup
+    return () => {
+      Object.values(currentRefs).forEach(ref => {
+        if (ref) {
+          observer.unobserve(ref);
+        }
+      });
+    };
+  }, []);
+  // Scroll to the selected category section
+  const scrollToSection = (category: string) => {
+    const ref = sectionRefs.current[category as SectionKey];
+    if (ref) {
+      const headerHeight = 80; // Fixed header height + extra spacing
+      const navHeight = navRef.current?.offsetHeight || 0;
+      const totalOffset = navHeight + headerHeight + 20; // Add extra buffer
+
+      // Get the element's position relative to the document
+      const elementPosition = ref.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - totalOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
         // Scroll the navigation menu left or right
         const scrollNav = (direction: 'left' | 'right') => {
             if (navScrollRef.current) {
@@ -171,7 +199,7 @@ export const MenuPage = () => {
                 </div>
             </section>
             {/* Menu Navigation (Sticky Sub-Nav) */}
-            <div id="menu-categories" ref={navRef} className={`hidden md:block section-dark py-4 transition-all duration-300 ${isNavSticky ? 'sticky top-[60px] z-40 shadow-md' : ''}`} onMouseEnter={() => setShowNavArrows(true)} onMouseLeave={() => setShowNavArrows(false)} onFocus={() => setShowNavArrows(true)} onBlur={() => setShowNavArrows(false)}>
+            <div id="menu-categories" ref={navRef} className={`hidden md:block section-dark py-6 transition-all duration-300 ${isNavSticky ? 'sticky top-[80px] z-40 shadow-md' : ''}`} onMouseEnter={() => setShowNavArrows(true)} onMouseLeave={() => setShowNavArrows(false)} onFocus={() => setShowNavArrows(true)} onBlur={() => setShowNavArrows(false)}>
                 <div className="container mx-auto px-4 relative">
                     {/* Left navigation arrow */}
                     <button onClick={() => scrollNav('left')} className={`absolute left-0 top-1/2 -translate-y-1/2 bg-primary text-light p-1 rounded-full z-10 transition-opacity ${showNavArrows ? 'opacity-80' : 'opacity-0'} hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-accent`} aria-label="Scroll menu categories left">
@@ -223,7 +251,7 @@ export const MenuPage = () => {
                     {/* Menu Content Container */}
                     <div className="relative overflow-hidden">
                         {/* Breakfast Section */}
-                        <div ref={sectionRefs.breakfast} className="mb-16 !scroll-mt-[140px] relative z-10">
+                        <div id="breakfast" ref={(el) => (sectionRefs.current.breakfast = el)} className="mb-16 !scroll-mt-[140px] relative z-10">
                             {/* Breakfast Watermark */}
                             <div className={`absolute top-1/2 right-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
                                 expandedSections.breakfast ? 'block' : 'hidden md:block'
@@ -395,7 +423,7 @@ export const MenuPage = () => {
                             </div>
                         </div>
                         {/* Burgers Section */}
-                        <div ref={sectionRefs.burgers} className="mb-16 !scroll-mt-[140px] relative z-10">
+                        <div id="burgers" ref={(el) => (sectionRefs.current.burgers = el)} className="mb-16 !scroll-mt-[140px] relative z-10">
                             {/* Burgers Watermark */}
                             <div className={`absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
                                 expandedSections.burgers ? 'block' : 'hidden md:block'
@@ -535,7 +563,7 @@ export const MenuPage = () => {
                             </div>
                         </div>
                         {/* Sandwiches Section */}
-                        <div ref={sectionRefs.sandwiches} className="mb-16 !scroll-mt-[140px] relative z-10">
+                        <div id="sandwiches" ref={(el) => (sectionRefs.current.sandwiches = el)} className="mb-16 !scroll-mt-[140px] relative z-10">
                             {/* Sandwiches Watermark */}
                             <div className={`absolute top-1/2 right-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
                                 expandedSections.sandwiches ? 'block' : 'hidden md:block'
@@ -678,7 +706,7 @@ export const MenuPage = () => {
                             </div>
                         </div>
                         {/* Wraps & Pitas Section */}
-                        <div ref={sectionRefs.wraps} className="mb-16 !scroll-mt-[140px] relative z-10">
+                        <div id="wraps" ref={(el) => (sectionRefs.current.wraps = el)} className="mb-16 !scroll-mt-[140px] relative z-10">
                             {/* Wraps Watermark */}
                             <div className={`absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
                                 expandedSections.wraps ? 'block' : 'hidden md:block'
@@ -820,7 +848,7 @@ export const MenuPage = () => {
                             </div>
                         </div>
                         {/* Coffee Section */}
-                        <div ref={sectionRefs.coffee} className="mb-16 !scroll-mt-[140px] relative z-10">
+                        <div id="coffee" ref={(el) => (sectionRefs.current.coffee = el)} className="mb-16 !scroll-mt-[140px] relative z-10">
                             {/* Coffee Watermark */}
                             <div className={`absolute top-1/2 right-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
                                 expandedSections.coffee ? 'block' : 'hidden md:block'
@@ -970,7 +998,7 @@ export const MenuPage = () => {
                             </div>
                         </div>
                         {/* Tea Section */}
-                        <div ref={sectionRefs.tea} className="mb-16 !scroll-mt-[140px] relative z-10">
+                        <div id="tea" ref={(el) => (sectionRefs.current.tea = el)} className="mb-16 !scroll-mt-[140px] relative z-10">
                             {/* Tea Watermark */}
                             <div className={`absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
                                 expandedSections.tea ? 'block' : 'hidden md:block'
@@ -1075,7 +1103,7 @@ export const MenuPage = () => {
                             </div>
                         </div>
                         {/* Beverages Section */}
-                        <div ref={sectionRefs.beverages} className="mb-16 !scroll-mt-[140px] relative z-10">
+                        <div id="beverages" ref={(el) => (sectionRefs.current.beverages = el)} className="mb-16 !scroll-mt-[140px] relative z-10">
                             {/* Beverages Watermark */}
                             <div className={`absolute top-1/2 right-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
                                 expandedSections.beverages ? 'block' : 'hidden md:block'
@@ -1241,7 +1269,7 @@ export const MenuPage = () => {
                             </div>
                         </div>
                         {/* Signature Drinks Section */}
-                        <div ref={sectionRefs.signature} className="mb-16 !scroll-mt-[140px] relative z-10">
+                        <div id="signature" ref={(el) => (sectionRefs.current.signature = el)} className="mb-16 !scroll-mt-[140px] relative z-10">
                             {/* Signature Drinks Watermark */}
                             <div className={`absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
                                 expandedSections.signature ? 'block' : 'hidden md:block'

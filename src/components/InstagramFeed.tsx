@@ -76,7 +76,7 @@ export const InstagramFeed: React.FC<InstagramFeedProps> = ({
     <>
       <div className="text-center mb-12">
         <div className="flex items-center justify-center gap-2 mb-4">
-          <Instagram size={32} className="text-accent" />
+          <Instagram size={32} className="text-light" />
           <h2 className="text-3xl md:text-4xl font-serif font-bold">
             Follow Our Journey
           </h2>
@@ -162,7 +162,7 @@ export const InstagramFeed: React.FC<InstagramFeedProps> = ({
           href="https://www.instagram.com/cafecrave_halal/"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-accent hover:bg-opacity-90 text-light px-8 py-4 rounded-md font-medium text-lg transition-all duration-300 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
+          className="inline-flex items-center gap-2 bg-accent hover:bg-opacity-90 text-light px-8 py-4 rounded-md font-semibold text-lg tracking-wide transition-all duration-300 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
         >
           <Instagram size={22} />
           Follow Us on Instagram
