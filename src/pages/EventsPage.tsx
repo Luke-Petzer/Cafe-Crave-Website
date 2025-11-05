@@ -172,27 +172,27 @@ export const EventsPage = () => {
                     <h3 className="text-2xl font-serif font-bold mb-6">Perfect For:</h3>
                     <ul className="space-y-3">
                       <li className="flex items-center">
-                        <span className="w-2 h-2 bg-accent rounded-full mr-3"></span>
+                        <span className="w-2 h-2 bg-light rounded-full mr-3"></span>
                           Birthday Parties & Private Celebrations
                       </li>
                       <li className="flex items-center">
-                        <span className="w-2 h-2 bg-accent rounded-full mr-3"></span>
+                        <span className="w-2 h-2 bg-light rounded-full mr-3"></span>
                         Game nights & Book Clubs
                       </li>
                       <li className="flex items-center">
-                        <span className="w-2 h-2 bg-accent rounded-full mr-3"></span>
+                        <span className="w-2 h-2 bg-light rounded-full mr-3"></span>
                           Community Gatherings & Markets
                       </li>
                       <li className="flex items-center">
-                        <span className="w-2 h-2 bg-accent rounded-full mr-3"></span>
+                        <span className="w-2 h-2 bg-light rounded-full mr-3"></span>
                         Art Exhibitions & Pop-ups
                       </li>
                       <li className="flex items-center">
-                        <span className="w-2 h-2 bg-accent rounded-full mr-3"></span>
+                        <span className="w-2 h-2 bg-light rounded-full mr-3"></span>
                         Live Music & Performances
                       </li>
                       <li className="flex items-center">
-                        <span className="w-2 h-2 bg-accent rounded-full mr-3"></span>
+                        <span className="w-2 h-2 bg-light rounded-full mr-3"></span>
                         Community Gatherings
                       </li>
                     </ul>

@@ -13,7 +13,7 @@ export function App() {
     return (
         <div className="min-h-screen">
             <SEO
-                title="Crave Café | Halal-Friendly Café & Vinyl Music Hub in Claremont"
+                title="Crave Café | Halal Café & Vinyl Music Hub in Claremont"
                 description="Visit Crave Café in Claremont, Cape Town. A unique, retro-inspired halal café with artisan coffee, vinyl records, and delicious all-day meals. Your new local hangout."
                 keywords="halal café claremont, coffee shop claremont, vinyl café cape town, halal breakfast claremont, retro cafe"
             />

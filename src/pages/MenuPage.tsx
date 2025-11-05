@@ -172,8 +172,8 @@ export const MenuPage = () => {
         return (
           <div className="min-h-screen">
             <SEO
-              title="Our Halal-Friendly Menu | Crave Café Claremont (Breakfast, Burgers & Coffee)"
-              description="Explore the 100% halal-friendly menu at Crave Café. We serve artisan coffee, all-day breakfast, gourmet burgers, grills, and desserts in Claremont."
+              title="Our Halal Menu | Crave Café Claremont (Breakfast, Burgers & Coffee)"
+              description="Explore the 100% halal menu at Crave Café. We serve artisan coffee, all-day breakfast, gourmet burgers, grills, and desserts in Claremont."
               keywords="halal menu claremont, halal breakfast cape town, halal burgers claremont, artisan coffee, crave cafe menu"
             />
             <ScrollAnimationObserver />
@@ -186,7 +186,7 @@ export const MenuPage = () => {
                 </div>
                 <div className="relative z-10 text-center px-6">
                     <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight">
-                        Our Halal-Friendly Menu
+                        Our Halal Menu
                     </h1>
                     <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
                         From all-day breakfasts to handcrafted drinks — something for
@@ -869,7 +869,7 @@ export const MenuPage = () => {
                                 <img src={illyLogo} alt="Illy Coffee" className="h-16 w-auto object-contain" loading="lazy" width="300" height="300" />
                             </div>
                             <div className={`grid md:grid-cols-2 gap-10 ${expandedSections.coffee ? 'block' : 'hidden md:grid'}`}>
-                                <div className="space-y-8">
+                                <div className="space-y-4">
                                     <div className="pb-4">
                                         <div className="flex justify-between mb-1">
                                             <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
@@ -924,7 +924,7 @@ export const MenuPage = () => {
                                         </p>
                                     </div>
                                 </div>
-                                <div className="space-y-8">
+                                <div className="space-y-4">
                                     <div className="pb-4">
                                         <div className="flex justify-between mb-1">
                                             <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
@@ -1120,7 +1120,7 @@ export const MenuPage = () => {
                             </div>
                             <div className="w-full h-[1px] bg-[#F5F0E5] mb-8"></div>
                             <div className={`grid md:grid-cols-3 gap-10 ${expandedSections.beverages ? 'block' : 'hidden md:grid'}`}>
-                                <div className="space-y-8">
+                                <div className="space-y-4">
                                     <h3 className="text-xl font-medium text-primary uppercase tracking-wider mb-6">
                                         Smoothies - R75
                                     </h3>
@@ -1167,7 +1167,7 @@ export const MenuPage = () => {
                                         </p>
                                     </div>
                                 </div>
-                                <div className="space-y-8">
+                                <div className="space-y-4">
                                     <h3 className="text-xl font-medium text-primary uppercase tracking-wider mb-6">
                                         Frappes - R75
                                     </h3>
@@ -1286,7 +1286,7 @@ export const MenuPage = () => {
                             </div>
                             <div className="w-full h-[1px] bg-[#F5F0E5] mb-8"></div>
                             <div className={`grid md:grid-cols-2 gap-10 ${expandedSections.signature ? 'block' : 'hidden md:grid'}`}>
-                                <div className="space-y-8">
+                                <div className="space-y-4">
                                     <h3 className="text-xl font-medium text-primary uppercase tracking-wider mb-6">
                                         Blizzards - R65
                                     </h3>
@@ -1342,7 +1342,7 @@ export const MenuPage = () => {
                                         </p>
                                     </div>
                                 </div>
-                                <div className="space-y-8">
+                                <div className="space-y-4">
                                     <h3 className="text-xl font-medium text-primary uppercase tracking-wider mb-6">
                                         On The Rocks - R60
                                     </h3>
