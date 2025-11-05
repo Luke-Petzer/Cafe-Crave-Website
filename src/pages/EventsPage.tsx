@@ -1,7 +1,6 @@
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { SEO } from '../components/SEO';
-import { EventPreview } from '../components/EventPreview';
 import { GoogleReviews } from '../components/GoogleReviews';
 import { ScrollAnimationObserver } from '../components/ScrollAnimationObserver';
 import  eventsImg  from '../assets/events.webp';
@@ -212,16 +211,45 @@ export const EventsPage = () => {
         {/* Upcoming Events Section - darkBg */}
         <section id="upcoming" className="section-animate bg-darkBg text-darkText py-20 md:py-28">
           <div className="container mx-auto px-6 md:px-10 lg:px-16">
-            <div className="text-center mb-16">
+            <div className="text-center max-w-3xl mx-auto">
               <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">
                 Upcoming Events
               </h2>
-              <div className="w-24 h-1 bg-accent mx-auto mb-6"></div>
-              <p className="opacity-80 max-w-2xl mx-auto text-lg">
-                Join us for live music, community gatherings, and special occasions
-              </p>
+              <div className="w-24 h-1 bg-accent mx-auto mb-8"></div>
+
+              {/* Coming Soon Message */}
+              <div className="bg-light bg-opacity-10 rounded-lg p-12 md:p-16">
+                <CalendarIcon size={64} className="text-accent mx-auto mb-6 opacity-80" />
+                <h3 className="text-2xl md:text-3xl font-serif font-semibold mb-4">
+                  Exciting Events Coming Soon
+                </h3>
+                <p className="text-lg opacity-80 mb-6 leading-relaxed">
+                  We're planning some amazing events and experiences for our community. Stay tuned for live music nights, board game tournaments, coffee workshops, and more!
+                </p>
+                <p className="text-base opacity-70 mb-8">
+                  Follow us on social media or contact us to be the first to know when we announce our upcoming events.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <a
+                    href="https://www.instagram.com/cafecrave_halal/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-accent hover:bg-opacity-90 text-light px-6 py-3 rounded-md inline-flex items-center justify-center font-medium transition-all duration-200 ease-out hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
+                  >
+                    Follow for Updates
+                    <ArrowRightIcon size={20} className="ml-2" />
+                  </a>
+                  <a
+                    href="https://wa.me/27662386374?text=Hi%20Crave%20Café!%20I'd%20like%20to%20know%20about%20upcoming%20events."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-light bg-opacity-10 hover:bg-opacity-20 text-darkText px-6 py-3 rounded-md inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-light focus:ring-opacity-30"
+                  >
+                    Contact Us
+                  </a>
+                </div>
+              </div>
             </div>
-            <EventPreview showHeader={false} showViewAllButton={false} />
           </div>
         </section>
 
