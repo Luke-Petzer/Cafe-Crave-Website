@@ -19,6 +19,13 @@ export default {
         redText: '#F7F3EE',
         darkBg: '#322C2B',
         darkText: '#F7F3EE',
+        // Vintage Eclectic Design System
+        'dark-walnut': '#2B1F1A',
+        'aged-paper': '#FDF5E6',
+        'newsprint': '#F5EBD8',
+        'ink-black': '#1A1512',
+        'sepia-tone': '#704214',
+        'vintage-cream': '#FFF8E7',
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],

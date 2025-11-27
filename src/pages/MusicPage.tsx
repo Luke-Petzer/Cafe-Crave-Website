@@ -47,29 +47,34 @@ export const MusicPage = () => {
       <ScrollAnimationObserver />
       <Header />
       <main id="main-content" className="pt-16 md:pt-20">
-        {/* Hero Section - DARK */}
-        <section className="section-dark relative min-h-[600px] md:min-h-[650px] flex items-center justify-center">
-          <div className="absolute inset-0 z-0 overflow-hidden animate-hero-zoom">
+        {/* Hero Section - Vintage Vinyl Lounge */}
+        <section className="relative min-h-[600px] md:min-h-[650px] flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 z-0">
             <img
               src={musicImg}
               alt="A record rack filled with classic vinyl albums at Crave Café"
-              className="w-full h-full object-cover brightness-50"
+              className="w-full h-full object-cover vintage-photo"
               width="800"
               height="600"
             />
+            {/* Dark grainy overlay */}
+            <div className="hero-grainy-overlay"></div>
           </div>
           <div className="relative z-10 text-center px-6">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight">
-              Our Vinyl Collection
-            </h1>
-            <div className="w-24 h-1 bg-accent mx-auto mb-6"></div>
-            <p className="text-xl md:text-2xl opacity-90 max-w-2xl mx-auto">
-              Explore our curated selection of classic albums and timeless records
-            </p>
+            {/* Newspaper headline on aged paper */}
+            <div className="paper-container newspaper-border p-8 md:p-12 max-w-4xl mx-auto">
+              <h1 className="vintage-headline text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight">
+                Our Vinyl Collection
+              </h1>
+              <div className="w-32 h-1 mx-auto mb-6" style={{ borderTop: '3px double #1A1512' }}></div>
+              <p className="typewriter-text text-lg md:text-xl max-w-2xl mx-auto">
+                Explore our curated selection of classic albums and timeless records
+              </p>
+            </div>
           </div>
         </section>
 
-        <section className="section-dark py-20 md:py-28">
+        <section className="py-20 md:py-28" style={{ backgroundColor: 'transparent' }}>
           <div className="container mx-auto px-6 md:px-10 lg:px-16">
             <div className="mb-8">
               <GenreFilter

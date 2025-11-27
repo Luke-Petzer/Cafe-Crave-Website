@@ -139,37 +139,39 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
 
     const content = (
         <>
-            {/* Header Section */}
-            <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4 text-lightText">
-                    What Our Guests Say
-                </h2>
-                <div className="w-24 h-1 bg-accent mx-auto mb-6"></div>
+            {/* Header Section - Newspaper style on aged paper */}
+            <div className="text-center mb-16 max-w-3xl mx-auto">
+                <div className="paper-container newspaper-border p-8 md:p-10">
+                    <h2 className="vintage-headline text-3xl md:text-4xl mb-4">
+                        What Our Guests Say
+                    </h2>
+                    <div className="w-32 h-0.5 mx-auto mb-6" style={{ borderTop: '3px double #1A1512' }}></div>
 
-                {!loading && (
-                    <div className="flex items-center justify-center gap-2 mb-4">
-                        <span className="text-4xl font-bold text-lightText">
-                            {averageRating ? averageRating.toFixed(1) : '—'}
-                        </span>
-                        <div>
-                            <div className="flex">
-                                {[...Array(5)].map((_, i) => (
-                                    <StarIcon
-                                        key={i}
-                                        size={20}
-                                        className={
-                                            i < Math.round(averageRating)
-                                                ? 'text-accent'
-                                                : 'text-gray-400'
-                                        }
-                                        fill={i < Math.round(averageRating) ? 'currentColor' : 'none'}
-                                    />
-                                ))}
+                    {!loading && (
+                        <div className="flex items-center justify-center gap-3">
+                            <span className="text-4xl font-bold text-sepia-tone" style={{ fontFamily: 'Playfair Display, serif' }}>
+                                {averageRating ? averageRating.toFixed(1) : '—'}
+                            </span>
+                            <div>
+                                <div className="flex">
+                                    {[...Array(5)].map((_, i) => (
+                                        <StarIcon
+                                            key={i}
+                                            size={20}
+                                            className={
+                                                i < Math.round(averageRating)
+                                                    ? 'text-sepia-tone'
+                                                    : 'text-gray-400'
+                                            }
+                                            fill={i < Math.round(averageRating) ? 'currentColor' : 'none'}
+                                        />
+                                    ))}
+                                </div>
+                                <p className="text-sm text-ink-black typewriter-text">Google Reviews</p>
                             </div>
-                            <p className="text-sm opacity-70 text-lightText">Google Reviews</p>
                         </div>
-                    </div>
-                )}
+                    )}
+                </div>
             </div>
 
             {loading ? (
@@ -192,26 +194,27 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
                                             key={`review-${index}`}
                                             className="w-full flex-shrink-0 px-4"
                                         >
-                                            <div className="bg-light text-lightText p-8 md:p-10 rounded-lg shadow-xl border-2 border-accent border-opacity-30 transform transition-all duration-300 hover:shadow-2xl h-[350px] md:h-[400px] overflow-hidden flex flex-col">
+                                            {/* NEWSPAPER CLIPPING STYLE */}
+                                            <div className="newspaper-clipping p-8 md:p-10 h-[350px] md:h-[400px] overflow-hidden flex flex-col">
                                                 <div className="flex items-center justify-between mb-6 flex-shrink-0">
                                                     <div className="flex gap-1">
                                                         {[...Array(5)].map((_, i) => (
                                                             <StarIcon
                                                                 key={i}
-                                                                size={24}
+                                                                size={22}
                                                                 className={
-                                                                    i < review.rating ? 'text-accent' : 'text-gray-300'
+                                                                    i < review.rating ? 'text-sepia-tone' : 'text-gray-400'
                                                                 }
                                                                 fill={i < review.rating ? 'currentColor' : 'none'}
                                                             />
                                                         ))}
                                                     </div>
-                                                    <span className="text-sm opacity-70 text-lightText">{review.date}</span>
+                                                    <span className="text-xs text-ink-black opacity-70 typewriter-text">{review.date}</span>
                                                 </div>
-                                                <p className="text-lg md:text-xl mb-6 italic leading-relaxed text-lightText flex-grow overflow-hidden line-clamp-6">
+                                                <p className="text-base md:text-lg mb-6 leading-relaxed text-ink-black flex-grow overflow-hidden line-clamp-6 typewriter-text">
                                                     "{review.text}"
                                                 </p>
-                                                <p className="text-lg font-semibold text-lightText flex-shrink-0">— {review.name}</p>
+                                                <p className="text-base font-bold text-ink-black flex-shrink-0 typewriter-text">— {review.name}</p>
                                             </div>
                                         </div>
                                     ))}
@@ -225,7 +228,7 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
                                     <button
                                         onClick={goToPrevious}
                                         disabled={isTransitioning}
-                                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 bg-accent hover:bg-opacity-90 text-light p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 z-10 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 bg-sepia-tone hover:bg-opacity-90 text-vintage-cream p-3 rounded-sm shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-sepia-tone focus:ring-opacity-50 z-10 disabled:opacity-50 disabled:cursor-not-allowed border-2 border-ink-black"
                                         aria-label="Previous review"
                                     >
                                         <ChevronLeft size={24} />
@@ -235,7 +238,7 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
                                     <button
                                         onClick={goToNext}
                                         disabled={isTransitioning}
-                                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 bg-accent hover:bg-opacity-90 text-light p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 z-10 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 bg-sepia-tone hover:bg-opacity-90 text-vintage-cream p-3 rounded-sm shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-sepia-tone focus:ring-opacity-50 z-10 disabled:opacity-50 disabled:cursor-not-allowed border-2 border-ink-black"
                                         aria-label="Next review"
                                     >
                                         <ChevronRight size={24} />
@@ -257,10 +260,10 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
                                                 key={index}
                                                 onClick={() => goToSlide(index)}
                                                 disabled={isTransitioning}
-                                                className={`w-3 h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 disabled:cursor-not-allowed ${
+                                                className={`w-3 h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sepia-tone focus:ring-opacity-50 disabled:cursor-not-allowed border border-ink-black ${
                                                     index === activeIndex
-                                                        ? 'bg-accent w-8'
-                                                        : 'bg-lightText bg-opacity-30 hover:bg-opacity-50'
+                                                        ? 'bg-sepia-tone w-8'
+                                                        : 'bg-aged-paper bg-opacity-50 hover:bg-opacity-80'
                                                 }`}
                                                 aria-label={`Go to review ${index + 1}`}
                                             />
@@ -277,24 +280,27 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
                 </>
             )}
 
-            {/* Call to Action */}
+            {/* Call to Action - Vintage button on paper */}
             <div className="text-center">
-                <a
-                    href="https://share.google/NN6OWVg1gJzfe6ZwL"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center font-medium transition-colors hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
-                >
-                    Leave a Review on Google
-                    <ExternalLinkIcon size={18} className="ml-2" />
-                </a>
+                <div className="inline-block paper-container p-6 rounded-sm">
+                    <a
+                        href="https://share.google/NN6OWVg1gJzfe6ZwL"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-sepia-tone hover:bg-opacity-90 text-vintage-cream px-8 py-4 rounded-sm inline-flex items-center font-bold transition-all duration-200 ease-out hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-sepia-tone focus:ring-opacity-50 uppercase tracking-wide border-2 border-ink-black text-lg"
+                        style={{ fontFamily: 'Playfair Display, serif' }}
+                    >
+                        Leave a Review on Google
+                        <ExternalLinkIcon size={20} className="ml-2" />
+                    </a>
+                </div>
             </div>
         </>
     );
 
     if (standalone) {
         return (
-            <section className="section-animate section-light text-lightText py-20 md:py-28">
+            <section className="section-animate py-20 md:py-28" style={{ backgroundColor: 'transparent' }}>
                 <div className="container mx-auto px-6 md:px-10 lg:px-16">
                     {content}
                 </div>
