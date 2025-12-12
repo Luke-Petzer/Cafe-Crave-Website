@@ -3,11 +3,69 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 /* DO NOT DELETE THESE TAILWIND IMPORTS, OTHERWISE THE STYLING WILL NOT RENDER AT ALL */
-/* Google Fonts Import */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* Google Fonts Import - Newspaper Design System */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Oswald:wght@500&family=Playfair+Display:wght@400;700&display=swap');
+
+/* Legacy Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* CSS Custom Properties (Variables) */
+:root {
+  /* New Newspaper Design System Colors */
+  --color-paper: #FDFBF7;
+  --color-ink: #231F20;
+  --color-rust: #8B2E2E;
+  --color-espresso: #1A1614;
+  --color-washed-brown: #DCCfc6;
+
+  /* Legacy Colors (for backward compatibility) */
+  --color-accent: #25D366;
+  --color-light: #F7F3EE;
+  --color-aged-paper: #E8D5B7;
+  --color-newsprint: #F5EFE7;
+  --color-ink-black: #1A1512;
+
+  /* Animation Durations */
+  --animation-duration-micro: 0.15s;
+  --animation-duration-fast: 0.3s;
+  --animation-duration-normal: 0.5s;
+}
 
 /* Standardized Section Styles */
 @layer components {
+  /* 1. The Paper Grain Texture */
+  /* Applied to a wrapper or body to give that physical feel */
+  .bg-grain {
+    background-color: #FDFBF7;
+    position: relative;
+  }
+
+  .bg-grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.04; /* Very subtle texture */
+    pointer-events: none;
+    z-index: 50;
+    /* SVG Noise Filter */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  /* 3. Newspaper Image Filter Utility */
+  /* Makes modern digital photos look like printed press */
+  .filter-newspaper {
+    filter: sepia(0.2) contrast(1.1) brightness(0.95) grayscale(0.1);
+    transition: filter 0.3s ease;
+  }
+
+  .filter-newspaper:hover {
+    filter: sepia(0) contrast(1) brightness(1) grayscale(0);
+  }
+
+  /* Legacy Section Styles */
   .section-light {
     @apply bg-[#EBD4B7] text-[#5A372B];
   }
@@ -32,51 +90,60 @@
   }
 }
 
-:root {
-  --animation-duration-fast: 0.35s;
-  --animation-duration-medium: 0.45s;
-  --animation-duration-micro: 0.15s;
-  --color-primary: #322C2B;
-  --color-secondary: #5C3A2D;
-  --color-accent: #803D3B;
-  --color-light: #FFFFFF;
-  --color-subtext: #A86A53;
-
-  /* Vintage Eclectic Design System Colors */
-  --color-dark-walnut: #2B1F1A;
-  --color-aged-paper: #FDF5E6;
-  --color-newsprint: #F5EBD8;
-  --color-ink-black: #1A1512;
-  --color-sepia-tone: #704214;
-  --color-vintage-cream: #FFF8E7;
+/* Utility: Hide scrollbar for horizontal scroll sections */
+@layer utilities {
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
-body {
-  margin: 0;
-  font-family: 'Courier New', 'Montserrat', 'Inter', monospace, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* About Page Refinements */
+@layer components {
+  /* Newspaper Column Hyphenation - Fixes "rivers" in justified text */
+  .newspaper-columns {
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    word-spacing: -0.05em;
+    hyphenate-limit-chars: 6 3 3;
+  }
 
-  /* TABLETOP LAYOUT: Dark textured wood background */
-  background-color: var(--color-dark-walnut);
-  background-image:
-    repeating-linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.03) 0px,
-      transparent 1px,
-      transparent 40px,
-      rgba(0, 0, 0, 0.03) 41px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.03) 0px,
-      transparent 1px,
-      transparent 40px,
-      rgba(0, 0, 0, 0.03) 41px
-    ),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
-  background-size: 40px 40px, 40px 40px, 100px 100px;
-  background-blend-mode: overlay;
+  .newspaper-columns p {
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    word-spacing: -0.05em;
+  }
+
+  /* Textured Espresso Background - Adds cardstock feel to dark sections */
+  .bg-espresso-textured {
+    background-color: #1A1614;
+    position: relative;
+    background-image:
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='darkNoiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23darkNoiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+
+  .bg-espresso-textured::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(26, 22, 20, 0.98) 0%, rgba(15, 12, 11, 0.98) 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .bg-espresso-textured > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
 }
 html {
   scroll-behavior: auto;

@@ -49,61 +49,72 @@ export const MenuPreview: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Food cards on dark coasters/placemats */}
+                {/* Food cards in newspaper classified ad style */}
 				<div className="grid md:grid-cols-3 gap-10 md:gap-12 max-w-6xl mx-auto mb-12">
 					{featuredItems.map((item, index) => (
                         <div key={item.id} className="flex justify-center">
-                            {/* Dark coaster/placemat sitting on wood background */}
-                            <div className="dark-coaster p-6 w-full max-w-sm">
-                                {/* Aged paper card on top of coaster */}
-                                <div
-                                    className="paper-container overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl"
-                                    style={{ transform: index % 2 === 0 ? 'rotate(-1deg)' : 'rotate(1deg)' }}
-                                >
-                                    {/* Vintage food photo */}
-                                    <div className="aspect-[4/3] overflow-hidden bg-white">
+                            {/* Newspaper Classified Ad / Coupon Style */}
+                            <div className="group relative bg-paper border-2 border-ink p-4 shadow-newspaper hover:shadow-polaroid transition-all duration-300 w-full max-w-sm"
+                                style={{ transform: index % 2 === 0 ? 'rotate(-0.5deg)' : 'rotate(0.5deg)' }}>
+
+                                {/* Inner dashed border for "coupon" effect */}
+                                <div className="absolute inset-1 border border-dashed border-ink/20 pointer-events-none"></div>
+
+                                <div className="relative z-10">
+                                    {/* Image with newspaper filter - grayscale to color on hover */}
+                                    <div className="aspect-[4/3] overflow-hidden mb-4 border border-ink/10 grayscale group-hover:grayscale-0 transition-all duration-500">
                                         <img
                                             src={item.image}
                                             alt={item.name}
-                                            className={`w-full h-full object-cover vintage-photo transition-transform duration-300 hover:scale-105 ${item.imagePosition || 'object-center'}`}
+                                            className={`w-full h-full object-cover filter-newspaper ${item.imagePosition || 'object-center'}`}
                                             width="800"
                                             height="600"
                                             loading="lazy"
                                         />
                                     </div>
+
                                     {/* Menu item details in typewriter style */}
-                                    <div className="p-6 border-t-2 border-ink-black border-opacity-20">
-                                        <span className="text-xs text-sepia-tone font-bold uppercase tracking-widest" style={{ fontFamily: 'Courier New, monospace' }}>
-                                            {item.category}
-                                        </span>
-                                        <h3 className="text-xl font-serif font-bold text-ink-black mt-2 mb-3">
-                                            {item.name}
-                                        </h3>
-                                        <p className="text-2xl font-bold text-sepia-tone" style={{ fontFamily: 'Playfair Display, serif' }}>
-                                            {item.price}
-                                        </p>
+
+                                    {/* Category stamp */}
+                                    <span className="inline-block text-xs font-accent text-rust font-bold uppercase tracking-widest mb-2 px-2 py-1 border border-rust/30">
+                                        {item.category}
+                                    </span>
+
+                                    {/* Title */}
+                                    <h3 className="font-headline text-xl font-bold uppercase tracking-tight text-ink mb-2">
+                                        {item.name}
+                                    </h3>
+
+                                    {/* Price in large accent font */}
+                                    <p className="font-headline text-3xl font-bold text-rust mb-4">
+                                        {item.price}
+                                    </p>
+
+                                    {/* Divider line with scissors icon for coupon feel */}
+                                    <div className="border-t border-dashed border-ink/20 pt-3">
+                                        <Link to="/menu" className="w-full font-accent text-xs tracking-widest uppercase text-ink hover:text-rust transition-colors flex items-center justify-center gap-2 py-2">
+                                            <span>Order Now</span>
+                                            <span className="text-lg leading-none">✂</span>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
                         </div>
-					))}
-				</div>
+                    ))}
+                </div>
 
-                {/* CTA button on aged paper */}
-				<div className="text-center">
-                    <div className="inline-block paper-container p-6 rounded-sm">
-                        <Link
-                            to="/menu"
-                            className="bg-sepia-tone hover:bg-opacity-90 text-vintage-cream px-8 py-4 rounded-sm inline-flex items-center justify-center font-bold transition-all duration-200 ease-out hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-sepia-tone focus:ring-opacity-50 will-change-transform uppercase tracking-wide border-2 border-ink-black text-lg"
-                            style={{ fontFamily: 'Playfair Display, serif' }}
-                        >
-                            View Full Menu
-                            <ArrowRightIcon size={20} className="ml-2" />
-                        </Link>
-                    </div>
-				</div>
-			</div>
-		</section>
-	);
+                {/* View Full Menu CTA */}
+                <div className="text-center">
+                    <Link
+                        to="/menu"
+                        className="bg-ink text-paper px-8 py-4 rounded-sm inline-flex items-center justify-center font-accent tracking-wide transition-all duration-200 hover:bg-rust focus:outline-none focus:ring-2 focus:ring-rust uppercase"
+                    >
+                        View Full Menu
+                        <ArrowRightIcon size={20} className="ml-2" />
+                    </Link>
+                </div>
+            </div>
+        </section>
+    );
 };
 
