@@ -65,6 +65,7 @@ const Masthead = () => {
                   <li><a href="/music" className="hover:italic hover:text-rust transition-all">On The Air (Music)</a></li>
                   <li><a href="/events" className="hover:italic hover:text-rust transition-all">Notice Board (Events)</a></li>
                   <li><a href="/about" className="hover:italic hover:text-rust transition-all">Classifieds (About)</a></li>
+                  <li><a href="/contact" className="hover:italic hover:text-rust transition-all">Correspondence Dept. (Contact)</a></li>
                 </ul>
               </div>
               {/* Add more nav columns here later */}

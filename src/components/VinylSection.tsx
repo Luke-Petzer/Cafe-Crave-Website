@@ -1,5 +1,4 @@
-﻿import React from 'react';
-import { motion } from 'framer-motion';
+﻿import { motion } from 'framer-motion';
 
 const records = [
   { rank: "01", album: "A Night at the Opera", artist: "Queen", year: "1975" },

@@ -1,11 +1,14 @@
 import './index.css';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { AppRouter } from './AppRouter';
 import { HelmetProvider } from 'react-helmet-async';
 
-render(
+const rootElement = document.getElementById('root');
+if (!rootElement) throw new Error('Failed to find the root element');
+
+const root = createRoot(rootElement);
+root.render(
   <HelmetProvider>
     <AppRouter />
-  </HelmetProvider>,
-  document.getElementById('root')
+  </HelmetProvider>
 );

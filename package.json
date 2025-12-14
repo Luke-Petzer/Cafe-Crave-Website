@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:fresh": "rimraf node_modules/.vite && vite",
+    "clean": "rimraf node_modules/.vite",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"

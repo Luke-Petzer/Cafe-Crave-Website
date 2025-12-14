@@ -1,300 +1,163 @@
-import { Header } from '../components/Header';
+import { motion } from 'framer-motion';
+import Masthead from '../components/Masthead';
 import { Footer } from '../components/Footer';
 import { SEO } from '../components/SEO';
 import { GoogleReviews } from '../components/GoogleReviews';
-import { ScrollAnimationObserver } from '../components/ScrollAnimationObserver';
-import  eventsImg  from '../assets/events.webp';
-import { CalendarIcon, MusicIcon, UsersIcon, CoffeeIcon, ArrowRightIcon, CheckCircleIcon } from 'lucide-react';
+import { TornEdge } from '../components/NewspaperComponents';
+import { eventsData } from '../data/eventsData';
+import { CheckCircleIcon } from 'lucide-react';
 
 export const EventsPage = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-grain font-body">
       <SEO
-        title="Events & Small Venue Hire | Crave Café Claremont"
-        description="Host your event at Crave Café in Claremont. We offer a unique, retro venue for birthdays, meetings, and gatherings. See our upcoming public events!"
-        keywords="small event venue claremont, halaal event venue cape town, cafe to hire for party claremont, upcoming events claremont"
+        title="The Notice Board | Events at Crave Café"
+        description="Join us for live music, vinyl nights, board game tournaments, and community gatherings. Host your event at Crave Café in Claremont."
+        keywords="events claremont cafe, live music cape town, vinyl nights, community events, venue hire claremont"
       />
-      <ScrollAnimationObserver />
-      <Header />
-      <main id="main-content" className="pt-16 md:pt-20">
-        {/* Hero Section - Image Hero */}
-        <section className="relative min-h-[600px] md:min-h-[650px] flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 overflow-hidden animate-hero-zoom">
-            <img
-              src={eventsImg}
-              alt="Interior of Crave Café set up for a private event"
-              className="w-full h-full object-cover"
-              width="800"
-              height="600"
-            />
-            <div className="absolute inset-0 bg-darkBg bg-opacity-50"></div>
-          </div>
+      <Masthead />
 
-          <div className="relative z-10 container mx-auto px-6 md:px-10 lg:px-16">
-            <div className="max-w-4xl mx-auto text-center text-darkText">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight">
-                Events at Crave
-              </h1>
-              <div className="w-24 h-1 bg-accent mx-auto mb-8"></div>
-              <p className="text-lg md:text-xl lg:text-2xl mb-12 opacity-90">
-                Where community meets culture. Join us for live music, vinyl nights, board game tournaments, and unforgettable experiences.
-              </p>
-              <a
-                href="#upcoming"
-                className="bg-accent hover:bg-opacity-90 text-light px-8 py-4 rounded-md inline-flex items-center font-medium text-lg transition-all duration-200 ease-out hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
+      <main id="main-content">
+        {/* SECTION 1: The Headline */}
+        <div className="bg-paper pt-20 pb-16 md:pt-28 md:pb-20">
+          <div className="max-w-7xl mx-auto px-6 text-center">
+            <span className="inline-block font-accent text-rust tracking-[0.3em] uppercase text-sm border-b-2 border-rust pb-1 mb-6">
+              Community Board
+            </span>
+            <h1 className="font-headline text-6xl md:text-8xl text-ink mb-6">
+              THE NOTICE BOARD
+            </h1>
+            <p className="font-body text-lg md:text-xl text-ink/60 italic max-w-2xl mx-auto">
+              "Where community meets culture — mark your calendar for music, games, and gatherings."
+            </p>
+          </div>
+        </div>
+
+        <TornEdge />
+
+        {/* SECTION 2: The Gig Guide (Ticket Stub Events) */}
+        <div className="bg-paper py-20 md:py-28">
+          <div className="max-w-4xl mx-auto px-6 space-y-8">
+            {eventsData.map((event, idx) => (
+              <motion.div
+                key={event.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="group relative flex flex-col md:flex-row bg-paper border-2 border-ink shadow-newspaper hover:shadow-polaroid transition-all duration-300"
               >
-                <CalendarIcon size={22} className="mr-2" />
-                View Upcoming Events
-              </a>
-            </div>
-          </div>
-        </section>
+                {/* The "Perforated" Line (Visual Trick) */}
+                <div className="hidden md:block absolute left-32 top-0 bottom-0 border-l-2 border-dashed border-ink/30 z-10"></div>
 
-        {/* Features Section - lightBg */}
-        <section className="section-animate section-light text-lightText py-20 md:py-28">
-          <div className="container mx-auto px-6 md:px-10 lg:px-16">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">
-                What We Offer
-              </h2>
-              <div className="w-24 h-1 bg-accent mx-auto mb-6"></div>
-              <p className="opacity-90 max-w-2xl mx-auto text-lg">
-                From intimate acoustic sessions to community gatherings, we create memorable experiences
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-              <div className="text-center transition-transform duration-300 hover:-translate-y-2">
-                <div className="bg-redText bg-opacity-10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <MusicIcon size={36} className="text-accent" />
+                {/* Date "Stamp" (Left Side) */}
+                <div className="w-full md:w-32 bg-ink text-paper p-6 flex flex-col items-center justify-center text-center group-hover:bg-rust transition-colors">
+                  <span className="font-accent text-3xl tracking-widest">{event.month}</span>
+                  <span className="font-headline text-5xl font-bold">{event.date}</span>
                 </div>
-                <h3 className="text-xl font-semibold mb-3">Live Music</h3>
-                <p className="opacity-80">
-                  Intimate performances featuring local artists, jazz nights, and vinyl listening sessions
-                </p>
-              </div>
 
-              <div className="text-center transition-transform duration-300 hover:-translate-y-2">
-                <div className="bg-redText bg-opacity-10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <UsersIcon size={36} className="text-accent" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3">Community Events</h3>
-                <p className="opacity-80">
-                  Board game nights, book clubs, trivia contests, and social gatherings
-                </p>
-              </div>
-
-              <div className="text-center transition-transform duration-300 hover:-translate-y-2">
-                <div className="bg-redText bg-opacity-10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <CoffeeIcon size={36} className="text-accent" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3">Coffee Workshops</h3>
-                <p className="opacity-80">
-                  Learn from our baristas about brewing techniques, latte art, and coffee culture
-                </p>
-              </div>
-
-              <div className="text-center transition-transform duration-300 hover:-translate-y-2">
-                <div className="bg-redText bg-opacity-10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <CalendarIcon size={36} className="text-accent" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3">Private Events</h3>
-                <p className="opacity-80">
-                  Book our space for birthdays, meetings, product launches, and celebrations
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Host Your Event Section - redBg */}
-        <section id="host" className="section-animate bg-redBg text-redText py-20 md:py-28">
-          <div className="container mx-auto px-6 md:px-10 lg:px-16">
-            <div className="max-w-6xl mx-auto">
-              <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                  <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
-                    Host Your Event at Crave
-                  </h2>
-                  <div className="w-24 h-1 bg-accent mb-8"></div>
-                  <p className="text-lg mb-8 opacity-90">
-                      From soulful acoustic sessions to cozy celebrations — Crave Café is where great coffee, good music, and real connections come together. Bring your people, and we’ll bring the vibe.
-                  </p>
-
-                  <div className="space-y-4 mb-8">
-                    <div className="flex items-start group">
-                      <CheckCircleIcon size={24} className="text-light mr-3 flex-shrink-0 mt-1 transition-transform duration-200 group-hover:scale-110" />
-                      <div>
-                        <h4 className="font-semibold mb-1">Flexible Space</h4>
-                        <p className="opacity-90">ASpace that fits your crowd — intimate or buzzing, we'll make it work.</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start group">
-                      <CheckCircleIcon size={24} className="text-light mr-3 flex-shrink-0 mt-1 transition-transform duration-200 group-hover:scale-110" />
-                      <div>
-                        <h4 className="font-semibold mb-1">Sound System</h4>
-                        <p className="opacity-90">Great acoustics, great tunes — our setup's built for music and memories.</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start group">
-                      <CheckCircleIcon size={24} className="text-light mr-3 flex-shrink-0 mt-1 transition-transform duration-200 group-hover:scale-110" />
-                      <div>
-                        <h4 className="font-semibold mb-1">Catering Available</h4>
-                        <p className="opacity-90">Crom espresso bars to gourmet bites — let our kitchen keep your guests smiling.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start group">
-                      <CheckCircleIcon size={24} className="text-light mr-3 flex-shrink-0 mt-1 transition-transform duration-200 group-hover:scale-110" />
-                      <div>
-                        <h4 className="font-semibold mb-1">Unique Atmosphere</h4>
-                        <p className="opacity-90">Retro décor, vinyl vibes, and the warm hum of conversation — Crave's got soul.</p>
-                      </div>
-                    </div>
+                {/* Event Details (Middle) */}
+                <div className="flex-grow p-6 md:pl-10 flex flex-col justify-center">
+                  <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2 gap-2">
+                    <h3 className="font-headline text-3xl font-bold leading-tight">{event.title}</h3>
+                    <span className="font-typewriter text-xs border border-ink px-3 py-1 rounded-full whitespace-nowrap self-start">
+                      {event.time}
+                    </span>
                   </div>
-
-                  <a
-                    href="https://wa.me/27662386374?text=Hi%20Crave%20Café!%20I%27d%20like%20to%20book%20your%20space%20for%20an%20event."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-accent hover:bg-opacity-90 text-light px-8 py-4 rounded-md inline-flex items-center justify-center font-medium text-lg transition-all duration-200 ease-out hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 will-change-transform"
-                  >
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" className="mr-2">
-                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                    </svg>
-                    Book the Space
-                  </a>
-                </div>
-
-                <div>
-                  <div className="bg-darkText bg-opacity-10 rounded-lg p-8">
-                    <h3 className="text-2xl font-serif font-bold mb-6">Perfect For:</h3>
-                    <ul className="space-y-3">
-                      <li className="flex items-center">
-                        <span className="w-2 h-2 bg-light rounded-full mr-3"></span>
-                          Birthday Parties & Private Celebrations
-                      </li>
-                      <li className="flex items-center">
-                        <span className="w-2 h-2 bg-light rounded-full mr-3"></span>
-                        Game nights & Book Clubs
-                      </li>
-                      <li className="flex items-center">
-                        <span className="w-2 h-2 bg-light rounded-full mr-3"></span>
-                          Community Gatherings & Markets
-                      </li>
-                      <li className="flex items-center">
-                        <span className="w-2 h-2 bg-light rounded-full mr-3"></span>
-                        Art Exhibitions & Pop-ups
-                      </li>
-                      <li className="flex items-center">
-                        <span className="w-2 h-2 bg-light rounded-full mr-3"></span>
-                        Live Music & Performances
-                      </li>
-                      <li className="flex items-center">
-                        <span className="w-2 h-2 bg-light rounded-full mr-3"></span>
-                        Community Gatherings
-                      </li>
-                    </ul>
-
-                    <div className="mt-8 pt-8 border-t border-darkText border-opacity-20">
-                      <h4 className="font-semibold mb-3">Availability</h4>
-                      <p className="opacity-80 mb-2">Evenings & Weekends</p>
-                      <p className="text-sm opacity-70">Contact us for weekday availability</p>
-                    </div>
+                  <p className="font-body text-ink/70 italic mb-4 leading-relaxed">{event.description}</p>
+                  <div className="flex items-center gap-4">
+                    <span className="font-accent text-rust text-sm tracking-widest uppercase">{event.price}</span>
                   </div>
                 </div>
-              </div>
-            </div>
+
+                {/* "Admit One" Button (Right) */}
+                <div className="p-6 flex items-center justify-center border-t md:border-t-0 md:border-l border-ink/10 bg-washed-brown/10">
+                  <a
+                    href={`https://wa.me/27662386374?text=Hi%20Crave%20Café!%20I'd%20like%20to%20RSVP%20for%20${encodeURIComponent(event.title)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-accent uppercase tracking-widest text-sm border-2 border-ink px-6 py-3 hover:bg-ink hover:text-paper transition-colors whitespace-nowrap"
+                  >
+                    RSVP NOW
+                  </a>
+                </div>
+              </motion.div>
+            ))}
           </div>
-        </section>
+        </div>
 
-        {/* Upcoming Events Section - darkBg */}
-        <section id="upcoming" className="section-animate bg-darkBg text-darkText py-20 md:py-28">
-          <div className="container mx-auto px-6 md:px-10 lg:px-16">
-            <div className="text-center max-w-3xl mx-auto">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">
-                Upcoming Events
-              </h2>
-              <div className="w-24 h-1 bg-accent mx-auto mb-8"></div>
+        <TornEdge />
 
-              {/* Coming Soon Message */}
-              <div className="bg-light bg-opacity-10 rounded-lg p-12 md:p-16">
-                <CalendarIcon size={64} className="text-accent mx-auto mb-6 opacity-80" />
-                <h3 className="text-2xl md:text-3xl font-serif font-semibold mb-4">
-                  Exciting Events Coming Soon
-                </h3>
-                <p className="text-lg opacity-80 mb-6 leading-relaxed">
-                  We're planning some amazing events and experiences for our community. Stay tuned for live music nights, board game tournaments, coffee workshops, and more!
-                </p>
-                <p className="text-base opacity-70 mb-8">
-                  Follow us on social media or contact us to be the first to know when we announce our upcoming events.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a
-                    href="https://www.instagram.com/cafecrave_halal/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-accent hover:bg-opacity-90 text-light px-6 py-3 rounded-md inline-flex items-center justify-center font-medium transition-all duration-200 ease-out hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
-                  >
-                    Follow for Updates
-                    <ArrowRightIcon size={20} className="ml-2" />
-                  </a>
-                  <a
-                    href="https://wa.me/27662386374?text=Hi%20Crave%20Café!%20I'd%20like%20to%20know%20about%20upcoming%20events."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-light bg-opacity-10 hover:bg-opacity-20 text-darkText px-6 py-3 rounded-md inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-light focus:ring-opacity-30"
-                  >
-                    Contact Us
-                  </a>
+        {/* SECTION 3: Host Your Event (Simplified Newspaper Style) */}
+        <section className="bg-espresso text-paper py-20 md:py-28">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <span className="inline-block font-accent text-rust tracking-[0.3em] uppercase text-sm border-b-2 border-rust pb-1 mb-6">
+              Private Hire
+            </span>
+            <h2 className="font-headline text-5xl md:text-6xl mb-6">
+              HOST YOUR EVENT
+            </h2>
+            <div className="w-24 h-1 bg-rust mx-auto mb-8"></div>
+            <p className="font-body text-lg text-paper/80 mb-12 italic max-w-2xl mx-auto">
+              "From soulful acoustic sessions to cozy celebrations — Crave Café is where great coffee, good music, and real connections come together."
+            </p>
+
+            {/* Simple feature list in newspaper style */}
+            <div className="grid md:grid-cols-2 gap-6 mb-12 text-left max-w-2xl mx-auto">
+              <div className="flex items-start">
+                <CheckCircleIcon size={20} className="text-rust mr-3 flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-accent text-sm tracking-widest uppercase text-paper mb-1">Flexible Space</h4>
+                  <p className="font-body text-sm text-paper/70">Space that fits your crowd — intimate or buzzing, we'll make it work.</p>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <CheckCircleIcon size={20} className="text-rust mr-3 flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-accent text-sm tracking-widest uppercase text-paper mb-1">Sound System</h4>
+                  <p className="font-body text-sm text-paper/70">Great acoustics, great tunes — our setup's built for music and memories.</p>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <CheckCircleIcon size={20} className="text-rust mr-3 flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-accent text-sm tracking-widest uppercase text-paper mb-1">Catering Available</h4>
+                  <p className="font-body text-sm text-paper/70">From espresso bars to gourmet bites — let our kitchen keep your guests smiling.</p>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <CheckCircleIcon size={20} className="text-rust mr-3 flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-accent text-sm tracking-widest uppercase text-paper mb-1">Unique Atmosphere</h4>
+                  <p className="font-body text-sm text-paper/70">Retro décor, vinyl vibes, and the warm hum of conversation — Crave's got soul.</p>
                 </div>
               </div>
             </div>
+
+            <a
+              href="https://wa.me/27662386374?text=Hi%20Crave%20Café!%20I'd%20like%20to%20book%20your%20space%20for%20an%20event."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-rust text-paper px-8 py-4 font-accent uppercase tracking-widest hover:bg-rust/90 transition-colors inline-flex items-center gap-2 shadow-newspaper hover:shadow-polaroid"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+              Book the Space
+            </a>
           </div>
         </section>
 
-        {/* Reviews Section - lightBg */}
-        <section className="section-animate section-light text-lightText py-20 md:py-28">
+        <TornEdge />
+
+        {/* SECTION 4: Google Reviews (UNCHANGED - Keep existing backend) */}
+        <section className="bg-paper py-20 md:py-28">
           <div className="container mx-auto px-6 md:px-10 lg:px-16">
             <GoogleReviews standalone={false} />
           </div>
         </section>
-
-        {/* CTA Section - redBg */}
-        <section className="section-animate bg-redBg text-redText py-20 md:py-28">
-          <div className="container mx-auto px-6 md:px-10 lg:px-16">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
-                Never Miss an Event
-              </h2>
-              <div className="w-24 h-1 bg-accent mx-auto mb-8"></div>
-              <p className="text-xl mb-12 opacity-90 max-w-2xl mx-auto">
-                Follow us on social media to stay updated on all our upcoming events, special performances, and community gatherings.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a
-                  href="https://www.instagram.com/cafecrave_halal/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-accent hover:bg-opacity-90 text-light px-8 py-4 rounded-md inline-flex items-center font-medium text-lg transition-all duration-200 ease-out hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
-                >
-                  Follow Us on Instagram
-                  <ArrowRightIcon size={22} className="ml-2" />
-                </a>
-
-                <a
-                  href="/contact"
-                  className="bg-darkText bg-opacity-10 hover:bg-opacity-20 text-darkText px-8 py-4 rounded-md inline-flex items-center font-medium text-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-darkText focus:ring-opacity-30"
-                >
-                  <CalendarIcon size={22} className="mr-2" />
-                  Contact Us
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
+
       <Footer />
     </div>
   );

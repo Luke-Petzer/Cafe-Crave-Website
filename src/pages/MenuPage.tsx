@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { Header } from '../components/Header';
+import Masthead from '../components/Masthead';
 import { Footer } from '../components/Footer';
 import { Star, ChevronDownIcon, ChevronUpIcon, ArrowUpIcon } from 'lucide-react';
 import { SEO } from '../components/SEO';
@@ -131,8 +131,8 @@ export const MenuPage = () => {
   return (
     <div className="min-h-screen bg-light text-primary font-sans selection:bg-secondary selection:text-white">
       <SEO title="Menu Gazette | Cafe Crave" description="Explore our vintage style menu featuring halaal breakfasts, burgers, and artisan coffee." />
-      <Header />
-      
+      <Masthead />
+
       {/* --- MENU HEADER DESIGN --- */}
       <section className="pt-28 pb-8 px-4 max-w-6xl mx-auto">
         {/* Top: Cafe Name */}

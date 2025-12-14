@@ -140,3 +140,58 @@ export const Divider: React.FC<DividerProps> = ({
   return <div className={`${variantClasses[variant]} ${className}`}></div>;
 };
 
+/**
+ * LinedInput - Form input with lined paper aesthetic for typewriter-style forms
+ * Usage: <LinedInput label="Name" placeholder="Your name..." />
+ */
+interface LinedInputProps {
+  label: string;
+  type?: string;
+  placeholder?: string;
+  rows?: number;
+  name?: string;
+  required?: boolean;
+  className?: string;
+}
+
+export const LinedInput: React.FC<LinedInputProps> = ({
+  label,
+  type = "text",
+  placeholder,
+  rows,
+  name,
+  required,
+  className = ''
+}) => (
+  <div className={`mb-8 relative group ${className}`}>
+    <label
+      className="font-accent text-xs tracking-[0.2em] text-rust uppercase mb-2 block"
+      htmlFor={name}
+    >
+      {label} {required && <span className="text-rust">*</span>}
+    </label>
+
+    {rows ? (
+      <textarea
+        id={name}
+        name={name}
+        rows={rows}
+        required={required}
+        className="w-full bg-transparent border-b-2 border-ink/20 focus:border-rust outline-none font-typewriter text-lg text-ink py-2 transition-colors resize-none placeholder:text-ink/20"
+        placeholder={placeholder}
+      />
+    ) : (
+      <input
+        id={name}
+        name={name}
+        type={type}
+        required={required}
+        className="w-full bg-transparent border-b-2 border-ink/20 focus:border-rust outline-none font-typewriter text-lg text-ink py-2 transition-colors placeholder:text-ink/20"
+        placeholder={placeholder}
+      />
+    )}
+
+    {/* Animated underline effect */}
+    <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-rust transition-all duration-500 group-hover:w-full"></div>
+  </div>
+);
