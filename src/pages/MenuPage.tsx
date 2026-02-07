@@ -1,11 +1,10 @@
 import { useEffect, useState, useRef } from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
-import { MapPinIcon, ArrowDownIcon, DownloadIcon, ChevronDownIcon, ChevronUpIcon, ArrowUpIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
+import { Star, ChevronDownIcon, ChevronUpIcon, ArrowUpIcon } from 'lucide-react';
 import { SEO } from '../components/SEO';
-import { ScrollAnimationObserver } from '../components/ScrollAnimationObserver';
 
-// Import menu images
+// --- ASSET IMPORTS ---
 import breakfastImg from '../assets/breakfast.webp';
 import burgersImg from '../assets/burgers.webp';
 import toastImg from '../assets/Toast.webp';
@@ -15,1393 +14,430 @@ import illyLogo from '../assets/illy.webp';
 import teaImg from '../assets/tea.webp';
 import dilmahLogo from '../assets/dilmah.webp';
 import beverageImg from '../assets/beverage.webp';
-import shakesImg from '../assets/shakes.webp';
+import grillImg from '../assets/Grill.webp';
+import cakeImg from '../assets/cake.webp';
+import lambChopsImg from '../assets/lamb-chops.webp';
+import lightMealsImg from '../assets/light_meals.webp';
+import cheeseCakeImg from '../assets/cheese-cake.webp';
+import halaalIcon from '../assets/halaal.svg';
+import menuLogo from '../assets/menu-logo.svg';
 
-
-// Define the section types
-type SectionKey = 'breakfast' | 'burgers' | 'sandwiches' | 'wraps' | 'coffee' | 'tea' | 'beverages' | 'signature';
+type SectionKey = 'breakfast' | 'kiddies' | 'starters' | 'burgers' | 'toasties' | 'wraps' | 'mains' | 'steaks' | 'platters' | 'coffee' | 'tea' | 'beverages' | 'dessert' | 'bakery';
 
 export const MenuPage = () => {
-  const [activeCategory, setActiveCategory] = useState('breakfast');
+  // --- STATE MANAGEMENT ---
   const [isNavSticky, setIsNavSticky] = useState(false);
-  const [showBackToTop, setShowBackToTop] = useState(false);
+  // All sections collapsed by default on mobile
   const [expandedSections, setExpandedSections] = useState<Record<SectionKey, boolean>>({
-    breakfast: false,
-    burgers: false,
-    sandwiches: false,
-    wraps: false,
-    coffee: false,
-    tea: false,
-    beverages: false,
-    signature: false
+    breakfast: false, kiddies: false, starters: false, burgers: false, toasties: false, wraps: false,
+    mains: false, steaks: false, platters: false, coffee: false, tea: false, beverages: false, dessert: false, bakery: false
   });
-  const [showNavArrows, setShowNavArrows] = useState(false);
-  const navRef = useRef<HTMLDivElement>(null);
-  const navScrollRef = useRef<HTMLDivElement>(null);
+  
   const sectionRefs = useRef<Record<SectionKey, HTMLDivElement | null>>({
-    breakfast: null,
-    burgers: null,
-    sandwiches: null,
-    wraps: null,
-    coffee: null,
-    tea: null,
-    beverages: null,
-    signature: null
+    breakfast: null, kiddies: null, starters: null, burgers: null, toasties: null, wraps: null,
+    mains: null, steaks: null, platters: null, coffee: null, tea: null, beverages: null, dessert: null, bakery: null
   });
-  // Handle sticky nav and back to top button visibility
+
+  // --- SCROLL LOGIC (Simplified - No nav to update) ---
   useEffect(() => {
     const handleScroll = () => {
-      if (navRef.current) {
-        const navPosition = navRef.current.getBoundingClientRect().top;
-        setIsNavSticky(navPosition <= 80); // Account for fixed header + extra spacing
-      }
-      // Show back to top button when scrolled down 500px
-      setShowBackToTop(window.scrollY > 500);
+      const headerHeight = 80;
+      setIsNavSticky(window.scrollY > headerHeight);
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // IntersectionObserver for precise scroll-spy active category detection
-  useEffect(() => {
-    const headerHeight = 80; // Fixed header height + extra spacing
-    const navHeight = navRef.current?.offsetHeight || 60; // Approx nav height
-
-    // This defines a "trigger line" 150px from the top of the viewport,
-    // which is just below the sticky nav.
-    const topMargin = headerHeight + navHeight + 20; // ~160px
-    const rootMargin = `-${topMargin}px 0px -40% 0px`;
-
-    const observerOptions: IntersectionObserverInit = {
-      root: null, // relative to the viewport
-      rootMargin: rootMargin,
-      threshold: 0 // Trigger as soon as it enters the zone
-    };
-
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // Set the active category based on the ID of the intersecting section
-          setActiveCategory(entry.target.id as SectionKey);
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-    // Observe all the section elements
-    const currentRefs = sectionRefs.current;
-    Object.values(currentRefs).forEach(ref => {
-      if (ref) {
-        observer.observe(ref);
-      }
-    });
-
-    // Cleanup
-    return () => {
-      Object.values(currentRefs).forEach(ref => {
-        if (ref) {
-          observer.unobserve(ref);
-        }
-      });
-    };
-  }, []);
-  // Scroll to the selected category section
-  const scrollToSection = (category: string) => {
-    const ref = sectionRefs.current[category as SectionKey];
-    if (ref) {
-      const headerHeight = 80; // Fixed header height + extra spacing
-      const navHeight = navRef.current?.offsetHeight || 0;
-      const totalOffset = navHeight + headerHeight + 20; // Add extra buffer
-
-      // Get the element's position relative to the document
-      const elementPosition = ref.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - totalOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
+  const toggleSection = (category: SectionKey) => {
+    setExpandedSections(prev => ({ ...prev, [category]: !prev[category] }));
   };
-        // Scroll the navigation menu left or right
-        const scrollNav = (direction: 'left' | 'right') => {
-            if (navScrollRef.current) {
-                const scrollAmount = 200; // Amount to scroll
-                const currentScroll = navScrollRef.current.scrollLeft;
-                navScrollRef.current.scrollTo({
-                    left: direction === 'left' ? currentScroll - scrollAmount : currentScroll + scrollAmount,
-                    behavior: 'smooth'
-                });
-            }
-        };
-        // Handle keyboard navigation for the menu categories
-        const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>, category: string) => {
-            const categories: SectionKey[] = ['breakfast', 'burgers', 'sandwiches', 'wraps', 'coffee', 'tea', 'beverages', 'signature'];
-            const currentIndex = categories.indexOf(category as SectionKey);
-            if (e.key === 'ArrowRight' && currentIndex < categories.length - 1) {
-                e.preventDefault();
-                const nextCategory = categories[currentIndex + 1];
-                const nextButton = document.querySelector(`[data-category="${nextCategory}"]`) as HTMLElement;
-                if (nextButton) {
-                    nextButton.focus();
-                    scrollToSection(nextCategory);
-                }
-            } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
-                e.preventDefault();
-                const prevCategory = categories[currentIndex - 1];
-                const prevButton = document.querySelector(`[data-category="${prevCategory}"]`) as HTMLElement;
-                if (prevButton) {
-                    prevButton.focus();
-                    scrollToSection(prevCategory);
-                }
-            }
-        };
-        const scrollToTop = () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        };
-        const toggleSection = (category: SectionKey) => {
-            setExpandedSections(prev => ({
-                ...prev,
-                [category]: !prev[category]
-            }));
-        };
-        return (
-          <div className="min-h-screen">
-            <SEO
-              title="Our Halaal Menu | Crave Café Claremont (Breakfast, Burgers & Coffee)"
-              description="Explore the 100% halaal menu at Crave Café. We serve artisan coffee, all-day breakfast, gourmet burgers, grills, and desserts in Claremont."
-              keywords="halaal menu claremont, halaal breakfast cape town, halaal burgers claremont, artisan coffee, crave cafe menu"
-            />
-            <ScrollAnimationObserver />
-            <Header />
-            <main id="main-content" className="pt-16 md:pt-20">
-            {/* Hero Section - DARK */}
-            <section className="section-dark relative min-h-[600px] md:min-h-[650px] flex items-center justify-center">
-                <div className="absolute inset-0 z-0 overflow-hidden animate-hero-zoom">
-                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Coffee and pastries on a wooden table" className="w-full h-full object-cover brightness-50 transition-transform duration-700 hover:scale-110" loading="lazy" width="2070" height="1380" />
-                </div>
-                <div className="relative z-10 text-center px-6">
-                    <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight">
-                        Our Halaal Menu
-                    </h1>
-                    <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
-                        From all-day breakfasts to handcrafted drinks — something for
-                        everyone.
-                    </p>
-                    <a href="#menu-categories" className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center justify-center font-medium transition-all duration-200 ease-out hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-0 will-change-transform">
-                        <ArrowDownIcon size={20} className="mr-2" />
-                        Browse Menu
-                    </a>
-                </div>
-            </section>
-            {/* Menu Navigation (Sticky Sub-Nav) */}
-            <div id="menu-categories" ref={navRef} className={`hidden md:block section-dark py-6 transition-all duration-300 ${isNavSticky ? 'sticky top-[80px] z-40 shadow-md' : ''}`} onMouseEnter={() => setShowNavArrows(true)} onMouseLeave={() => setShowNavArrows(false)} onFocus={() => setShowNavArrows(true)} onBlur={() => setShowNavArrows(false)}>
-                <div className="container mx-auto px-4 relative">
-                    {/* Left navigation arrow */}
-                    <button onClick={() => scrollNav('left')} className={`absolute left-0 top-1/2 -translate-y-1/2 bg-primary text-light p-1 rounded-full z-10 transition-opacity ${showNavArrows ? 'opacity-80' : 'opacity-0'} hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-accent`} aria-label="Scroll menu categories left">
-                        <ChevronLeftIcon size={24} />
-                    </button>
-                    {/* Scrollable menu navigation */}
-                    <div ref={navScrollRef} className="overflow-x-auto menu-scroll-container" tabIndex={-1}>
-                        <ul className="flex space-x-4 md:space-x-6 min-w-max scroll-snap-x">
-                            {[{
-                                id: 'breakfast',
-                                label: 'Breakfast'
-                            }, {
-                                id: 'burgers',
-                                label: 'Burgers'
-                            }, {
-                                id: 'sandwiches',
-                                label: 'Sandwiches'
-                            }, {
-                                id: 'wraps',
-                                label: 'Wraps & Pitas'
-                            }, {
-                                id: 'coffee',
-                                label: 'Coffee'
-                            }, {
-                                id: 'tea',
-                                label: 'Tea'
-                            }, {
-                                id: 'beverages',
-                                label: 'Beverages'
-                            }, {
-                                id: 'signature',
-                                label: 'Signature Drinks'
-                            }].map(category => <li key={category.id} className="scroll-snap-align-center">
-                                <button onClick={() => scrollToSection(category.id)} onKeyDown={e => handleKeyDown(e, category.id)} className={`whitespace-nowrap px-3 py-2 rounded-md transition-colors ${activeCategory === category.id ? 'bg-accent text-light font-medium' : 'text-light hover:text-secondary'}`} data-category={category.id} aria-current={activeCategory === category.id ? 'true' : 'false'}>
-                                    {category.label}
-                                </button>
-                            </li>)}
-                        </ul>
-                    </div>
-                    {/* Right navigation arrow */}
-                    <button onClick={() => scrollNav('right')} className={`absolute right-0 top-1/2 -translate-y-1/2 bg-primary text-light p-1 rounded-full z-10 transition-opacity ${showNavArrows ? 'opacity-80' : 'opacity-0'} hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-accent`} aria-label="Scroll menu categories right">
-                        <ChevronRightIcon size={24} />
-                    </button>
-                </div>
-            </div>
-            {/* Menu Sections - Main Content */}
-            <div className="bg-white py-12 md:py-16">
-                <div className="container mx-auto px-6 md:px-10 lg:px-16">
-                    {/* Menu Content Container */}
-                    <div className="relative overflow-hidden">
-                        {/* Breakfast Section */}
-                        <div id="breakfast" ref={(el) => (sectionRefs.current.breakfast = el)} className="mb-16 !scroll-mt-[140px] relative z-10">
-                            {/* Breakfast Watermark */}
-                            <div className={`absolute top-1/2 right-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
-                                expandedSections.breakfast ? 'block' : 'hidden md:block'
-                            }`}>
-                                <img src={breakfastImg} alt="" className="w-full h-full object-contain mix-blend-multiply" />
-                            </div>
-                            <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-3xl font-serif font-bold text-primary uppercase tracking-wider">
-                                    Breakfast
-                                </h2>
-                                <button onClick={() => toggleSection('breakfast')} className="md:hidden bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.breakfast ? 'Collapse Breakfast section' : 'Expand Breakfast section'} aria-expanded={expandedSections.breakfast}>
-                                    {expandedSections.breakfast ? <ChevronUpIcon size={24} /> : <ChevronDownIcon size={24} />}
-                                </button>
-                            </div>
-                            <div className="w-full h-[1px] bg-[#F5F0E5] mb-8"></div>
-                            <div className={`grid md:grid-cols-2 gap-10 ${expandedSections.breakfast ? 'block' : 'hidden md:grid'}`}>
-                                <div className="space-y-8">
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Eggs & Toast
-                                            </h4>
-                                            <span className="text-accent font-bold">R55</span>
-                                        </div>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Smashed Avo & Toast
-                                            </h4>
-                                            <span className="text-accent font-bold">R65</span>
-                                        </div>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                The Basic Breakfast
-                                            </h4>
-                                            <span className="text-accent font-bold">R90</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            2 free-range eggs, 2 sausages, 1 slice of toast
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Basic Omelette
-                                            </h4>
-                                            <span className="text-accent font-bold">R90</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            3 free-range eggs, filled with cheese and onion. Served
-                                            with 2 slices of toasted ciabatta
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Breakfast Bun
-                                            </h4>
-                                            <span className="text-accent font-bold">R100</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Toasted brioche bun, filled with 2 free-range eggs, spiced
-                                            beef, lettuce & red onion. Served with chips
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                French Toast
-                                            </h4>
-                                            <span className="text-accent font-bold">R110</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            3 slices of brioche, dunked in a sweet cinnamon mixture,
-                                            topped with syrup and served with a side of cream
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                The Health Breakfast - Vegetarian
-                                            </h4>
-                                            <span className="text-accent font-bold">R115</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            2 free-range eggs, sautéed mushrooms, sautéed spinach,
-                                            grilled tomato, avo and cucumbers. Served with a slice of
-                                            toasted ciabatta without butter
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="space-y-8">
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Spinach & Feta Omelette
-                                            </h4>
-                                            <span className="text-accent font-bold">R115</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Made with 3 free-range eggs, filled with spinach and feta
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                The Crave Breakfast
-                                            </h4>
-                                            <span className="text-accent font-bold">R135</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            2 free range eggs, 2 sausages, 1 slice of spiced beef,
-                                            sautéed mushrooms, beans and grilled tomato. Served with 2
-                                            slices of toasted ciabatta
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Loaded Smashed Avo
-                                            </h4>
-                                            <span className="text-accent font-bold">R135</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            1 slice of smashed avo, topped off with 2 free-range eggs,
-                                            2 sausages, red onion and sautéed mushrooms
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Breakfast Croissant
-                                            </h4>
-                                            <span className="text-accent font-bold">R135</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            French croissant lightly toasted, filled with 3 free-range
-                                            eggs, scrambled. Side of sautéed mushrooms, fresh tomato,
-                                            avo, sautéed spinach and cucumber slices
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                The Crave Breakfast Omelette
-                                            </h4>
-                                            <span className="text-accent font-bold">R145</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            The crave breakfast in omelette form, with 3 free-range
-                                            eggs
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                The Mighty Crave Breakfast
-                                            </h4>
-                                            <span className="text-accent font-bold">R205</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            The crave breakfast with steak and chips added
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {/* Burgers Section */}
-                        <div id="burgers" ref={(el) => (sectionRefs.current.burgers = el)} className="mb-16 !scroll-mt-[140px] relative z-10">
-                            {/* Burgers Watermark */}
-                            <div className={`absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
-                                expandedSections.burgers ? 'block' : 'hidden md:block'
-                            }`}>
-                                <img src={burgersImg} alt="" className="w-full h-full object-contain mix-blend-multiply" width="300" height="300" loading="lazy" />
-                            </div>
-                            <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-3xl font-serif font-bold text-primary uppercase tracking-wider">
-                                    Burgers
-                                </h2>
-                                <button onClick={() => toggleSection('burgers')} className="md:hidden bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.burgers ? 'Collapse Burgers section' : 'Expand Burgers section'} aria-expanded={expandedSections.burgers}>
-                                    {expandedSections.burgers ? <ChevronUpIcon size={24} /> : <ChevronDownIcon size={24} />}
-                                </button>
-                            </div>
-                            <div className="w-full h-[1px] bg-[#F5F0E5] mb-8"></div>
 
-                            <div className={`grid md:grid-cols-2 gap-10 ${expandedSections.burgers ? 'block' : 'hidden md:grid'}`}>
-                                <div className="space-y-8">
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Basic Chicken Burger
-                                            </h4>
-                                            <span className="text-accent font-bold">R100</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">Red onion & lettuce</p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Basic Beef Burger 100g
-                                            </h4>
-                                            <span className="text-accent font-bold">R110</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">Red onion & lettuce</p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                The Crave Chicken Burger
-                                            </h4>
-                                            <span className="text-accent font-bold">R140</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Red onion, lettuce, tomato, cucumber
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Tropical Island Burger
-                                            </h4>
-                                            <span className="text-accent font-bold">R165</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Chicken fillet or beef patty, pineapple ring, lettuce,
-                                            tomato, 1000 cravings sauce
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Nachos Chicken Burger
-                                            </h4>
-                                            <span className="text-accent font-bold">R150</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Grilled fillet chicken, sweet chilli nachos chips and our
-                                            famous crave chilli cheese sauce
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="space-y-8">
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                The Crave Beef Burger (200g)
-                                            </h4>
-                                            <span className="text-accent font-bold">R150</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Red onion, lettuce, tomato, cucumber
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Nachos Beef Burger
-                                            </h4>
-                                            <span className="text-accent font-bold">R160</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            1x 200g beef patty, sweet chilli nachos chips and our
-                                            famous crave chilli cheese sauce
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Chicken Chilli Cheese Burger
-                                            </h4>
-                                            <span className="text-accent font-bold">R165</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Red onion, lettuce, tomato, cucumber, crave chilli cheese
-                                            sauce
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Double Chicken Burger
-                                            </h4>
-                                            <span className="text-accent font-bold">R175</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            2x chicken fillets, Red onion, lettuce, tomato, cucumber
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                C.H.E.E.F. Burger
-                                            </h4>
-                                            <span className="text-accent font-bold">R250</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            1x beef patty (200g), 1x fillet chicken, Avocado, lettuce,
-                                            tomato, cucumber, red onion, crave house sauce
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="md:col-span-2 text-center text-sm text-primary italic mt-2">
-                                    All burgers are flame grilled & served on our homemade Brioche
-                                    roll with 150g chips or salad.
-                                </div>
-                            </div>
-                        </div>
-                        {/* Sandwiches Section */}
-                        <div id="sandwiches" ref={(el) => (sectionRefs.current.sandwiches = el)} className="mb-16 !scroll-mt-[140px] relative z-10">
-                            {/* Sandwiches Watermark */}
-                            <div className={`absolute top-1/2 right-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
-                                expandedSections.sandwiches ? 'block' : 'hidden md:block'
-                            }`}>
-                                <img src={toastImg} alt="" className="w-full h-full object-contain mix-blend-multiply" />
-                            </div>
-                            <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-3xl font-serif font-bold text-primary uppercase tracking-wider">
-                                    Sandwiches
-                                </h2>
-                                <button onClick={() => toggleSection('sandwiches')} className="md:hidden bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.sandwiches ? 'Collapse Sandwiches section' : 'Expand Sandwiches section'} aria-expanded={expandedSections.sandwiches}>
-                                    {expandedSections.sandwiches ? <ChevronUpIcon size={24} /> : <ChevronDownIcon size={24} />}
-                                </button>
-                            </div>
-                            <div className="w-full h-[1px] bg-[#F5F0E5] mb-8"></div>
-                            <div className={`grid md:grid-cols-2 gap-10 ${expandedSections.sandwiches ? 'block' : 'hidden md:grid'}`}>
-                                <div className="space-y-8">
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Cheese & Tomato Toasted Sandwich
-                                            </h4>
-                                            <span className="text-accent font-bold">R80</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Gouda cheese & roma tomatoes
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Cheesy Red Onion
-                                            </h4>
-                                            <span className="text-accent font-bold">R85</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Red onion, gouda cheese, garlic, oregano
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Chicken Mayo Toasted Sandwich
-                                            </h4>
-                                            <span className="text-accent font-bold">R110</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Shredded chicken fillet, in-house mayo, coriander
-                                            (plain/spicy - crave sauce)
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Tuna Mayo Toasted Sandwich
-                                            </h4>
-                                            <span className="text-accent font-bold">R110</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Tuna, in-house mayo, coriander (plain/spicy - crave sauce)
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Triple Decker
-                                            </h4>
-                                            <span className="text-accent font-bold">R115</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Gouda cheese, mozzarella, feta
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="space-y-8">
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Spiced Beef Toasted Sandwich
-                                            </h4>
-                                            <span className="text-accent font-bold">R125</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Spiced beef, tomato, feta, gouda cheese
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Crave Chicken & Slaw
-                                            </h4>
-                                            <span className="text-accent font-bold">R125</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Shredded chicken, home-made slaw, bbq sauce
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Grilled Chicken Toasted Sandwich
-                                            </h4>
-                                            <span className="text-accent font-bold">R135</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Chicken fillet, red onion, lettuce, roma tomato, cucumber
-                                            (bbq/spicy - crave sauce)
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Fillet Steak Toasted Sandwich
-                                            </h4>
-                                            <span className="text-accent font-bold">R185</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            165g prime cut fillet, red onion, lettuce, roma tomato,
-                                            cucumber (bbq/spicy - crave sauce)
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Loaded Steak Toasted Sandwich
-                                            </h4>
-                                            <span className="text-accent font-bold">R245</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            165g prime cut fillet, 2x free range eggs, avocado, red
-                                            onion, lettuce, roma tomato, cucumber (bbq/spicy - crave
-                                            sauce)
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="md:col-span-2 text-center text-sm text-primary italic mt-2">
-                                    All sandwiches are served on our homemade ciabatta bread with
-                                    150g chips or salad
-                                </div>
-                            </div>
-                        </div>
-                        {/* Wraps & Pitas Section */}
-                        <div id="wraps" ref={(el) => (sectionRefs.current.wraps = el)} className="mb-16 !scroll-mt-[140px] relative z-10">
-                            {/* Wraps Watermark */}
-                            <div className={`absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
-                                expandedSections.wraps ? 'block' : 'hidden md:block'
-                            }`}>
-                                <img src={wrapImg} alt="" className="w-full h-full object-contain mix-blend-multiply" width="300" height="300" loading="lazy" />
-                            </div>
-                            <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-3xl font-serif font-bold text-primary uppercase tracking-wider">
-                                    Wraps & Pitas
-                                </h2>
-                                <button onClick={() => toggleSection('wraps')} className="md:hidden bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.wraps ? 'Collapse Wraps section' : 'Expand Wraps section'} aria-expanded={expandedSections.wraps}>
-                                    {expandedSections.wraps ? <ChevronUpIcon size={24} /> : <ChevronDownIcon size={24} />}
-                                </button>
-                            </div>
-                            <div className="w-full h-[1px] bg-[#F5F0E5] mb-8"></div>
-                            <div className={`grid md:grid-cols-2 gap-10 ${expandedSections.wraps ? 'block' : 'hidden md:grid'}`}>
-                                <div className="space-y-8">
-                                    <h3 className="text-2xl font-medium text-primary uppercase tracking-wider mb-6 text-center relative">
-                                         <span className="relative inline-block">
-                                             Wraps
-                                            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-[#F5F0E5]"></div>
-                                    </span>
-                                    </h3>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                BBQ Chicken Wrap
-                                            </h4>
-                                            <span className="text-accent font-bold">R120</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Fillet chicken strips, bbq sauce, tomato, cucumber,
-                                            carrot, spinach
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Grilled Chicken Wrap
-                                            </h4>
-                                            <span className="text-accent font-bold">R120</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Fillet chicken strips, tomato, cucumber, red onion,
-                                            spinach (plain/spicy)
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Tropical Chicken & Slaw Wrap
-                                            </h4>
-                                            <span className="text-accent font-bold">R125</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Fillet chicken strips, pineapple, carrot, slaw
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Chicken & Feta Wrap
-                                            </h4>
-                                            <span className="text-accent font-bold">R125</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Fillet chicken strips, tomato, cucumber, feta, spinach
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Fillet Steak & Feta Wrap
-                                            </h4>
-                                            <span className="text-accent font-bold">R165</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            165g fillet steak, tomato, feta, cucumber
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="space-y-8">
-                                    <h3 className="text-2xl font-medium text-primary uppercase tracking-wider mb-6 text-center relative">
-                                     <span className="relative inline-block">
-                                    Pitas
-                                    <div className="absolute bottom-0 left-0 w-full h-[1px] bg-[#F5F0E5]"></div>
-                                    </span>
-                                    </h3>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Falafel Pita
-                                            </h4>
-                                            <span className="text-accent font-bold">R125</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Falafel, cucumber, tomato, onion
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Chicken and Slaw Pita
-                                            </h4>
-                                            <span className="text-accent font-bold">R125</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Chicken, slaw, crave mayo, cucumber, tomato
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Savoury Mince Pita
-                                            </h4>
-                                            <span className="text-accent font-bold">R135</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Savoury mince, peppers, feta, relish
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Steak & Feta Pita
-                                            </h4>
-                                            <span className="text-accent font-bold">R165</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            165g prime cut fillet, red onion, lettuce, roma tomato,
-                                            cucumber, feta
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="md:col-span-2 text-center text-sm text-primary italic mt-2">
-                                    Served with 150g chips or salad. Pitas are freshly baked
-                                    in-house and served with tahini
-                                </div>
-                            </div>
-                        </div>
-                        {/* Coffee Section */}
-                        <div id="coffee" ref={(el) => (sectionRefs.current.coffee = el)} className="mb-16 !scroll-mt-[140px] relative z-10">
-                            {/* Coffee Watermark */}
-                            <div className={`absolute top-1/2 right-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
-                                expandedSections.coffee ? 'block' : 'hidden md:block'
-                            }`}>
-                                <img src={coffeeImg} alt="" className="w-full h-full object-contain mix-blend-multiply" width="300" height="300" loading="lazy" />
-                            </div>
-                            <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-3xl font-serif font-bold text-primary uppercase tracking-wider">
-                                    Coffee
-                                </h2>
-                                <button onClick={() => toggleSection('coffee')} className="md:hidden bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.coffee ? 'Collapse Coffee section' : 'Expand Coffee section'} aria-expanded={expandedSections.coffee}>
-                                    {expandedSections.coffee ? <ChevronUpIcon size={24} /> : <ChevronDownIcon size={24} />}
-                                </button>
-                            </div>
-                            <div className="w-full h-[1px] bg-[#F5F0E5] mb-8"></div>
-                            {/* Illy Coffee Logo */}
-                            <div className={`mb-8 flex justify-center ${expandedSections.coffee ? 'block' : 'hidden md:flex'}`}>
-                                <img src={illyLogo} alt="Illy Coffee" className="h-16 w-auto object-contain" loading="lazy" width="300" height="300" />
-                            </div>
-                            <div className={`grid md:grid-cols-2 gap-10 ${expandedSections.coffee ? 'block' : 'hidden md:grid'}`}>
-                                <div className="space-y-4">
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Espresso
-                                            </h4>
-                                            <span className="text-accent font-bold">R30</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Single shot of black gold
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Doppio
-                                            </h4>
-                                            <span className="text-accent font-bold">R45</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">Double shot espresso</p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Americano
-                                            </h4>
-                                            <span className="text-accent font-bold">R35</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Single shot espresso, 3 parts hot water (black)
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Cappuccino
-                                            </h4>
-                                            <span className="text-accent font-bold">R40</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Single shot espresso, steamed milk, foam
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Vienna
-                                            </h4>
-                                            <span className="text-accent font-bold">R50</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Single shot espresso, condensed milk
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="space-y-4">
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Flat White
-                                            </h4>
-                                            <span className="text-accent font-bold">R50</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Double shot espresso, steamed milk, small foam layer
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Latte
-                                            </h4>
-                                            <span className="text-accent font-bold">R50</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Single shot espresso, steamed milk, small foam layer
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Chai Latte
-                                            </h4>
-                                            <span className="text-accent font-bold">R50</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Spiced black tea, steamed milk, milk foam
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Mocha / White Mocha
-                                            </h4>
-                                            <span className="text-accent font-bold">R60</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Espresso, nomu hot chocolate, whipped cream
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Vietnamese Iced Coffee
-                                            </h4>
-                                            <span className="text-accent font-bold">R65</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Double shot espresso, condensed milk, milk, ice
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="md:col-span-2">
-                                    <h3 className="text-xl font-medium text-primary uppercase tracking-wider mb-6">
-                                        Flavour Infusions for Lattes - R15
-                                    </h3>
-                                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                        <p className="text-subtext text-sm">Butterscotch</p>
-                                        <p className="text-subtext text-sm">Caramel</p>
-                                        <p className="text-subtext text-sm">Creme Brulee</p>
-                                        <p className="text-subtext text-sm">Hazelnut</p>
-                                        <p className="text-subtext text-sm">Tiramisu</p>
-                                        <p className="text-subtext text-sm">Toasted Marshmallow</p>
-                                        <p className="text-subtext text-sm">Toffee Nut</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {/* Tea Section */}
-                        <div id="tea" ref={(el) => (sectionRefs.current.tea = el)} className="mb-16 !scroll-mt-[140px] relative z-10">
-                            {/* Tea Watermark */}
-                            <div className={`absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
-                                expandedSections.tea ? 'block' : 'hidden md:block'
-                            }`}>
-                                <img src={teaImg} alt="" className="w-full h-full object-contain mix-blend-multiply" />
-                            </div>
-                            <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-3xl font-serif font-bold text-primary uppercase tracking-wider">
-                                    Tea
-                                </h2>
-                                <button onClick={() => toggleSection('tea')} className="md:hidden bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.tea ? 'Collapse Tea section' : 'Expand Tea section'} aria-expanded={expandedSections.tea}>
-                                    {expandedSections.tea ? <ChevronUpIcon size={24} /> : <ChevronDownIcon size={24} />}
-                                </button>
-                            </div>
-                            <div className="w-full h-[1px] bg-[#F5F0E5] mb-8"></div>
-                            <div className={`grid md:grid-cols-3 gap-10 ${expandedSections.tea ? 'block' : 'hidden md:grid'}`}>
-                                <div className="space-y-4">
-                                    <h3 className="text-xl font-medium text-primary uppercase tracking-wider mb-6">
-                                        Dilmah Speciality Teas - R45
-                                    </h3>
-                                    <div className="grid grid-cols-1 gap-2">
-                                        <p className="text-subtext text-sm">Peach</p>
-                                        <p className="text-subtext text-sm">Lemon</p>
-                                        <p className="text-subtext text-sm">Ceylon</p>
-                                        <p className="text-subtext text-sm">Spice Chai</p>
-                                        <p className="text-subtext text-sm">Strawberry</p>
-                                        <p className="text-subtext text-sm">Lime & Orange</p>
-                                        <p className="text-subtext text-sm">Ginger & Honey</p>
-                                        <p className="text-subtext text-sm">Italian Almond</p>
-                                        <p className="text-subtext text-sm">Berry Sensation</p>
-                                        <p className="text-subtext text-sm">English Breakfast</p>
-                                        <p className="text-subtext text-sm">Berry & Pomegranate</p>
-                                        <p className="text-subtext text-sm">
-                                            Rose with French Vanilla
-                                        </p>
-                                        <p className="text-subtext text-sm">
-                                            Arabian Mint with Honey
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="space-y-4">
-                                    <h3 className="text-xl font-medium text-primary uppercase tracking-wider mb-6">
-                                        Dilmah Rooibos Tea - R40
-                                    </h3>
-                                    <div className="grid grid-cols-1 gap-2">
-                                        <p className="text-subtext text-sm">Natural Rooibos</p>
-                                        <p className="text-subtext text-sm">
-                                            Cinnamon, Turmeric, Ginger, Nutmeg
-                                        </p>
-                                        <p className="text-subtext text-sm">
-                                            Caramel, Ginger, Coconut
-                                        </p>
-                                        <p className="text-subtext text-sm">
-                                            Cardamom, Ginger, Orange
-                                        </p>
-                                        <p className="text-subtext text-sm">
-                                            Holy Basil, Ginger, Lemon, Lemongrass
-                                        </p>
-                                        <p className="text-subtext text-sm">Raspberry & Coconut</p>
-                                    </div>
-                                    <h3 className="text-xl font-medium text-primary uppercase tracking-wider mb-6 mt-8">
-                                        Green Rooibos Tea - R40
-                                    </h3>
-                                    <div className="grid grid-cols-1 gap-2">
-                                        <p className="text-subtext text-sm">
-                                            Lemongrass & Spearmint
-                                        </p>
-                                        <p className="text-subtext text-sm">Ginger & Peppermint</p>
-                                        <p className="text-subtext text-sm">
-                                            Cardamom, Ginger, Orange
-                                        </p>
-                                        <p className="text-subtext text-sm">
-                                            Holy Basil, Ginger, Lemon, Lemongrass
-                                        </p>
-                                        <p className="text-subtext text-sm">Coconut & Mango</p>
-                                    </div>
-                                </div>
-                                <div className="space-y-4">
-                                    <h3 className="text-xl font-medium text-primary uppercase tracking-wider mb-6">
-                                        Organic Teas - R50
-                                    </h3>
-                                    <div className="grid grid-cols-1 gap-2">
-                                        <p className="text-subtext text-sm">Pure Green</p>
-                                        <p className="text-subtext text-sm">English Breakfast</p>
-                                        <p className="text-subtext text-sm">Berry Explosion</p>
-                                        <p className="text-subtext text-sm">Green Tea with Mint</p>
-                                        <p className="text-subtext text-sm">
-                                            Green Tea with Ginger
-                                        </p>
-                                        <p className="text-subtext text-sm">
-                                            Green Tea with Cinnamon & Turmeric
-                                        </p>
-                                    </div>
-                                    {/* Dilmah Logo */}
-                                    <div className="mt-12 flex justify-center">
-                                        <img src={dilmahLogo} alt="Dilmah Tea" className="w-32 h-auto object-contain" loading="lazy" width="300" height="300" />
-                                    </div>
-                                </div>
-                                <div className="md:col-span-3 text-center text-sm text-primary italic mt-4">
-                                    All tea is served with 2 tea bags
-                                </div>
-                            </div>
-                        </div>
-                        {/* Beverages Section */}
-                        <div id="beverages" ref={(el) => (sectionRefs.current.beverages = el)} className="mb-16 !scroll-mt-[140px] relative z-10">
-                            {/* Beverages Watermark */}
-                            <div className={`absolute top-1/2 right-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
-                                expandedSections.beverages ? 'block' : 'hidden md:block'
-                            }`}>
-                                <img src={beverageImg} alt="" className="w-full h-full object-contain mix-blend-multiply" width="300" height="300" loading="lazy" />
-                            </div>
-                            <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-3xl font-serif font-bold text-primary uppercase tracking-wider">
-                                    Beverages
-                                </h2>
-                                <button onClick={() => toggleSection('beverages')} className="md:hidden bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.beverages ? 'Collapse Beverages section' : 'Expand Beverages section'} aria-expanded={expandedSections.beverages}>
-                                    {expandedSections.beverages ? <ChevronUpIcon size={24} /> : <ChevronDownIcon size={24} />}
-                                </button>
-                            </div>
-                            <div className="w-full h-[1px] bg-[#F5F0E5] mb-8"></div>
-                            <div className={`grid md:grid-cols-3 gap-10 ${expandedSections.beverages ? 'block' : 'hidden md:grid'}`}>
-                                <div className="space-y-4">
-                                    <h3 className="text-xl font-medium text-primary uppercase tracking-wider mb-6">
-                                        Smoothies - R75
-                                    </h3>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Very Berry
-                                            </h4>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Mixed berries, chia seeds, almond milk, honey
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Mango-Go-Go
-                                            </h4>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Mango, chia seeds, almond milk, honey
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Sunrise Surprise
-                                            </h4>
-                                            <span className="text-accent font-bold">R80</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Carrot, banana, mango, pineapple, almond milk, chia seeds
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Orange Zest
-                                            </h4>
-                                            <span className="text-accent font-bold">R80</span>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Orange, pineapple, carrot, ginger, almond milk, chia seeds
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="space-y-4">
-                                    <h3 className="text-xl font-medium text-primary uppercase tracking-wider mb-6">
-                                        Frappes - R75
-                                    </h3>
-                                    <div className="grid grid-cols-2 gap-2">
-                                        <p className="text-subtext text-sm">Butterscotch</p>
-                                        <p className="text-subtext text-sm">Creme Brulee</p>
-                                        <p className="text-subtext text-sm">Caramel</p>
-                                        <p className="text-subtext text-sm">Hazelnut</p>
-                                        <p className="text-subtext text-sm">Chai Latte</p>
-                                        <p className="text-subtext text-sm">Tiramisu</p>
-                                        <p className="text-subtext text-sm">Chocolate</p>
-                                        <p className="text-subtext text-sm">Toasted Marshmallow</p>
-                                        <p className="text-subtext text-sm">Coconut Mocha</p>
-                                        <p className="text-subtext text-sm">Toffee Nut</p>
-                                        <p className="text-subtext text-sm">Coffee</p>
-                                    </div>
-                                    <h3 className="text-xl font-medium text-primary uppercase tracking-wider mb-6 mt-8">
-                                        Milkshakes 350ml - R80
-                                    </h3>
-                                    <div className="grid grid-cols-2 gap-2">
-                                        <p className="text-subtext text-sm">Lime</p>
-                                        <p className="text-subtext text-sm">Pineapple Coconut</p>
-                                        <p className="text-subtext text-sm">Banana</p>
-                                        <p className="text-subtext text-sm">Mango</p>
-                                        <p className="text-subtext text-sm">Bubblegum</p>
-                                        <p className="text-subtext text-sm">Lemon Lime & Mint</p>
-                                        <p className="text-subtext text-sm">Chocolate</p>
-                                        <p className="text-subtext text-sm">
-                                            Strawberry Cheesecake
-                                        </p>
-                                        <p className="text-subtext text-sm">Strawberry</p>
-                                        <p className="text-subtext text-sm">Oreo</p>
-                                        <p className="text-subtext text-sm">Chai</p>
-                                        <p className="text-subtext text-sm">Bar One</p>
-                                        <p className="text-subtext text-sm">Coffee</p>
-                                        <p className="text-subtext text-sm">Milo</p>
-                                        <p className="text-subtext text-sm"></p>
-                                        <p className="text-subtext text-sm">Mocha</p>
-                                    </div>
-                                </div>
-                                <div className="space-y-6">
-                                    <h3 className="text-xl font-medium text-primary uppercase tracking-wider mb-6">
-                                        Soft Drinks
-                                    </h3>
-                                    <div className="mb-4">
-                                        <h4 className="text-lg font-medium text-primary mb-2">
-                                            Bashews - R20
-                                        </h4>
-                                        <div className="grid grid-cols-2 gap-2">
-                                            <p className="text-subtext text-sm">Cola</p>
-                                            <p className="text-subtext text-sm">Pineapple</p>
-                                            <p className="text-subtext text-sm">Raspberry</p>
-                                            <p className="text-subtext text-sm">Cocopine</p>
-                                            <p className="text-subtext text-sm">Iron Brew</p>
-                                            <p className="text-subtext text-sm">Cream Soda</p>
-                                            <p className="text-subtext text-sm">Passionfruit</p>
-                                            <p className="text-subtext text-sm">Lemonade</p>
-                                        </div>
-                                    </div>
-                                    <div className="mb-4">
-                                        <h4 className="text-lg font-medium text-primary mb-2">
-                                            Sanpellegrino - R40
-                                        </h4>
-                                        <div className="grid grid-cols-2 gap-2">
-                                            <p className="text-subtext text-sm">Pomegranate</p>
-                                            <p className="text-subtext text-sm">Lemon</p>
-                                            <p className="text-subtext text-sm">Orange</p>
-                                            <p className="text-subtext text-sm">Blood Orange</p>
-                                            <p className="text-subtext text-sm">Grapefruit</p>
-                                        </div>
-                                    </div>
-                                    <div className="mb-4">
-                                        <h4 className="text-lg font-medium text-primary mb-2">
-                                            Fruit Juice - R40
-                                        </h4>
-                                        <div className="grid grid-cols-2 gap-2">
-                                            <p className="text-subtext text-sm">Ginger Beer</p>
-                                            <p className="text-subtext text-sm">Mango</p>
-                                            <p className="text-subtext text-sm">Orange</p>
-                                            <p className="text-subtext text-sm">Mango & Orange</p>
-                                            <p className="text-subtext text-sm">Strawberry</p>
-                                            <p className="text-subtext text-sm">Pineapple</p>
-                                        </div>
-                                    </div>
-                                    <div className="mb-4">
-                                        <h4 className="text-lg font-medium text-primary mb-2">
-                                            Mocktails - R70
-                                        </h4>
-                                        <div className="grid grid-cols-2 gap-2">
-                                            <p className="text-subtext text-sm">Pina Colada</p>
-                                            <p className="text-subtext text-sm">Mojito</p>
-                                            <p className="text-subtext text-sm">
-                                                Strawberry Daiquiri
-                                            </p>
-                                            <p className="text-subtext text-sm">Mango Daiquiri</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {/* Signature Drinks Section */}
-                        <div id="signature" ref={(el) => (sectionRefs.current.signature = el)} className="mb-16 !scroll-mt-[140px] relative z-10">
-                            {/* Signature Drinks Watermark */}
-                            <div className={`absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] z-0 pointer-events-none ${
-                                expandedSections.signature ? 'block' : 'hidden md:block'
-                            }`}>
-                                <img src={shakesImg} alt="" className="w-full h-full object-contain mix-blend-multiply" width="300" height="300" loading="lazy" />
-                            </div>
-                            <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-3xl font-serif font-bold text-primary uppercase tracking-wider">
-                                    Signature Drinks
-                                </h2>
-                                <button onClick={() => toggleSection('signature')} className="md:hidden bg-primary text-light rounded-full p-1 hover:bg-accent transition-colors" aria-label={expandedSections.signature ? 'Collapse Signature Drinks section' : 'Expand Signature Drinks section'} aria-expanded={expandedSections.signature}>
-                                    {expandedSections.signature ? <ChevronUpIcon size={24} /> : <ChevronDownIcon size={24} />}
-                                </button>
-                            </div>
-                            <div className="w-full h-[1px] bg-[#F5F0E5] mb-8"></div>
-                            <div className={`grid md:grid-cols-2 gap-10 ${expandedSections.signature ? 'block' : 'hidden md:grid'}`}>
-                                <div className="space-y-4">
-                                    <h3 className="text-xl font-medium text-primary uppercase tracking-wider mb-6">
-                                        Blizzards - R65
-                                    </h3>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Lemon Crush
-                                            </h4>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Lemon S.Pellegrino, lime, ice
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Tropic Thunder
-                                            </h4>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Mango, mango juice, mango puree, passionfruit, kiwi, ice
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Summer Crush
-                                            </h4>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Passion fruit, lime, lemonade, lemon, ice, mango & orange
-                                            juice
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Keep The Doctor Away
-                                            </h4>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Apple, apple fruugo, apple puree, ginger, honey
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Tropical Escape
-                                            </h4>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Pineapple, pineapple juice, coconut milk, lime, ice
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="space-y-4">
-                                    <h3 className="text-xl font-medium text-primary uppercase tracking-wider mb-6">
-                                        On The Rocks - R60
-                                    </h3>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                The Hulk
-                                            </h4>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Lemonade, lime, mint, ice
-                                        </p>
-                                    </div>
-                                    <div className="pb-4">
-                                        <div className="flex justify-between mb-1">
-                                            <h4 className="text-lg font-medium text-primary uppercase tracking-wider">
-                                                Pink Lady
-                                            </h4>
-                                        </div>
-                                        <p className="text-subtext text-sm">
-                                            Lemonade, strawberry puree, kiwi, ice
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/* Download Menu Button */}
-                    <div className="text-center mb-16">
-                        <a href="/Cafe-MENU.pdf" download="Cafe-Crave-Menu.pdf" className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center font-medium transition-colors hover:shadow-glow">
-                            <DownloadIcon size={20} className="mr-2" />
-                            Download Full Menu (PDF)
-                        </a>
-                    </div>
-                </div>
-            </div>
-            {/* Call-to-Action */}
-            <section className="section-animate bg-primary py-12 md:py-16">
-                <div className="container mx-auto px-6 md:px-10 lg:px-16">
-                    <div className="max-w-4xl mx-auto text-center">
-                        <h2 className="text-3xl font-serif font-bold text-light mb-4">
-                            Order, Visit, Enjoy
-                        </h2>
-                        <p className="text-light text-lg mb-8">
-                            Stop by for breakfast, lunch, or coffee with friends.
-                        </p>
-                        <a href="https://maps.app.goo.gl/hxuVJFrmpetoZbCaA" target="_blank" rel="noopener noreferrer" className="bg-light hover:bg-opacity-90 text-accent px-8 py-3 rounded-md inline-flex items-center font-medium transition-colors">
-                            <MapPinIcon size={20} className="mr-2" />
-                            Get Directions
-                        </a>
-                    </div>
-                </div>
-            </section>
-            {/* Back to Top Button */}
-            <button onClick={scrollToTop} className={`fixed right-6 bottom-6 bg-accent hover:bg-opacity-90 text-light p-3 rounded-full shadow-lg transition-all duration-300 z-40 ${showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`} aria-label="Back to top">
-                <ArrowUpIcon size={24} />
-            </button>
-            </main>
-            <Footer />
+  // --- SUB-COMPONENTS ---
+
+  // The "Newspaper Row" Item:  Burger ...... R100
+  const MenuItem = ({ name, price, desc, highlight = false }: { name: string, price: string, desc?: string, highlight?: boolean }) => (
+    <div className="mb-5 break-inside-avoid relative group">
+      <div className="flex justify-between items-baseline w-full">
+        <h4 className={`font-bold uppercase tracking-wide text-primary ${highlight ? 'text-xl' : 'text-lg'}`}>
+          {name}
+        </h4>
+        {/* The Dotted Leader Line */}
+        <div className="flex-grow mx-2 border-b-2 border-dotted border-primary/40 relative -top-1"></div>
+        <span className={`font-serif font-bold text-primary ${highlight ? 'text-2xl' : 'text-xl'}`}>
+          {price}
+        </span>
+      </div>
+      {desc && (
+        <p className="text-sm text-subtextLightBg font-sans leading-tight mt-1 italic opacity-90 max-w-[90%]">
+          {desc}
+        </p>
+      )}
+    </div>
+  );
+
+  // The "Newspaper Section" Box
+  const MenuSection = ({ id, title, img, children, subTitle }: { id: SectionKey, title: string, img: string, children: React.ReactNode, subTitle?: string }) => {
+    const isExpanded = expandedSections[id];
+
+    return (
+      <div
+        ref={el => sectionRefs.current[id] = el}
+        id={id}
+        className="relative border-4 border-primary bg-light mb-10 transition-all duration-500"
+      >
+        {/* Section Header - Clickable on all mobile screens, not clickable on desktop */}
+        <div
+          className="bg-primary text-light p-3 flex justify-between items-center cursor-pointer lg:cursor-default select-none"
+          onClick={() => {
+            // Toggle on all screens below lg breakpoint (below 1024px)
+            if (window.innerWidth < 1024) {
+              toggleSection(id);
+            }
+          }}
+        >
+          <div className="w-full text-center">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold uppercase tracking-widest">{title}</h2>
+            {subTitle && <p className="text-xs uppercase tracking-[0.2em] mt-1 text-secondary">{subTitle}</p>}
+          </div>
+          {/* Show chevron on all mobile screens (below lg) */}
+          <div className="lg:hidden absolute right-4">
+            {isExpanded ? <ChevronUpIcon size={24} /> : <ChevronDownIcon size={24} />}
+          </div>
         </div>
+
+        {/* Section Content - Always visible on desktop (lg+), collapsible on mobile */}
+        <div className={`relative overflow-hidden transition-all duration-500 lg:max-h-none lg:opacity-100 ${
+          isExpanded ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0'
+        }`}>
+          {/* Background Watermark (Grayscale + Multiply for drawn effect) */}
+          <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <img
+              src={img}
+              alt=""
+              className="w-full h-full object-cover opacity-[0.07] mix-blend-multiply scale-110"
+              style={{ filter: 'grayscale(100%)' }}
+            />
+          </div>
+
+          <div className="relative z-10 p-6 md:p-8">
+             {children}
+          </div>
+        </div>
+      </div>
     );
+  };
+
+  return (
+    <div className="min-h-screen bg-light text-primary font-sans selection:bg-secondary selection:text-white">
+      <SEO title="Menu Gazette | Cafe Crave" description="Explore our vintage style menu featuring halaal breakfasts, burgers, and artisan coffee." />
+      <Header />
+      
+      {/* --- MENU HEADER DESIGN --- */}
+      <section className="pt-28 pb-8 px-4 max-w-6xl mx-auto">
+        {/* Top: Cafe Name */}
+        <div className="text-center mb-2">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-primary uppercase tracking-wide">
+            Café Crave
+          </h1>
+        </div>
+
+        {/* Horizontal Line */}
+        <div className="border-t-2 border-primary mb-2"></div>
+
+        {/* EST 2020 and Tagline */}
+        <div className="text-center mb-2">
+          <p className="text-sm md:text-base font-bold uppercase tracking-wider text-primary">
+            EST 2020
+          </p>
+          <p className="text-xs md:text-sm italic text-subtextLightBg mt-1">
+            Where comfort food meets crave-worthy flavour!
+          </p>
+        </div>
+
+        {/* Horizontal Line */}
+        <div className="border-t-2 border-primary mb-6"></div>
+
+        {/* Main Content Row: 3C Icon | MENU | Halal Badge */}
+        <div className="flex items-center justify-between gap-4 mb-4">
+          {/* Left: Menu Logo Box */}
+          <div className="flex-shrink-0 w-20 h-20 md:w-24 md:h-24 border-4 border-primary bg-light flex items-center justify-center p-2">
+            <img src={menuLogo} alt="Cafe Crave Logo" className="w-full h-full object-contain" />
+          </div>
+
+          {/* Center: MENU Text */}
+          <div className="flex-1 text-center">
+            <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold text-primary uppercase tracking-wider"
+                style={{
+                  fontFamily: 'Impact, "Arial Black", sans-serif',
+                  textShadow: '3px 3px 0px rgba(0,0,0,0.1)',
+                  letterSpacing: '0.05em'
+                }}>
+              MENU
+            </h2>
+          </div>
+
+          {/* Right: Strictly Halal Badge */}
+          <div className="flex-shrink-0 w-20 h-20 md:w-24 md:h-24 border-4 border-primary bg-light flex flex-col items-center justify-center p-2">
+            <img src={halaalIcon} alt="Halal Certified" className="w-10 h-10 md:w-12 md:h-12 mb-1" />
+            <span className="text-[8px] md:text-[10px] font-bold uppercase text-primary text-center leading-tight">
+              Strictly<br />Halal
+            </span>
+          </div>
+        </div>
+
+        {/* Star Divider */}
+        <div className="flex justify-center items-center gap-2 md:gap-3 border-t-2 border-b-2 border-primary py-2">
+          {[...Array(9)].map((_, i) => (
+            <Star key={i} size={16} fill="#322C2B" className="text-primary" />
+          ))}
+        </div>
+      </section>
+
+
+
+      {/* --- MENU CONTENT GRID --- */}
+      <main className="container mx-auto px-4 py-12 max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          
+          {/* --- LEFT COLUMN --- */}
+          <div className="flex flex-col gap-8">
+            
+            <MenuSection id="breakfast" title="Morning Edition" subTitle="Served All Day" img={breakfastImg}>
+              <MenuItem name="Avo on Toast" price="R85" desc="Sliced avo + feta, rosa tomato, red onion" />
+              <MenuItem name="Build-o-Omelette" price="R85" desc="3 eggs and a slice of ciabatta" />
+              <div className="ml-4 mb-4 text-xs text-subtextLightBg italic">
+                <p>Add-ons: Chilli (R10), Tomato (R10), Onions (R10), Egg (R15), Cheese (R15), Feta (R15), Mushroom (R15), Spinach (R25), Avo (R25), Spiced Beef (R25), Sausage (R25), Wagyu (R65), Chicken (R35)</p>
+              </div>
+              <MenuItem name="Breakfast Muffin" price="R90" desc="English muffin + egg + spiced beef, melted cheese + hash brown" />
+              <MenuItem name="Eggs Benedict" price="R95" desc="English muffin + 2 poached eggs, hollandaise sauce with choice of: spinach & mushroom OR spiced beef & caramelised onion OR Wagyu & Rosa Tomato (+R65)" />
+              <MenuItem name="Brioche French Toast" price="R95" desc="With choice of: berry compote & cream OR classic creme brulee" />
+              <MenuItem name="Loaded Hash Bowl" price="R105" desc="3 scrambled eggs + hash brown + tomato, spinach + mushroom + sriracha + avo + feta" />
+              <MenuItem name="Vegan Burrito" price="R115" desc="Hummus + tzatziki + chickpeas + roast veg" />
+              <MenuItem name="Crave Signature" price="R135" highlight desc="2 eggs + sauteed mushrooms + 2 sausages, baked beans + fries + fried tomato, 2 slices ciabatta + spiced beef" />
+              <MenuItem name="Loaded Avo on Toast" price="R135" desc="Avo on toast + 2 sausages + 2 eggs + sauteed mushrooms" />
+              <MenuItem name="Breakfast Wrap" price="R145" desc="Scrambled eggs + feta + fillet steak, rosa tomato" />
+              <MenuItem name="Mighty Crave" price="R185" highlight desc="3 eggs + 120g steak + 2 sausages, sauteed mushrooms + spiced beef + fries, 2 slices ciabatta + fried tomato + baked beans" />
+
+              <div className="mt-6 pt-4 border-t-2 border-dashed border-primary/30">
+                <p className="font-bold uppercase text-sm mb-2">Add-ons</p>
+                <p className="text-xs text-subtextLightBg leading-relaxed">
+                  Chilli (R10) • Tomato (R10) • Onions (R10) • Egg (R15) • Cheese (R15) • Mushroom (R15) • Toast (R15) • Avo (R25) • Spiced Beef (R25) • Sausage (R25) • Fries (R40) • Spinach & Butternut (R45) • Chicken (R45)
+                </p>
+                <p className="font-bold uppercase text-sm mt-4 mb-2">Sauces (R30)</p>
+                <p className="text-xs text-subtextLightBg leading-relaxed">
+                  Hot Honey • Garlic Aioli • Mushroom • Tzatziki • Chilli Cheese • Crave Sauce • Gochujang • Ranch
+                </p>
+              </div>
+            </MenuSection>
+
+            <MenuSection id="kiddies" title="Kiddies Corner" subTitle="For The Little Ones" img={lightMealsImg}>
+              <MenuItem name="Cheese & Tomato Toastie" price="R75" desc="A classic triangle toastie (crust / no crust)" />
+              <MenuItem name="Chicken and Cheese Wrap" price="R75" desc="No gross greens, kid sized" />
+              <MenuItem name="Nacho" price="R75" desc="Nachos + cheese + cheese sauce" />
+              <MenuItem name="Crumbed Chicken Strips" price="R80" desc="Crispy chicken fillet" />
+              <MenuItem name="Chicken or Beef Slider" price="R80" desc="Mini burger for the mini-me" />
+            </MenuSection>
+
+            <MenuSection id="starters" title="Starters" subTitle="Small Bites" img={grillImg}>
+              <MenuItem name="Sweet Corn Cups" price="R55" desc="Served with choice of: (butter, aromat, chives) OR (butter, chilli, lime)" />
+              <MenuItem name="Jalapeno Stuffed Rings" price="R70" desc="4 stuffed onion rings & a sour cream dip" />
+              <MenuItem name="Crumbed Mushrooms" price="R65" desc="Served with tartare sauce in choice of: plain | garlic & herb" />
+              <MenuItem name="Mac & Cheese Balls" price="R70" desc="Garlic aioli, hot honey" />
+              <MenuItem name="Cheeseburger Spring Rolls" price="R75" desc="Choice of dipping sauce" />
+              <MenuItem name="Full Chicken Wings" price="R85" desc="4 wings served with ranch: hot honey, gochujang | crispy plain, hot honey" />
+              <MenuItem name="Hot Honey Chicken Tenders" price="R75" desc="Served as is" />
+            </MenuSection>
+
+            <MenuSection id="coffee" title="Coffee Press" subTitle="Illy Italian Blend" img={coffeeImg}>
+               <div className="absolute top-4 right-4 w-16 opacity-80 mix-blend-multiply">
+                 <img src={illyLogo} alt="Illy" />
+               </div>
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8">
+                  <div>
+                    <MenuItem name="Espresso" price="R30" desc="Single shot of black gold" />
+                    <MenuItem name="Americano" price="R35" desc="Single shot espresso, 3 parts hot water (black)" />
+                    <MenuItem name="Cappuccino" price="R40" desc="Single shot espresso, steamed milk, foam" />
+                    <MenuItem name="Cortado" price="R45" desc="Double shot espresso, equal parts textured foam" />
+                  </div>
+                  <div>
+                    <MenuItem name="Vienna" price="R50" desc="Single shot espresso, condensed milk" />
+                    <MenuItem name="Flat White - Double Shot" price="R50" desc="Double shot espresso, steamed milk, small foam layer" />
+                    <MenuItem name="Latte" price="R50" desc="Single shot espresso, steamed milk, small foam layer" />
+                    <MenuItem name="Chai Latte" price="R50" desc="Spiced black tea, steamed milk, milk foam" />
+                  </div>
+               </div>
+               <div className="mt-4">
+                 <MenuItem name="Dirty Chai" price="R60" desc="Single shot espresso, classic chai mix" />
+                 <MenuItem name="Mocha / White Mocha" price="R60" desc="Espresso, Nomu hot chocolate, whipped cream" />
+                 <MenuItem name="Vietnamese Iced Coffee" price="R65" desc="Double shot espresso, condensed milk, milk, ice" />
+               </div>
+               <div className="mt-6 pt-4 border-t-2 border-dashed border-primary/30 text-center">
+                 <p className="font-bold uppercase text-sm mb-2">Flavour Infusions (+R20)</p>
+                 <p className="text-xs italic text-subtextLightBg">
+                   Vanilla • Hazelnut • Caramel • Shortbread
+                 </p>
+               </div>
+            </MenuSection>
+            
+             <MenuSection id="beverages" title="Cold Press" subTitle="Refreshments" img={beverageImg}>
+              <div className="mb-6">
+                <h3 className="font-serif font-bold text-xl underline decoration-dotted decoration-2 mb-4">Milkshakes</h3>
+                <div className="flex justify-between items-baseline mb-2">
+                  <span className="font-bold uppercase">All Flavours</span>
+                  <span className="font-serif font-bold text-xl">R75</span>
+                </div>
+                <p className="text-sm leading-relaxed italic text-subtextLightBg">
+                  Lime • Banana • Bubblegum • Chocolate • Strawberry • Chai • Coffee • Bar One • Red • Blue • Green • Yellow • Orange
+                </p>
+              </div>
+
+              <div className="mb-6">
+                <h3 className="font-serif font-bold text-xl underline decoration-dotted decoration-2 mb-4">Beverages</h3>
+                <MenuItem name="Kinza" price="R30" desc="Cola, Citrus, Lemonade" />
+                <MenuItem name="Bashe" price="R20" desc="Cola, Iron Brew, Pineapple, Very Berry, Passion Fruit, Lemonade, Cocopine" />
+                <MenuItem name="San Pellegrino" price="R40" desc="Blood Orange, Grapefruit, Gingerbeer, Pomegranate, Lemon, Orange, Orange & Fig, Peach & Clementine" />
+                <MenuItem name="100% Fruit Juice" price="R40" desc="Strawberry, Pineapple, Orange, Mango, Cranberry, Mango & Orange, Apple" />
+                <MenuItem name="Cordials" price="R65" desc="Passion Fruit, Lemonade, Blueberry, Lemon & Lime" />
+                <MenuItem name="Theonista" price="R60" desc="Cola, Ginger Beer, Cream Soda, Assorted Kombucha" />
+              </div>
+
+              <div className="mb-6">
+                <h3 className="font-serif font-bold text-xl underline decoration-dotted decoration-2 mb-4">Water</h3>
+                <MenuItem name="Aqua Panna 500ml" price="R35" />
+                <MenuItem name="S. Pellegrino 500ml" price="R35" />
+                <MenuItem name="Aqua Panna 1L" price="R55" />
+                <MenuItem name="S. Pellegrino 1L" price="R55" />
+              </div>
+
+              <div>
+                <h3 className="font-serif font-bold text-xl underline decoration-dotted decoration-2 mb-4">Mocktails</h3>
+                <MenuItem name="Mocktails" price="R70" desc="Pina Colada • Strawberry Daiquiri • Mojito • Mango Daiquiri" />
+              </div>
+            </MenuSection>
+
+            <MenuSection id="wraps" title="Wraps" subTitle="Light Meals" img={wrapImg}>
+              <MenuItem name="Falafel" price="R100" desc="Cucumber + red onion + tzatziki + tomato" />
+              <MenuItem name="Smashburger Wrap" price="R115" desc="Beef + cheese + lettuce + avo + crave sauce" />
+              <MenuItem name="Chicken Caesar" price="R135" desc="Feta + mixed leaves + cucumber + avo, sauce choice: garlic mayo | sriracha mayo" />
+              <MenuItem name="Chicken Quesadilla" price="R135" desc="Chicken fillet + peppers + cheese + salsa" />
+              <MenuItem name="Steak" price="R165" desc="Fillet steak + red onion + tomato + fresh greens" />
+            </MenuSection>
+
+          </div>
+
+          {/* --- RIGHT COLUMN --- */}
+          <div className="flex flex-col gap-8">
+
+            <MenuSection id="burgers" title="The Burger Headline" subTitle="Served with Chips" img={burgersImg}>
+              <div className="bg-primary text-light text-center p-2 mb-6">
+                 <span className="text-xs font-bold uppercase tracking-widest block mb-1">All Burgers Served on Home-Made Brioche Bun</span>
+                 <span className="text-xs uppercase tracking-wide">Choose your style: Chicken | Dhanya Beef | Smash Patty | Wagyu Patty (+R45)</span>
+              </div>
+              <MenuItem name="El Classico" price="R90" desc="100g patty + red onion + lettuce + tomato, mayo" />
+              <MenuItem name="Chilli Cheese" price="R115" desc="The classico + cheese + chilli cheese sauce" />
+              <MenuItem name="Cheesy Crave" price="R125" desc="200g patty + red onion + lettuce + tomato, cheese + crave sauce" />
+              <MenuItem name="Tropico" price="R135" desc="200g patty + pineapple ring + lettuce + tomato, cheese + crave sauce" />
+              <MenuItem name="The Nacho" price="R145" desc="200g patty + nacho chips + melted cheese, crave sauce" />
+              <MenuItem name="Hunger Buster" price="R165" highlight desc="Choice of any 2x 200g patties + avo, crave sauce + lettuce + red onion + tomato" />
+              <MenuItem name="Go Big or Go Home" price="R210" highlight desc="Choice of any 3x 200g patties + layered with cheese + avo + crave sauce + lettuce, red onion + tomato" />
+            </MenuSection>
+
+            <MenuSection id="toasties" title="Toasted Gazette" subTitle="Toasties" img={toastImg}>
+              <MenuItem name="Cheesy Red Onion" price="R90" desc="Red onion + cheese + tomato" />
+              <MenuItem name="Chicken Mayo (plain | spicy)" price="R100" desc="Chicken fillet + in house mayo, spicy = crave sauce" />
+              <MenuItem name="Triple Cheese" price="R125" desc="Cheddar + mozzarella + feta" />
+              <MenuItem name="The Cuban" price="R175" highlight desc="Mozzarella, gherkins, mustard mayo" />
+              <MenuItem name="Crave Steak" price="R165" highlight desc="Fillet steak + red onion + lettuce + cheese, crave sauce" />
+            </MenuSection>
+
+            <MenuSection id="mains" title="Mains" subTitle="Hearty Meals" img={grillImg}>
+              <MenuItem name="Loaded Fries" price="R85" desc="Fries + melted cheese sauce + jalapenos" />
+              <div className="ml-4 mb-4 text-xs text-subtextLightBg italic">
+                <p>Add hot honey chicken (+R35) • Add beef smash (+R40) • Add steak (+R65)</p>
+              </div>
+              <MenuItem name="Alfredo" price="R105" desc="Creamy alfredo with mushrooms" />
+              <div className="ml-4 mb-4 text-xs text-subtextLightBg italic">
+                <p>Add chicken (+R35) • Add steak (+R65)</p>
+              </div>
+              <MenuItem name="Lemon Chilli Chicken Pasta" price="R130" desc="Creamy pasta + grilled chicken, lemon zest + hints of chilli" />
+              <MenuItem name="Nachos" price="R105" desc="Crispy nacho chips layered with cheese, salsa + guac + sour cream" />
+              <div className="ml-4 mb-4 text-xs text-subtextLightBg italic">
+                <p>Add grilled chicken (+R35) • Add hot honey chicken (+R35) • Add steak (+R65)</p>
+              </div>
+            </MenuSection>
+
+            <MenuSection id="steaks" title="Steaks" subTitle="Premium Cuts" img={lambChopsImg}>
+              <div className="bg-primary text-light text-center p-1 mb-6">
+                 <span className="text-xs font-bold uppercase tracking-widest">Served with a sauce of choice + onion rings + chips</span>
+              </div>
+              <MenuItem name="120g Rump Steak" price="R125" />
+              <MenuItem name="220g Rump Steak" price="R215" />
+              <MenuItem name="120g Fillet Steak" price="R145" />
+              <MenuItem name="220g Fillet Steak" price="R250" highlight />
+            </MenuSection>
+
+            <MenuSection id="platters" title="Platters" subTitle="Share & Enjoy" img={grillImg}>
+              <MenuItem name="Street Platter" price="R210" desc="2 sliders + hot honey chicken tenders, loaded fries + 2 veg starters" />
+              <MenuItem name="Grill Platter" price="R315" highlight desc="2 lamb chops + 120g steak + 2 sausages, fries + crispy onion rings" />
+              <MenuItem name="Sharing Platter" price="R245" desc="Hot honey chicken + 8 chicken wings, jalapeno stuffed rings + corn cups" />
+              <MenuItem name="Family Platter" price="R395" highlight desc="2 el classico + 2 cheesy crave, 2 sweet corn cups + 2 large fries" />
+            </MenuSection>
+
+            <MenuSection id="tea" title="Tea Time" subTitle="Selection by Dilmah" img={teaImg}>
+              <div className="flex items-center justify-end mb-4">
+                <img src={dilmahLogo} alt="Dilmah" className="h-5 opacity-80" />
+              </div>
+              <p className="text-center italic text-subtextLightBg">Dilmah tea selection: Please ask the waiter for a list of available teas.</p>
+            </MenuSection>
+
+            <MenuSection id="dessert" title="Dessert" subTitle="Sweet Treats" img={cakeImg}>
+              <MenuItem name="Loaded Donuts" price="R80" desc="Caramel cream stuffed + Cadbury drizzle, peppermint crunch" />
+              <MenuItem name="Ice Cream Sandwich" price="R85" desc="Choc chip cookies + vanilla ice cream" />
+              <MenuItem name="Churros" price="R85" desc="Cinnamon dusted, choice of sauce: caramel / chocolate" />
+              <MenuItem name="Brownie Sundae" price="R90" desc="Layered choc brownie + vanilla ice cream" />
+              <MenuItem name="Loaded Waffle Bites" price="R105" highlight desc="Light waffle bits with choice of: strawberry shortbread | oreo & ice cream | banana & biscoff | death by chocolate" />
+            </MenuSection>
+
+            <MenuSection id="bakery" title="Bakery" subTitle="Fresh Daily" img={cheeseCakeImg}>
+              <MenuItem name="Gourmet Cheesecake" price="R80" desc="As per display items" />
+              <MenuItem name="Signature Cakes" price="R60" desc="As per display items" />
+              <MenuItem name="Eclairs" price="R75" desc="Caramel cream + Cadbury chocolate" />
+              <MenuItem name="Scone" price="R40" desc="With butter" />
+              <div className="ml-4 mb-4 text-xs text-subtextLightBg italic">
+                <p>Add jam (+R10) • Add cheese (+R15) • Add cream (+R15)</p>
+              </div>
+              <MenuItem name="Brioche" price="R65" desc="6 buns" />
+              <MenuItem name="Ciabatta Loaf" price="R50" desc="900g loaf" />
+            </MenuSection>
+
+          </div>
+        </div>
+        
+        {/* Footer Disclaimer */}
+        <div className="mt-16 border-t-4 border-primary pt-8 w-full">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-8 px-4 md:px-8">
+            <p className="font-bold text-lg md:text-xl uppercase text-primary text-center md:text-left">
+              10% Service fee on tables of 6+
+            </p>
+            <p className="text-sm md:text-base italic text-subtextLightBg text-center md:text-right">
+              Prices subject to change without prior notice. E&OE.
+            </p>
+          </div>
+        </div>
+
+      </main>
+
+      <Footer />
+      
+      {/* Back to Top Button */}
+      <button 
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className={`fixed bottom-8 right-8 bg-primary text-light w-12 h-12 flex items-center justify-center rounded-none shadow-[4px_4px_0px_0px_rgba(131,81,63,1)] hover:translate-y-1 hover:shadow-none transition-all z-50 border-2 border-light ${isNavSticky ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        aria-label="Back to top"
+      >
+        <ArrowUpIcon />
+      </button>
+    </div>
+  );
 };

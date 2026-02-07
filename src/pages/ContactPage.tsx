@@ -5,19 +5,19 @@ import { SEO } from '../components/SEO';
 import { ScrollAnimationObserver } from '../components/ScrollAnimationObserver';
 
 // Custom icon components
-const InstagramIcon = ({ size }: { size: number }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-  </svg>
-);
-
-const FacebookIcon = ({ size }: { size: number }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-  </svg>
-);
+// const InstagramIcon = ({ size }: { size: number }) => (
+//   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+//     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+//     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+//     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+//   </svg>
+// );
+//
+// const FacebookIcon = ({ size }: { size: number }) => (
+//   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+//     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+//   </svg>
+// );
 
 const WhatsAppIcon = ({ size, className }: { size: number; className?: string }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -93,40 +93,55 @@ export const ContactPage = () => {
         </div>
       </section>
 
-      {/* Contact Section - DARK */}
+      {/* Contact Section - Two Location Cards */}
       <section className="section-dark py-16 md:py-20">
         <div className="container mx-auto px-6 md:px-10 lg:px-16">
           <div id="contact">
-            <div className="grid md:grid-cols-2 gap-8 md:gap-10 max-w-6xl mx-auto">
+            {/* Two Location Cards Side by Side */}
+            <div className="grid md:grid-cols-2 gap-8 md:gap-10 max-w-6xl mx-auto mb-12">
+              {/* Claremont Location Card */}
               <div className="bg-lightBg p-6 md:p-8 rounded-lg shadow-lg">
-                <h2 className="text-2xl font-serif font-bold text-lightText mb-6">
-                  Contact & Hours
+                <h2 className="text-2xl md:text-3xl font-serif font-bold text-lightText mb-6">
+                  Crave Claremont
                 </h2>
-                <div className="space-y-6 md:space-y-8">
+                <div className="space-y-6">
                   <div className="flex items-start">
                     <MapPinIcon size={24} className="text-accent mr-4 flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-medium text-lightText mb-1">Address</h3>
                       <p className="text-lightText opacity-80">
-                          219 Imam Haron Rd, Claremont
+                        219 Imam Haron Rd, Claremont
                         <br />
-                          Cape Town, 7708
+                        Cape Town, 7708
                       </p>
                     </div>
                   </div>
+
+                  <a
+                    href="https://maps.app.goo.gl/xKgEUJkWKYydZgUW7"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full text-center border border-accent text-accent px-6 py-3 hover:bg-accent hover:text-light transition-all duration-300 text-sm font-medium tracking-wide"
+                  >
+                    OPEN IN GOOGLE MAPS
+                  </a>
+
                   <div className="flex items-start">
                     <PhoneIcon size={24} className="text-accent mr-4 flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-medium text-lightText mb-1">Phone</h3>
-                      <p className="text-lightText opacity-80">+27 66 238 6374</p>
+                      <a href="tel:+27662386374" className="text-lightText opacity-80 hover:text-accent transition-colors">
+                        +27 66 238 6374
+                      </a>
                     </div>
                   </div>
+
                   <div className="flex items-start">
                     <WhatsAppIcon size={24} className="text-accent mr-4 flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-medium text-lightText mb-1">WhatsApp</h3>
                       <a
-                        href="https://wa.me/27662386374?text=Hi%20Crave%20Café!%20I'd%20like%20to%20know%20more%20about..."
+                        href="https://wa.me/27662386374?text=Hi%20Crave%20Café%20Claremont!%20I'd%20like%20to%20know%20more%20about..."
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-accent hover:underline transition-colors font-medium"
@@ -138,69 +153,144 @@ export const ContactPage = () => {
                       </p>
                     </div>
                   </div>
+
                   <div className="flex items-start">
                     <ClockIcon size={24} className="text-accent mr-4 flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-medium text-lightText mb-1">Hours</h3>
-                      <ul className="text-lightText opacity-80 space-y-1 text-sm md:text-base">
-                        <li className="flex">
-                          <span className="w-28 flex-shrink-0">Monday:</span>
+                      <h3 className="font-medium text-lightText mb-2">Hours</h3>
+                      <ul className="text-lightText opacity-80 space-y-1 text-sm">
+                        <li className="flex justify-between">
+                          <span>Monday:</span>
                           <span>10 am–6 pm</span>
                         </li>
-                        <li className="flex">
-                          <span className="w-28 flex-shrink-0">Tuesday:</span>
+                        <li className="flex justify-between">
+                          <span>Tuesday:</span>
                           <span>8:30 am–6 pm</span>
                         </li>
-                        <li className="flex">
-                          <span className="w-28 flex-shrink-0">Wednesday:</span>
+                        <li className="flex justify-between">
+                          <span>Wednesday:</span>
                           <span>8:30 am–6 pm</span>
                         </li>
-                        <li className="flex">
-                          <span className="w-28 flex-shrink-0">Thursday:</span>
+                        <li className="flex justify-between">
+                          <span>Thursday:</span>
                           <span>8:30 am–6 pm</span>
                         </li>
-                        <li className="flex">
-                          <span className="w-28 flex-shrink-0">Friday:</span>
+                        <li className="flex justify-between">
+                          <span>Friday:</span>
                           <span>8:30 am–12 pm, 2–9 pm</span>
                         </li>
-                        <li className="flex">
-                          <span className="w-28 flex-shrink-0">Saturday:</span>
+                        <li className="flex justify-between">
+                          <span>Saturday:</span>
                           <span>8:30 am–9 pm</span>
                         </li>
-                        <li className="flex">
-                          <span className="w-28 flex-shrink-0">Sunday:</span>
+                        <li className="flex justify-between">
+                          <span>Sunday:</span>
                           <span>10 am–6 pm</span>
                         </li>
                       </ul>
                     </div>
                   </div>
-                  <div className="pt-2 md:pt-4">
-                    <h3 className="font-medium text-lightText mb-3">Follow Us</h3>
-                    <div className="flex space-x-4">
+                </div>
+              </div>
+
+              {/* Plumstead Location Card */}
+              <div className="bg-lightBg p-6 md:p-8 rounded-lg shadow-lg">
+                <h2 className="text-2xl md:text-3xl font-serif font-bold text-lightText mb-6">
+                  Crave Plumstead
+                </h2>
+                <div className="space-y-6">
+                  <div className="flex items-start">
+                    <MapPinIcon size={24} className="text-accent mr-4 flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="font-medium text-lightText mb-1">Address</h3>
+                      <p className="text-lightText opacity-80">
+                        120 Main Road, Plumstead
+                        <br />
+                        Cape Town, 7800
+                      </p>
+                    </div>
+                  </div>
+
+                  <a
+                    href="https://maps.app.goo.gl/8Hu3a48UKqaFSGVp9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full text-center border border-accent text-accent px-6 py-3 hover:bg-accent hover:text-light transition-all duration-300 text-sm font-medium tracking-wide"
+                  >
+                    OPEN IN GOOGLE MAPS
+                  </a>
+
+                  <div className="flex items-start">
+                    <PhoneIcon size={24} className="text-accent mr-4 flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="font-medium text-lightText mb-1">Phone</h3>
+                      <a href="tel:+27662386374" className="text-lightText opacity-80 hover:text-accent transition-colors">
+                        +27 66 238 6374
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start">
+                    <WhatsAppIcon size={24} className="text-accent mr-4 flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="font-medium text-lightText mb-1">WhatsApp</h3>
                       <a
-                        href="https://www.instagram.com/cafecrave_halal?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                        href="https://wa.me/27662386374?text=Hi%20Crave%20Café%20Plumstead!%20I'd%20like%20to%20know%20more%20about..."
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-darkBg text-darkText p-3 rounded-full hover:bg-accent hover:text-light transition-all duration-200 ease-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
-                        aria-label="Follow us on Instagram"
+                        className="text-accent hover:underline transition-colors font-medium"
                       >
-                        <InstagramIcon size={20} />
+                        +27 66 238 6374
                       </a>
-                      <a
-                        href="https://www.facebook.com/cafecravekenilworth/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-darkBg text-darkText p-3 rounded-full hover:bg-accent hover:text-light transition-all duration-200 ease-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
-                        aria-label="Follow us on Facebook"
-                      >
-                        <FacebookIcon size={20} />
-                      </a>
+                      <p className="text-lightText opacity-60 text-sm mt-1">
+                        Chat with us directly
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start">
+                    <ClockIcon size={24} className="text-accent mr-4 flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="font-medium text-lightText mb-2">Hours</h3>
+                      <ul className="text-lightText opacity-80 space-y-1 text-sm">
+                        <li className="flex justify-between">
+                          <span>Monday:</span>
+                          <span>8 am–10 pm</span>
+                        </li>
+                        <li className="flex justify-between">
+                          <span>Tuesday:</span>
+                          <span>8 am–10 pm</span>
+                        </li>
+                        <li className="flex justify-between">
+                          <span>Wednesday:</span>
+                          <span>8 am–10 pm</span>
+                        </li>
+                        <li className="flex justify-between">
+                          <span>Thursday:</span>
+                          <span>8 am–10 pm</span>
+                        </li>
+                        <li className="flex justify-between">
+                          <span>Friday:</span>
+                          <span>8 am–12 am</span>
+                        </li>
+                        <li className="flex justify-between">
+                          <span>Saturday:</span>
+                          <span>8 am–12 am</span>
+                        </li>
+                        <li className="flex justify-between">
+                          <span>Sunday:</span>
+                          <span>8 am–10 pm</span>
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div className="h-80 md:h-full min-h-[400px] rounded-lg overflow-hidden shadow-lg">
+            {/* Full-width Map Below Cards */}
+            <div className="w-full max-w-6xl mx-auto">
+              <div className="h-[400px] md:h-[500px] rounded-lg overflow-hidden shadow-lg">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3596.965631229076!2d18.481858899999995!3d-33.9836241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc43940b24aab7%3A0x910b69a2e9e61db3!2sCaf%C3%A9%20Crave!5e1!3m2!1sen!2sza!4v1759685841467!5m2!1sen!2sza"
                   width="100%"
@@ -209,21 +299,9 @@ export const ContactPage = () => {
                   allowFullScreen={true}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Cafe Crave location"
+                  title="Cafe Crave locations"
                 />
               </div>
-            </div>
-
-            <div className="text-center mt-10 md:mt-12">
-              <a
-                href="https://maps.google.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center justify-center font-medium transition-all duration-200 ease-out hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 will-change-transform"
-              >
-                <MapPinIcon size={20} className="mr-2" />
-                Get Directions
-              </a>
             </div>
           </div>
         </div>
