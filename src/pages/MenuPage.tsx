@@ -204,13 +204,13 @@ export const MenuPage = () => {
           <div className="flex flex-col gap-8">
             
             <MenuSection id="breakfast" title="Morning Edition" subTitle="Served All Day" img={breakfastImg}>
-              <MenuItem name="Avo on Toast" price="R75" desc="Sliced avo + feta, rosa tomato, red onion" />
+              <MenuItem name="Avo on Toast" price="R85" desc="Sliced avo + feta, rosa tomato, red onion" />
               <MenuItem name="Build-o-Omelette" price="R85" desc="3 eggs and a slice of ciabatta" />
               <div className="ml-4 mb-4 text-xs text-subtextLightBg italic">
-                <p>Add-ons: Chilli (R10), Tomato (R10), Onions (R10), Egg (R15), Cheese (R15), Feta (R15), Mushroom (R15), Spinach (R25), Avo (R25), Spiced Beef (R25), Sausage (R25), Chicken (R35)</p>
+                <p>Add-ons: Chilli (R10), Tomato (R10), Onions (R10), Egg (R15), Cheese (R15), Feta (R15), Mushroom (R15), Spinach (R25), Avo (R25), Spiced Beef (R25), Sausage (R25), Wagyu (R65), Chicken (R35)</p>
               </div>
               <MenuItem name="Breakfast Muffin" price="R90" desc="English muffin + egg + spiced beef, melted cheese + hash brown" />
-              <MenuItem name="Eggs Benedict" price="R95" desc="English muffin + 2 poached eggs, hollandaise sauce with choice of: spinach & mushroom OR spiced beef & caramelised onion" />
+              <MenuItem name="Eggs Benedict" price="R95" desc="English muffin + 2 poached eggs, hollandaise sauce with choice of: spinach & mushroom OR spiced beef & caramelised onion OR Wagyu & Rosa Tomato (+R65)" />
               <MenuItem name="Brioche French Toast" price="R95" desc="With choice of: berry compote & cream OR classic creme brulee" />
               <MenuItem name="Loaded Hash Bowl" price="R105" desc="3 scrambled eggs + hash brown + tomato, spinach + mushroom + sriracha + avo + feta" />
               <MenuItem name="Vegan Burrito" price="R115" desc="Hummus + tzatziki + chickpeas + roast veg" />
@@ -241,12 +241,12 @@ export const MenuPage = () => {
 
             <MenuSection id="starters" title="Starters" subTitle="Small Bites" img={grillImg}>
               <MenuItem name="Sweet Corn Cups" price="R55" desc="Served with choice of: (butter, aromat, chives) OR (butter, chilli, lime)" />
-              <MenuItem name="Jalapeno Stuffed Rings" price="R65" desc="4 stuffed onion rings & a sour cream dip" />
+              <MenuItem name="Jalapeno Stuffed Rings" price="R70" desc="4 stuffed onion rings & a sour cream dip" />
               <MenuItem name="Crumbed Mushrooms" price="R65" desc="Served with tartare sauce in choice of: plain | garlic & herb" />
-              <MenuItem name="Mac & Cheese Balls" price="R65" desc="Garlic aioli, hot honey" />
-              <MenuItem name="Cheeseburger Spring Rolls" price="R70" desc="Choice of dipping sauce" />
-              <MenuItem name="Full Chicken Wings" price="R75" desc="4 wings served with ranch: hot honey, gochujang | crispy plain, hot honey" />
-              <MenuItem name="Chicken Tender" price="R85" desc="Served as is" />
+              <MenuItem name="Mac & Cheese Balls" price="R70" desc="Garlic aioli, hot honey" />
+              <MenuItem name="Cheeseburger Spring Rolls" price="R75" desc="Choice of dipping sauce" />
+              <MenuItem name="Full Chicken Wings" price="R85" desc="4 wings served with ranch: hot honey, gochujang | crispy plain, hot honey" />
+              <MenuItem name="Hot Honey Chicken Tenders" price="R75" desc="Served as is" />
             </MenuSection>
 
             <MenuSection id="coffee" title="Coffee Press" subTitle="Illy Italian Blend" img={coffeeImg}>
@@ -294,10 +294,12 @@ export const MenuPage = () => {
 
               <div className="mb-6">
                 <h3 className="font-serif font-bold text-xl underline decoration-dotted decoration-2 mb-4">Beverages</h3>
+                <MenuItem name="Kinza" price="R30" desc="Cola, Citrus, Lemonade" />
                 <MenuItem name="Bashe" price="R20" desc="Cola, Iron Brew, Pineapple, Very Berry, Passion Fruit, Lemonade, Cocopine" />
                 <MenuItem name="San Pellegrino" price="R40" desc="Blood Orange, Grapefruit, Gingerbeer, Pomegranate, Lemon, Orange, Orange & Fig, Peach & Clementine" />
                 <MenuItem name="100% Fruit Juice" price="R40" desc="Strawberry, Pineapple, Orange, Mango, Cranberry, Mango & Orange, Apple" />
-                <MenuItem name="Cordials" price="R60" desc="Passion Fruit, Lemonade, Blueberry, Lemon & Lime" />
+                <MenuItem name="Cordials" price="R65" desc="Passion Fruit, Lemonade, Blueberry, Lemon & Lime" />
+                <MenuItem name="Theonista" price="R60" desc="Cola, Ginger Beer, Cream Soda, Assorted Kombucha" />
               </div>
 
               <div className="mb-6">
@@ -317,7 +319,7 @@ export const MenuPage = () => {
             <MenuSection id="wraps" title="Wraps" subTitle="Light Meals" img={wrapImg}>
               <MenuItem name="Falafel" price="R100" desc="Cucumber + red onion + tzatziki + tomato" />
               <MenuItem name="Smashburger Wrap" price="R115" desc="Beef + cheese + lettuce + avo + crave sauce" />
-              <MenuItem name="Chicken (grilled | crumbed)" price="R135" desc="Feta + mixed leaves + cucumber + avo, sauce choice: garlic mayo | sriracha mayo" />
+              <MenuItem name="Chicken Caesar" price="R135" desc="Feta + mixed leaves + cucumber + avo, sauce choice: garlic mayo | sriracha mayo" />
               <MenuItem name="Chicken Quesadilla" price="R135" desc="Chicken fillet + peppers + cheese + salsa" />
               <MenuItem name="Steak" price="R165" desc="Fillet steak + red onion + tomato + fresh greens" />
             </MenuSection>
@@ -330,7 +332,7 @@ export const MenuPage = () => {
             <MenuSection id="burgers" title="The Burger Headline" subTitle="Served with Chips" img={burgersImg}>
               <div className="bg-primary text-light text-center p-2 mb-6">
                  <span className="text-xs font-bold uppercase tracking-widest block mb-1">All Burgers Served on Home-Made Brioche Bun</span>
-                 <span className="text-xs uppercase tracking-wide">Choose your style: Chicken | Dhanya Beef | Smash Patty</span>
+                 <span className="text-xs uppercase tracking-wide">Choose your style: Chicken | Dhanya Beef | Smash Patty | Wagyu Patty (+R45)</span>
               </div>
               <MenuItem name="El Classico" price="R90" desc="100g patty + red onion + lettuce + tomato, mayo" />
               <MenuItem name="Chilli Cheese" price="R115" desc="The classico + cheese + chilli cheese sauce" />
@@ -338,21 +340,21 @@ export const MenuPage = () => {
               <MenuItem name="Tropico" price="R135" desc="200g patty + pineapple ring + lettuce + tomato, cheese + crave sauce" />
               <MenuItem name="The Nacho" price="R145" desc="200g patty + nacho chips + melted cheese, crave sauce" />
               <MenuItem name="Hunger Buster" price="R165" highlight desc="Choice of any 2x 200g patties + avo, crave sauce + lettuce + red onion + tomato" />
-              <MenuItem name="Go Big or Go Home" price="R185" highlight desc="Choice of any 3x 200g patties + layered with cheese + avo + crave sauce + lettuce, red onion + tomato" />
+              <MenuItem name="Go Big or Go Home" price="R210" highlight desc="Choice of any 3x 200g patties + layered with cheese + avo + crave sauce + lettuce, red onion + tomato" />
             </MenuSection>
 
             <MenuSection id="toasties" title="Toasted Gazette" subTitle="Toasties" img={toastImg}>
               <MenuItem name="Cheesy Red Onion" price="R90" desc="Red onion + cheese + tomato" />
               <MenuItem name="Chicken Mayo (plain | spicy)" price="R100" desc="Chicken fillet + in house mayo, spicy = crave sauce" />
-              <MenuItem name="Triple Cheese" price="R135" desc="Cheddar + mozzarella + feta" />
-              <MenuItem name="Pulled Lamb Melt" price="R155" highlight desc="Lamb + cheese + caramelized onion" />
+              <MenuItem name="Triple Cheese" price="R125" desc="Cheddar + mozzarella + feta" />
+              <MenuItem name="The Cuban" price="R175" highlight desc="Mozzarella, gherkins, mustard mayo" />
               <MenuItem name="Crave Steak" price="R165" highlight desc="Fillet steak + red onion + lettuce + cheese, crave sauce" />
             </MenuSection>
 
             <MenuSection id="mains" title="Mains" subTitle="Hearty Meals" img={grillImg}>
               <MenuItem name="Loaded Fries" price="R85" desc="Fries + melted cheese sauce + jalapenos" />
               <div className="ml-4 mb-4 text-xs text-subtextLightBg italic">
-                <p>Add hot honey chicken (+R35) • Add beef smash (+R40) • Add pulled lamb (+R50)</p>
+                <p>Add hot honey chicken (+R35) • Add beef smash (+R40) • Add steak (+R65)</p>
               </div>
               <MenuItem name="Alfredo" price="R105" desc="Creamy alfredo with mushrooms" />
               <div className="ml-4 mb-4 text-xs text-subtextLightBg italic">
@@ -361,7 +363,7 @@ export const MenuPage = () => {
               <MenuItem name="Lemon Chilli Chicken Pasta" price="R130" desc="Creamy pasta + grilled chicken, lemon zest + hints of chilli" />
               <MenuItem name="Nachos" price="R105" desc="Crispy nacho chips layered with cheese, salsa + guac + sour cream" />
               <div className="ml-4 mb-4 text-xs text-subtextLightBg italic">
-                <p>Add grilled chicken (+R35) • Add hot honey chicken (+R35) • Add pulled lamb (+R50) • Add steak (+R65)</p>
+                <p>Add grilled chicken (+R35) • Add hot honey chicken (+R35) • Add steak (+R65)</p>
               </div>
             </MenuSection>
 
@@ -377,7 +379,7 @@ export const MenuPage = () => {
 
             <MenuSection id="platters" title="Platters" subTitle="Share & Enjoy" img={grillImg}>
               <MenuItem name="Street Platter" price="R210" desc="2 sliders + hot honey chicken tenders, loaded fries + 2 veg starters" />
-              <MenuItem name="Grill Platter" price="R240" highlight desc="2 lamb chops + 120g steak + 2 sausages, fries + crispy onion rings" />
+              <MenuItem name="Grill Platter" price="R315" highlight desc="2 lamb chops + 120g steak + 2 sausages, fries + crispy onion rings" />
               <MenuItem name="Sharing Platter" price="R245" desc="Hot honey chicken + 8 chicken wings, jalapeno stuffed rings + corn cups" />
               <MenuItem name="Family Platter" price="R395" highlight desc="2 el classico + 2 cheesy crave, 2 sweet corn cups + 2 large fries" />
             </MenuSection>
@@ -386,10 +388,7 @@ export const MenuPage = () => {
               <div className="flex items-center justify-end mb-4">
                 <img src={dilmahLogo} alt="Dilmah" className="h-5 opacity-80" />
               </div>
-              <p className="text-center italic text-subtextLightBg mb-4">Dilmah tea selection: Please ask the waiter for a list of available teas.</p>
-              <MenuItem name="Dilmah Speciality" price="R45" desc="Peach, Lemon, Ceylon, Spice Chai, Strawberry, Lime & Orange, Ginger & Honey" />
-              <MenuItem name="Rooibos Selection" price="R40" desc="Natural, Cinnamon/Turmeric, Caramel/Ginger, Cardamom" />
-              <MenuItem name="Organic Teas" price="R50" desc="Pure Green, English Breakfast, Berry Explosion" />
+              <p className="text-center italic text-subtextLightBg">Dilmah tea selection: Please ask the waiter for a list of available teas.</p>
             </MenuSection>
 
             <MenuSection id="dessert" title="Dessert" subTitle="Sweet Treats" img={cakeImg}>
@@ -402,14 +401,14 @@ export const MenuPage = () => {
 
             <MenuSection id="bakery" title="Bakery" subTitle="Fresh Daily" img={cheeseCakeImg}>
               <MenuItem name="Gourmet Cheesecake" price="R80" desc="As per display items" />
-              <MenuItem name="Signature Cakes" price="R75" desc="As per display items" />
-              <MenuItem name="Eclairs" price="R60" desc="Caramel cream + Cadbury chocolate" />
+              <MenuItem name="Signature Cakes" price="R60" desc="As per display items" />
+              <MenuItem name="Eclairs" price="R75" desc="Caramel cream + Cadbury chocolate" />
               <MenuItem name="Scone" price="R40" desc="With butter" />
               <div className="ml-4 mb-4 text-xs text-subtextLightBg italic">
                 <p>Add jam (+R10) • Add cheese (+R15) • Add cream (+R15)</p>
               </div>
               <MenuItem name="Brioche" price="R65" desc="6 buns" />
-              <MenuItem name="Ciabatta Loaf" price="R60" desc="900g loaf" />
+              <MenuItem name="Ciabatta Loaf" price="R50" desc="900g loaf" />
             </MenuSection>
 
           </div>
