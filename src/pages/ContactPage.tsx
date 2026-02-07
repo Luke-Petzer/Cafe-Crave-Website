@@ -204,7 +204,7 @@ export const ContactPage = () => {
                     <div>
                       <h3 className="font-medium text-lightText mb-1">Address</h3>
                       <p className="text-lightText opacity-80">
-                        456 Church Street, Plumstead
+                        120 Main Road, Plumstead
                         <br />
                         Cape Town, 7800
                       </p>
