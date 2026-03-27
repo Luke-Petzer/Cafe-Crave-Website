@@ -21,62 +21,18 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
     const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
 
     useEffect(() => {
-        const fetchReviews = async () => {
-            // Use the backend server URL from environment variable
-            const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
-            const endpoint = `${apiUrl}/api/reviews`;
-
-            console.log('🔄 Frontend: Fetching reviews from:', endpoint);
-            console.log('⏰ Frontend: Timestamp:', new Date().toISOString());
-
-            try {
-                const response = await fetch(endpoint); // Fixed: use endpoint instead of apiUrl
-                console.log('📡 Frontend: Response status:', response.status);
-                console.log('📡 Frontend: Response ok:', response.ok);
-
-                const data = await response.json();
-                console.log('📦 Frontend: Raw data received:', JSON.stringify(data, null, 2));
-                console.log('   - Reviews count:', data.reviews?.length || 0);
-                console.log('   - Rating:', data.rating);
-                console.log('   - Error:', data.error || 'none');
-
-                // Log each review individually
-                if (data.reviews && Array.isArray(data.reviews)) {
-                    console.log('📝 Frontend: Individual reviews:');
-                    data.reviews.forEach((review: Review, i: number) => {
-                        console.log(`   Review ${i + 1}:`, {
-                            name: review.name,
-                            rating: review.rating,
-                            text: review.text?.substring(0, 50) + '...',
-                            date: review.date
-                        });
-                    });
-                }
-
+        fetch('/data/reviews.json')
+            .then((res) => res.json())
+            .then((data) => {
                 setReviews(data.reviews || []);
                 setAverageRating(data.rating || 0);
-
-                if (data.reviews && data.reviews.length > 0) {
-                    console.log('✅ Frontend: Successfully set', data.reviews.length, 'reviews to state');
-                } else {
-                    console.warn('⚠️ Frontend: No reviews in response or empty array');
-                }
-            } catch (error) {
-                console.error('❌ Frontend: Error fetching reviews:', error);
-                if (error instanceof Error) {
-                    console.error('❌ Frontend: Error details:', {
-                        message: error.message,
-                        stack: error.stack
-                    });
-                }
-            } finally {
+            })
+            .catch((error) => {
+                console.error('Error loading reviews:', error);
+            })
+            .finally(() => {
                 setLoading(false);
-                console.log('🏁 Frontend: Finished loading reviews');
-                console.log('================================\n');
-            }
-        };
-
-        fetchReviews();
+            });
     }, []);
 
     // Carousel navigation functions with seamless infinite loop
