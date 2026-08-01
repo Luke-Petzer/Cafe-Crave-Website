@@ -1,35 +1,35 @@
 {
   "place_name": "Café Crave",
   "rating": 4.4,
-  "last_updated": "2026-07-01T04:00:22.170Z",
+  "last_updated": "2026-08-01T04:00:22.148Z",
   "reviews": [
     {
       "id": 1,
       "name": "Razeena Bhol",
       "rating": 4,
       "text": "This is a very cute Café. Love the atmosphere. Food is tasty. Overall a good experience. It was very busy the day we had gone and food had been delayed quite a bit. The good service however makes up for delays and look forward to going back. Parking however is an issue and maybe a plan can be made for customers?",
-      "date": "2 months ago"
+      "date": "3 months ago"
     },
     {
       "id": 2,
-      "name": "Bronwen de Klerk",
-      "rating": 5,
-      "text": "Great food and the most delicious  cheese cake selection. Coffee is amazing.  Very friendly  service. And you can request  a tune of ur choice  from the amazing  collection  of records or Cd's. They have recently  opened  another branch  in Plumstead  and we are definitely  going soon. 👌",
-      "date": "5 months ago"
+      "name": "Rooibos Poppy Gal",
+      "rating": 4,
+      "text": "This restaurant is conveniently\nsituated between Claremont and Lansdowne. The menu is fully halaal with kiddy options too. Food is decent and tastes okay.  There is a lovely wide variety of quality tea options... but beverages are sadly over priced here.",
+      "date": "a month ago"
     },
     {
       "id": 3,
-      "name": "Tanealé Kruger",
+      "name": "Bronwen de Klerk",
       "rating": 5,
-      "text": "Amazing time, staff tonight was excellent, definitely recommend!! Hands down the best burgers we've had in Cape Town so far!! Will definitely be back again.",
-      "date": "4 weeks ago"
+      "text": "Great food and the most delicious  cheese cake selection. Coffee is amazing.  Very friendly  service. And you can request  a tune of ur choice  from the amazing  collection  of records or Cd's. They have recently  opened  another branch  in Plumstead  and we are definitely  going soon. 👌",
+      "date": "6 months ago"
     },
     {
       "id": 4,
-      "name": "Raushan Essop",
+      "name": "Natasha Petersen",
       "rating": 5,
-      "text": "What an amazing restaurant. I loved the vibe. The food was great. I had the nacho burger and my wife had the one with the pineapple on, I forgot the name but it was so filling and delicious.\nWe also had brownie cake which was 10/10 for us.\nEveryone's different but that was my opinion.",
-      "date": "6 months ago"
+      "text": "Delicious food and outstanding service! The café has a fantastic vintage music theme with vinyl records decorating the space, creating a warm and nostalgic atmosphere. A great spot to relax and enjoy a good meal.",
+      "date": "5 months ago"
     }
   ]
 }
