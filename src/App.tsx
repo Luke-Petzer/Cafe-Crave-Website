@@ -6,6 +6,7 @@ import { MusicFeature } from './components/MusicFeature';
 import { InstagramFeed } from './components/InstagramFeed';
 import { GoogleReviews } from './components/GoogleReviews';
 import { LocationsStrip } from './components/LocationsStrip';
+import { CompetitionBanner } from './components/CompetitionBanner';
 import { Footer } from './components/Footer';
 import { SEO } from './components/SEO';
 import { ScrollAnimationObserver } from './components/ScrollAnimationObserver';
@@ -26,6 +27,7 @@ export function App() {
                 <MenuPreview />
                 <MusicFeature />
                 <GoogleReviews />
+                <CompetitionBanner />
                 <LocationsStrip />
                 <InstagramFeed />
             </main>
