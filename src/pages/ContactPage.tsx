@@ -39,7 +39,7 @@ export const ContactPage = () => {
             "@type": "Cafe",
             "name": "Café Crave",
             "description": "A retro, music-inspired, halaal café in Claremont, Cape Town.",
-            "url": "https://www.cafecravecpt.co.za",
+            "url": "https://cafecravecpt.co.za",
             "telephone": "+27662386374",
             "priceRange": "R",
             "servesCuisine": ["Café", "Halaal"],
@@ -68,7 +68,7 @@ export const ContactPage = () => {
             ],
             "potentialAction": {
               "@type": "ViewAction",
-              "target": "https://www.cafecravecpt.co.za/menu"
+              "target": "https://cafecravecpt.co.za/menu"
             }
           },
           {
