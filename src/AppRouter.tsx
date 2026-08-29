@@ -5,6 +5,7 @@ import { ContactPage } from './pages/ContactPage';
 import { MenuPage } from './pages/MenuPage';
 import { MusicPage } from './pages/MusicPage';
 import { EventsPage } from './pages/EventsPage';
+import { CompetitionPage } from './pages/CompetitionPage';
 import { ScrollToTop } from './components/ScrollToTop';
 
 export function AppRouter() {
@@ -19,6 +20,7 @@ export function AppRouter() {
                 <Route path="/menu" element={<MenuPage />} />
                 <Route path="/music" element={<MusicPage />} />
                 <Route path="/events" element={<EventsPage />} />
+                <Route path="/competition" element={<CompetitionPage />} />
             </Routes>
         </BrowserRouter>
     );
