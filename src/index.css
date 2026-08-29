@@ -4,7 +4,7 @@
 @import 'tailwindcss/utilities';
 /* DO NOT DELETE THESE TAILWIND IMPORTS, OTHERWISE THE STYLING WILL NOT RENDER AT ALL */
 /* Google Fonts Import */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 /* Standardized Section Styles */
 @layer components {
@@ -44,7 +44,7 @@
 }
 body {
   margin: 0;
-  font-family: 'Montserrat', 'Inter', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -116,6 +116,11 @@ section:not([class*="scroll-mt"]),
 /* Page-level fade-in for initial load */
 .animate-fade-in {
   animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Floating WhatsApp button pulse */
+.animate-subtle-pulse {
+  animation: subtlePulse 2.5s ease-in-out infinite;
 }
 
 /* Section-based animation - one animation per section */
@@ -304,7 +309,8 @@ t
   }
   .animate-fade-in,
   .scroll-animate,
-  .vinyl-disc {
+  .vinyl-disc,
+  .animate-subtle-pulse {
     animation: none !important;
     transition: none !important;
     transform: none !important;

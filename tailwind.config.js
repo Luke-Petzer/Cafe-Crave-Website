@@ -21,7 +21,7 @@ export default {
         darkText: '#F7F3EE',
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
+        sans: ["Montserrat", "sans-serif"],
         serif: ["Playfair Display", "serif"],
       },
     },
