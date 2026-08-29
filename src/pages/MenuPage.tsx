@@ -433,7 +433,7 @@ export const MenuPage = () => {
       {/* Back to Top Button */}
       <button 
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className={`fixed bottom-8 right-8 bg-primary text-light w-12 h-12 flex items-center justify-center rounded-none shadow-[4px_4px_0px_0px_rgba(131,81,63,1)] hover:translate-y-1 hover:shadow-none transition-all z-50 border-2 border-light ${isNavSticky ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        className={`fixed bottom-24 right-7 bg-primary text-light w-12 h-12 flex items-center justify-center rounded-none shadow-[4px_4px_0px_0px_rgba(131,81,63,1)] hover:translate-y-1 hover:shadow-none transition-all z-40 border-2 border-light ${isNavSticky ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         aria-label="Back to top"
       >
         <ArrowUpIcon />
