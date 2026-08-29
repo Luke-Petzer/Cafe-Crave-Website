@@ -16,6 +16,7 @@ interface GoogleReviewsProps {
 export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true }) => {
     const [reviews, setReviews] = useState<Review[]>([]);
     const [averageRating, setAverageRating] = useState<number>(0);
+    const [reviewCount, setReviewCount] = useState<number | undefined>(undefined);
     const [loading, setLoading] = useState<boolean>(true);
     const [currentIndex, setCurrentIndex] = useState<number>(1); // Start at 1 because we'll add clones
     const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
@@ -26,6 +27,9 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
             .then((data) => {
                 setReviews(data.reviews || []);
                 setAverageRating(data.rating || 0);
+                setReviewCount(
+                    typeof data.review_count === 'number' ? data.review_count : undefined
+                );
             })
             .catch((error) => {
                 console.error('Error loading reviews:', error);
@@ -123,6 +127,11 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
                                 ))}
                             </div>
                             <p className="text-sm opacity-70 text-lightText">Google Reviews</p>
+                            {typeof reviewCount === 'number' && (
+                                <p className="text-xs opacity-60 text-lightText">
+                                    Based on {reviewCount} Google reviews
+                                </p>
+                            )}
                         </div>
                     </div>
                 )}

@@ -2,9 +2,11 @@ import { Instagram, Facebook } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import cafeLogoIcon from '../assets/old-logo.svg';
+import { FloatingWhatsApp } from './FloatingWhatsApp';
 
 export const Footer = () => {
   return (
+    <>
     <footer className="section-dark py-12 md:py-16 border-t border-light border-opacity-20 pt-8">
       <div className="container mx-auto px-6 md:px-10 lg:px-16">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
@@ -72,13 +74,6 @@ export const Footer = () => {
                   Events
                 </Link>
               </li>
-            </ul>
-          </div>
-
-          {/* More Links Column */}
-          <div className="md:col-span-1">
-            <h3 className="text-lg font-semibold mb-4">Explore</h3>
-            <ul className="space-y-3">
               <li>
                 <Link
                   to="/music"
@@ -95,6 +90,18 @@ export const Footer = () => {
                   Contact
                 </Link>
               </li>
+            </ul>
+          </div>
+
+          {/* Hours Column */}
+          <div className="md:col-span-1">
+            <h3 className="text-lg font-semibold mb-4">Hours</h3>
+            <ul className="space-y-2">
+              <li className="text-sm opacity-80">Mon: 10:00–18:00</li>
+              <li className="text-sm opacity-80">Tue–Thu: 08:30–18:00</li>
+              <li className="text-sm opacity-80">Fri: 08:30–12:00 &amp; 14:00–21:00</li>
+              <li className="text-sm opacity-80">Sat: 08:30–21:00</li>
+              <li className="text-sm opacity-80">Sun: 10:00–18:00</li>
             </ul>
           </div>
 
@@ -148,5 +155,7 @@ export const Footer = () => {
         </div>
       </div>
     </footer>
+    <FloatingWhatsApp />
+    </>
   );
 };
