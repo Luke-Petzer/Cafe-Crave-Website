@@ -345,3 +345,10 @@ t
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Voucher printing: strip chrome, keep the voucher card */
+@media print {
+  header, footer, .no-print { display: none !important; }
+  body { background: #fff !important; }
+  main { padding-top: 0 !important; }
+}
