@@ -13,7 +13,7 @@ export const Footer = () => {
             <div className="mb-4">
               <img
                 src={cafeLogoIcon}
-                alt="Cafe Crave"
+                alt="Café Crave"
                 className="h-12 md:h-16"
               />
             </div>
@@ -28,6 +28,11 @@ export const Footer = () => {
               >
                 +27 66 238 6374
               </a>
+              <p className="opacity-80 text-sm leading-relaxed pt-2">
+                Claremont — 219 Imam Haron Rd
+                <br />
+                Plumstead — 120 Main Road
+              </p>
             </div>
           </div>
 
@@ -124,19 +129,9 @@ export const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-light border-opacity-20 pt-8">
-          {/*<div className="flex flex-col md:flex-row justify-between items-center gap-4">*/}
-          {/*  <p className="text-light opacity-70 text-sm">*/}
-          {/*    &copy; {new Date().getFullYear()} Cafe Crave. All rights reserved.*/}
-          {/*  </p>*/}
-          {/*  <div className="flex gap-6 text-sm opacity-70">*/}
-          {/*    <a href="#" className="hover:text-accent hover:opacity-100 transition-colors">*/}
-          {/*      Privacy Policy*/}
-          {/*    </a>*/}
-          {/*    <a href="#" className="hover:text-accent hover:opacity-100 transition-colors">*/}
-          {/*      Terms of Service*/}
-          {/*    </a>*/}
-          {/*  </div>*/}
-          {/*</div>*/}
+          <p className="text-light opacity-70 text-sm text-center">
+            &copy; {new Date().getFullYear()} Café Crave. All rights reserved.
+          </p>
 
           {/* Developer Credit */}
           <div className="text-center text-sm text-light opacity-50 mt-6">
