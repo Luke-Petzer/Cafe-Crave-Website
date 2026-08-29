@@ -7,6 +7,7 @@ import { MusicPage } from './pages/MusicPage';
 import { EventsPage } from './pages/EventsPage';
 import { CompetitionPage } from './pages/CompetitionPage';
 import { VoucherPage } from './pages/VoucherPage';
+import { RedeemPage } from './pages/RedeemPage';
 import { ScrollToTop } from './components/ScrollToTop';
 
 export function AppRouter() {
@@ -23,6 +24,7 @@ export function AppRouter() {
                 <Route path="/events" element={<EventsPage />} />
                 <Route path="/competition" element={<CompetitionPage />} />
                 <Route path="/voucher/:code" element={<VoucherPage />} />
+                <Route path="/redeem/:code" element={<RedeemPage />} />
             </Routes>
         </BrowserRouter>
     );
