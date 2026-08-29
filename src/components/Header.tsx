@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { MenuIcon, XIcon } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import cafeLogoIcon from '../assets/new-logo.svg';
+import cafeLogoIcon from '../assets/old-logo.svg';
 
 // import cafeLogo from '../assets/cafe-logo.svg'; // I've commented this out and used a placeholder below
 
