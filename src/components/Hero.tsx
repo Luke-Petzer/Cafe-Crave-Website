@@ -13,7 +13,7 @@ export const Hero = () => {
       <div className="absolute inset-0 z-0">
         <img
           src={cafeImage}
-          alt="The retro-inspired interior of Crave Café"
+          alt="The retro-inspired interior of Café Crave"
           className="w-full h-full object-cover object-[0%_0%] md:object-center"
           width="1600"
           height="1000"
@@ -29,7 +29,7 @@ export const Hero = () => {
           {/* Text Wrapper: centered text on mobile, left-aligned on desktop */}
           <div className="max-w-2xl text-center md:text-left">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight text-white shadow-lg">
-              Crave Café
+              Café Crave
             </h1>
             <h2 className="text-2xl md:text-3xl font-serif mb-6 text-white/90">
               Great Coffee. Classic Vinyl. Your Local Hangout.

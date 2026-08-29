@@ -3,6 +3,7 @@ import { Footer } from '../components/Footer';
 import { MapPinIcon, PhoneIcon, ClockIcon } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { ScrollAnimationObserver } from '../components/ScrollAnimationObserver';
+import contactHeroImg from '../assets/cuppacino.webp';
 
 // Custom icon components
 // const InstagramIcon = ({ size }: { size: number }) => (
@@ -29,46 +30,65 @@ export const ContactPage = () => {
   return (
     <div className="min-h-screen">
       <SEO
-        title="Contact & Visit Us | Crave Café Claremont, Cape Town"
-        description="Find Crave Café at 219 Imam Haron Rd, Claremont. Call 066 238 6374, get directions, or check our hours. Your new favourite halaal café is waiting."
+        title="Contact & Visit Us | Café Crave Claremont, Cape Town"
+        description="Find Café Crave at 219 Imam Haron Rd, Claremont. Call 066 238 6374, get directions, or check our hours. Your new favourite halaal café is waiting."
         keywords="contact crave cafe, crave cafe address, halaal cafe claremont location, cafe near me claremont"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Cafe",
-          "name": "Crave Café",
-          "description": "A retro, music-inspired, halaal café in Claremont, Cape Town.",
-          "url": "https://www.cafecravecpt.co.za",
-          "telephone": "+27662386374",
-          "priceRange": "R",
-          "servesCuisine": ["Café", "Halaal"],
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "219 Imam Haron Rd",
-            "addressLocality": "Claremont",
-            "addressRegion": "Cape Town",
-            "postalCode": "7708",
-            "addressCountry": "ZA"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Cafe",
+            "name": "Café Crave",
+            "description": "A retro, music-inspired, halaal café in Claremont, Cape Town.",
+            "url": "https://www.cafecravecpt.co.za",
+            "telephone": "+27662386374",
+            "priceRange": "R",
+            "servesCuisine": ["Café", "Halaal"],
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "219 Imam Haron Rd",
+              "addressLocality": "Claremont",
+              "addressRegion": "Cape Town",
+              "postalCode": "7708",
+              "addressCountry": "ZA"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": -33.983624,
+              "longitude": 18.481859
+            },
+            "openingHoursSpecification": [
+              { "@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "10:00", "closes": "18:00" },
+              { "@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "08:30", "closes": "18:00" },
+              { "@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "08:30", "closes": "18:00" },
+              { "@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "08:30", "closes": "18:00" },
+              { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "08:30", "closes": "12:00" },
+              { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "14:00", "closes": "21:00" },
+              { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:30", "closes": "21:00" },
+              { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "10:00", "closes": "18:00" }
+            ],
+            "potentialAction": {
+              "@type": "ViewAction",
+              "target": "https://www.cafecravecpt.co.za/menu"
+            }
           },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": -33.983624,
-            "longitude": 18.481859
-          },
-          "openingHoursSpecification": [
-            { "@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "10:00", "closes": "18:00" },
-            { "@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "08:30", "closes": "18:00" },
-            { "@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "08:30", "closes": "18:00" },
-            { "@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "08:30", "closes": "18:00" },
-            { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "08:30", "closes": "12:00" },
-            { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "14:00", "closes": "21:00" },
-            { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:30", "closes": "21:00" },
-            { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "10:00", "closes": "18:00" }
-          ],
-          "potentialAction": {
-            "@type": "ViewAction",
-            "target": "https://www.cafecravecpt.co.za/menu"
+          {
+            "@context": "https://schema.org",
+            "@type": "Cafe",
+            "name": "Café Crave Plumstead",
+            "url": "https://cafecravecpt.co.za",
+            "telephone": "+27662386374",
+            "priceRange": "R",
+            "servesCuisine": ["Café", "Halaal"],
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "120 Main Road",
+              "addressLocality": "Plumstead",
+              "addressRegion": "Cape Town",
+              "postalCode": "7800",
+              "addressCountry": "ZA"
+            }
           }
-        }}
+        ]}
       />
       <ScrollAnimationObserver />
       <Header />
@@ -77,14 +97,16 @@ export const ContactPage = () => {
       <section className="section-dark relative min-h-[600px] md:min-h-[650px] flex items-center justify-center">
         <div className="absolute inset-0 z-0 animate-hero-zoom">
           <img
-            src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-            alt="Cafe interior"
+            src={contactHeroImg}
+            alt="Artisan latte at Café Crave"
             className="w-full h-full object-cover brightness-50"
+            width="1440"
+            height="2560"
           />
         </div>
         <div className="relative z-10 text-center px-6">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight">
-            Contact & Visit Crave Café
+            Contact & Visit Café Crave
           </h1>
           <div className="w-24 h-1 bg-accent mx-auto mb-6"></div>
           <p className="text-xl md:text-2xl opacity-90 max-w-2xl mx-auto">
@@ -299,7 +321,7 @@ export const ContactPage = () => {
                   allowFullScreen={true}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Cafe Crave locations"
+                  title="Café Crave locations"
                 />
               </div>
             </div>

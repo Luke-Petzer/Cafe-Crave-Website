@@ -6,7 +6,7 @@ interface SEOProps {
   description: string;
   keywords?: string;
   ogImage?: string;
-  schema?: Record<string, any>;
+  schema?: Record<string, any> | Record<string, any>[];
 }
 
 export const SEO: React.FC<SEOProps> = ({
@@ -16,7 +16,8 @@ export const SEO: React.FC<SEOProps> = ({
   ogImage = '/og-image.jpg',
   schema
 }) => {
-  const fullTitle = `${title} | Crave Café`;
+  const brand = 'Café Crave';
+  const fullTitle = title.toLowerCase().includes('crave') ? title : `${title} | ${brand}`;
 
   return (
     <Helmet>

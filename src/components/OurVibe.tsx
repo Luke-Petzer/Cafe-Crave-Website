@@ -22,7 +22,7 @@ export const OurVibe = () => {
           {/* Perfectly Brewed */}
           <div className="bg-lightBg bg-opacity-95 rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg focus-within:ring-2 focus-within:ring-accent focus-within:ring-opacity-50 border border-lightText border-opacity-10" tabIndex={0}>
             <div className="h-48 overflow-hidden">
-              <img src={coffeeImg} alt="Artisan latte art at Crave Café" className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" width="800" height="600" />
+              <img src={coffeeImg} alt="Artisan latte art at Café Crave" className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" width="800" height="600" />
             </div>
             <div className="p-6">
               <div className="flex items-center mb-4">
@@ -43,7 +43,7 @@ export const OurVibe = () => {
           {/* Always Spinning */}
           <div className="bg-lightBg bg-opacity-95 rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg focus-within:ring-2 focus-within:ring-accent focus-within:ring-opacity-50 border border-lightText border-opacity-10" tabIndex={0}>
             <div className="h-48 overflow-hidden">
-              <img src={vinylImg} alt="Vinyl records spinning on a turntable at Crave Cafe" className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" width="800" height="600" />
+              <img src={vinylImg} alt="Vinyl records spinning on a turntable at Café Crave" className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" width="800" height="600" />
             </div>
             <div className="p-6">
               <div className="flex items-center mb-4">
@@ -64,7 +64,7 @@ export const OurVibe = () => {
           {/* Stay Awhile */}
           <div className="bg-lightBg bg-opacity-95 rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg focus-within:ring-2 focus-within:ring-accent focus-within:ring-opacity-50 border border-lightText border-opacity-10" tabIndex={0}>
             <div className="h-48 overflow-hidden">
-              <img src={boardGamesImg} alt="Friends playing board games at Crave Café in Claremont" className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" width="800" height="600" />
+              <img src={boardGamesImg} alt="Friends playing board games at Café Crave in Claremont" className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" width="800" height="600" />
             </div>
             <div className="p-6">
               <div className="flex items-center mb-4">
@@ -80,9 +80,6 @@ export const OurVibe = () => {
                 to be more than just a café. It's a place to connect, play, and
                 create memories.
               </p>
-            </div>
-            <div className="px-6 pb-6 text-xs text-lightText opacity-70">
-              Photo: Nathan Dumlao via Unsplash
             </div>
           </div>
         </div>

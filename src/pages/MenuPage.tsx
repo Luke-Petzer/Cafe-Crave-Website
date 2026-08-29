@@ -130,7 +130,7 @@ export const MenuPage = () => {
 
   return (
     <div className="min-h-screen bg-light text-primary font-sans selection:bg-secondary selection:text-white">
-      <SEO title="Menu Gazette | Cafe Crave" description="Explore our vintage style menu featuring halaal breakfasts, burgers, and artisan coffee." />
+      <SEO title="Menu Gazette | Café Crave" description="Explore our vintage style menu featuring halaal breakfasts, burgers, and artisan coffee." />
       <Header />
       
       {/* --- MENU HEADER DESIGN --- */}
@@ -162,7 +162,7 @@ export const MenuPage = () => {
         <div className="flex items-center justify-between gap-4 mb-4">
           {/* Left: Menu Logo Box */}
           <div className="flex-shrink-0 w-20 h-20 md:w-24 md:h-24 border-4 border-primary bg-light flex items-center justify-center p-2">
-            <img src={menuLogo} alt="Cafe Crave Logo" className="w-full h-full object-contain" />
+            <img src={menuLogo} alt="Café Crave Logo" className="w-full h-full object-contain" />
           </div>
 
           {/* Center: MENU Text */}

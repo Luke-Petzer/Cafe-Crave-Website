@@ -10,8 +10,8 @@ export const EventsPage = () => {
   return (
     <div className="min-h-screen">
       <SEO
-        title="Events & Small Venue Hire | Crave Café Claremont"
-        description="Host your event at Crave Café in Claremont. We offer a unique, retro venue for birthdays, meetings, and gatherings. See our upcoming public events!"
+        title="Events & Small Venue Hire | Café Crave Claremont"
+        description="Host your event at Café Crave in Claremont. We offer a unique, retro venue for birthdays, meetings, and gatherings. See our upcoming public events!"
         keywords="small event venue claremont, halaal event venue cape town, cafe to hire for party claremont, upcoming events claremont"
       />
       <ScrollAnimationObserver />
@@ -22,7 +22,7 @@ export const EventsPage = () => {
           <div className="absolute inset-0 overflow-hidden animate-hero-zoom">
             <img
               src={eventsImg}
-              alt="Interior of Crave Café set up for a private event"
+              alt="Interior of Café Crave set up for a private event"
               className="w-full h-full object-cover"
               width="800"
               height="600"
@@ -118,7 +118,7 @@ export const EventsPage = () => {
                   </h2>
                   <div className="w-24 h-1 bg-accent mb-8"></div>
                   <p className="text-lg mb-8 opacity-90">
-                      From soulful acoustic sessions to cozy celebrations — Crave Café is where great coffee, good music, and real connections come together. Bring your people, and we’ll bring the vibe.
+                      From soulful acoustic sessions to cozy celebrations — Café Crave is where great coffee, good music, and real connections come together. Bring your people, and we’ll bring the vibe.
                   </p>
 
                   <div className="space-y-4 mb-8">

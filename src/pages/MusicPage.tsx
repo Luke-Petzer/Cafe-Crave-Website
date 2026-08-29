@@ -40,8 +40,8 @@ export const MusicPage = () => {
   return (
     <div className="min-h-screen">
       <SEO
-        title="Our Vinyl Collection | Crave Café Cape Town"
-        description="Explore the vinyl music collection at Crave Café. We spin classic jazz, rock, and soul records all day. Discover our curated selection."
+        title="Our Vinyl Collection | Café Crave Cape Town"
+        description="Explore the vinyl music collection at Café Crave. We spin classic jazz, rock, and soul records all day. Discover our curated selection."
         keywords="vinyl cafe cape town, music themed cafe, record collection, classic vinyl, crave cafe music"
       />
       <ScrollAnimationObserver />
@@ -52,7 +52,7 @@ export const MusicPage = () => {
           <div className="absolute inset-0 z-0 overflow-hidden animate-hero-zoom">
             <img
               src={musicImg}
-              alt="A record rack filled with classic vinyl albums at Crave Café"
+              alt="A record rack filled with classic vinyl albums at Café Crave"
               className="w-full h-full object-cover brightness-50"
               width="800"
               height="600"

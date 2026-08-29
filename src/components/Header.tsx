@@ -48,7 +48,7 @@ export const Header = () => {
             >
                 <div className="container mx-auto px-6 md:px-10 lg:px-16 flex justify-between items-center">
                     <div className="flex items-center">
-                        <Link to="/" className="flex items-center gap-4" aria-label="Cafe Crave - Home">
+                        <Link to="/" className="flex items-center gap-4" aria-label="Café Crave - Home">
                             {/* Logo with circular background, hover and focus states */}
                             <div
                                 className="p-2 transition-all duration-200 ease-in-out hover:opacity-80 focus-within:opacity-80 focus-within:ring-2 focus-within:ring-secondary focus-within:ring-offset-2 focus-within:ring-offset-primary"
@@ -125,7 +125,7 @@ export const Header = () => {
                             {/* Mobile menu logo */}
                             <img
                                 src={cafeLogoIcon}
-                                alt="Cafe Crave Logo"
+                                alt="Café Crave Logo"
                                 className="h-16 mb-4 mx-auto"
                             />
                             {/* Cafe Crave text with gradient styling */}
