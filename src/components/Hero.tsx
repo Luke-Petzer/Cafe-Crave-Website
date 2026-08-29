@@ -28,7 +28,7 @@ export const Hero = () => {
         <div className="flex justify-center md:justify-end">
           {/* Text Wrapper: centered text on mobile, left-aligned on desktop */}
           <div className="max-w-2xl text-center md:text-left">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight text-white shadow-lg">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight text-[#F3ECD5] drop-shadow-md">
               Café Crave
             </h1>
             <h2 className="text-2xl md:text-3xl font-serif mb-6 text-white/90">
