@@ -125,21 +125,21 @@ export const EventsPage = () => {
                     <div className="flex items-start group">
                       <CheckCircleIcon size={24} className="text-light mr-3 flex-shrink-0 mt-1 transition-transform duration-200 group-hover:scale-110" />
                       <div>
-                        <h4 className="font-semibold mb-1">Flexible Space</h4>
+                        <h3 className="font-semibold mb-1">Flexible Space</h3>
                         <p className="opacity-90">ASpace that fits your crowd — intimate or buzzing, we'll make it work.</p>
                       </div>
                     </div>
                     <div className="flex items-start group">
                       <CheckCircleIcon size={24} className="text-light mr-3 flex-shrink-0 mt-1 transition-transform duration-200 group-hover:scale-110" />
                       <div>
-                        <h4 className="font-semibold mb-1">Sound System</h4>
+                        <h3 className="font-semibold mb-1">Sound System</h3>
                         <p className="opacity-90">Great acoustics, great tunes — our setup's built for music and memories.</p>
                       </div>
                     </div>
                     <div className="flex items-start group">
                       <CheckCircleIcon size={24} className="text-light mr-3 flex-shrink-0 mt-1 transition-transform duration-200 group-hover:scale-110" />
                       <div>
-                        <h4 className="font-semibold mb-1">Catering Available</h4>
+                        <h3 className="font-semibold mb-1">Catering Available</h3>
                         <p className="opacity-90">Crom espresso bars to gourmet bites — let our kitchen keep your guests smiling.
                         </p>
                       </div>
@@ -147,7 +147,7 @@ export const EventsPage = () => {
                     <div className="flex items-start group">
                       <CheckCircleIcon size={24} className="text-light mr-3 flex-shrink-0 mt-1 transition-transform duration-200 group-hover:scale-110" />
                       <div>
-                        <h4 className="font-semibold mb-1">Unique Atmosphere</h4>
+                        <h3 className="font-semibold mb-1">Unique Atmosphere</h3>
                         <p className="opacity-90">Retro décor, vinyl vibes, and the warm hum of conversation — Crave's got soul.</p>
                       </div>
                     </div>
