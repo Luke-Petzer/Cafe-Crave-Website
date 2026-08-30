@@ -59,9 +59,9 @@ export const MenuPage = () => {
   const MenuItem = ({ name, price, desc, highlight = false }: { name: string, price: string, desc?: string, highlight?: boolean }) => (
     <div className="mb-5 break-inside-avoid relative group">
       <div className="flex justify-between items-baseline w-full">
-        <h4 className={`font-bold uppercase tracking-wide text-primary ${highlight ? 'text-xl' : 'text-lg'}`}>
+        <h3 className={`font-bold uppercase tracking-wide text-primary ${highlight ? 'text-xl' : 'text-lg'}`}>
           {name}
-        </h4>
+        </h3>
         {/* The Dotted Leader Line */}
         <div className="flex-grow mx-2 border-b-2 border-dotted border-primary/40 relative -top-1"></div>
         <span className={`font-serif font-bold text-primary ${highlight ? 'text-2xl' : 'text-xl'}`}>
@@ -88,10 +88,20 @@ export const MenuPage = () => {
       >
         {/* Section Header - Clickable on all mobile screens, not clickable on desktop */}
         <div
-          className="bg-primary text-light p-3 flex justify-between items-center cursor-pointer lg:cursor-default select-none"
+          className="bg-primary text-light p-3 flex justify-between items-center cursor-pointer lg:cursor-default select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-light focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+          role="button"
+          tabIndex={0}
+          aria-expanded={isExpanded}
+          aria-controls={`${id}-content`}
           onClick={() => {
             // Toggle on all screens below lg breakpoint (below 1024px)
             if (window.innerWidth < 1024) {
+              toggleSection(id);
+            }
+          }}
+          onKeyDown={(e) => {
+            if ((e.key === 'Enter' || e.key === ' ') && window.innerWidth < 1024) {
+              e.preventDefault();
               toggleSection(id);
             }
           }}
@@ -107,7 +117,7 @@ export const MenuPage = () => {
         </div>
 
         {/* Section Content - Always visible on desktop (lg+), collapsible on mobile */}
-        <div className={`relative overflow-hidden transition-all duration-500 lg:max-h-none lg:opacity-100 ${
+        <div id={`${id}-content`} className={`relative overflow-hidden transition-all duration-500 lg:max-h-none lg:opacity-100 ${
           isExpanded ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0'
         }`}>
           {/* Background Watermark (Grayscale + Multiply for drawn effect) */}
@@ -115,6 +125,7 @@ export const MenuPage = () => {
             <img
               src={img}
               alt=""
+              loading="lazy"
               className="w-full h-full object-cover opacity-[0.07] mix-blend-multiply scale-110"
               style={{ filter: 'grayscale(100%)' }}
             />
@@ -197,7 +208,7 @@ export const MenuPage = () => {
 
 
       {/* --- MENU CONTENT GRID --- */}
-      <main className="container mx-auto px-4 py-12 max-w-7xl">
+      <main id="main-content" className="container mx-auto px-4 py-12 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           
           {/* --- LEFT COLUMN --- */}
@@ -431,7 +442,7 @@ export const MenuPage = () => {
       <Footer />
       
       {/* Back to Top Button */}
-      <button 
+      <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         className={`fixed bottom-24 right-7 bg-primary text-light w-12 h-12 flex items-center justify-center rounded-none shadow-[4px_4px_0px_0px_rgba(131,81,63,1)] hover:translate-y-1 hover:shadow-none transition-all z-40 border-2 border-light ${isNavSticky ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         aria-label="Back to top"
