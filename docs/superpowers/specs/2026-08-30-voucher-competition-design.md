@@ -153,6 +153,14 @@ rules, channel URL) live in ONE file: `src/data/competition.ts`.
 - Secrets (Yoco keys, Supabase service key, SMTP, staff PIN) live only in n8n.
 - Yoco webhook HMAC signature verified before any DB write.
 - Redemption is PIN-gated and atomic; the QR/voucher code alone cannot redeem.
+- PIN brute-force lockout (REQUIRED in the n8n redeem workflow, Task 9): log failed
+  PIN attempts (code + source IP + timestamp, e.g. a `pin_attempts` table or n8n
+  static data); after 5 failures within 15 minutes for the same code or IP, respond
+  `{ok:false, reason:'invalid_pin'}` without checking further attempts for 15 minutes.
+- The staff redeem surface stays on the main domain: every voucher's QR prints the
+  redeem URL, so a separate subdomain adds no secrecy; protection = unguessable codes
+  + server-side PIN + lockout. (Optional cosmetic: a staff.cafecravecpt.co.za DNS
+  redirect to /redeem may be added at any time; no build dependency.)
 - n8n webhook paths include the random tokens n8n generates (not guessable).
 - Flag (existing backlog): the netcup VPS hosting n8n is unhardened — the
   security-floor task gains urgency once money flows through it.
