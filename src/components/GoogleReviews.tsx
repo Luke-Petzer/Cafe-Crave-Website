@@ -74,8 +74,11 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
     };
 
     // Auto-play carousel - advances every 8 seconds
+    // Skipped entirely when the user prefers reduced motion; manual
+    // prev/next/dot controls remain available either way.
     useEffect(() => {
         if (reviews.length === 0 || isTransitioning || paused) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
         const interval = setInterval(() => {
             setIsTransitioning(true);

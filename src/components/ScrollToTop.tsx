@@ -18,13 +18,18 @@ export const ScrollToTop = () => {
         // 1. Temporarily disable smooth scrolling for this action
         document.documentElement.style.scrollBehavior = 'auto';
 
+        // Respect the user's reduced-motion preference: smooth scrolling
+        // is an explicit JS-level behavior that ignores the CSS
+        // scroll-behavior reset below, so it needs its own check.
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
         if (hash) {
             // If there's a hash, find the element
             const id = decodeURIComponent(hash.replace('#', ''));
             const el = document.getElementById(id);
             if (el) {
-                // If element exists, scroll to it smoothly (for on-page links)
-                el.scrollIntoView({ behavior: 'smooth' });
+                // If element exists, scroll to it (smoothly, unless reduced motion is preferred)
+                el.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
             } else {
                 // Fallback for bad hash, scroll to top instantly
                 window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
