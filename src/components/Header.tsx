@@ -56,7 +56,9 @@ export const Header = () => {
                                 <img
                                     src={cafeLogoIcon}
                                     alt=""
-                                    className="h-8 md:h-12"
+                                    width="913"
+                                    height="172"
+                                    className="h-8 md:h-12 w-auto"
                                 />
                             </div>
 

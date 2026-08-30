@@ -16,7 +16,9 @@ export const Footer = () => {
               <img
                 src={cafeLogoIcon}
                 alt="Café Crave"
-                className="h-12 md:h-16"
+                width="913"
+                height="172"
+                className="h-12 md:h-16 w-auto"
               />
             </div>
             <p className="opacity-80 text-sm leading-relaxed mb-6">
