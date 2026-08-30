@@ -78,7 +78,7 @@ export const Header = () => {
                     </div>
                     {/* Mobile menu button */}
                     <div className="md:hidden">
-                        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-light focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-opacity-50 rounded-md p-1 z-[60] relative" aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} aria-expanded={isMenuOpen} aria-controls="mobile-menu">
+                        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-light focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-opacity-50 rounded-md p-2.5 z-[60] relative" aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} aria-expanded={isMenuOpen} aria-controls="mobile-menu">
                             {isMenuOpen ? <XIcon size={24} /> : <MenuIcon size={24} />}
                         </button>
                     </div>

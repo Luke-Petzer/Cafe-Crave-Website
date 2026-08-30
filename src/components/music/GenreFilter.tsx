@@ -18,11 +18,11 @@ export const GenreFilter: React.FC<GenreFilterProps> = ({
         <span className="text-sm font-medium">Filter by Genre:</span>
       </div>
       <div className="flex flex-wrap gap-2">
-        {genres.map(genre => <button key={genre} onClick={() => onToggle(genre)} className={`px-3 py-1 rounded-full text-sm transition-colors ${selectedGenres.includes(genre) ? 'bg-accent text-light' : 'bg-light bg-opacity-20 text-light hover:bg-opacity-30'}`} aria-pressed={selectedGenres.includes(genre)}>
+        {genres.map(genre => <button key={genre} onClick={() => onToggle(genre)} className={`min-h-[44px] px-3 py-1 rounded-full text-sm transition-colors inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 ${selectedGenres.includes(genre) ? 'bg-accent text-light' : 'bg-light bg-opacity-20 text-light hover:bg-opacity-30'}`} aria-pressed={selectedGenres.includes(genre)}>
             {genre}
           </button>)}
       </div>
-      {selectedGenres.length > 0 && <button onClick={() => selectedGenres.forEach(genre => onToggle(genre))} className="px-3 py-1 rounded-full text-sm bg-light text-primary hover:bg-opacity-90 transition-colors ml-auto">
+      {selectedGenres.length > 0 && <button onClick={() => selectedGenres.forEach(genre => onToggle(genre))} className="min-h-[44px] px-3 py-1 rounded-full text-sm bg-light text-primary hover:bg-opacity-90 transition-colors ml-auto inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2">
           Clear All
         </button>}
     </div>;
