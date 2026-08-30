@@ -120,7 +120,7 @@ export const Header = () => {
                 </div>
                 {/* Mobile Navigation Overlay */}
                 {isMenuOpen && (
-                    <div id="mobile-menu" className="fixed inset-0 bg-primary z-[45] md:hidden flex flex-col items-center justify-center">
+                    <div id="mobile-menu" className="fixed inset-0 bg-primary z-[45] md:hidden flex flex-col items-center justify-center animate-fade-in">
                         <div className="text-center mb-8">
                             {/* Mobile menu logo */}
                             <img
