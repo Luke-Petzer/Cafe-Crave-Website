@@ -141,10 +141,10 @@ export const MusicFeature = () => {
               {/* Navigation */}
               <div className="mt-8 flex justify-between items-center">
                 <div className="flex space-x-6">
-                  <button onClick={prevAlbum} className="bg-lightBg text-lightText p-2 rounded-full hover:bg-accent hover:text-light transition-colors" aria-label="Previous album">
+                  <button onClick={prevAlbum} className="bg-lightBg text-lightText p-2 rounded-full hover:bg-accent hover:text-light transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-primary" aria-label="Previous album">
                     <ChevronLeftIcon size={20} />
                   </button>
-                  <button onClick={nextAlbum} className="bg-lightBg text-lightText p-2 rounded-full hover:bg-accent hover:text-light transition-colors" aria-label="Next album">
+                  <button onClick={nextAlbum} className="bg-lightBg text-lightText p-2 rounded-full hover:bg-accent hover:text-light transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-primary" aria-label="Next album">
                     <ChevronRightIcon size={20} />
                   </button>
                 </div>
@@ -155,7 +155,7 @@ export const MusicFeature = () => {
               </div>
               {/* Album Indicators */}
               <div className="flex justify-center mt-8 space-x-2">
-                {albums.map((album, index) => <button key={album.id} onClick={() => setCurrentAlbum(index)} className={`w-2 h-2 rounded-full ${currentAlbum === index ? 'bg-accent' : 'bg-light bg-opacity-40'}`} aria-label={`Go to album ${index + 1}`} aria-current={currentAlbum === index} />)}
+                {albums.map((album, index) => <button key={album.id} onClick={() => setCurrentAlbum(index)} className={`w-2 h-2 rounded-full focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-primary ${currentAlbum === index ? 'bg-accent' : 'bg-light bg-opacity-40'}`} aria-label={`Go to album ${index + 1}`} aria-current={currentAlbum === index} />)}
               </div>
             </div>
           </div>
