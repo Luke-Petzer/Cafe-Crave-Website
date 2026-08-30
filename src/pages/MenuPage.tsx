@@ -130,7 +130,7 @@ export const MenuPage = () => {
 
   return (
     <div className="min-h-screen bg-light text-primary font-sans selection:bg-secondary selection:text-white">
-      <SEO title="Menu Gazette | Cafe Crave" description="Explore our vintage style menu featuring halaal breakfasts, burgers, and artisan coffee." />
+      <SEO title="Menu Gazette | Café Crave" description="Explore our vintage style menu featuring halaal breakfasts, burgers, and artisan coffee." />
       <Header />
       
       {/* --- MENU HEADER DESIGN --- */}
@@ -162,7 +162,7 @@ export const MenuPage = () => {
         <div className="flex items-center justify-between gap-4 mb-4">
           {/* Left: Menu Logo Box */}
           <div className="flex-shrink-0 w-20 h-20 md:w-24 md:h-24 border-4 border-primary bg-light flex items-center justify-center p-2">
-            <img src={menuLogo} alt="Cafe Crave Logo" className="w-full h-full object-contain" />
+            <img src={menuLogo} alt="Café Crave Logo" className="w-full h-full object-contain" />
           </div>
 
           {/* Center: MENU Text */}
@@ -433,7 +433,7 @@ export const MenuPage = () => {
       {/* Back to Top Button */}
       <button 
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className={`fixed bottom-8 right-8 bg-primary text-light w-12 h-12 flex items-center justify-center rounded-none shadow-[4px_4px_0px_0px_rgba(131,81,63,1)] hover:translate-y-1 hover:shadow-none transition-all z-50 border-2 border-light ${isNavSticky ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        className={`fixed bottom-24 right-7 bg-primary text-light w-12 h-12 flex items-center justify-center rounded-none shadow-[4px_4px_0px_0px_rgba(131,81,63,1)] hover:translate-y-1 hover:shadow-none transition-all z-40 border-2 border-light ${isNavSticky ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         aria-label="Back to top"
       >
         <ArrowUpIcon />

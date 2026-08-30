@@ -16,9 +16,11 @@ interface GoogleReviewsProps {
 export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true }) => {
     const [reviews, setReviews] = useState<Review[]>([]);
     const [averageRating, setAverageRating] = useState<number>(0);
+    const [reviewCount, setReviewCount] = useState<number | undefined>(undefined);
     const [loading, setLoading] = useState<boolean>(true);
     const [currentIndex, setCurrentIndex] = useState<number>(1); // Start at 1 because we'll add clones
     const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
+    const [paused, setPaused] = useState<boolean>(false);
 
     useEffect(() => {
         fetch('/data/reviews.json')
@@ -26,6 +28,9 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
             .then((data) => {
                 setReviews(data.reviews || []);
                 setAverageRating(data.rating || 0);
+                setReviewCount(
+                    typeof data.review_count === 'number' ? data.review_count : undefined
+                );
             })
             .catch((error) => {
                 console.error('Error loading reviews:', error);
@@ -70,7 +75,7 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
 
     // Auto-play carousel - advances every 8 seconds
     useEffect(() => {
-        if (reviews.length === 0 || isTransitioning) return;
+        if (reviews.length === 0 || isTransitioning || paused) return;
 
         const interval = setInterval(() => {
             setIsTransitioning(true);
@@ -78,7 +83,7 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
         }, 8000);
 
         return () => clearInterval(interval);
-    }, [reviews.length, isTransitioning]);
+    }, [reviews.length, isTransitioning, paused]);
 
     // Create extended array with clones for infinite loop
     const getExtendedReviews = () => {
@@ -123,6 +128,11 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
                                 ))}
                             </div>
                             <p className="text-sm opacity-70 text-lightText">Google Reviews</p>
+                            {typeof reviewCount === 'number' && (
+                                <p className="text-xs opacity-60 text-lightText">
+                                    Based on {reviewCount} Google reviews
+                                </p>
+                            )}
                         </div>
                     </div>
                 )}
@@ -134,7 +144,14 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
                 <>
                     {/* Carousel Layout */}
                     {reviews.length > 0 ? (
-                        <div className="relative max-w-5xl mx-auto mb-12">
+                        <div
+                            className="relative max-w-5xl mx-auto mb-12"
+                            onMouseEnter={() => setPaused(true)}
+                            onMouseLeave={() => setPaused(false)}
+                            onFocus={() => setPaused(true)}
+                            onBlur={() => setPaused(false)}
+                            onTouchStart={() => setPaused(true)}
+                        >
                             {/* Carousel Container */}
                             <div className="relative overflow-hidden">
                                 {/* Review Cards */}

@@ -8,12 +8,13 @@ import boardGamesImg from '../assets/board-games.webp';
 import coffeeImg from '../assets/cuppacino.webp';
 import redVelvetImg from '../assets/red-velvet.webp';
 import vinylRecordsImg from '../assets/vinyl-records.webp';
+import aboutHeroImg from '../assets/vinyl-wall.webp';
 export const About = () => {
   return (
     <div className="min-h-screen">
       <SEO
         title="Our Story"
-        description="Discover the story behind Crave Café. A retro-inspired community space in Cape Town where coffee culture meets vinyl records and board games. Learn about our values and mission."
+        description="Discover the story behind Café Crave. A retro-inspired community space in Cape Town where coffee culture meets vinyl records and board games. Learn about our values and mission."
         keywords="about café, café story, Cape Town coffee culture, community café, retro café, café values, local café"
       />
       <ScrollAnimationObserver />
@@ -22,7 +23,7 @@ export const About = () => {
       {/* Section 1: Hero - "Our Story" - DARK */}
       <section className="section-dark relative min-h-[600px] md:min-h-[650px] flex items-center justify-center">
         <div className="absolute inset-0 z-0 overflow-hidden animate-hero-zoom">
-          <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Cafe Crave interior" className="w-full h-full object-cover brightness-50" width="2070" height="1380" />
+          <img src={aboutHeroImg} alt="Retro vinyl-inspired lounge seating at Café Crave" className="w-full h-full object-cover brightness-50" width="736" height="1104" />
         </div>
         <div className="relative z-10 text-center px-6">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight">
@@ -46,7 +47,7 @@ export const About = () => {
                 Stay Awhile
               </h2>
               <p className="font-medium opacity-90 text-lg mb-6">
-                At Cafe Crave, we believe in creating spaces where people can
+                At Café Crave, we believe in creating spaces where people can
                 connect, relax, and feel at home. Our cafe isn't just about
                 great coffee—it's about the moments you share while enjoying it.
               </p>
@@ -115,7 +116,7 @@ export const About = () => {
                 On the Turntable
               </h2>
               <p className="font-medium opacity-90 text-lg mb-6">
-                Music is the heartbeat of Cafe Crave. We're always spinning
+                Music is the heartbeat of Café Crave. We're always spinning
                 something special, from classics to deep cuts, creating a
                 soundtrack for your visit that's as carefully curated as our
                 coffee menu.

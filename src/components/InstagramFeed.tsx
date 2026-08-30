@@ -106,8 +106,8 @@ export const InstagramFeed: React.FC<InstagramFeedProps> = ({
                   width="800"
                   height="800"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-darkText translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                <div className="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent opacity-80 md:opacity-0 md:group-hover:opacity-80 transition-opacity duration-300"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-darkText translate-y-0 md:translate-y-full md:group-hover:translate-y-0 transition-transform duration-300">
                   <div className="flex items-center gap-2 mb-2">
                     <Instagram size={20} />
                     <span className="font-medium">@cafecrave_halal</span>
@@ -138,10 +138,10 @@ export const InstagramFeed: React.FC<InstagramFeedProps> = ({
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-darkBg bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
+                <div className="absolute inset-0 bg-darkBg bg-opacity-40 md:bg-opacity-0 md:group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
                   <ExternalLink
                     size={24}
-                    className="text-darkText opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    className="text-darkText opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"
                   />
                 </div>
               </div>
