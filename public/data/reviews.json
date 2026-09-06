@@ -1,8 +1,8 @@
 {
   "place_name": "Café Crave",
   "rating": 4.4,
-  "review_count": 459,
-  "last_updated": "2026-08-30T04:00:02.201Z",
+  "review_count": 461,
+  "last_updated": "2026-09-06T04:00:07.177Z",
   "reviews": [
     {
       "id": 1,
@@ -16,7 +16,7 @@
       "name": "Rooibos Poppy Gal",
       "rating": 4,
       "text": "This restaurant is conveniently\nsituated between Claremont and Lansdowne. The menu is fully halaal with kiddy options too. Food is decent and tastes okay.  There is a lovely wide variety of quality tea options... but beverages are sadly over priced here.",
-      "date": "a month ago"
+      "date": "2 months ago"
     },
     {
       "id": 3,
@@ -37,7 +37,7 @@
       "name": "Zaida Da Silva Bastra",
       "rating": 4,
       "text": "Cute and cosy.\nFriendly and helpful staff\nWifi available.\n\nMenu has great options.\nDecor and placement for what's on offer is great.\nGames are available to play whilst there.\n\nTea and coffee selections at the entrance .\n\nDidn't have to wait long and the food was delectable. The drinks were ok.\n\nRecommended your place and my brother took mom & her sister this morning for breakfast.\n\nI visited your site behind Kenilworth Centre about 2 years ago and enjoyed a delicious breakfast there.  The last picture is the sign from inside that space.\n\nWill visit again!",
-      "date": "8 months ago"
+      "date": "9 months ago"
     }
   ]
 }
