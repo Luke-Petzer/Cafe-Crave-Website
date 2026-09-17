@@ -125,7 +125,7 @@ export const ContactPage = () => {
                     href="https://maps.app.goo.gl/xKgEUJkWKYydZgUW7"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="pressable block w-full text-center border border-accent text-accent px-6 py-3 hover:bg-accent hover:text-light transition-colors duration-300 text-sm font-medium tracking-wide"
+                    className="pressable block w-full text-center border border-accent text-accent px-6 py-3 hover:bg-accent hover:text-light transition-colors duration-hover text-sm font-medium tracking-wide"
                   >
                     OPEN IN GOOGLE MAPS
                   </a>

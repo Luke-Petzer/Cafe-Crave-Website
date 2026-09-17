@@ -243,7 +243,7 @@ export const EventsPage = () => {
                     href="https://wa.me/27662386374?text=Hi%20Crave%20Café!%20I'd%20like%20to%20know%20about%20upcoming%20events."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-light bg-opacity-10 hover:bg-opacity-20 text-darkText px-6 py-3 rounded-md inline-flex items-center justify-center font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-light focus:ring-opacity-30"
+                    className="bg-light bg-opacity-10 hover:bg-opacity-20 text-darkText px-6 py-3 rounded-md inline-flex items-center justify-center font-medium transition-colors duration-hover focus:outline-none focus:ring-2 focus:ring-light focus:ring-opacity-30"
                   >
                     Contact Us
                   </a>
@@ -285,7 +285,7 @@ export const EventsPage = () => {
 
                 <a
                   href="/contact"
-                  className="bg-darkText bg-opacity-10 hover:bg-opacity-20 text-darkText px-8 py-4 rounded-md inline-flex items-center font-medium text-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-darkText focus:ring-opacity-30"
+                  className="bg-darkText bg-opacity-10 hover:bg-opacity-20 text-darkText px-8 py-4 rounded-md inline-flex items-center font-medium text-lg transition-colors duration-hover focus:outline-none focus:ring-2 focus:ring-darkText focus:ring-opacity-30"
                 >
                   <CalendarIcon size={22} className="mr-2" />
                   Contact Us
