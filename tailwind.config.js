@@ -24,6 +24,19 @@ export default {
         sans: ["Montserrat", "sans-serif"],
         serif: ["Playfair Display", "serif"],
       },
+      // Motion tokens (improve-animations AUDIT.md §2, §7) — mirrors the CSS
+      // custom properties in src/index.css so components can use either form.
+      transitionTimingFunction: {
+        'out-strong': 'var(--ease-out)',
+        'in-out-strong': 'var(--ease-in-out)',
+        drawer: 'var(--ease-drawer)',
+      },
+      transitionDuration: {
+        press: '140ms',
+        hover: '200ms',
+        panel: '220ms',
+        drawer: '300ms',
+      },
     },
   },
   plugins: [],

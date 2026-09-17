@@ -33,14 +33,20 @@
 }
 
 :root {
-  --animation-duration-fast: 0.35s;
-  --animation-duration-medium: 0.45s;
-  --animation-duration-micro: 0.15s;
   --color-primary: #322C2B;
   --color-secondary: #5C3A2D;
   --color-accent: #803D3B;
   --color-light: #FFFFFF;
   --color-subtext: #A86A53;
+
+  /* Motion tokens (improve-animations AUDIT.md §2, §7) */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);        /* strong ease-out for UI entering/exiting */
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);    /* strong ease-in-out for on-screen movement */
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);     /* iOS-like drawer curve */
+  --dur-press: 140ms;   /* button press feedback: 100-160ms */
+  --dur-hover: 200ms;   /* hover/colour changes */
+  --dur-panel: 220ms;   /* dropdowns/accordions: 150-250ms */
+  --dur-drawer: 300ms;  /* modals/drawers: 200-500ms */
 }
 body {
   margin: 0;
