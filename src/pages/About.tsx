@@ -8,6 +8,7 @@ import boardGamesImg from '../assets/board-games.webp';
 import coffeeImg from '../assets/cuppacino.webp';
 import redVelvetImg from '../assets/red-velvet.webp';
 import vinylRecordsImg from '../assets/vinyl-records.webp';
+import vinylRecordsImgSm from '../assets/vinyl-records-sm.webp';
 import aboutHeroImg from '../assets/vinyl-wall.webp';
 export const About = () => {
   return (
@@ -109,7 +110,16 @@ export const About = () => {
         <div className="container mx-auto px-6 md:px-10 lg:px-16">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             <div>
-              <img src={vinylRecordsImg} alt="Vinyl records" className="rounded-lg shadow-xl w-full h-[300px] object-cover" width="800" height="600" loading="lazy" />
+              <img
+                src={vinylRecordsImg}
+                srcSet={`${vinylRecordsImgSm} 700w, ${vinylRecordsImg} 1100w`}
+                sizes="(min-width: 768px) 50vw, 100vw"
+                alt="Vinyl records"
+                className="rounded-lg shadow-xl w-full h-[300px] object-cover"
+                width="800"
+                height="600"
+                loading="lazy"
+              />
             </div>
             <div>
               <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
