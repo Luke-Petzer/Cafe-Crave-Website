@@ -101,7 +101,7 @@ export const InstagramFeed: React.FC<InstagramFeedProps> = ({
                 <img
                   src={first.image}
                   alt={first.alt ?? 'Featured post'}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   loading="lazy"
                   width="800"
                   height="800"
@@ -135,7 +135,7 @@ export const InstagramFeed: React.FC<InstagramFeedProps> = ({
                   alt={post.alt ?? 'Instagram image'}
                   width="800"
                   height="800"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-darkBg bg-opacity-40 md:bg-opacity-0 md:group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
