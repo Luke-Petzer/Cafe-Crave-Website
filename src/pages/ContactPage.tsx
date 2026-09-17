@@ -217,18 +217,6 @@ export const ContactPage = () => {
         </div>
       </section>
 
-      {/* Floating WhatsApp Button */}
-      <a
-        href="https://wa.me/27662386374?text=Hi%20Crave%20Café!%20I'd%20like%20to%20know%20more%20about..."
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 bg-[#25D366] hover:bg-[#20BA5A] text-white p-4 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-50 focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-opacity-50"
-        style={{ animation: 'subtlePulse 3s ease-in-out infinite' }}
-        aria-label="Chat with us on WhatsApp"
-      >
-        <WhatsAppIcon size={32} />
-      </a>
-
       </main>
       <Footer />
     </div>
