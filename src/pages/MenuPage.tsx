@@ -39,10 +39,20 @@ export const MenuPage = () => {
   });
 
   // --- SCROLL LOGIC (Simplified - No nav to update) ---
+  // Batched into requestAnimationFrame (5.4, apple-design §11) so the
+  // React state write -- and the re-render it forces -- happens at most
+  // once per frame instead of on every raw scroll event.
   useEffect(() => {
+    const headerHeight = 80;
+    let ticking = false;
+
     const handleScroll = () => {
-      const headerHeight = 80;
-      setIsNavSticky(window.scrollY > headerHeight);
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setIsNavSticky(window.scrollY > headerHeight);
+        ticking = false;
+      });
     };
 
     window.addEventListener('scroll', handleScroll);
