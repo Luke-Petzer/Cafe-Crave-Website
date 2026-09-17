@@ -198,7 +198,7 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
                                     <button
                                         onClick={goToPrevious}
                                         disabled={isTransitioning}
-                                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 bg-accent hover:bg-opacity-90 text-light p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 z-10 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        className="pressable absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 bg-accent hover:bg-opacity-90 text-light p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 z-10 disabled:opacity-50 disabled:cursor-not-allowed"
                                         aria-label="Previous review"
                                     >
                                         <ChevronLeft size={24} />
@@ -208,7 +208,7 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
                                     <button
                                         onClick={goToNext}
                                         disabled={isTransitioning}
-                                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 bg-accent hover:bg-opacity-90 text-light p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 z-10 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        className="pressable absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 bg-accent hover:bg-opacity-90 text-light p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 z-10 disabled:opacity-50 disabled:cursor-not-allowed"
                                         aria-label="Next review"
                                     >
                                         <ChevronRight size={24} />
@@ -256,7 +256,7 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
                     href="https://share.google/NN6OWVg1gJzfe6ZwL"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center font-medium transition-colors hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
+                    className="pressable bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center font-medium transition-colors hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
                 >
                     Leave a Review on Google
                     <ExternalLinkIcon size={18} className="ml-2" />

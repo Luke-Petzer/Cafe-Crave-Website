@@ -141,10 +141,10 @@ export const MusicFeature = () => {
               {/* Navigation */}
               <div className="mt-8 flex justify-between items-center">
                 <div className="flex space-x-6">
-                  <button onClick={prevAlbum} className="bg-lightBg text-lightText p-2 rounded-full hover:bg-accent hover:text-light transition-colors" aria-label="Previous album">
+                  <button onClick={prevAlbum} className="pressable bg-lightBg text-lightText p-2 rounded-full hover:bg-accent hover:text-light transition-colors" aria-label="Previous album">
                     <ChevronLeftIcon size={20} />
                   </button>
-                  <button onClick={nextAlbum} className="bg-lightBg text-lightText p-2 rounded-full hover:bg-accent hover:text-light transition-colors" aria-label="Next album">
+                  <button onClick={nextAlbum} className="pressable bg-lightBg text-lightText p-2 rounded-full hover:bg-accent hover:text-light transition-colors" aria-label="Next album">
                     <ChevronRightIcon size={20} />
                   </button>
                 </div>

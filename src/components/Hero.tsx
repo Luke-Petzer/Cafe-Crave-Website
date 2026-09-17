@@ -41,7 +41,7 @@ export const Hero = () => {
 
             <Link
               to="/menu"
-              className="bg-accent hover:bg-opacity-90 text-light px-8 py-4 rounded-md inline-flex items-center justify-center font-medium transition-all duration-200 ease-out hover:scale-[1.02] hover:shadow-lg text-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 will-change-transform"
+              className="pressable bg-accent hover:bg-opacity-90 text-light px-8 py-4 rounded-md inline-flex items-center justify-center font-medium transition-all duration-200 ease-out hover:scale-[1.02] hover:shadow-lg text-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 will-change-transform"
             >
               View Our Menu
               <ArrowRightIcon size={20} className="ml-2" />

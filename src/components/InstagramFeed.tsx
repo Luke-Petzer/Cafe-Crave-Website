@@ -156,7 +156,7 @@ export const InstagramFeed: React.FC<InstagramFeedProps> = ({
           href="https://www.instagram.com/cafecrave_halal/"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-accent hover:bg-opacity-90 text-light px-8 py-4 rounded-md font-semibold text-lg tracking-wide transition-all duration-300 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
+          className="pressable inline-flex items-center gap-2 bg-accent hover:bg-opacity-90 text-light px-8 py-4 rounded-md font-semibold text-lg tracking-wide transition-all duration-300 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
         >
           <Instagram size={22} />
           Follow Us on Instagram

@@ -89,6 +89,14 @@ section:not([class*="scroll-mt"]),
 .skip-to-content:focus {
   top: 0;
 }
+/* Press feedback (apple-design §1, AUDIT §3) — feedback lives on the press,
+   applied alongside each element's existing hover: treatment. */
+.pressable {
+  transition: transform var(--dur-press) var(--ease-out);
+}
+.pressable:active {
+  transform: scale(0.97);
+}
 /* Animations - Simplified and lightweight */
 @keyframes fadeIn {
   from { opacity: 0; }

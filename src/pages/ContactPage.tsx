@@ -125,7 +125,7 @@ export const ContactPage = () => {
                     href="https://maps.app.goo.gl/xKgEUJkWKYydZgUW7"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full text-center border border-accent text-accent px-6 py-3 hover:bg-accent hover:text-light transition-all duration-300 text-sm font-medium tracking-wide"
+                    className="pressable block w-full text-center border border-accent text-accent px-6 py-3 hover:bg-accent hover:text-light transition-all duration-300 text-sm font-medium tracking-wide"
                   >
                     OPEN IN GOOGLE MAPS
                   </a>
@@ -134,7 +134,7 @@ export const ContactPage = () => {
                     <PhoneIcon size={24} className="text-accent mr-4 flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-medium text-lightText mb-1">Phone</h3>
-                      <a href="tel:+27662386374" className="text-lightText opacity-80 hover:text-accent transition-colors">
+                      <a href="tel:+27662386374" className="pressable text-lightText opacity-80 hover:text-accent transition-colors">
                         +27 66 238 6374
                       </a>
                     </div>
@@ -148,7 +148,7 @@ export const ContactPage = () => {
                         href="https://wa.me/27662386374?text=Hi%20Crave%20Café%20Claremont!%20I'd%20like%20to%20know%20more%20about..."
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-accent hover:underline transition-colors font-medium"
+                        className="pressable text-accent hover:underline transition-colors font-medium"
                       >
                         +27 66 238 6374
                       </a>

@@ -98,7 +98,7 @@ export const MenuPreview: React.FC = () => {
 				<div className="text-center">
 					<Link
 						to="/menu"
-						className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center justify-center font-medium transition-all duration-200 ease-out hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 will-change-transform"
+						className="pressable bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center justify-center font-medium transition-all duration-200 ease-out hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 will-change-transform"
 					>
 						View Full Menu
 						<ArrowRightIcon size={18} className="ml-2" />
