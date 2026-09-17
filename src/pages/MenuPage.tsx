@@ -422,10 +422,14 @@ export const MenuPage = () => {
 
       <Footer />
       
-      {/* Back to Top Button */}
-      <button 
+      {/* Back to Top Button. The offset "stamped" shadow is press feedback
+          (3.2/M2, apple-design §1: feedback belongs on pointer-down, not
+          hover) -- it fully flattens on :active. A real pointer additionally
+          gets a subtler pre-press hint (6.3: gated behind (hover: hover) so
+          touch doesn't latch a half-pressed look after a tap). */}
+      <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className={`fixed bottom-24 right-7 bg-primary text-light w-12 h-12 flex items-center justify-center rounded-none shadow-[4px_4px_0px_0px_rgba(131,81,63,1)] hover:translate-y-1 hover:shadow-none transition-all z-40 border-2 border-light ${isNavSticky ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        className={`fixed bottom-24 right-7 bg-primary text-light w-12 h-12 flex items-center justify-center rounded-none shadow-[4px_4px_0px_0px_rgba(131,81,63,1)] hh:shadow-[2px_2px_0px_0px_rgba(131,81,63,1)] hh:translate-y-0.5 active:!translate-y-1 active:!shadow-none transition-[transform,box-shadow] duration-press ease-out z-40 border-2 border-light ${isNavSticky ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         aria-label="Back to top"
       >
         <ArrowUpIcon />
