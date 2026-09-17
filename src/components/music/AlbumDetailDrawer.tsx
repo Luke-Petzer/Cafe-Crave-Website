@@ -64,7 +64,7 @@ export const AlbumDetailDrawer: React.FC<AlbumDetailDrawerProps> = ({
             <h2 className="text-2xl font-serif font-bold text-primary">
               Album Details
             </h2>
-            <button onClick={onClose} className="p-2 rounded-full bg-primary bg-opacity-10 hover:bg-opacity-20 transition-colors" aria-label="Close drawer">
+            <button onClick={onClose} className="pressable p-2 rounded-full bg-primary bg-opacity-10 hover:bg-opacity-20 transition-colors" aria-label="Close drawer">
               <XIcon size={24} className="text-primary" />
             </button>
           </div>
@@ -92,7 +92,7 @@ export const AlbumDetailDrawer: React.FC<AlbumDetailDrawerProps> = ({
                 </span>)}
             </div>
             <p className="text-subtext mb-6 text-center">{album.description}</p>
-            {album.previewLink && <a href={album.previewLink} target="_blank" rel="noopener noreferrer" className="bg-accent hover:bg-opacity-90 text-light px-4 py-2 rounded-md inline-flex items-center font-medium transition-colors mb-6">
+            {album.previewLink && <a href={album.previewLink} target="_blank" rel="noopener noreferrer" className="pressable bg-accent hover:bg-opacity-90 text-light px-4 py-2 rounded-md inline-flex items-center font-medium transition-colors mb-6">
                 <PlayIcon size={20} className="mr-2" />
                 Listen Preview
                 <ExternalLinkIcon size={16} className="ml-2" />
