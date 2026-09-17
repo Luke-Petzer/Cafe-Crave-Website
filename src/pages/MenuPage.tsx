@@ -77,7 +77,7 @@ export const MenuPage = () => {
       <div
         ref={el => sectionRefs.current[id] = el}
         id={id}
-        className="relative border-4 border-primary bg-light mb-10 transition-all duration-500"
+        className="relative border-4 border-primary bg-light mb-10"
       >
         {/* Section Header - Clickable on all mobile screens, not clickable on desktop */}
         <div
