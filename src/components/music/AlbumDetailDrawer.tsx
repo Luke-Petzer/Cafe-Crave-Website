@@ -55,9 +55,9 @@ export const AlbumDetailDrawer: React.FC<AlbumDetailDrawerProps> = ({
   if (!album) return null;
   return <>
       {/* Backdrop */}
-      <div className={`fixed inset-0 bg-primary bg-opacity-50 transition-opacity z-40 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} onClick={onClose} aria-hidden="true"></div>
+      <div className={`fixed inset-0 bg-primary bg-opacity-50 transition-opacity duration-drawer ease-out-strong z-40 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} onClick={onClose} aria-hidden="true"></div>
       {/* Drawer */}
-      <div ref={drawerRef} className={`fixed inset-y-0 right-0 w-full md:w-[500px] bg-light shadow-lg transform transition-transform z-50 overflow-y-auto ${isOpen ? 'translate-x-0' : 'translate-x-full'}`} tabIndex={isOpen ? 0 : -1} role="dialog" aria-modal="true" aria-label="Album details">
+      <div ref={drawerRef} className={`fixed inset-y-0 right-0 w-full md:w-[500px] bg-light shadow-lg transform transition-transform duration-drawer ease-drawer z-50 overflow-y-auto ${isOpen ? 'translate-x-0' : 'translate-x-full'}`} tabIndex={isOpen ? 0 : -1} role="dialog" aria-modal="true" aria-label="Album details">
         <div className="p-6">
           {/* Header */}
           <div className="flex justify-between items-center mb-6">
