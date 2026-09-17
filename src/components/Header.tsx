@@ -51,7 +51,7 @@ export const Header = () => {
                         <Link to="/" className="flex items-center gap-4" aria-label="Café Crave - Home">
                             {/* Logo with circular background, hover and focus states */}
                             <div
-                                className="p-2 transition-all duration-200 ease-in-out hover:opacity-80 focus-within:opacity-80 focus-within:ring-2 focus-within:ring-secondary focus-within:ring-offset-2 focus-within:ring-offset-primary"
+                                className="p-2 transition-[opacity,box-shadow] duration-200 ease-in-out hover:opacity-80 focus-within:opacity-80 focus-within:ring-2 focus-within:ring-secondary focus-within:ring-offset-2 focus-within:ring-offset-primary"
                             >
                                 <img
                                     src={cafeLogoIcon}

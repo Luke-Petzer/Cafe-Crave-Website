@@ -94,7 +94,7 @@ export const InstagramFeed: React.FC<InstagramFeedProps> = ({
               href={first.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+              className="group block rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
               aria-label="Featured Instagram post"
             >
               <div className="relative w-full h-96 bg-lightText bg-opacity-10 overflow-hidden">
@@ -126,7 +126,7 @@ export const InstagramFeed: React.FC<InstagramFeedProps> = ({
               href={post.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+              className="group block rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
               aria-label="Instagram post"
             >
               <div className="relative w-full h-40 bg-lightText bg-opacity-10 overflow-hidden">
@@ -138,7 +138,7 @@ export const InstagramFeed: React.FC<InstagramFeedProps> = ({
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-darkBg bg-opacity-40 md:bg-opacity-0 md:group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
+                <div className="absolute inset-0 bg-darkBg bg-opacity-40 md:bg-opacity-0 md:group-hover:bg-opacity-40 transition-colors duration-300 flex items-center justify-center">
                   <ExternalLink
                     size={24}
                     className="text-darkText opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"
@@ -156,7 +156,7 @@ export const InstagramFeed: React.FC<InstagramFeedProps> = ({
           href="https://www.instagram.com/cafecrave_halal/"
           target="_blank"
           rel="noopener noreferrer"
-          className="pressable inline-flex items-center gap-2 bg-accent hover:bg-opacity-90 text-light px-8 py-4 rounded-md font-semibold text-lg tracking-wide transition-all duration-300 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
+          className="pressable inline-flex items-center gap-2 bg-accent hover:bg-opacity-90 text-light px-8 py-4 rounded-md font-semibold text-lg tracking-wide transition-[transform,box-shadow,background-color] duration-300 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
         >
           <Instagram size={22} />
           Follow Us on Instagram

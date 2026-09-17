@@ -43,7 +43,7 @@ export const Footer = () => {
               <li>
                 <Link
                   to="/"
-                  className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 rounded inline-block"
+                  className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-[opacity,color] focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 rounded inline-block"
                 >
                   Home
                 </Link>
@@ -51,7 +51,7 @@ export const Footer = () => {
               <li>
                 <Link
                   to="/about"
-                  className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 rounded inline-block"
+                  className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-[opacity,color] focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 rounded inline-block"
                 >
                   About Us
                 </Link>
@@ -59,7 +59,7 @@ export const Footer = () => {
               <li>
                 <Link
                   to="/menu"
-                  className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 rounded inline-block"
+                  className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-[opacity,color] focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 rounded inline-block"
                 >
                   Menu
                 </Link>
@@ -67,7 +67,7 @@ export const Footer = () => {
               <li>
                 <Link
                   to="/events"
-                  className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 rounded inline-block"
+                  className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-[opacity,color] focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 rounded inline-block"
                 >
                   Events
                 </Link>
@@ -75,7 +75,7 @@ export const Footer = () => {
               <li>
                 <Link
                   to="/music"
-                  className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 rounded inline-block"
+                  className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-[opacity,color] focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 rounded inline-block"
                 >
                   Music Collection
                 </Link>
@@ -83,7 +83,7 @@ export const Footer = () => {
               <li>
                 <Link
                   to="/contact"
-                  className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 rounded inline-block"
+                  className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-[opacity,color] focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 rounded inline-block"
                 >
                   Contact
                 </Link>
@@ -114,7 +114,7 @@ export const Footer = () => {
                 href="https://www.instagram.com/cafecrave_halal/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-light bg-opacity-10 hover:bg-accent text-light p-3 rounded-full transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
+                className="bg-light bg-opacity-10 hover:bg-accent text-light p-3 rounded-full transition-[transform,background-color] hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
                 aria-label="Follow us on Instagram"
               >
                 <Instagram size={20} />
@@ -123,7 +123,7 @@ export const Footer = () => {
                 href="https://www.facebook.com/cafecravekenilworth"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-light bg-opacity-10 hover:bg-accent text-light p-3 rounded-full transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
+                className="bg-light bg-opacity-10 hover:bg-accent text-light p-3 rounded-full transition-[transform,background-color] hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
                 aria-label="Follow us on Facebook"
               >
                 <Facebook size={20} />

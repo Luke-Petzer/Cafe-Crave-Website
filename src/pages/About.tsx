@@ -32,7 +32,7 @@ export const About = () => {
           <p className="text-xl md:text-2xl mb-8">
             Coffee, Community, and a Retro Beat.
           </p>
-          <a href="/contact" className="pressable bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center justify-center font-medium transition-all duration-200 ease-out hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 will-change-transform">
+          <a href="/contact" className="pressable bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center justify-center font-medium transition-[transform,box-shadow,background-color] duration-200 ease-out hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 will-change-transform">
             <BookIcon size={20} className="mr-2" />
             Contact Us
           </a>
@@ -127,7 +127,7 @@ export const About = () => {
                 provide—much like the authentic experience we strive to create
                 in every other aspect of our cafe.
               </p>
-              <a href="/music" className="pressable inline-flex items-center justify-center bg-accent text-light px-6 py-2 rounded-md hover:bg-opacity-90 transition-all duration-200 ease-out hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 will-change-transform">
+              <a href="/music" className="pressable inline-flex items-center justify-center bg-accent text-light px-6 py-2 rounded-md hover:bg-opacity-90 transition-[transform,box-shadow,background-color] duration-200 ease-out hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 will-change-transform">
                 <MusicIcon size={20} className="mr-2" />
                 See What's Playing
               </a>
@@ -146,7 +146,7 @@ export const About = () => {
               Reserve your table now and join us for coffee, conversation, and
               community.
             </p>
-            <a href="/contact" className="pressable bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center justify-center font-medium transition-all duration-200 ease-out hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 will-change-transform">
+            <a href="/contact" className="pressable bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center justify-center font-medium transition-[transform,box-shadow,background-color] duration-200 ease-out hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 will-change-transform">
               <BookIcon size={20} className="mr-2" />
               Contact Us
             </a>
