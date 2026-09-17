@@ -94,20 +94,20 @@ export const InstagramFeed: React.FC<InstagramFeedProps> = ({
               href={first.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+              className="group block rounded-xl overflow-hidden shadow-lg hh:shadow-2xl transition-shadow duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
               aria-label="Featured Instagram post"
             >
               <div className="relative w-full h-96 bg-lightText bg-opacity-10 overflow-hidden">
                 <img
                   src={first.image}
                   alt={first.alt ?? 'Featured post'}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hh:scale-105"
                   loading="lazy"
                   width="800"
                   height="800"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent opacity-80 md:opacity-0 md:group-hover:opacity-80 transition-opacity duration-300"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-darkText translate-y-0 md:translate-y-full md:group-hover:translate-y-0 transition-transform duration-300">
+                <div className="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent opacity-80 md:opacity-0 md:group-hh:opacity-80 transition-opacity duration-300"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-darkText translate-y-0 md:translate-y-full md:group-hh:translate-y-0 transition-transform duration-300">
                   <div className="flex items-center gap-2 mb-2">
                     <Instagram size={20} />
                     <span className="font-medium">@cafecrave_halal</span>
@@ -126,7 +126,7 @@ export const InstagramFeed: React.FC<InstagramFeedProps> = ({
               href={post.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+              className="group block rounded-lg overflow-hidden shadow-md hh:shadow-xl transition-shadow duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
               aria-label="Instagram post"
             >
               <div className="relative w-full h-40 bg-lightText bg-opacity-10 overflow-hidden">
@@ -135,13 +135,13 @@ export const InstagramFeed: React.FC<InstagramFeedProps> = ({
                   alt={post.alt ?? 'Instagram image'}
                   width="800"
                   height="800"
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hh:scale-110"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-darkBg bg-opacity-40 md:bg-opacity-0 md:group-hover:bg-opacity-40 transition-colors duration-300 flex items-center justify-center">
+                <div className="absolute inset-0 bg-darkBg bg-opacity-40 md:bg-opacity-0 md:group-hh:bg-opacity-40 transition-colors duration-300 flex items-center justify-center">
                   <ExternalLink
                     size={24}
-                    className="text-darkText opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"
+                    className="text-darkText opacity-100 md:opacity-0 md:group-hh:opacity-100 transition-opacity duration-300"
                   />
                 </div>
               </div>

@@ -1,3 +1,5 @@
+import plugin from 'tailwindcss/plugin';
+
 export default {
   content: [
   './index.html',
@@ -49,5 +51,16 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // AUDIT §6 / finding 6.3: touch fires false hovers on tap, and this site
+    // had zero (hover: hover) guards anywhere. Rather than gate Tailwind's
+    // built-in hover:/group-hover: variants everywhere (which would also
+    // touch the :active press feedback and focus states added in 3.1), new
+    // hh:/group-hh: variants apply ONLY where the audit flagged latching
+    // hover effects on cards/images touched on a phone.
+    plugin(function ({ addVariant }) {
+      addVariant('hh', '@media (hover: hover) and (pointer: fine) { &:hover }');
+      addVariant('group-hh', '@media (hover: hover) and (pointer: fine) { .group:hover & }');
+    }),
+  ],
 }

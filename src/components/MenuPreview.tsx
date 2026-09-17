@@ -48,7 +48,7 @@ export const MenuPreview: React.FC = () => {
 					{featuredItems.map((item) => (
 						<div
 							key={item.id}
-							className="bg-lightBg rounded-lg overflow-hidden shadow-md border border-redText border-opacity-20 transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg"
+							className="bg-lightBg rounded-lg overflow-hidden shadow-md border border-redText border-opacity-20 transition-transform duration-300 hh:-translate-y-2 hh:shadow-lg"
 						>
 							{/*
 								Image Container Adjustment Guide (Aspect Ratio Method):
@@ -77,7 +77,7 @@ export const MenuPreview: React.FC = () => {
                                 <img
                                     src={item.image}
                                     alt={item.name}
-                                    className={`w-full h-full object-cover transition-transform duration-300 hover:scale-105 ${item.imagePosition || 'object-center'}`}
+                                    className={`w-full h-full object-cover transition-transform duration-300 hh:scale-105 ${item.imagePosition || 'object-center'}`}
                                     width="800"
                                     height="600"
                                     loading="lazy"
