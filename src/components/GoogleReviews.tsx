@@ -73,9 +73,14 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
         }
     };
 
-    // Auto-play carousel - advances every 8 seconds
+    // Auto-play carousel - advances every 8 seconds. Gated behind
+    // prefers-reduced-motion at the source (AUDIT §6/apple-design §14):
+    // the CSS-level override already makes the *slide* instant, but without
+    // this check content would still jump-cut every 8s under reduced motion.
+    // Manual arrows/dots keep working either way.
     useEffect(() => {
         if (reviews.length === 0 || isTransitioning || paused) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
         const interval = setInterval(() => {
             setIsTransitioning(true);
