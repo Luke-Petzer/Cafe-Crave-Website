@@ -146,11 +146,13 @@ section:not([class*="scroll-mt"]),
   );
 }
 .vinyl-record-container {
-  /* transform transition removed (5.5): nothing ever changes this element's
-     transform (MusicFeature.tsx swaps the album image instantly), so the
-     bouncy cubic-bezier(0.175, 0.885, 0.32, 1.275) was unreachable dead CSS.
-     Reviving it as the "flip on album change" moment it was built for is
-     M1 — a design call left for Luke, not applied here. */
+  /* M1 (feel-audit-2026-09), approved by Luke: the record spins on album
+     change again — via a `transition-transform` Tailwind utility on the
+     element itself (duration-drawer/ease-in-out-strong tokens), driven by
+     MusicFeature.tsx's cumulative `spinDegrees` state, not the old bouncy
+     cubic-bezier(0.175, 0.885, 0.32, 1.275) removed in 5.5 (that curve
+     overshoots past 100% — more playful than the "subtle" brief asked for).
+     Only the shadow lives in this class; the transition is on the element. */
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
 }
 .vinyl-player-wrapper {
