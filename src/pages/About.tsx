@@ -26,7 +26,7 @@ export const About = () => {
           <img src={aboutHeroImg} alt="Retro vinyl-inspired lounge seating at Café Crave" className="w-full h-full object-cover brightness-50" width="736" height="1104" />
         </div>
         <div className="relative z-10 text-center px-6">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight">
+          <h1 className="text-display-sm md:text-display-md lg:text-display-lg font-serif font-bold mb-6 leading-tight">
             Our Story
           </h1>
           <p className="text-xl md:text-2xl mb-8">

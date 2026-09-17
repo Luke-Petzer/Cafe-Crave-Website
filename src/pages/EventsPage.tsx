@@ -32,7 +32,7 @@ export const EventsPage = () => {
 
           <div className="relative z-10 container mx-auto px-6 md:px-10 lg:px-16">
             <div className="max-w-4xl mx-auto text-center text-darkText">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight">
+              <h1 className="text-display-sm md:text-display-md lg:text-display-lg font-serif font-bold mb-6 leading-tight">
                 Events at Crave
               </h1>
               <div className="w-24 h-1 bg-accent mx-auto mb-8"></div>

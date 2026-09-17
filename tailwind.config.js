@@ -24,6 +24,16 @@ export default {
         sans: ["Montserrat", "sans-serif"],
         serif: ["Playfair Display", "serif"],
       },
+      // Display-type scale for plain page-title H1s (apple-design §15: tracking
+      // is size-specific, never one fixed value). Same rem values as Tailwind's
+      // built-in 5xl/6xl/7xl so no size changes — new key names so this never
+      // touches the Menu page's own tracking-wide masthead H1, which also uses
+      // text-5xl/6xl/7xl but is an intentionally exempt design choice.
+      fontSize: {
+        'display-sm': ['3rem', { letterSpacing: '-0.02em' }],    // 48px
+        'display-md': ['3.75rem', { letterSpacing: '-0.025em' }], // 60px
+        'display-lg': ['4.5rem', { letterSpacing: '-0.03em' }],   // 72px
+      },
       // Motion tokens (improve-animations AUDIT.md §2, §7) — mirrors the CSS
       // custom properties in src/index.css so components can use either form.
       transitionTimingFunction: {
