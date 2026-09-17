@@ -3,8 +3,9 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 /* DO NOT DELETE THESE TAILWIND IMPORTS, OTHERWISE THE STYLING WILL NOT RENDER AT ALL */
-/* Google Fonts Import */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+/* Google Fonts: loaded via <link rel="stylesheet"> + preconnect in
+   index.html (load feel) instead of a CSS @import, which the HTML preload
+   scanner can't discover until index.css itself has been fetched. */
 
 /* Standardized Section Styles */
 @layer components {

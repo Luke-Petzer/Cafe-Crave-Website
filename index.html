@@ -24,6 +24,16 @@
     <meta name="twitter:image" content="https://cafecravecpt.co.za/og-image.jpg" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Load feel: an HTML-level preconnect + link starts the font request
+         as soon as the preload scanner sees this document, instead of only
+         after index.css has been fetched and parsed (a CSS @import can't be
+         discovered until then). font-display: swap is already set in the
+         Google Fonts URL, so this only affects request timing, not fallback
+         behaviour. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" />
   </head>
   <body>
     <div id="root"></div>
