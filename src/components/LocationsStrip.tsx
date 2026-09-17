@@ -5,11 +5,10 @@ export const LocationsStrip = () => {
     <section className="section-red py-16">
       <div className="container mx-auto px-6 md:px-10 lg:px-16 text-center">
         <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
-          Two spots, same crave
+          One spot, same crave
         </h2>
         <div className="mb-8 space-y-1">
           <p className="text-lg">Claremont — 219 Imam Haron Rd</p>
-          <p className="text-lg">Plumstead — 120 Main Road</p>
         </div>
         <Link
           to="/contact"

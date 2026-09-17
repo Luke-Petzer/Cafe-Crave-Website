@@ -31,9 +31,7 @@ export const Footer = () => {
                 +27 66 238 6374
               </a>
               <p className="opacity-80 text-sm leading-relaxed pt-2">
-                Claremont — 219 Imam Haron Rd
-                <br />
-                Plumstead — 120 Main Road
+                219 Imam Haron Rd, Claremont
               </p>
             </div>
           </div>
