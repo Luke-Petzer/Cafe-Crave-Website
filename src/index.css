@@ -98,10 +98,6 @@ section:not([class*="scroll-mt"]),
   transform: scale(0.97);
 }
 /* Animations - Simplified and lightweight */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
 @keyframes subtlePulse {
   0%, 100% {
     transform: scale(1);
@@ -111,11 +107,6 @@ section:not([class*="scroll-mt"]),
     transform: scale(1.05);
     box-shadow: 0 15px 35px -5px rgba(37, 211, 102, 0.5);
   }
-}
-
-/* Page-level fade-in for initial load */
-.animate-fade-in {
-  animation: fadeIn 0.3s ease-in-out;
 }
 
 /* Floating WhatsApp button pulse */
@@ -233,7 +224,6 @@ t
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .animate-fade-in,
   .animate-subtle-pulse {
     animation: none !important;
     transition: none !important;
