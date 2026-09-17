@@ -390,7 +390,7 @@ export const MenuPage = () => {
             </MenuSection>
 
             <MenuSection id="bakery" title="Bakery" subTitle="Fresh Daily" img={cheeseCakeImg}>
-              <MenuItem name="Gourmet Cheesecake" desc="Burnt basque | cadbury burnt basque caramel | choc brownie | tiramisu, lemon creme | biscoff" />
+              <MenuItem name="Gourmet Cheesecake" desc="Burnt basque | cadbury burnt basque | caramel | choc brownie | tiramisu | lemon creme | biscoff" />
               <MenuItem name="Signature Cakes" desc="Choc brownie | cadbury | choc caramel" />
               <MenuItem name="Eclairs (4)" desc="Caramel cream + cadbury chocolate" />
               <MenuItem name="Scone" desc="With butter" />
