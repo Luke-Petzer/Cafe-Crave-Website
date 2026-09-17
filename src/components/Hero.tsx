@@ -17,6 +17,7 @@ export const Hero = () => {
           className="w-full h-full object-cover object-[0%_0%] md:object-center"
           width="1600"
           height="1000"
+          fetchPriority="high"
         />
         {/* Dark gradient overlay for better text legibility */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
