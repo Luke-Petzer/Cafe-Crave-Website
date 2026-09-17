@@ -99,22 +99,27 @@ export const MenuPage = () => {
           </div>
         </div>
 
-        {/* Section Content - Always visible on desktop (lg+), collapsible on mobile */}
-        <div className={`relative overflow-hidden transition-all duration-500 lg:max-h-none lg:opacity-100 ${
-          isExpanded ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0'
+        {/* Section Content - Always visible on desktop (lg+), collapsible on mobile.
+            CSS Grid 0fr -> 1fr trick (AUDIT §5): animates a track size, not the
+            max-height layout property, so the reveal speed matches the real
+            content height instead of an arbitrary oversized max-h target. */}
+        <div className={`grid transition-[grid-template-rows,opacity] duration-panel ease-out-strong lg:grid-rows-[1fr] lg:opacity-100 ${
+          isExpanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
         }`}>
-          {/* Background Watermark (Grayscale + Multiply for drawn effect) */}
-          <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-            <img
-              src={img}
-              alt=""
-              className="w-full h-full object-cover opacity-[0.07] mix-blend-multiply scale-110"
-              style={{ filter: 'grayscale(100%)' }}
-            />
-          </div>
+          <div className="relative overflow-hidden">
+            {/* Background Watermark (Grayscale + Multiply for drawn effect) */}
+            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+              <img
+                src={img}
+                alt=""
+                className="w-full h-full object-cover opacity-[0.07] mix-blend-multiply scale-110"
+                style={{ filter: 'grayscale(100%)' }}
+              />
+            </div>
 
-          <div className="relative z-10 p-6 md:p-8">
-             {children}
+            <div className="relative z-10 p-6 md:p-8">
+               {children}
+            </div>
           </div>
         </div>
       </div>
