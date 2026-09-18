@@ -101,10 +101,10 @@ export const ContactPage = () => {
       {/* Contact Section - Location Card */}
       <section className="section-dark py-16 md:py-20">
         <div className="container mx-auto px-6 md:px-10 lg:px-16">
-          <div id="contact">
+          <div id="contact" className="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-stretch lg:max-w-6xl lg:mx-auto">
             {/* Claremont Location Card */}
-            <div className="max-w-xl mx-auto mb-12">
-              <div className="bg-lightBg p-6 md:p-8 rounded-lg shadow-lg">
+            <div className="max-w-xl mx-auto mb-12 lg:max-w-none lg:mx-0 lg:mb-0">
+              <div className="bg-lightBg p-6 md:p-8 rounded-lg shadow-lg lg:h-full">
                 <h2 className="text-2xl md:text-3xl font-serif font-bold text-lightText mb-6">
                   Crave Claremont
                 </h2>
@@ -198,9 +198,9 @@ export const ContactPage = () => {
               </div>
             </div>
 
-            {/* Full-width Map Below Card */}
-            <div className="w-full max-w-6xl mx-auto">
-              <div className="h-[400px] md:h-[500px] rounded-lg overflow-hidden shadow-lg">
+            {/* Map */}
+            <div className="w-full max-w-6xl mx-auto lg:max-w-none lg:mx-0">
+              <div className="h-[400px] md:h-[500px] lg:h-full rounded-lg overflow-hidden shadow-lg">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3596.965631229076!2d18.481858899999995!3d-33.9836241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc43940b24aab7%3A0x910b69a2e9e61db3!2sCaf%C3%A9%20Crave!5e1!3m2!1sen!2sza!4v1759685841467!5m2!1sen!2sza"
                   width="100%"
