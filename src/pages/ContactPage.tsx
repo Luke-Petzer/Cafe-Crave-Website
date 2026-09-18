@@ -145,7 +145,7 @@ export const ContactPage = () => {
                     <div>
                       <h3 className="font-medium text-lightText mb-1">WhatsApp</h3>
                       <a
-                        href="https://wa.me/27662386374?text=Hi%20Crave%20Café%20Claremont!%20I'd%20like%20to%20know%20more%20about..."
+                        href="https://wa.me/27662386374?text=Hi%20Café%20Crave%20Claremont!%20I'd%20like%20to%20know%20more%20about%20visiting%20you."
                         target="_blank"
                         rel="noopener noreferrer"
                         className="pressable text-accent hover:underline transition-colors font-medium"
