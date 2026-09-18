@@ -73,9 +73,14 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
         }
     };
 
-    // Auto-play carousel - advances every 8 seconds
+    // Auto-play carousel - advances every 8 seconds. Gated behind
+    // prefers-reduced-motion at the source (AUDIT §6/apple-design §14):
+    // the CSS-level override already makes the *slide* instant, but without
+    // this check content would still jump-cut every 8s under reduced motion.
+    // Manual arrows/dots keep working either way.
     useEffect(() => {
         if (reviews.length === 0 || isTransitioning || paused) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
         const interval = setInterval(() => {
             setIsTransitioning(true);
@@ -165,7 +170,7 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
                                             key={`review-${index}`}
                                             className="w-full flex-shrink-0 px-4"
                                         >
-                                            <div className="bg-light text-lightText p-8 md:p-10 rounded-lg shadow-xl border-2 border-accent border-opacity-30 transform transition-all duration-300 hover:shadow-2xl h-[350px] md:h-[400px] overflow-hidden flex flex-col">
+                                            <div className="bg-light text-lightText p-8 md:p-10 rounded-lg shadow-xl border-2 border-accent border-opacity-30 transform transition-shadow duration-300 hover:shadow-2xl h-[350px] md:h-[400px] overflow-hidden flex flex-col">
                                                 <div className="flex items-center justify-between mb-6 flex-shrink-0">
                                                     <div className="flex gap-1">
                                                         {[...Array(5)].map((_, i) => (
@@ -198,7 +203,7 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
                                     <button
                                         onClick={goToPrevious}
                                         disabled={isTransitioning}
-                                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 bg-accent hover:bg-opacity-90 text-light p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 z-10 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        className="pressable absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 bg-accent hover:bg-opacity-90 text-light p-3 rounded-full shadow-lg transition-[transform,background-color] duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 z-10 disabled:opacity-50 disabled:cursor-not-allowed"
                                         aria-label="Previous review"
                                     >
                                         <ChevronLeft size={24} />
@@ -208,7 +213,7 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
                                     <button
                                         onClick={goToNext}
                                         disabled={isTransitioning}
-                                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 bg-accent hover:bg-opacity-90 text-light p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 z-10 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        className="pressable absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 bg-accent hover:bg-opacity-90 text-light p-3 rounded-full shadow-lg transition-[transform,background-color] duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 z-10 disabled:opacity-50 disabled:cursor-not-allowed"
                                         aria-label="Next review"
                                     >
                                         <ChevronRight size={24} />
@@ -230,7 +235,7 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
                                                 key={index}
                                                 onClick={() => goToSlide(index)}
                                                 disabled={isTransitioning}
-                                                className={`w-3 h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 disabled:cursor-not-allowed ${
+                                                className={`w-3 h-3 rounded-full transition-[width,background-color] duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 disabled:cursor-not-allowed ${
                                                     index === activeIndex
                                                         ? 'bg-accent w-8'
                                                         : 'bg-lightText bg-opacity-30 hover:bg-opacity-50'
@@ -256,7 +261,7 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
                     href="https://share.google/NN6OWVg1gJzfe6ZwL"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center font-medium transition-colors hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
+                    className="pressable bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center font-medium transition-colors hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50"
                 >
                     Leave a Review on Google
                     <ExternalLinkIcon size={18} className="ml-2" />

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { MusicIcon, ChevronLeftIcon, ChevronRightIcon, ArrowRightIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -9,6 +9,32 @@ import bruceSpringsteenBornInTheUsa from '../assets/bruce-springsteen-born-in-th
 
 export const MusicFeature = () => {
   const [currentAlbum, setCurrentAlbum] = useState(0);
+  // M1 (feel-audit-2026-09), approved by Luke: switching the featured album
+  // used to swap the record image instantly. Now it changes "with intent" --
+  // a quick spin on the record plus a brief crossfade on the label art,
+  // instead of a pop. `spinDegrees` accumulates by +360 per change (never
+  // resets to 0) so the transform transition always rotates forward and
+  // never has to reverse-spin back to settle. `isSettling` drives the art's
+  // opacity dip for the crossfade half; its timeout mirrors RecordRack's M3
+  // pattern -- kept in sync with the duration-drawer token (300ms) used on
+  // the element itself. Reduced motion needs no separate JS gate here: the
+  // sitewide `transition-duration: 0.01ms !important` rule (index.css)
+  // already collapses this transition to instant, same as every other
+  // transition-based effect on the branch.
+  const [spinDegrees, setSpinDegrees] = useState(0);
+  const [isSettling, setIsSettling] = useState(false);
+  const settleTimeout = useRef<ReturnType<typeof setTimeout>>();
+
+  useEffect(() => () => clearTimeout(settleTimeout.current), []);
+
+  const goToAlbum = (index: number) => {
+    if (index === currentAlbum) return;
+    setSpinDegrees(deg => deg + 360);
+    setIsSettling(true);
+    clearTimeout(settleTimeout.current);
+    settleTimeout.current = setTimeout(() => setIsSettling(false), 300);
+    setCurrentAlbum(index);
+  };
 
   // Featured album data
   const albums = [{
@@ -74,11 +100,11 @@ export const MusicFeature = () => {
   }];
 
   const nextAlbum = () => {
-    setCurrentAlbum(prev => prev === albums.length - 1 ? 0 : prev + 1);
+    goToAlbum(currentAlbum === albums.length - 1 ? 0 : currentAlbum + 1);
   };
 
   const prevAlbum = () => {
-    setCurrentAlbum(prev => prev === 0 ? albums.length - 1 : prev - 1);
+    goToAlbum(currentAlbum === 0 ? albums.length - 1 : currentAlbum - 1);
   };
 
   return <section className="section-animate section-dark py-20 md:py-28">
@@ -97,12 +123,14 @@ export const MusicFeature = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Vinyl Record Display */}
             <div className="vinyl-player-wrapper relative">
-              <div className="vinyl-record-container aspect-square rounded-full relative shadow-2xl">
+              <div className="vinyl-record-container aspect-square rounded-full relative shadow-2xl transition-transform duration-drawer ease-in-out-strong" style={{
+              transform: `rotate(${spinDegrees}deg)`
+            }}>
                 {/* Vinyl record */}
                 <div className="absolute inset-0 vinyl-record rounded-full bg-primary">
                   <div className="absolute inset-0 vinyl-grooves rounded-full"></div>
                   <div className="absolute inset-[30%] rounded-full bg-primary flex items-center justify-center overflow-hidden">
-                    <img src={albums[currentAlbum].image} alt={`Album artwork - ${albums[currentAlbum].title} by ${albums[currentAlbum].artist}`} className="w-full h-full object-cover" width="800" height="800" loading="lazy" />
+                    <img src={albums[currentAlbum].image} alt={`Album artwork - ${albums[currentAlbum].title} by ${albums[currentAlbum].artist}`} className={`w-full h-full object-cover transition-opacity duration-drawer ease-out-strong ${isSettling ? 'opacity-60' : 'opacity-100'}`} width="800" height="800" loading="lazy" />
                   </div>
                   <div className="absolute inset-[48%] rounded-full bg-primary border-2 border-secondary"></div>
                 </div>
@@ -141,10 +169,10 @@ export const MusicFeature = () => {
               {/* Navigation */}
               <div className="mt-8 flex justify-between items-center">
                 <div className="flex space-x-6">
-                  <button onClick={prevAlbum} className="bg-lightBg text-lightText p-2 rounded-full hover:bg-accent hover:text-light transition-colors" aria-label="Previous album">
+                  <button onClick={prevAlbum} className="pressable bg-lightBg text-lightText p-2 rounded-full hover:bg-accent hover:text-light transition-colors" aria-label="Previous album">
                     <ChevronLeftIcon size={20} />
                   </button>
-                  <button onClick={nextAlbum} className="bg-lightBg text-lightText p-2 rounded-full hover:bg-accent hover:text-light transition-colors" aria-label="Next album">
+                  <button onClick={nextAlbum} className="pressable bg-lightBg text-lightText p-2 rounded-full hover:bg-accent hover:text-light transition-colors" aria-label="Next album">
                     <ChevronRightIcon size={20} />
                   </button>
                 </div>
@@ -155,7 +183,7 @@ export const MusicFeature = () => {
               </div>
               {/* Album Indicators */}
               <div className="flex justify-center mt-8 space-x-2">
-                {albums.map((album, index) => <button key={album.id} onClick={() => setCurrentAlbum(index)} className={`w-2 h-2 rounded-full ${currentAlbum === index ? 'bg-accent' : 'bg-light bg-opacity-40'}`} aria-label={`Go to album ${index + 1}`} aria-current={currentAlbum === index} />)}
+                {albums.map((album, index) => <button key={album.id} onClick={() => goToAlbum(index)} className={`w-2 h-2 rounded-full ${currentAlbum === index ? 'bg-accent' : 'bg-light bg-opacity-40'}`} aria-label={`Go to album ${index + 1}`} aria-current={currentAlbum === index} />)}
               </div>
             </div>
           </div>

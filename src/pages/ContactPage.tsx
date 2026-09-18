@@ -70,23 +70,6 @@ export const ContactPage = () => {
               "@type": "ViewAction",
               "target": "https://cafecravecpt.co.za/menu"
             }
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "Cafe",
-            "name": "Café Crave Plumstead",
-            "url": "https://cafecravecpt.co.za",
-            "telephone": "+27662386374",
-            "priceRange": "R",
-            "servesCuisine": ["Café", "Halaal"],
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "120 Main Road",
-              "addressLocality": "Plumstead",
-              "addressRegion": "Cape Town",
-              "postalCode": "7800",
-              "addressCountry": "ZA"
-            }
           }
         ]}
       />
@@ -105,7 +88,7 @@ export const ContactPage = () => {
           />
         </div>
         <div className="relative z-10 text-center px-6">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight">
+          <h1 className="text-display-sm md:text-display-md lg:text-display-lg font-serif font-bold mb-6 leading-tight">
             Contact & Visit Café Crave
           </h1>
           <div className="w-24 h-1 bg-accent mx-auto mb-6"></div>
@@ -115,14 +98,13 @@ export const ContactPage = () => {
         </div>
       </section>
 
-      {/* Contact Section - Two Location Cards */}
+      {/* Contact Section - Location Card */}
       <section className="section-dark py-16 md:py-20">
         <div className="container mx-auto px-6 md:px-10 lg:px-16">
-          <div id="contact">
-            {/* Two Location Cards Side by Side */}
-            <div className="grid md:grid-cols-2 gap-8 md:gap-10 max-w-6xl mx-auto mb-12">
-              {/* Claremont Location Card */}
-              <div className="bg-lightBg p-6 md:p-8 rounded-lg shadow-lg">
+          <div id="contact" className="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-stretch lg:max-w-6xl lg:mx-auto">
+            {/* Claremont Location Card */}
+            <div className="max-w-xl mx-auto mb-12 lg:max-w-none lg:mx-0 lg:mb-0">
+              <div className="bg-lightBg p-6 md:p-8 rounded-lg shadow-lg lg:h-full">
                 <h2 className="text-2xl md:text-3xl font-serif font-bold text-lightText mb-6">
                   Crave Claremont
                 </h2>
@@ -143,7 +125,7 @@ export const ContactPage = () => {
                     href="https://maps.app.goo.gl/xKgEUJkWKYydZgUW7"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full text-center border border-accent text-accent px-6 py-3 hover:bg-accent hover:text-light transition-all duration-300 text-sm font-medium tracking-wide"
+                    className="pressable block w-full text-center border border-accent text-accent px-6 py-3 hover:bg-accent hover:text-light transition-colors duration-hover text-sm font-medium tracking-wide"
                   >
                     OPEN IN GOOGLE MAPS
                   </a>
@@ -152,7 +134,7 @@ export const ContactPage = () => {
                     <PhoneIcon size={24} className="text-accent mr-4 flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-medium text-lightText mb-1">Phone</h3>
-                      <a href="tel:+27662386374" className="text-lightText opacity-80 hover:text-accent transition-colors">
+                      <a href="tel:+27662386374" className="pressable text-lightText opacity-80 hover:text-accent transition-colors">
                         +27 66 238 6374
                       </a>
                     </div>
@@ -166,7 +148,7 @@ export const ContactPage = () => {
                         href="https://wa.me/27662386374?text=Hi%20Crave%20Café%20Claremont!%20I'd%20like%20to%20know%20more%20about..."
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-accent hover:underline transition-colors font-medium"
+                        className="pressable text-accent hover:underline transition-colors font-medium"
                       >
                         +27 66 238 6374
                       </a>
@@ -180,139 +162,40 @@ export const ContactPage = () => {
                     <ClockIcon size={24} className="text-accent mr-4 flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-medium text-lightText mb-2">Hours</h3>
-                      <ul className="text-lightText opacity-80 space-y-1 text-sm">
-                        <li className="flex justify-between">
-                          <span>Monday:</span>
-                          <span>10 am–6 pm</span>
-                        </li>
-                        <li className="flex justify-between">
-                          <span>Tuesday:</span>
-                          <span>8:30 am–6 pm</span>
-                        </li>
-                        <li className="flex justify-between">
-                          <span>Wednesday:</span>
-                          <span>8:30 am–6 pm</span>
-                        </li>
-                        <li className="flex justify-between">
-                          <span>Thursday:</span>
-                          <span>8:30 am–6 pm</span>
-                        </li>
-                        <li className="flex justify-between">
-                          <span>Friday:</span>
-                          <span>8:30 am–12 pm, 2–9 pm</span>
-                        </li>
-                        <li className="flex justify-between">
-                          <span>Saturday:</span>
-                          <span>8:30 am–9 pm</span>
-                        </li>
-                        <li className="flex justify-between">
-                          <span>Sunday:</span>
-                          <span>10 am–6 pm</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                      <dl className="text-lightText opacity-80 text-sm grid grid-cols-[auto_1fr] gap-x-3 gap-y-1">
+                        <dt>Monday:</dt>
+                        <dd>10 am–6 pm</dd>
 
-              {/* Plumstead Location Card */}
-              <div className="bg-lightBg p-6 md:p-8 rounded-lg shadow-lg">
-                <h2 className="text-2xl md:text-3xl font-serif font-bold text-lightText mb-6">
-                  Crave Plumstead
-                </h2>
-                <div className="space-y-6">
-                  <div className="flex items-start">
-                    <MapPinIcon size={24} className="text-accent mr-4 flex-shrink-0 mt-1" />
-                    <div>
-                      <h3 className="font-medium text-lightText mb-1">Address</h3>
-                      <p className="text-lightText opacity-80">
-                        120 Main Road, Plumstead
-                        <br />
-                        Cape Town, 7800
-                      </p>
-                    </div>
-                  </div>
+                        <dt>Tuesday:</dt>
+                        <dd>8:30 am–6 pm</dd>
 
-                  <a
-                    href="https://maps.app.goo.gl/8Hu3a48UKqaFSGVp9"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full text-center border border-accent text-accent px-6 py-3 hover:bg-accent hover:text-light transition-all duration-300 text-sm font-medium tracking-wide"
-                  >
-                    OPEN IN GOOGLE MAPS
-                  </a>
+                        <dt>Wednesday:</dt>
+                        <dd>8:30 am–6 pm</dd>
 
-                  <div className="flex items-start">
-                    <PhoneIcon size={24} className="text-accent mr-4 flex-shrink-0 mt-1" />
-                    <div>
-                      <h3 className="font-medium text-lightText mb-1">Phone</h3>
-                      <a href="tel:+27662386374" className="text-lightText opacity-80 hover:text-accent transition-colors">
-                        +27 66 238 6374
-                      </a>
-                    </div>
-                  </div>
+                        <dt>Thursday:</dt>
+                        <dd>8:30 am–6 pm</dd>
 
-                  <div className="flex items-start">
-                    <WhatsAppIcon size={24} className="text-accent mr-4 flex-shrink-0 mt-1" />
-                    <div>
-                      <h3 className="font-medium text-lightText mb-1">WhatsApp</h3>
-                      <a
-                        href="https://wa.me/27662386374?text=Hi%20Crave%20Café%20Plumstead!%20I'd%20like%20to%20know%20more%20about..."
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-accent hover:underline transition-colors font-medium"
-                      >
-                        +27 66 238 6374
-                      </a>
-                      <p className="text-lightText opacity-60 text-sm mt-1">
-                        Chat with us directly
-                      </p>
-                    </div>
-                  </div>
+                        <dt>Friday:</dt>
+                        <dd>
+                          <span className="block">8:30 am–12 pm</span>
+                          <span className="block">2–9 pm</span>
+                        </dd>
 
-                  <div className="flex items-start">
-                    <ClockIcon size={24} className="text-accent mr-4 flex-shrink-0 mt-1" />
-                    <div>
-                      <h3 className="font-medium text-lightText mb-2">Hours</h3>
-                      <ul className="text-lightText opacity-80 space-y-1 text-sm">
-                        <li className="flex justify-between">
-                          <span>Monday:</span>
-                          <span>8 am–10 pm</span>
-                        </li>
-                        <li className="flex justify-between">
-                          <span>Tuesday:</span>
-                          <span>8 am–10 pm</span>
-                        </li>
-                        <li className="flex justify-between">
-                          <span>Wednesday:</span>
-                          <span>8 am–10 pm</span>
-                        </li>
-                        <li className="flex justify-between">
-                          <span>Thursday:</span>
-                          <span>8 am–10 pm</span>
-                        </li>
-                        <li className="flex justify-between">
-                          <span>Friday:</span>
-                          <span>8 am–12 am</span>
-                        </li>
-                        <li className="flex justify-between">
-                          <span>Saturday:</span>
-                          <span>8 am–12 am</span>
-                        </li>
-                        <li className="flex justify-between">
-                          <span>Sunday:</span>
-                          <span>8 am–10 pm</span>
-                        </li>
-                      </ul>
+                        <dt>Saturday:</dt>
+                        <dd>8:30 am–9 pm</dd>
+
+                        <dt>Sunday:</dt>
+                        <dd>10 am–6 pm</dd>
+                      </dl>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Full-width Map Below Cards */}
-            <div className="w-full max-w-6xl mx-auto">
-              <div className="h-[400px] md:h-[500px] rounded-lg overflow-hidden shadow-lg">
+            {/* Map */}
+            <div className="w-full max-w-6xl mx-auto lg:max-w-none lg:mx-0">
+              <div className="h-[400px] md:h-[500px] lg:h-full rounded-lg overflow-hidden shadow-lg">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3596.965631229076!2d18.481858899999995!3d-33.9836241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc43940b24aab7%3A0x910b69a2e9e61db3!2sCaf%C3%A9%20Crave!5e1!3m2!1sen!2sza!4v1759685841467!5m2!1sen!2sza"
                   width="100%"
@@ -321,25 +204,13 @@ export const ContactPage = () => {
                   allowFullScreen={true}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Café Crave locations"
+                  title="Café Crave location"
                 />
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Floating WhatsApp Button */}
-      <a
-        href="https://wa.me/27662386374?text=Hi%20Crave%20Café!%20I'd%20like%20to%20know%20more%20about..."
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 bg-[#25D366] hover:bg-[#20BA5A] text-white p-4 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-50 focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-opacity-50"
-        style={{ animation: 'subtlePulse 3s ease-in-out infinite' }}
-        aria-label="Chat with us on WhatsApp"
-      >
-        <WhatsAppIcon size={32} />
-      </a>
 
       </main>
       <Footer />

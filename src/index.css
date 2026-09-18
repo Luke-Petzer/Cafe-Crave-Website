@@ -3,8 +3,9 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 /* DO NOT DELETE THESE TAILWIND IMPORTS, OTHERWISE THE STYLING WILL NOT RENDER AT ALL */
-/* Google Fonts Import */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+/* Google Fonts: loaded via <link rel="stylesheet"> + preconnect in
+   index.html (load feel) instead of a CSS @import, which the HTML preload
+   scanner can't discover until index.css itself has been fetched. */
 
 /* Standardized Section Styles */
 @layer components {
@@ -33,14 +34,20 @@
 }
 
 :root {
-  --animation-duration-fast: 0.35s;
-  --animation-duration-medium: 0.45s;
-  --animation-duration-micro: 0.15s;
   --color-primary: #322C2B;
   --color-secondary: #5C3A2D;
   --color-accent: #803D3B;
   --color-light: #FFFFFF;
   --color-subtext: #A86A53;
+
+  /* Motion tokens (improve-animations AUDIT.md §2, §7) */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);        /* strong ease-out for UI entering/exiting */
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);    /* strong ease-in-out for on-screen movement */
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);     /* iOS-like drawer curve */
+  --dur-press: 140ms;   /* button press feedback: 100-160ms */
+  --dur-hover: 200ms;   /* hover/colour changes */
+  --dur-panel: 220ms;   /* dropdowns/accordions: 150-250ms */
+  --dur-drawer: 300ms;  /* modals/drawers: 200-500ms */
 }
 body {
   margin: 0;
@@ -83,25 +90,15 @@ section:not([class*="scroll-mt"]),
 .skip-to-content:focus {
   top: 0;
 }
+/* Press feedback (apple-design §1, AUDIT §3) — feedback lives on the press,
+   applied alongside each element's existing hover: treatment. */
+.pressable {
+  transition: transform var(--dur-press) var(--ease-out);
+}
+.pressable:active {
+  transform: scale(0.97);
+}
 /* Animations - Simplified and lightweight */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-@keyframes sectionFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to { 
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes vinylSpin {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
-}
 @keyframes subtlePulse {
   0%, 100% {
     transform: scale(1);
@@ -113,50 +110,11 @@ section:not([class*="scroll-mt"]),
   }
 }
 
-/* Page-level fade-in for initial load */
-.animate-fade-in {
-  animation: fadeIn 0.3s ease-in-out;
-}
-
 /* Floating WhatsApp button pulse */
 .animate-subtle-pulse {
   animation: subtlePulse 2.5s ease-in-out infinite;
 }
 
-/* Section-based animation - one animation per section */
-
-
-/* Ensure sections become visible when the class is added */
-
-/* Fallback: make sections visible after a short delay if JS hasn't loaded */
-
-/* Override with instant visibility when the observer adds the class */
-
-
-/* Respect user's motion preferences */
-
-/* Vinyl disc styling */
-.vinyl-disc {
-  background: radial-gradient(
-    circle at center,
-    #000 0%,
-    #000 20%,
-    rgba(50, 44, 43, 0.9) 21%,
-    rgba(50, 44, 43, 0.9) 40%,
-    #000 41%,
-    #000 60%,
-    rgba(50, 44, 43, 0.8) 61%
-  );
-  animation: vinylSpin 8s linear infinite;
-}
-.vinyl-animation:hover .vinyl-disc {
-  animation-play-state: running;
-}
-@media (max-width: 767px) {
-  .vinyl-disc {
-    animation-play-state: paused;
-  }
-}
 .hover\:shadow-glow:hover {
   box-shadow: 0 0 15px rgba(228, 197, 158, 0.6);
 }
@@ -173,46 +131,6 @@ section:not([class*="scroll-mt"]),
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
-/* Menu navigation scroll snap */
-.scroll-snap-x {
-  scroll-snap-type: x mandatory;
-}
-.scroll-snap-align-center {
-  scroll-snap-align: center;
-}
-.menu-scroll-container {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-  padding: 0.5rem 2rem;
-}
-.menu-scroll-container::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
-}
-/* Menu Carousel with Perspective */
-.menu-carousel-perspective {
-  perspective: 1000px;
-  transform-style: preserve-3d;
-}
-.menu-carousel-container {
-  transform-style: preserve-3d;
-  scroll-behavior: smooth;
-}
-.menu-plate {
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-  transform: translateZ(0);
-}
-.menu-plate:hover {
-  box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.4);
-}
-.hide-scrollbar {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
 /* Vinyl Record Player Styling */
 .vinyl-record {
   background-color: #111;
@@ -228,22 +146,17 @@ section:not([class*="scroll-mt"]),
   );
 }
 .vinyl-record-container {
-  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* M1 (feel-audit-2026-09), approved by Luke: the record spins on album
+     change again — via a `transition-transform` Tailwind utility on the
+     element itself (duration-drawer/ease-in-out-strong tokens), driven by
+     MusicFeature.tsx's cumulative `spinDegrees` state, not the old bouncy
+     cubic-bezier(0.175, 0.885, 0.32, 1.275) removed in 5.5 (that curve
+     overshoots past 100% — more playful than the "subtle" brief asked for).
+     Only the shadow lives in this class; the transition is on the element. */
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
 }
 .vinyl-player-wrapper {
   transform-style: preserve-3d;
-}
-.audio-waveform {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.waveform-bar {
-  border-radius: 2px;
-  transform-origin: bottom;
-  animation: waveformPulse 1.2s ease-in-out infinite;
-  opacity: 0.7;
 }
 
 /* === HERO ZOOM ANIMATION === */
@@ -304,11 +217,6 @@ t
   transition-delay: 300ms;
 }
 
-/* Mobile Menu Overlay Animation */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
 /* Respect user preference for reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, 
@@ -319,9 +227,6 @@ t
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .animate-fade-in,
-  .scroll-animate,
-  .vinyl-disc,
   .animate-subtle-pulse {
     animation: none !important;
     transition: none !important;
@@ -342,18 +247,4 @@ t
     outline-offset: 2px;
     transform: none !important;
   }
-  .waveform-bar {
-    animation: none !important;
-  }
-  .vinyl-record-container {
-    transform: none !important;
-  }
-  .menu-plate {
-    transform: none !important;
-  }
-}
-/* Add scroll animation observer functionality */
-.scroll-animate.visible {
-  opacity: 1;
-  transform: translateY(0);
 }

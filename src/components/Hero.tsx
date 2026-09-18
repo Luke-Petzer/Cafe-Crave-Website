@@ -17,6 +17,7 @@ export const Hero = () => {
           className="w-full h-full object-cover object-[0%_0%] md:object-center"
           width="1600"
           height="1000"
+          fetchPriority="high"
         />
         {/* Dark gradient overlay for better text legibility */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
@@ -41,7 +42,7 @@ export const Hero = () => {
 
             <Link
               to="/menu"
-              className="bg-accent hover:bg-opacity-90 text-light px-8 py-4 rounded-md inline-flex items-center justify-center font-medium transition-all duration-200 ease-out hover:scale-[1.02] hover:shadow-lg text-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 will-change-transform"
+              className="pressable bg-accent hover:bg-opacity-90 text-light px-8 py-4 rounded-md inline-flex items-center justify-center font-medium transition-[transform,box-shadow,background-color] duration-200 ease-out hover:scale-[1.02] hover:shadow-lg text-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 will-change-transform"
             >
               View Our Menu
               <ArrowRightIcon size={20} className="ml-2" />

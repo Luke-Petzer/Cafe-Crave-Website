@@ -7,8 +7,17 @@ import cafeLogoIcon from '../assets/old-logo.svg';
 
 export const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    // Keeps the overlay mounted for the duration of its exit transition
+    // (4.1): a conditional {isMenuOpen && (...)} mount/unmount can't animate
+    // the close, only the open. Mounting on open and unmounting only after
+    // the CSS opacity transition finishes gives open and close one shared,
+    // retargetable transition instead of a one-sided keyframe-in/instant-out.
+    const [isMenuRendered, setIsMenuRendered] = useState(false);
     const location = useLocation();
 
+    useEffect(() => {
+        if (isMenuOpen) setIsMenuRendered(true);
+    }, [isMenuOpen]);
 
     // --- Mobile Menu & Body Scroll ---
     // Ensure body overflow is cleared on initial mount (fixes refresh issues)
@@ -51,7 +60,7 @@ export const Header = () => {
                         <Link to="/" className="flex items-center gap-4" aria-label="Café Crave - Home">
                             {/* Logo with circular background, hover and focus states */}
                             <div
-                                className="p-2 transition-all duration-200 ease-in-out hover:opacity-80 focus-within:opacity-80 focus-within:ring-2 focus-within:ring-secondary focus-within:ring-offset-2 focus-within:ring-offset-primary"
+                                className="p-2 transition-[opacity,box-shadow] duration-200 ease-in-out hover:opacity-80 focus-within:opacity-80 focus-within:ring-2 focus-within:ring-secondary focus-within:ring-offset-2 focus-within:ring-offset-primary"
                             >
                                 <img
                                     src={cafeLogoIcon}
@@ -119,8 +128,15 @@ export const Header = () => {
                     </nav>
                 </div>
                 {/* Mobile Navigation Overlay */}
-                {isMenuOpen && (
-                    <div id="mobile-menu" className="fixed inset-0 bg-primary z-[45] md:hidden flex flex-col items-center justify-center animate-fade-in">
+                {isMenuRendered && (
+                    <div
+                        id="mobile-menu"
+                        className={`fixed inset-0 bg-primary z-[45] md:hidden flex flex-col items-center justify-center transition-opacity duration-drawer ease-out-strong ${isMenuOpen ? 'opacity-100' : 'opacity-0'}`}
+                        onTransitionEnd={() => {
+                            if (!isMenuOpen) setIsMenuRendered(false);
+                        }}
+                        aria-hidden={!isMenuOpen}
+                    >
                         <div className="text-center mb-8">
                             {/* Mobile menu logo */}
                             <img

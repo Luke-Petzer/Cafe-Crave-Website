@@ -9,25 +9,22 @@ import matchaImg from '../assets/Pasted_Graphic_3.webp';
 const featuredItems = [
     {
         id: 1,
-        name: 'Biscoff Cheesecake',
-        category: 'Dessert',
-        price: 'R95',
+        name: 'Gourmet Cheesecake',
+        category: 'Bakery',
         image: cheesecakeImg,
         imagePosition: '', // Or 'object-center'
     },
     {
         id: 2,
-        name: 'Lamb Chops',
-        category: 'Lunch',
-        price: 'R175',
+        name: '300g Lamb Chops',
+        category: 'Mains',
         image: lambChopsImg,
         imagePosition: '', // Or 'object-center'
     },
     {
         id: 3,
-        name: 'Iced Matcha',
+        name: 'Milkshake',
         category: 'Beverages',
-        price: 'R65',
         image: matchaImg,
         imagePosition: 'object-[50%_25%]'
     },
@@ -51,7 +48,7 @@ export const MenuPreview: React.FC = () => {
 					{featuredItems.map((item) => (
 						<div
 							key={item.id}
-							className="bg-lightBg rounded-lg overflow-hidden shadow-md border border-redText border-opacity-20 transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg"
+							className="bg-lightBg rounded-lg overflow-hidden shadow-md border border-redText border-opacity-20 transition-transform duration-200 hh:-translate-y-2 hh:shadow-lg"
 						>
 							{/*
 								Image Container Adjustment Guide (Aspect Ratio Method):
@@ -80,7 +77,7 @@ export const MenuPreview: React.FC = () => {
                                 <img
                                     src={item.image}
                                     alt={item.name}
-                                    className={`w-full h-full object-cover transition-transform duration-300 hover:scale-105 ${item.imagePosition || 'object-center'}`}
+                                    className={`w-full h-full object-cover transition-transform duration-200 hh:scale-105 ${item.imagePosition || 'object-center'}`}
                                     width="800"
                                     height="600"
                                     loading="lazy"
@@ -90,12 +87,9 @@ export const MenuPreview: React.FC = () => {
 								<span className="text-xs text-accent font-medium uppercase tracking-wide">
 									{item.category}
 								</span>
-								<h3 className="text-xl font-bold text-darkBg mt-2 mb-3">
+								<h3 className="text-xl font-bold text-darkBg mt-2">
 									{item.name}
 								</h3>
-								<p className="text-2xl font-bold text-accent">
-									{item.price}
-								</p>
 							</div>
 						</div>
 					))}
@@ -104,7 +98,7 @@ export const MenuPreview: React.FC = () => {
 				<div className="text-center">
 					<Link
 						to="/menu"
-						className="bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center justify-center font-medium transition-all duration-200 ease-out hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 will-change-transform"
+						className="pressable bg-accent hover:bg-opacity-90 text-light px-8 py-3 rounded-md inline-flex items-center justify-center font-medium transition-[transform,box-shadow,background-color] duration-200 ease-out hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 will-change-transform"
 					>
 						View Full Menu
 						<ArrowRightIcon size={18} className="ml-2" />

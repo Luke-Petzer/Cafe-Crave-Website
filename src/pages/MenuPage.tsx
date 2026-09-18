@@ -22,7 +22,7 @@ import cheeseCakeImg from '../assets/cheese-cake.webp';
 import halaalIcon from '../assets/halaal.svg';
 import menuLogo from '../assets/menu-logo.svg';
 
-type SectionKey = 'breakfast' | 'kiddies' | 'starters' | 'burgers' | 'toasties' | 'wraps' | 'mains' | 'steaks' | 'platters' | 'coffee' | 'tea' | 'beverages' | 'dessert' | 'bakery';
+type SectionKey = 'breakfast' | 'kiddies' | 'starters' | 'burgers' | 'toasties' | 'wraps' | 'mains' | 'platters' | 'coffee' | 'tea' | 'beverages' | 'dessert' | 'bakery';
 
 export const MenuPage = () => {
   // --- STATE MANAGEMENT ---
@@ -30,19 +30,29 @@ export const MenuPage = () => {
   // All sections collapsed by default on mobile
   const [expandedSections, setExpandedSections] = useState<Record<SectionKey, boolean>>({
     breakfast: false, kiddies: false, starters: false, burgers: false, toasties: false, wraps: false,
-    mains: false, steaks: false, platters: false, coffee: false, tea: false, beverages: false, dessert: false, bakery: false
+    mains: false, platters: false, coffee: false, tea: false, beverages: false, dessert: false, bakery: false
   });
-  
+
   const sectionRefs = useRef<Record<SectionKey, HTMLDivElement | null>>({
     breakfast: null, kiddies: null, starters: null, burgers: null, toasties: null, wraps: null,
-    mains: null, steaks: null, platters: null, coffee: null, tea: null, beverages: null, dessert: null, bakery: null
+    mains: null, platters: null, coffee: null, tea: null, beverages: null, dessert: null, bakery: null
   });
 
   // --- SCROLL LOGIC (Simplified - No nav to update) ---
+  // Batched into requestAnimationFrame (5.4, apple-design §11) so the
+  // React state write -- and the re-render it forces -- happens at most
+  // once per frame instead of on every raw scroll event.
   useEffect(() => {
+    const headerHeight = 80;
+    let ticking = false;
+
     const handleScroll = () => {
-      const headerHeight = 80;
-      setIsNavSticky(window.scrollY > headerHeight);
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setIsNavSticky(window.scrollY > headerHeight);
+        ticking = false;
+      });
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -55,19 +65,12 @@ export const MenuPage = () => {
 
   // --- SUB-COMPONENTS ---
 
-  // The "Newspaper Row" Item:  Burger ...... R100
-  const MenuItem = ({ name, price, desc, highlight = false }: { name: string, price: string, desc?: string, highlight?: boolean }) => (
+  // The "Newspaper Row" Item: just the item name + description (no pricing column)
+  const MenuItem = ({ name, desc, highlight = false }: { name: string, desc?: string, highlight?: boolean }) => (
     <div className="mb-5 break-inside-avoid relative group">
-      <div className="flex justify-between items-baseline w-full">
-        <h4 className={`font-bold uppercase tracking-wide text-primary ${highlight ? 'text-xl' : 'text-lg'}`}>
-          {name}
-        </h4>
-        {/* The Dotted Leader Line */}
-        <div className="flex-grow mx-2 border-b-2 border-dotted border-primary/40 relative -top-1"></div>
-        <span className={`font-serif font-bold text-primary ${highlight ? 'text-2xl' : 'text-xl'}`}>
-          {price}
-        </span>
-      </div>
+      <h4 className={`font-bold uppercase tracking-wide text-primary ${highlight ? 'text-xl' : 'text-lg'}`}>
+        {name}
+      </h4>
       {desc && (
         <p className="text-sm text-subtextLightBg font-sans leading-tight mt-1 italic opacity-90 max-w-[90%]">
           {desc}
@@ -84,7 +87,7 @@ export const MenuPage = () => {
       <div
         ref={el => sectionRefs.current[id] = el}
         id={id}
-        className="relative border-4 border-primary bg-light mb-10 transition-all duration-500"
+        className="relative border-4 border-primary bg-light mb-10"
       >
         {/* Section Header - Clickable on all mobile screens, not clickable on desktop */}
         <div
@@ -106,22 +109,27 @@ export const MenuPage = () => {
           </div>
         </div>
 
-        {/* Section Content - Always visible on desktop (lg+), collapsible on mobile */}
-        <div className={`relative overflow-hidden transition-all duration-500 lg:max-h-none lg:opacity-100 ${
-          isExpanded ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0'
+        {/* Section Content - Always visible on desktop (lg+), collapsible on mobile.
+            CSS Grid 0fr -> 1fr trick (AUDIT §5): animates a track size, not the
+            max-height layout property, so the reveal speed matches the real
+            content height instead of an arbitrary oversized max-h target. */}
+        <div className={`grid transition-[grid-template-rows,opacity] duration-panel ease-out-strong lg:grid-rows-[1fr] lg:opacity-100 ${
+          isExpanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
         }`}>
-          {/* Background Watermark (Grayscale + Multiply for drawn effect) */}
-          <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-            <img
-              src={img}
-              alt=""
-              className="w-full h-full object-cover opacity-[0.07] mix-blend-multiply scale-110"
-              style={{ filter: 'grayscale(100%)' }}
-            />
-          </div>
+          <div className="relative overflow-hidden">
+            {/* Background Watermark (Grayscale + Multiply for drawn effect) */}
+            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+              <img
+                src={img}
+                alt=""
+                className="w-full h-full object-cover opacity-[0.07] mix-blend-multiply scale-110"
+                style={{ filter: 'grayscale(100%)' }}
+              />
+            </div>
 
-          <div className="relative z-10 p-6 md:p-8">
-             {children}
+            <div className="relative z-10 p-6 md:p-8">
+               {children}
+            </div>
           </div>
         </div>
       </div>
@@ -199,54 +207,123 @@ export const MenuPage = () => {
       {/* --- MENU CONTENT GRID --- */}
       <main className="container mx-auto px-4 py-12 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-          
+
           {/* --- LEFT COLUMN --- */}
           <div className="flex flex-col gap-8">
-            
+
             <MenuSection id="breakfast" title="Morning Edition" subTitle="Served All Day" img={breakfastImg}>
-              <MenuItem name="Avo on Toast" price="R85" desc="Sliced avo + feta, rosa tomato, red onion" />
-              <MenuItem name="Build-o-Omelette" price="R85" desc="3 eggs and a slice of ciabatta" />
+              <MenuItem name="Avo on Toast 🌱" desc="Sliced avo + feta + rosa tomato + red onion" />
+              <MenuItem name="Build o-Omlette 🌱" desc="4 eggs and a slice of ciabatta" />
               <div className="ml-4 mb-4 text-xs text-subtextLightBg italic">
-                <p>Add-ons: Chilli (R10), Tomato (R10), Onions (R10), Egg (R15), Cheese (R15), Feta (R15), Mushroom (R15), Spinach (R25), Avo (R25), Spiced Beef (R25), Sausage (R25), Wagyu (R65), Chicken (R35)</p>
+                <p>Add-ons: Chilli, Tomato, Onions, Egg, Cheese, Feta, Mushroom, Spinach, Avo, Spiced Beef, Sausage, Chicken</p>
               </div>
-              <MenuItem name="Breakfast Muffin" price="R90" desc="English muffin + egg + spiced beef, melted cheese + hash brown" />
-              <MenuItem name="Eggs Benedict" price="R95" desc="English muffin + 2 poached eggs, hollandaise sauce with choice of: spinach & mushroom OR spiced beef & caramelised onion OR Wagyu & Rosa Tomato (+R65)" />
-              <MenuItem name="Brioche French Toast" price="R95" desc="With choice of: berry compote & cream OR classic creme brulee" />
-              <MenuItem name="Loaded Hash Bowl" price="R105" desc="3 scrambled eggs + hash brown + tomato, spinach + mushroom + sriracha + avo + feta" />
-              <MenuItem name="Vegan Burrito" price="R115" desc="Hummus + tzatziki + chickpeas + roast veg" />
-              <MenuItem name="Crave Signature" price="R135" highlight desc="2 eggs + sauteed mushrooms + 2 sausages, baked beans + fries + fried tomato, 2 slices ciabatta + spiced beef" />
-              <MenuItem name="Loaded Avo on Toast" price="R135" desc="Avo on toast + 2 sausages + 2 eggs + sauteed mushrooms" />
-              <MenuItem name="Breakfast Wrap" price="R145" desc="Scrambled eggs + feta + fillet steak, rosa tomato" />
-              <MenuItem name="Mighty Crave" price="R185" highlight desc="3 eggs + 120g steak + 2 sausages, sauteed mushrooms + spiced beef + fries, 2 slices ciabatta + fried tomato + baked beans" />
+              <MenuItem name="Breakfast Muffin" desc="English muffin + egg + spiced beef, melted cheese + hash brown" />
+              <MenuItem name="Eggs Benedict" desc="English muffin + 2 poached eggs, hollandaise sauce with a choice of: spinach & mushroom OR spiced beef & caramelised onion" />
+              <MenuItem name="Brioche French Toast 🌱" desc="With a choice of: berry compote & cream OR classic" />
+              <MenuItem name="Loaded Hash Bow" desc="3 scrambled eggs + potato rosti + tomato, spinach + mushroom + sriracha + avo + feta" />
+              <MenuItem name="Breakfast Croissant" desc="3 scrambled eggs + spiced beef + avo, feta + cherry tomato" />
+              <MenuItem name="Crave Signature" highlight desc="2 eggs + sauteed mushrooms + 2 sausages, baked beans + fries + fried tomato, 2 slices ciabatta + spiced beef" />
+              <MenuItem name="Breakfast Wrap" desc="Scrambled eggs + feta + 120g fillet steak, rosa tomato" />
+              <MenuItem name="Loaded Avo on Toast" desc="Avo on toast + 2 sausages + 2 eggs, sauteed mushrooms" />
+              <MenuItem name="Mighty Crave" highlight desc="3 eggs + 120g steak + 2 sausages, sauteed mushrooms + spiced beef + fries, 2 slices ciabatta + fried tomato, baked beans" />
+            </MenuSection>
+
+            <MenuSection id="kiddies" title="Kiddies Corner" subTitle="For The Little Ones" img={lightMealsImg}>
+              <MenuItem name="Cheese & Tomato Toastie" desc="A classic triangle toastie (crust | no crust)" />
+              <MenuItem name="Chicken and Cheese Wrap" desc="No gross greens" />
+              <MenuItem name="Kid Sized Nachos" desc="Half portion nachos" />
+              <MenuItem name="Crumbed Chicken Strips" desc="Crispy chicken fillet with fries" />
+              <MenuItem name="Chicken or Beef Slider" desc="Mini burger for the mini-me" />
 
               <div className="mt-6 pt-4 border-t-2 border-dashed border-primary/30">
                 <p className="font-bold uppercase text-sm mb-2">Add-ons</p>
                 <p className="text-xs text-subtextLightBg leading-relaxed">
-                  Chilli (R10) • Tomato (R10) • Onions (R10) • Egg (R15) • Cheese (R15) • Mushroom (R15) • Toast (R15) • Avo (R25) • Spiced Beef (R25) • Sausage (R25) • Fries (R40) • Spinach & Butternut (R45) • Chicken (R45)
+                  Chilli • Tomato • Onions • Egg • Cheese • Feta • Mushroom • Spinach • Avo • Spiced Beef • Sausage • Chicken
                 </p>
-                <p className="font-bold uppercase text-sm mt-4 mb-2">Sauces (R30)</p>
+                <p className="font-bold uppercase text-sm mt-4 mb-2">Sauces</p>
                 <p className="text-xs text-subtextLightBg leading-relaxed">
-                  Hot Honey • Garlic Aioli • Mushroom • Tzatziki • Chilli Cheese • Crave Sauce • Gochujang • Ranch
+                  Hot Honey • Garlic Aoli • Mushroom • Tzatzki • Chilli Cheese • Crave Sauce • Gochujang • Ranch
                 </p>
               </div>
             </MenuSection>
 
-            <MenuSection id="kiddies" title="Kiddies Corner" subTitle="For The Little Ones" img={lightMealsImg}>
-              <MenuItem name="Cheese & Tomato Toastie" price="R75" desc="A classic triangle toastie (crust / no crust)" />
-              <MenuItem name="Chicken and Cheese Wrap" price="R75" desc="No gross greens, kid sized" />
-              <MenuItem name="Nacho" price="R75" desc="Nachos + cheese + cheese sauce" />
-              <MenuItem name="Crumbed Chicken Strips" price="R80" desc="Crispy chicken fillet" />
-              <MenuItem name="Chicken or Beef Slider" price="R80" desc="Mini burger for the mini-me" />
+            <MenuSection id="starters" title="Starters" subTitle="Small Bites" img={grillImg}>
+              <MenuItem name="Sweet Corn Cups 🌱" desc="Served with a choice of: (butter – aromat – chives) OR (butter – chilli – lime)" />
+              <MenuItem name="Crumbed Mushrooms 🌱" desc="Served with: plain tartare | garlic & herb tartare" />
+              <MenuItem name="Mac & Cheese Balls 🌱" desc="Garlic aoli | hot honey" />
+              <MenuItem name="Hot Honey Chicken Tenders" desc="Served in a spicy and sweet sauce" />
+              <MenuItem name="Jalapeno Stuffed Rings 🌱" desc="4 stuffed onion rings & a sour cream dip" />
+              <MenuItem name="Full Chicken Wings" desc="4 wings served with ranch: hot honey | gochujang | crispy plain" />
             </MenuSection>
 
-            <MenuSection id="starters" title="Starters" subTitle="Small Bites" img={grillImg}>
-              <MenuItem name="Sweet Corn Cups" price="R55" desc="Served with choice of: (butter, aromat, chives) OR (butter, chilli, lime)" />
-              <MenuItem name="Jalapeno Stuffed Rings" price="R70" desc="4 stuffed onion rings & a sour cream dip" />
-              <MenuItem name="Crumbed Mushrooms" price="R65" desc="Served with tartare sauce in choice of: plain | garlic & herb" />
-              <MenuItem name="Mac & Cheese Balls" price="R70" desc="Garlic aioli, hot honey" />
-              <MenuItem name="Cheeseburger Spring Rolls" price="R75" desc="Choice of dipping sauce" />
-              <MenuItem name="Full Chicken Wings" price="R85" desc="4 wings served with ranch: hot honey, gochujang | crispy plain, hot honey" />
-              <MenuItem name="Hot Honey Chicken Tenders" price="R75" desc="Served as is" />
+            <MenuSection id="burgers" title="The Burger Headline" subTitle="Served with Fries" img={burgersImg}>
+              <div className="bg-primary text-light text-center p-2 mb-6">
+                 <span className="text-xs font-bold uppercase tracking-widest block">Choose your style: beef patties can be replaced with dhanya</span>
+                 <span className="text-xs uppercase tracking-wide">Loaded fries sauce available as an add-on</span>
+              </div>
+              <MenuItem name="El Classico" desc="Choice of chicken or beef + red onion, lettuce + tomato + mayo" />
+              <MenuItem name="Cheesy Crave" desc="Thick in-house patty + red onion + lettuce, tomato + cheese + crave sauce" />
+              <MenuItem name="Honey Crunch" desc="Hot honey chicken fillet + mozzarella, teriyaki mayo gherkin slaw" />
+              <MenuItem name="JCB" desc="Thick in-house patty + jalapeno ring, jcb sauce + gherkins + mozzarella" />
+              <MenuItem name="Tropico" desc="Thick in-house patty + grilled pineapple ring, lettuce + tomato + cheese + crave sauce" />
+              <MenuItem name="The Nacho" desc="Thick in-house patty + nacho chips, melted cheese + crave sauce + peppers" />
+              <MenuItem name="Hunger Buster" highlight desc="2x thick in-house patties + avo, crave sauce + lettuce + red onion + tomato" />
+              <MenuItem name="Go Big or Go Home" highlight desc="3x thick in-house patty + layered with cheese + avo + crave sauce + lettuce, red onion + tomato" />
+            </MenuSection>
+
+            <MenuSection id="mains" title="Mains" subTitle="Hearty Meals" img={lambChopsImg}>
+              <MenuItem name="Loaded Fries 🌱" desc="Fries + melted cheese sauce + jalapenos" />
+              <div className="ml-4 mb-4 text-xs text-subtextLightBg italic">
+                <p>Add hot honey chicken • Add steak</p>
+              </div>
+              <MenuItem name="Alfredo 🌱" desc="Creamy alfredo with mushrooms" />
+              <div className="ml-4 mb-4 text-xs text-subtextLightBg italic">
+                <p>Add chicken • Add steak</p>
+              </div>
+              <MenuItem name="Lemon Chilli Chicken Pasta" desc="Creamy pasta + grilled chicken | feta, lemon zest + hints of chilli | cherry tomato" />
+              <MenuItem name="Nachos 🌱" desc="Crispy nacho chips layered with cheese, salsa + guac + sour cream" />
+              <div className="ml-4 mb-4 text-xs text-subtextLightBg italic">
+                <p>Add grilled chicken • Add hot honey chicken • Add steak</p>
+              </div>
+              <MenuItem name="Grilled Chicken Fillet" desc="Chicken breast + 2 jalapeno rings + fries" />
+
+              <div className="mt-6 pt-4 border-t-2 border-dashed border-primary/30">
+                <p className="font-bold uppercase text-sm mb-2">Steak Cuts</p>
+                <p className="text-xs text-subtextLightBg italic mb-3">Served with onion rings + fries / salad</p>
+                <MenuItem name="300g Lamb Chops" />
+                <MenuItem name="120g Rump Steak" />
+                <MenuItem name="220g Rump Steak" />
+                <MenuItem name="120g Fillet Steak" />
+                <MenuItem name="220g Fillet Steak" highlight />
+              </div>
+            </MenuSection>
+
+            <MenuSection id="platters" title="Platters" subTitle="Share & Enjoy" img={grillImg}>
+              <MenuItem name="Street Platter" desc="2 sliders + hot honey chicken tenders, loaded fries + 3 jalapeno rings, crumbed mushrooms" />
+              <MenuItem name="Sharing Platter" desc="Hot honey chicken + 4 wings + corn cups, 2 jalapeno stuffed rings + loaded fries" />
+              <MenuItem name="Family Platter" highlight desc="2 el classico beef + 2 el classico chicken, 8 wings + loaded fries + crumbed mush." />
+              <MenuItem name="Grill Platter" highlight desc="400g ribs + 8 wings + hot honey tenders, loaded fries + crumbed mushroom, corn cups" />
+            </MenuSection>
+
+          </div>
+
+          {/* --- RIGHT COLUMN --- */}
+          <div className="flex flex-col gap-8">
+
+            <MenuSection id="toasties" title="Toasted Gazette" subTitle="Toasties" img={toastImg}>
+              <MenuItem name="Cheesy Red Onion 🌱" desc="Red onion + cheese + tomato" />
+              <MenuItem name="Chicken Mayo (plain | spicy)" desc="Chicken fillet + in house mayo, spicy (crave sauce)" />
+              <MenuItem name="Triple Cheese Melt 🌱" desc="Chedder + mozzarella + feta, caramelized onion + garlic butter" />
+              <MenuItem name="Crave Mushroom Melt 🌱" desc="Mushroom + mozzarella + cheddar, caramelized onion + garlic butter + truffle oil" />
+              <MenuItem name="Crave Steak" desc="Fillet steak + red onion + lettuce + cheese, crave sauce" />
+            </MenuSection>
+
+            <MenuSection id="wraps" title="Wraps" subTitle="Light Meals" img={wrapImg}>
+              <MenuItem name="Smashburger Wrap" desc="Beef + cheese + lettuce + avo + crave sauce" />
+              <MenuItem name="Chicken Caeser" desc="Feta + lettuce + red onion + avo + croutons, caeser dressing" />
+              <MenuItem name="Chicken Quesadilla" desc="Chicken fillet + peppers + cheese + salsa" />
+              <MenuItem name="Steak Quesadilla" desc="Fillet steak + peppers + salsa + cheese, sour cream" />
+              <MenuItem name="Vegan Smash Wrap 🌱" desc="Falafel + avo + caramelized onion + gherkins, tomato + vegan crave sauce" />
             </MenuSection>
 
             <MenuSection id="coffee" title="Coffee Press" subTitle="Illy Italian Blend" img={coffeeImg}>
@@ -255,133 +332,64 @@ export const MenuPage = () => {
                </div>
                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8">
                   <div>
-                    <MenuItem name="Espresso" price="R30" desc="Single shot of black gold" />
-                    <MenuItem name="Americano" price="R35" desc="Single shot espresso, 3 parts hot water (black)" />
-                    <MenuItem name="Cappuccino" price="R40" desc="Single shot espresso, steamed milk, foam" />
-                    <MenuItem name="Cortado" price="R45" desc="Double shot espresso, equal parts textured foam" />
+                    <MenuItem name="Espresso" desc="Single shot of black gold" />
+                    <MenuItem name="Cortado" desc="Double shot espresso, equal parts textured foam" />
+                    <MenuItem name="Americano" desc="Single shot espresso, 3 parts hot water (black)" />
+                    <MenuItem name="Cappuccino" desc="Single shot espresso, steamed milk, foam" />
                   </div>
                   <div>
-                    <MenuItem name="Vienna" price="R50" desc="Single shot espresso, condensed milk" />
-                    <MenuItem name="Flat White - Double Shot" price="R50" desc="Double shot espresso, steamed milk, small foam layer" />
-                    <MenuItem name="Latte" price="R50" desc="Single shot espresso, steamed milk, small foam layer" />
-                    <MenuItem name="Chai Latte" price="R50" desc="Spiced black tea, steamed milk, milk foam" />
+                    <MenuItem name="Flat White - Double Shot" desc="Double shot espresso, steamed milk, small foam layer" />
+                    <MenuItem name="Latte / Chai Latte" desc="Single shot espresso, steamed milk, small foam layer / chai" />
+                    <MenuItem name="Iced Coffee" desc="Double shot espresso, milk, ice" />
+                    <MenuItem name="Dirty Chai" desc="Single shot espresso, classic chai mix" />
                   </div>
                </div>
                <div className="mt-4">
-                 <MenuItem name="Dirty Chai" price="R60" desc="Single shot espresso, classic chai mix" />
-                 <MenuItem name="Mocha / White Mocha" price="R60" desc="Espresso, Nomu hot chocolate, whipped cream" />
-                 <MenuItem name="Vietnamese Iced Coffee" price="R65" desc="Double shot espresso, condensed milk, milk, ice" />
-               </div>
-               <div className="mt-6 pt-4 border-t-2 border-dashed border-primary/30 text-center">
-                 <p className="font-bold uppercase text-sm mb-2">Flavour Infusions (+R20)</p>
-                 <p className="text-xs italic text-subtextLightBg">
-                   Vanilla • Hazelnut • Caramel • Shortbread
-                 </p>
+                 <MenuItem name="Hot Chocolate / White" desc="Option of decedant hot chocolate or white hot chocolate" />
+                 <MenuItem name="Mocha / White Mocha" desc="Espresso, hot chocolate" />
+                 <MenuItem name="Vietnamese Iced Coffee" desc="Double shot espresso, condensed milk, milk, ice" />
+                 <MenuItem name="Coffee Freezo" desc="Espresso, milk, ice, freezo" />
                </div>
             </MenuSection>
-            
+
              <MenuSection id="beverages" title="Cold Press" subTitle="Refreshments" img={beverageImg}>
               <div className="mb-6">
                 <h3 className="font-serif font-bold text-xl underline decoration-dotted decoration-2 mb-4">Milkshakes</h3>
-                <div className="flex justify-between items-baseline mb-2">
-                  <span className="font-bold uppercase">All Flavours</span>
-                  <span className="font-serif font-bold text-xl">R75</span>
-                </div>
                 <p className="text-sm leading-relaxed italic text-subtextLightBg">
-                  Lime • Banana • Bubblegum • Chocolate • Strawberry • Chai • Coffee • Bar One • Red • Blue • Green • Yellow • Orange
+                  Lime • Banana • Bubblegum • Chocolate • Strawberry • Chai • Coffee • Bar One • Turkish Delight
                 </p>
               </div>
 
               <div className="mb-6">
-                <h3 className="font-serif font-bold text-xl underline decoration-dotted decoration-2 mb-4">Beverages</h3>
-                <MenuItem name="Kinza" price="R30" desc="Cola, Citrus, Lemonade" />
-                <MenuItem name="Bashe" price="R20" desc="Cola, Iron Brew, Pineapple, Very Berry, Passion Fruit, Lemonade, Cocopine" />
-                <MenuItem name="San Pellegrino" price="R40" desc="Blood Orange, Grapefruit, Gingerbeer, Pomegranate, Lemon, Orange, Orange & Fig, Peach & Clementine" />
-                <MenuItem name="100% Fruit Juice" price="R40" desc="Strawberry, Pineapple, Orange, Mango, Cranberry, Mango & Orange, Apple" />
-                <MenuItem name="Cordials" price="R65" desc="Passion Fruit, Lemonade, Blueberry, Lemon & Lime" />
-                <MenuItem name="Theonista" price="R60" desc="Cola, Ginger Beer, Cream Soda, Assorted Kombucha" />
+                <h3 className="font-serif font-bold text-xl underline decoration-dotted decoration-2 mb-4">Smoothies</h3>
+                <MenuItem name="Red Alert" desc="Strawberry | banana, apple juice | yogurt | honey" />
+                <MenuItem name="Bluephoria" desc="Blueberries | banana, almond milk | chia seeds" />
+                <MenuItem name="Green Genie" desc="Spinach | avocado | mango, banana | coconut water" />
+                <MenuItem name="Mellow Yellow" desc="Mango | pineapple | lime, yogurt | orange juice" />
               </div>
 
               <div className="mb-6">
-                <h3 className="font-serif font-bold text-xl underline decoration-dotted decoration-2 mb-4">Water</h3>
-                <MenuItem name="Aqua Panna 500ml" price="R35" />
-                <MenuItem name="S. Pellegrino 500ml" price="R35" />
-                <MenuItem name="Aqua Panna 1L" price="R55" />
-                <MenuItem name="S. Pellegrino 1L" price="R55" />
+                <h3 className="font-serif font-bold text-xl underline decoration-dotted decoration-2 mb-4">Cordials &amp; Mocktails</h3>
+                <p className="text-sm leading-relaxed italic text-subtextLightBg">
+                  Passion Fruit Cordial • Blueberry Cordial • Lemon &amp; Lime Cordial • Watermelon Spritzer • Apple, Melon &amp; Mint Mocktail • Guava Grapefruit &amp; Pineapple • Mango Daiquiri • Strawberry Daiquiri • Mojito • Pina Colada
+                </p>
+              </div>
+
+              <div className="mb-6">
+                <h3 className="font-serif font-bold text-xl underline decoration-dotted decoration-2 mb-4">Cold Beverages</h3>
+                <MenuItem name="100% Fruit Juice 350ml" desc="Strawberry | pineapple | orange | mango, cranberry | mango & orange | apple" />
+                <MenuItem name="Sanpellegrino" desc="Blood orange | grapefruit | gingerbeer, pomegranate | lemon | orange, orange & fig | peach & clementine" />
+                <MenuItem name="Kinza" desc="Cola | citrus | lemonade" />
+                <MenuItem name="Bashews" desc="Cola | iron brew | pineapple | cocopine, very berry | passion fruit | lemonade" />
               </div>
 
               <div>
-                <h3 className="font-serif font-bold text-xl underline decoration-dotted decoration-2 mb-4">Mocktails</h3>
-                <MenuItem name="Mocktails" price="R70" desc="Pina Colada • Strawberry Daiquiri • Mojito • Mango Daiquiri" />
+                <h3 className="font-serif font-bold text-xl underline decoration-dotted decoration-2 mb-4">Water</h3>
+                <MenuItem name="S. Pellegrino Sparkling 500ml" />
+                <MenuItem name="Aqua Panna Still 500ml" />
+                <MenuItem name="Aqua Panna Still 1L" />
+                <MenuItem name="S. Pellegrino Sparkling 1L" />
               </div>
-            </MenuSection>
-
-            <MenuSection id="wraps" title="Wraps" subTitle="Light Meals" img={wrapImg}>
-              <MenuItem name="Falafel" price="R100" desc="Cucumber + red onion + tzatziki + tomato" />
-              <MenuItem name="Smashburger Wrap" price="R115" desc="Beef + cheese + lettuce + avo + crave sauce" />
-              <MenuItem name="Chicken Caesar" price="R135" desc="Feta + mixed leaves + cucumber + avo, sauce choice: garlic mayo | sriracha mayo" />
-              <MenuItem name="Chicken Quesadilla" price="R135" desc="Chicken fillet + peppers + cheese + salsa" />
-              <MenuItem name="Steak" price="R165" desc="Fillet steak + red onion + tomato + fresh greens" />
-            </MenuSection>
-
-          </div>
-
-          {/* --- RIGHT COLUMN --- */}
-          <div className="flex flex-col gap-8">
-
-            <MenuSection id="burgers" title="The Burger Headline" subTitle="Served with Chips" img={burgersImg}>
-              <div className="bg-primary text-light text-center p-2 mb-6">
-                 <span className="text-xs font-bold uppercase tracking-widest block mb-1">All Burgers Served on Home-Made Brioche Bun</span>
-                 <span className="text-xs uppercase tracking-wide">Choose your style: Chicken | Dhanya Beef | Smash Patty | Wagyu Patty (+R45)</span>
-              </div>
-              <MenuItem name="El Classico" price="R90" desc="100g patty + red onion + lettuce + tomato, mayo" />
-              <MenuItem name="Chilli Cheese" price="R115" desc="The classico + cheese + chilli cheese sauce" />
-              <MenuItem name="Cheesy Crave" price="R125" desc="200g patty + red onion + lettuce + tomato, cheese + crave sauce" />
-              <MenuItem name="Tropico" price="R135" desc="200g patty + pineapple ring + lettuce + tomato, cheese + crave sauce" />
-              <MenuItem name="The Nacho" price="R145" desc="200g patty + nacho chips + melted cheese, crave sauce" />
-              <MenuItem name="Hunger Buster" price="R165" highlight desc="Choice of any 2x 200g patties + avo, crave sauce + lettuce + red onion + tomato" />
-              <MenuItem name="Go Big or Go Home" price="R210" highlight desc="Choice of any 3x 200g patties + layered with cheese + avo + crave sauce + lettuce, red onion + tomato" />
-            </MenuSection>
-
-            <MenuSection id="toasties" title="Toasted Gazette" subTitle="Toasties" img={toastImg}>
-              <MenuItem name="Cheesy Red Onion" price="R90" desc="Red onion + cheese + tomato" />
-              <MenuItem name="Chicken Mayo (plain | spicy)" price="R100" desc="Chicken fillet + in house mayo, spicy = crave sauce" />
-              <MenuItem name="Triple Cheese" price="R125" desc="Cheddar + mozzarella + feta" />
-              <MenuItem name="The Cuban" price="R175" highlight desc="Mozzarella, gherkins, mustard mayo" />
-              <MenuItem name="Crave Steak" price="R165" highlight desc="Fillet steak + red onion + lettuce + cheese, crave sauce" />
-            </MenuSection>
-
-            <MenuSection id="mains" title="Mains" subTitle="Hearty Meals" img={grillImg}>
-              <MenuItem name="Loaded Fries" price="R85" desc="Fries + melted cheese sauce + jalapenos" />
-              <div className="ml-4 mb-4 text-xs text-subtextLightBg italic">
-                <p>Add hot honey chicken (+R35) • Add beef smash (+R40) • Add steak (+R65)</p>
-              </div>
-              <MenuItem name="Alfredo" price="R105" desc="Creamy alfredo with mushrooms" />
-              <div className="ml-4 mb-4 text-xs text-subtextLightBg italic">
-                <p>Add chicken (+R35) • Add steak (+R65)</p>
-              </div>
-              <MenuItem name="Lemon Chilli Chicken Pasta" price="R130" desc="Creamy pasta + grilled chicken, lemon zest + hints of chilli" />
-              <MenuItem name="Nachos" price="R105" desc="Crispy nacho chips layered with cheese, salsa + guac + sour cream" />
-              <div className="ml-4 mb-4 text-xs text-subtextLightBg italic">
-                <p>Add grilled chicken (+R35) • Add hot honey chicken (+R35) • Add steak (+R65)</p>
-              </div>
-            </MenuSection>
-
-            <MenuSection id="steaks" title="Steaks" subTitle="Premium Cuts" img={lambChopsImg}>
-              <div className="bg-primary text-light text-center p-1 mb-6">
-                 <span className="text-xs font-bold uppercase tracking-widest">Served with a sauce of choice + onion rings + chips</span>
-              </div>
-              <MenuItem name="120g Rump Steak" price="R125" />
-              <MenuItem name="220g Rump Steak" price="R215" />
-              <MenuItem name="120g Fillet Steak" price="R145" />
-              <MenuItem name="220g Fillet Steak" price="R250" highlight />
-            </MenuSection>
-
-            <MenuSection id="platters" title="Platters" subTitle="Share & Enjoy" img={grillImg}>
-              <MenuItem name="Street Platter" price="R210" desc="2 sliders + hot honey chicken tenders, loaded fries + 2 veg starters" />
-              <MenuItem name="Grill Platter" price="R315" highlight desc="2 lamb chops + 120g steak + 2 sausages, fries + crispy onion rings" />
-              <MenuItem name="Sharing Platter" price="R245" desc="Hot honey chicken + 8 chicken wings, jalapeno stuffed rings + corn cups" />
-              <MenuItem name="Family Platter" price="R395" highlight desc="2 el classico + 2 cheesy crave, 2 sweet corn cups + 2 large fries" />
             </MenuSection>
 
             <MenuSection id="tea" title="Tea Time" subTitle="Selection by Dilmah" img={teaImg}>
@@ -392,36 +400,30 @@ export const MenuPage = () => {
             </MenuSection>
 
             <MenuSection id="dessert" title="Dessert" subTitle="Sweet Treats" img={cakeImg}>
-              <MenuItem name="Loaded Donuts" price="R80" desc="Caramel cream stuffed + Cadbury drizzle, peppermint crunch" />
-              <MenuItem name="Ice Cream Sandwich" price="R85" desc="Choc chip cookies + vanilla ice cream" />
-              <MenuItem name="Churros" price="R85" desc="Cinnamon dusted, choice of sauce: caramel / chocolate" />
-              <MenuItem name="Brownie Sundae" price="R90" desc="Layered choc brownie + vanilla ice cream" />
-              <MenuItem name="Loaded Waffle Bites" price="R105" highlight desc="Light waffle bits with choice of: strawberry shortbread | oreo & ice cream | banana & biscoff | death by chocolate" />
+              <MenuItem name="Churros" desc="Cinnamon dusted, choice of sauce - caramel | chocolate" />
+              <MenuItem name="Brownie Sundae" desc="Layered choc brownie + vanilla ice cream" />
             </MenuSection>
 
             <MenuSection id="bakery" title="Bakery" subTitle="Fresh Daily" img={cheeseCakeImg}>
-              <MenuItem name="Gourmet Cheesecake" price="R80" desc="As per display items" />
-              <MenuItem name="Signature Cakes" price="R60" desc="As per display items" />
-              <MenuItem name="Eclairs" price="R75" desc="Caramel cream + Cadbury chocolate" />
-              <MenuItem name="Scone" price="R40" desc="With butter" />
+              <MenuItem name="Gourmet Cheesecake" desc="Burnt basque | cadbury burnt basque | caramel | choc brownie | tiramisu | lemon creme | biscoff" />
+              <MenuItem name="Signature Cakes" desc="Choc brownie | cadbury | choc caramel" />
+              <MenuItem name="Eclairs (4)" desc="Caramel cream + cadbury chocolate" />
+              <MenuItem name="Scone" desc="With butter" />
               <div className="ml-4 mb-4 text-xs text-subtextLightBg italic">
-                <p>Add jam (+R10) • Add cheese (+R15) • Add cream (+R15)</p>
+                <p>Add jam • Add cheese • Add cream</p>
               </div>
-              <MenuItem name="Brioche" price="R65" desc="6 buns" />
-              <MenuItem name="Ciabatta Loaf" price="R50" desc="900g loaf" />
+              <MenuItem name="Brioche" desc="6 buns" />
+              <MenuItem name="Ciabatta Loaf" desc="900g loaf" />
             </MenuSection>
 
           </div>
         </div>
-        
+
         {/* Footer Disclaimer */}
         <div className="mt-16 border-t-4 border-primary pt-8 w-full">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-8 px-4 md:px-8">
-            <p className="font-bold text-lg md:text-xl uppercase text-primary text-center md:text-left">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 px-4 md:px-8">
+            <p className="font-bold text-lg md:text-xl uppercase text-primary text-center">
               10% Service fee on tables of 6+
-            </p>
-            <p className="text-sm md:text-base italic text-subtextLightBg text-center md:text-right">
-              Prices subject to change without prior notice. E&OE.
             </p>
           </div>
         </div>
@@ -430,10 +432,14 @@ export const MenuPage = () => {
 
       <Footer />
       
-      {/* Back to Top Button */}
-      <button 
+      {/* Back to Top Button. The offset "stamped" shadow is press feedback
+          (3.2/M2, apple-design §1: feedback belongs on pointer-down, not
+          hover) -- it fully flattens on :active. A real pointer additionally
+          gets a subtler pre-press hint (6.3: gated behind (hover: hover) so
+          touch doesn't latch a half-pressed look after a tap). */}
+      <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className={`fixed bottom-24 right-7 bg-primary text-light w-12 h-12 flex items-center justify-center rounded-none shadow-[4px_4px_0px_0px_rgba(131,81,63,1)] hover:translate-y-1 hover:shadow-none transition-all z-40 border-2 border-light ${isNavSticky ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        className={`fixed bottom-24 right-7 bg-primary text-light w-12 h-12 flex items-center justify-center rounded-none shadow-[4px_4px_0px_0px_rgba(131,81,63,1)] hh:shadow-[2px_2px_0px_0px_rgba(131,81,63,1)] hh:translate-y-0.5 active:!translate-y-1 active:!shadow-none transition-[transform,box-shadow] duration-press ease-out z-40 border-2 border-light ${isNavSticky ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         aria-label="Back to top"
       >
         <ArrowUpIcon />
