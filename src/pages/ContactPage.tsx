@@ -162,36 +162,31 @@ export const ContactPage = () => {
                     <ClockIcon size={24} className="text-accent mr-4 flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-medium text-lightText mb-2">Hours</h3>
-                      <ul className="text-lightText opacity-80 space-y-1 text-sm">
-                        <li className="flex justify-between">
-                          <span>Monday:</span>
-                          <span>10 am–6 pm</span>
-                        </li>
-                        <li className="flex justify-between">
-                          <span>Tuesday:</span>
-                          <span>8:30 am–6 pm</span>
-                        </li>
-                        <li className="flex justify-between">
-                          <span>Wednesday:</span>
-                          <span>8:30 am–6 pm</span>
-                        </li>
-                        <li className="flex justify-between">
-                          <span>Thursday:</span>
-                          <span>8:30 am–6 pm</span>
-                        </li>
-                        <li className="flex justify-between">
-                          <span>Friday:</span>
-                          <span>8:30 am–12 pm, 2–9 pm</span>
-                        </li>
-                        <li className="flex justify-between">
-                          <span>Saturday:</span>
-                          <span>8:30 am–9 pm</span>
-                        </li>
-                        <li className="flex justify-between">
-                          <span>Sunday:</span>
-                          <span>10 am–6 pm</span>
-                        </li>
-                      </ul>
+                      <dl className="text-lightText opacity-80 text-sm grid grid-cols-[auto_1fr] gap-x-3 gap-y-1">
+                        <dt>Monday:</dt>
+                        <dd>10 am–6 pm</dd>
+
+                        <dt>Tuesday:</dt>
+                        <dd>8:30 am–6 pm</dd>
+
+                        <dt>Wednesday:</dt>
+                        <dd>8:30 am–6 pm</dd>
+
+                        <dt>Thursday:</dt>
+                        <dd>8:30 am–6 pm</dd>
+
+                        <dt>Friday:</dt>
+                        <dd>
+                          <span className="block">8:30 am–12 pm</span>
+                          <span className="block">2–9 pm</span>
+                        </dd>
+
+                        <dt>Saturday:</dt>
+                        <dd>8:30 am–9 pm</dd>
+
+                        <dt>Sunday:</dt>
+                        <dd>10 am–6 pm</dd>
+                      </dl>
                     </div>
                   </div>
                 </div>
