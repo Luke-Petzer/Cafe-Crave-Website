@@ -96,7 +96,12 @@ section:not([class*="scroll-mt"]),
   transition: transform var(--dur-press) var(--ease-out);
 }
 .pressable:active {
-  transform: scale(0.97);
+  /* !important is required: elements combine .pressable with a Tailwind
+     hover:scale-* utility of equal specificity (one class + one pseudo-class).
+     On a real click you're hovering and pressing at once, and without this
+     the later-emitted hover rule wins the tie and the press never shows —
+     same reason the back-to-top button uses active:!translate-y-1. */
+  transform: scale(0.97) !important;
 }
 /* Animations - Simplified and lightweight */
 @keyframes subtlePulse {
