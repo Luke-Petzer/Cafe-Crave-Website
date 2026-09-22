@@ -31,16 +31,16 @@ export const ContactPage = () => {
     <div className="min-h-screen">
       <SEO
         title="Contact & Visit Us | Café Crave Claremont, Cape Town"
-        description="Find Café Crave at 219 Imam Haron Rd, Claremont. Call 066 238 6374, get directions, or check our hours. Your new favourite halaal café is waiting."
-        keywords="contact crave cafe, crave cafe address, halaal cafe claremont location, cafe near me claremont"
+        description="Find Café Crave at 219 Imam Haron Rd, Claremont. Call 073 565 1888, get directions, or check our hours. Your new favourite halaal-certified café is waiting."
+        keywords="contact crave cafe, crave cafe address, halaal-certified cafe claremont location, cafe near me claremont"
         schema={[
           {
             "@context": "https://schema.org",
             "@type": "Cafe",
             "name": "Café Crave",
-            "description": "A retro, music-inspired, halaal café in Claremont, Cape Town.",
+            "description": "A retro, music-inspired, halaal-certified café in Claremont, Cape Town.",
             "url": "https://cafecravecpt.co.za",
-            "telephone": "+27662386374",
+            "telephone": "+27735651888",
             "priceRange": "R",
             "servesCuisine": ["Café", "Halaal"],
             "address": {
@@ -134,9 +134,18 @@ export const ContactPage = () => {
                     <PhoneIcon size={24} className="text-accent mr-4 flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-medium text-lightText mb-1">Phone</h3>
-                      <a href="tel:+27662386374" className="pressable text-lightText opacity-80 hover:text-accent transition-colors">
+                      <a href="tel:+27735651888" className="pressable block text-lightText opacity-80 hover:text-accent transition-colors">
+                        +27 73 565 1888
+                      </a>
+                      <p className="text-lightText opacity-60 text-sm mt-1 mb-2">
+                        Restaurant · call or WhatsApp
+                      </p>
+                      <a href="tel:+27662386374" className="pressable block text-lightText opacity-80 hover:text-accent transition-colors">
                         +27 66 238 6374
                       </a>
+                      <p className="text-lightText opacity-60 text-sm mt-1">
+                        Alternative number
+                      </p>
                     </div>
                   </div>
 
@@ -145,12 +154,12 @@ export const ContactPage = () => {
                     <div>
                       <h3 className="font-medium text-lightText mb-1">WhatsApp</h3>
                       <a
-                        href="https://wa.me/27662386374?text=Hi%20Café%20Crave%20Claremont!%20I'd%20like%20to%20know%20more%20about%20visiting%20you."
+                        href="https://wa.me/27735651888?text=Hi%20Café%20Crave%20Claremont!%20I'd%20like%20to%20know%20more%20about%20visiting%20you."
                         target="_blank"
                         rel="noopener noreferrer"
                         className="pressable text-accent hover:underline transition-colors font-medium"
                       >
-                        +27 66 238 6374
+                        +27 73 565 1888
                       </a>
                       <p className="text-lightText opacity-60 text-sm mt-1">
                         Chat with us directly

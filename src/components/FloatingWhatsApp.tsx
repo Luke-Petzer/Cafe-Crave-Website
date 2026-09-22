@@ -6,7 +6,7 @@ const WhatsAppIcon = ({ size, className }: { size: number; className?: string })
 
 export const FloatingWhatsApp = () => (
   <a
-    href="https://wa.me/27662386374?text=Hi%20Caf%C3%A9%20Crave!%20I%27d%20like%20to%20place%20an%20order"
+    href="https://wa.me/27735651888?text=Hi%20Caf%C3%A9%20Crave!%20I%27d%20like%20to%20place%20an%20order"
     target="_blank"
     rel="noopener noreferrer"
     className="pressable fixed bottom-6 right-6 z-40 bg-[#25D366] hover:bg-[#20BA5A] text-white p-4 rounded-full shadow-lg transition-colors duration-200 animate-subtle-pulse focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-opacity-50"

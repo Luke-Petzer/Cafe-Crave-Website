@@ -12,7 +12,7 @@ export const EventsPage = () => {
       <SEO
         title="Events & Small Venue Hire | Café Crave Claremont"
         description="Host your event at Café Crave in Claremont. We offer a unique, retro venue for birthdays, meetings, and gatherings. See our upcoming public events!"
-        keywords="small event venue claremont, halaal event venue cape town, cafe to hire for party claremont, upcoming events claremont"
+        keywords="small event venue claremont, halaal-certified event venue cape town, cafe to hire for party claremont, upcoming events claremont"
       />
       <ScrollAnimationObserver />
       <Header />
@@ -154,7 +154,7 @@ export const EventsPage = () => {
                   </div>
 
                   <a
-                    href="https://wa.me/27662386374?text=Hi%20Café%20Crave!%20I%27d%20like%20to%20book%20your%20space%20for%20an%20event."
+                    href="https://wa.me/27735651888?text=Hi%20Café%20Crave!%20I%27d%20like%20to%20book%20your%20space%20for%20an%20event."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="pressable bg-accent hover:bg-opacity-90 text-light px-8 py-4 rounded-md inline-flex items-center justify-center font-medium text-lg transition-[transform,box-shadow,background-color] duration-200 ease-out hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 will-change-transform"
@@ -240,7 +240,7 @@ export const EventsPage = () => {
                     <ArrowRightIcon size={20} className="ml-2" />
                   </a>
                   <a
-                    href="https://wa.me/27662386374?text=Hi%20Café%20Crave!%20I'd%20like%20to%20know%20about%20upcoming%20events."
+                    href="https://wa.me/27735651888?text=Hi%20Café%20Crave!%20I'd%20like%20to%20know%20about%20upcoming%20events."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-light bg-opacity-10 hover:bg-opacity-20 text-darkText px-6 py-3 rounded-md inline-flex items-center justify-center font-medium transition-colors duration-hover focus:outline-none focus:ring-2 focus:ring-light focus:ring-opacity-30"
