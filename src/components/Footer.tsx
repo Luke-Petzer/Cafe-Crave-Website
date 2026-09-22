@@ -24,12 +24,24 @@ export const Footer = () => {
             </p>
             <div className="space-y-2">
               <p className="opacity-80 text-sm font-medium">Get in Touch</p>
-              <a
-                href="tel:+27662386374"
-                className="block accent-light hover:text-opacity-80 transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 rounded text-sm"
-              >
-                +27 66 238 6374
-              </a>
+              <div>
+                <a
+                  href="tel:+27735651888"
+                  className="block accent-light hover:text-opacity-80 transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 rounded text-sm"
+                >
+                  +27 73 565 1888
+                </a>
+                <span className="block opacity-60 text-xs">Call or WhatsApp</span>
+              </div>
+              <div className="pt-1">
+                <a
+                  href="tel:+27662386374"
+                  className="block accent-light hover:text-opacity-80 transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 rounded text-sm"
+                >
+                  +27 66 238 6374
+                </a>
+                <span className="block opacity-60 text-xs">Alternative number</span>
+              </div>
               <p className="opacity-80 text-sm leading-relaxed pt-2">
                 219 Imam Haron Rd, Claremont
               </p>
