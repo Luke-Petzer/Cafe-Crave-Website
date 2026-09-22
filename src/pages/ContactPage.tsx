@@ -138,7 +138,7 @@ export const ContactPage = () => {
                         +27 73 565 1888
                       </a>
                       <p className="text-lightText opacity-60 text-sm mt-1 mb-2">
-                        Call or WhatsApp
+                        Restaurant · call or WhatsApp
                       </p>
                       <a href="tel:+27662386374" className="pressable block text-lightText opacity-80 hover:text-accent transition-colors">
                         +27 66 238 6374

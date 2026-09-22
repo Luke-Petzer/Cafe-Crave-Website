@@ -31,7 +31,7 @@ export const Footer = () => {
                 >
                   +27 73 565 1888
                 </a>
-                <span className="block opacity-60 text-xs">Call or WhatsApp</span>
+                <span className="block opacity-60 text-xs">Restaurant · call or WhatsApp</span>
               </div>
               <div className="pt-1">
                 <a
