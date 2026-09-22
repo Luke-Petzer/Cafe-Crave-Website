@@ -138,7 +138,7 @@ export const MenuPage = () => {
 
   return (
     <div className="min-h-screen bg-light text-primary font-sans selection:bg-secondary selection:text-white">
-      <SEO title="Menu Gazette | Café Crave" description="Explore our vintage style menu featuring halaal breakfasts, burgers, and artisan coffee." />
+      <SEO title="Menu Gazette | Café Crave" description="Explore our vintage style menu featuring halaal-certified breakfasts, burgers, and artisan coffee." />
       <Header />
       
       {/* --- MENU HEADER DESIGN --- */}
@@ -185,11 +185,11 @@ export const MenuPage = () => {
             </h2>
           </div>
 
-          {/* Right: Strictly Halal Badge */}
+          {/* Right: Halaal Certified Badge */}
           <div className="flex-shrink-0 w-20 h-20 md:w-24 md:h-24 border-4 border-primary bg-light flex flex-col items-center justify-center p-2">
-            <img src={halaalIcon} alt="Halal Certified" className="w-10 h-10 md:w-12 md:h-12 mb-1" />
+            <img src={halaalIcon} alt="Halaal Certified" className="w-10 h-10 md:w-12 md:h-12 mb-1" />
             <span className="text-[8px] md:text-[10px] font-bold uppercase text-primary text-center leading-tight">
-              Strictly<br />Halal
+              Halaal<br />Certified
             </span>
           </div>
         </div>

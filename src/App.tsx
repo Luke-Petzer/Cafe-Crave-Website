@@ -14,9 +14,9 @@ export function App() {
     return (
         <div className="min-h-screen">
             <SEO
-                title="Café Crave | Halaal Café & Vinyl Music Hub in Claremont"
-                description="Visit Café Crave in Claremont, Cape Town. A unique, retro-inspired halaal café with artisan coffee, vinyl records, and delicious all-day meals. Your new local hangout."
-                keywords="halaal café claremont, coffee shop claremont, vinyl café cape town, halaal breakfast claremont, retro cafe"
+                title="Café Crave | Halaal-Certified Café & Vinyl Music Hub"
+                description="Visit Café Crave in Claremont, Cape Town. A unique, retro-inspired, halaal-certified café with artisan coffee, vinyl records, and delicious meals."
+                keywords="halaal-certified café claremont, coffee shop claremont, vinyl café cape town, halaal-certified breakfast claremont, retro cafe"
             />
             <ScrollAnimationObserver />
             <Header />
