@@ -86,8 +86,12 @@ export const Header = () => {
     // to.
     useEffect(() => {
         if (!pendingMenuHandoff) return;
-        pendingMenuHandoff = false; // consume once so it never leaks to a later, unrelated mount
-        const frameId = requestAnimationFrame(() => setIsMenuOpen(false));
+        // Consume inside the frame callback (not before scheduling it) so a
+        // StrictMode-style mount/unmount/remount can't swallow the handoff.
+        const frameId = requestAnimationFrame(() => {
+            pendingMenuHandoff = false; // consume once so it never leaks to a later, unrelated mount
+            setIsMenuOpen(false);
+        });
         return () => cancelAnimationFrame(frameId);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
