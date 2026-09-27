@@ -48,6 +48,7 @@
   --dur-hover: 200ms;   /* hover/colour changes */
   --dur-panel: 220ms;   /* dropdowns/accordions: 150-250ms */
   --dur-drawer: 300ms;  /* modals/drawers: 200-500ms */
+  --dur-burger: 260ms;  /* mobile-menu-polish: burger<->X icon morph */
 }
 body {
   margin: 0;
@@ -136,6 +137,60 @@ section:not([class*="scroll-mt"]),
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
+/* === MOBILE MENU (Header.tsx) — burger<->X morph + link stagger === */
+/* Burger icon: three line spans, same 24px box/colour/position as the
+   lucide icon it replaces. Only transform/opacity ever animate. */
+.burger-icon {
+  position: relative;
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+.burger-line {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 16px;
+  height: 2px;
+  border-radius: 9999px;
+  background-color: currentColor;
+  transform-origin: center;
+  transition: transform var(--dur-burger) var(--ease-out), opacity var(--dur-burger) var(--ease-out);
+}
+.burger-line-top {
+  transform: translate(-50%, calc(-50% - 6px));
+}
+.burger-line-middle {
+  transform: translate(-50%, -50%);
+}
+.burger-line-bottom {
+  transform: translate(-50%, calc(-50% + 6px));
+}
+.burger-line-top-open {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.burger-line-middle-open {
+  opacity: 0;
+}
+.burger-line-bottom-open {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* Mobile menu link list: staggered translateY on enter only. The base
+   class carries no `transition`, so removing `-open` on close snaps the
+   link back instantly (masked by the overlay's own opacity fade) instead
+   of playing a reverse slide - "exit is opacity only, no stagger". */
+.mobile-menu-link {
+  transform: translateY(12px);
+}
+.mobile-menu-link-open {
+  transform: translateY(0);
+  transition-property: transform;
+  transition-duration: var(--dur-panel);
+  transition-timing-function: var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 40ms);
+}
+
 /* Vinyl Record Player Styling */
 .vinyl-record {
   background-color: #111;
@@ -251,5 +306,12 @@ t
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
     transform: none !important;
+  }
+  /* The transition-duration override above already makes the burger morph
+     and the link translateY snap instantly; it does not touch
+     transition-delay, so the stagger would otherwise still visibly step
+     each link in turn. Zero it explicitly. */
+  .mobile-menu-link-open {
+    transition-delay: 0ms !important;
   }
 }
