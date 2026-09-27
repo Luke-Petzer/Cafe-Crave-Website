@@ -1,15 +1,15 @@
 {
   "place_name": "Café Crave",
   "rating": 4.4,
-  "review_count": 462,
-  "last_updated": "2026-09-20T04:00:07.163Z",
+  "review_count": 463,
+  "last_updated": "2026-09-27T04:00:26.164Z",
   "reviews": [
     {
       "id": 1,
       "name": "Razeena Bhol",
       "rating": 4,
       "text": "This is a very cute Café. Love the atmosphere. Food is tasty. Overall a good experience. It was very busy the day we had gone and food had been delayed quite a bit. The good service however makes up for delays and look forward to going back. Parking however is an issue and maybe a plan can be made for customers?",
-      "date": "4 months ago"
+      "date": "5 months ago"
     },
     {
       "id": 2,
@@ -30,7 +30,7 @@
       "name": "Colleen Jaffer",
       "rating": 5,
       "text": "I would Highly recommend. We had a wonderful experience from the relaxing atmosphere and decor to the friendly staff and delicious food. We have found a gem and will be back. Excellent!",
-      "date": "3 months ago"
+      "date": "4 months ago"
     },
     {
       "id": 5,
