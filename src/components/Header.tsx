@@ -165,6 +165,20 @@ export const Header = () => {
         }
     }, [isMenuOpen, isMenuRendered]);
 
+    // Safety net for the exit: the overlay normally unmounts on its own
+    // transitionend, but if that event never arrives (tab/app switched
+    // mid-fade, an interrupted transition) it must not linger. While closing
+    // it already ignores taps (pointer-events-none); this unmounts it anyway
+    // shortly after the 200ms fade should have finished.
+    useEffect(() => {
+        if (isMenuOpen || !isMenuRendered) return;
+        const id = window.setTimeout(() => {
+            setIsAnimating(false);
+            setIsMenuRendered(false);
+        }, 400);
+        return () => window.clearTimeout(id);
+    }, [isMenuOpen, isMenuRendered]);
+
     // Marks the start of an opacity transition so `will-change` can be
     // dropped again once onTransitionEnd fires.
     useEffect(() => {
@@ -333,7 +347,7 @@ export const Header = () => {
                         aria-modal={isMenuOpen ? true : undefined}
                         aria-label="Menu"
                         aria-hidden={isMenuOpen ? undefined : true}
-                        className={`fixed inset-0 bg-primary z-[45] md:hidden flex flex-col items-center justify-center overscroll-contain transition-opacity ease-out-strong ${isMenuOpen ? 'duration-drawer opacity-100' : 'duration-200 opacity-0'}`}
+                        className={`fixed inset-0 bg-primary z-[45] md:hidden flex flex-col items-center justify-center overscroll-contain transition-opacity ease-out-strong ${isMenuOpen ? 'duration-drawer opacity-100' : 'duration-200 opacity-0 pointer-events-none'}`}
                         style={isAnimating ? { willChange: 'opacity' } : undefined}
                         onTransitionEnd={(e) => {
                             if (e.propertyName !== 'opacity') return;
