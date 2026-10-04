@@ -1,9 +1,10 @@
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
-import { MapPinIcon, PhoneIcon, ClockIcon } from 'lucide-react';
+import { MapPinIcon, PhoneIcon, ClockIcon, MailIcon } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { ScrollAnimationObserver } from '../components/ScrollAnimationObserver';
 import contactHeroImg from '../assets/cuppacino.webp';
+import { CLAREMONT_EMAIL } from '../config/contact';
 
 // Custom icon components
 // const InstagramIcon = ({ size }: { size: number }) => (
@@ -41,6 +42,7 @@ export const ContactPage = () => {
             "description": "A retro, music-inspired, halaal-certified café in Claremont, Cape Town.",
             "url": "https://cafecravecpt.co.za",
             "telephone": "+27735651888",
+            "email": CLAREMONT_EMAIL,
             "priceRange": "R",
             "servesCuisine": ["Café", "Halaal"],
             "address": {
@@ -164,6 +166,16 @@ export const ContactPage = () => {
                       <p className="text-lightText opacity-60 text-sm mt-1">
                         Chat with us directly
                       </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start">
+                    <MailIcon size={24} className="text-accent mr-4 flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="font-medium text-lightText mb-1">Email</h3>
+                      <a href={`mailto:${CLAREMONT_EMAIL}`} className="pressable text-lightText opacity-80 hover:text-accent transition-colors">
+                        {CLAREMONT_EMAIL}
+                      </a>
                     </div>
                   </div>
 

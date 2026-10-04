@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import cafeLogoIcon from '../assets/old-logo.svg';
 import { FloatingWhatsApp } from './FloatingWhatsApp';
+import { CLAREMONT_EMAIL } from '../config/contact';
 
 export const Footer = () => {
   return (
@@ -42,6 +43,12 @@ export const Footer = () => {
                 </a>
                 <span className="block opacity-60 text-xs">Alternative number</span>
               </div>
+              <a
+                href={`mailto:${CLAREMONT_EMAIL}`}
+                className="block accent-light hover:text-opacity-80 transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 rounded text-sm pt-1"
+              >
+                {CLAREMONT_EMAIL}
+              </a>
               <p className="opacity-80 text-sm leading-relaxed pt-2">
                 219 Imam Haron Rd, Claremont
               </p>
