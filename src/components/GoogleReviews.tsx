@@ -54,13 +54,35 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
     };
 
     const goToSlide = (index: number) => {
-        if (isTransitioning) return;
+        // +1 because of the cloned first slide. Selecting the slide that is
+        // already showing must be a no-op: the track's transform wouldn't
+        // change, so no transitionend would ever fire to release the lock
+        // and every control would stay dead until a reload.
+        if (isTransitioning || index + 1 === currentIndex) return;
         setIsTransitioning(true);
-        setCurrentIndex(index + 1); // +1 because of the cloned first slide
+        setCurrentIndex(index + 1);
+    };
+
+    // Left/Right arrow keys move the carousel while focus is on any control
+    // inside it (arrows, dots). Modified keys are left alone so browser
+    // shortcuts (Alt+Left = back) keep working.
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+        if (reviews.length < 2 || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+        if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            goToNext();
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            goToPrevious();
+        }
     };
 
     // Handle the transition end to create infinite loop effect
-    const handleTransitionEnd = () => {
+    const handleTransitionEnd = (e: React.TransitionEvent<HTMLDivElement>) => {
+        // transitionend bubbles: ignore the review cards' own hover/shadow
+        // transitions so they can't release the lock or trigger the loop
+        // jump while the track is still sliding.
+        if (e.target !== e.currentTarget) return;
         setIsTransitioning(false);
 
         // If we're at the cloned last slide, jump to the real first slide
@@ -150,7 +172,11 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
                     {/* Carousel Layout */}
                     {reviews.length > 0 ? (
                         <div
+                            role="region"
+                            aria-roledescription="carousel"
+                            aria-label="Google reviews"
                             className="relative max-w-5xl mx-auto mb-12"
+                            onKeyDown={handleKeyDown}
                             onMouseEnter={() => setPaused(true)}
                             onMouseLeave={() => setPaused(false)}
                             onFocus={() => setPaused(true)}
@@ -202,8 +228,7 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
                                     {/* Previous Button */}
                                     <button
                                         onClick={goToPrevious}
-                                        disabled={isTransitioning}
-                                        className="pressable absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 bg-accent hover:bg-opacity-90 text-light p-3 rounded-full shadow-lg transition-[transform,background-color] duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 z-10 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        className="pressable absolute left-0 top-1/2 -mt-6 -ml-4 md:-ml-12 bg-accent hover:bg-opacity-90 text-light p-3 rounded-full shadow-lg transition-[transform,background-color] duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 z-10"
                                         aria-label="Previous review"
                                     >
                                         <ChevronLeft size={24} />
@@ -212,8 +237,7 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
                                     {/* Next Button */}
                                     <button
                                         onClick={goToNext}
-                                        disabled={isTransitioning}
-                                        className="pressable absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 bg-accent hover:bg-opacity-90 text-light p-3 rounded-full shadow-lg transition-[transform,background-color] duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 z-10 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        className="pressable absolute right-0 top-1/2 -mt-6 -mr-4 md:-mr-12 bg-accent hover:bg-opacity-90 text-light p-3 rounded-full shadow-lg transition-[transform,background-color] duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 z-10"
                                         aria-label="Next review"
                                     >
                                         <ChevronRight size={24} />
@@ -234,8 +258,7 @@ export const GoogleReviews: React.FC<GoogleReviewsProps> = ({ standalone = true 
                                             <button
                                                 key={index}
                                                 onClick={() => goToSlide(index)}
-                                                disabled={isTransitioning}
-                                                className={`w-3 h-3 rounded-full transition-[width,background-color] duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 disabled:cursor-not-allowed ${
+                                                className={`w-3 h-3 rounded-full transition-[width,background-color] duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50 ${
                                                     index === activeIndex
                                                         ? 'bg-accent w-8'
                                                         : 'bg-lightText bg-opacity-30 hover:bg-opacity-50'
